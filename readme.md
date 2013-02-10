@@ -1,4 +1,4 @@
- # lt3-theme: Out of the Square Media WordPress Theme
+# lt3-theme: Out of the Square Media WordPress Theme
 
 ## Change Log
 ------------------------------------------------
