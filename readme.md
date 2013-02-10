@@ -1,4 +1,5 @@
-# lt3 // A slightly powerfull, intelligent and simple WordPress theme.
+# lt3 
+**A slightly powerfull, intelligent and simple WordPress theme.**
 
 ## Change Log
 
