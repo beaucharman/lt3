@@ -6,6 +6,7 @@
 - Style sheet - Finish setting up and add some defaults
 - Finish custom post type file
 - Finish custom meta field file
+
 - Default margin issue with entry content from a type point of view
 - Split up the theme-functions.php file into modules
 - WordPress editor styles + instructions
