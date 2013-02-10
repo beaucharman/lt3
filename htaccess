@@ -1,0 +1,46 @@
+
+# BEGIN WordPress
+
+# END WordPress
+
+# Protect wpconfig.php
+<Files wp-config.php>
+order allow,deny
+deny from all
+</Files>
+
+# Better login URL (Replace url)
+#RewriteRule ^login$ http://example.com/wp-login.php [NC,L]
+
+# Prevent directory browsing
+Options All -Indexes
+
+# Protect against script injections
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (\&lt;|%3C).*script.*(\&gt;|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+
+# Protect the .htaccess file
+<Files .htaccess>
+Order Allow,Deny
+Deny from all
+</Files>
+
+# Prevent other url based security hacks
+RedirectMatch 403 \[
+
+# Protect php files within wp-content (place in /wp-content/.htaccess)
+#Order deny,allow
+#Deny from all
+#<Files ~ ".(xml|css|jpe?g|png|gif|js)$">
+#Allow from all
+#</Files>
+
+# Access from your IP only (replace IP)
+#order deny,allow
+#allow from 202.090.21.1
+#deny from all
+

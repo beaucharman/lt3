@@ -1,0 +1,777 @@
+/*	
+  Theme Name:        lt3-theme
+  Theme URI:         http://www.outofthesquare.com
+  Description:       WordPress Theme for Out of the Square Media clients
+  Author:            lt3 Team, @lt3media @beaucharman
+  Author URI:        http://www.outofthesquare.com
+  License:
+  License URI:
+  Version:           1.0
+  Version Date:      17 01 2013
+  Style Guide Notes:
+  General Notes:
+  
+  Default WordPress editor styles selectors are found here http://digwp.com/2010/05/default-wordpress-css-styles-hooks/
+  Base styles and Helper styles from: http://html5boilerplate.com/
+------------------------------------------------ */
+/* SASS variables, mixins and functions
+------------------------------------------------ */
+/*
+
+  SASS Variables
+
+------------------------------------------------	
+  Version:     1.0
+  Description: 
+------------------------------------------------ */
+/*
+
+  SASS Mixins
+
+------------------------------------------------	
+  Version:     1.0
+  Description: 
+------------------------------------------------ */
+/* Clearfix
+------------------------------------------------
+Thank you http://nicolasgallagher.com/micro-clearfix-hack/
+------------------------------------------------ */
+/*
+
+  SASS Functions
+
+------------------------------------------------	
+  Version:     1.0
+  Description: 
+------------------------------------------------ */
+@media screen {
+  /* Base styles
+  ------------------------------------------------ */
+  /*
+  
+    Tabula Rasa
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    The normalize styles, or other reset stylesheets.
+  
+    Taken from normalize.css 
+    git.io/normalize, 
+    and http://html5boilerplate.com/
+  ------------------------------------------------ */
+  /* HTML5 display definitions
+  ------------------------------------------------ */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  nav,
+  section,
+  summary {
+    display: block; }
+
+  audio,
+  canvas,
+  video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1; }
+
+  audio:not([controls]) {
+    display: none;
+    height: 0; }
+
+  [hidden] {
+    display: none; }
+
+  /* Base
+  ------------------------------------------------ */
+  html {
+    font-size: 100%;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+    -ms-text-size-adjust: 100%;
+    /* 2 */ }
+
+  html,
+  button,
+  input,
+  select,
+  textarea {
+    font-family: sans-serif; }
+
+  body {
+    margin: 0; }
+
+  /* Links
+  ------------------------------------------------ */
+  a:focus {
+    outline: thin dotted; }
+
+  a:active,
+  a:hover {
+    outline: 0; }
+
+  /* Typography
+  ------------------------------------------------ */
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0; }
+
+  h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0; }
+
+  h3 {
+    font-size: 1.17em;
+    margin: 1em 0; }
+
+  h4 {
+    font-size: 1em;
+    margin: 1.33em 0; }
+
+  h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0; }
+
+  h6 {
+    font-size: 0.75em;
+    margin: 2.33em 0; }
+
+  abbr[title] {
+    border-bottom: 1px dotted; }
+
+  b,
+  strong {
+    font-weight: bold; }
+
+  blockquote {
+    margin: 1em 40px; }
+
+  dfn {
+    font-style: italic; }
+
+  mark {
+    background: #ff0;
+    color: #000; }
+
+  p,
+  pre {
+    margin: 1em 0; }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em; }
+
+  pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word; }
+
+  q {
+    quotes: none; }
+
+  q:before,
+  q:after {
+    content: '';
+    content: none; }
+
+  small {
+    font-size: 80%; }
+
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline; }
+
+  sup {
+    top: -0.5em; }
+
+  sub {
+    bottom: -0.25em; }
+
+  /* Lists
+  ------------------------------------------------ */
+  dl,
+  menu,
+  ol,
+  ul {
+    margin: 1em 0; }
+
+  dd {
+    margin: 0 0 0 40px; }
+
+  menu,
+  ol,
+  ul {
+    padding: 0 0 0 40px; }
+
+  nav ul,
+  nav ol {
+    list-style: none;
+    list-style-image: none; }
+
+  /* Embedded content
+  ------------------------------------------------ */
+  img {
+    border: 0;
+    -ms-interpolation-mode: bicubic; }
+
+  svg:not(:root) {
+    overflow: hidden; }
+
+  /* Figures
+  ------------------------------------------------ */
+  figure {
+    margin: 0; }
+
+  /* Forms
+  ------------------------------------------------ */
+  form {
+    margin: 0; }
+
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em; }
+
+  legend {
+    border: 0;
+    padding: 0;
+    white-space: normal;
+    *margin-left: -7px; }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+    *vertical-align: middle; }
+
+  button,
+  input {
+    line-height: normal; }
+
+  button,
+  html input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+    *overflow: visible; }
+
+  button[disabled],
+  input[disabled] {
+    cursor: default; }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+    *height: 13px;
+    *width: 13px; }
+
+  input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box; }
+
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none; }
+
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+  textarea {
+    overflow: auto;
+    vertical-align: top; }
+
+  /* Tables
+  ------------------------------------------------ */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0; }
+
+  /*
+  
+    Global styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    base / global / elements styles, core boilerplate styles.
+    This can include inline and block level elements, and thier basic styles.
+  ------------------------------------------------ */
+  html,
+  button,
+  input,
+  select,
+  textarea {
+    color: #222; }
+
+  body {
+    font-size: 1em;
+    line-height: 1.4; }
+
+  ::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none; }
+
+  ::selection {
+    background: #b3d4fc;
+    text-shadow: none; }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; }
+
+  img {
+    vertical-align: middle; }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0; }
+
+  textarea {
+    resize: vertical; }
+
+  table {
+    width: 100%; }
+
+  /*
+  
+    Layout styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    Grid layouts and any global layout styles.
+  ------------------------------------------------ */
+  /*
+  
+    Typography styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    Type and font styles, and related element styles. 
+    Can also include font declarations.
+  ------------------------------------------------ */
+  /* Project specific styles
+  ------------------------------------------------ */
+  /*
+  
+    Project styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    Project related styles, pages specific and branding etc...
+  ------------------------------------------------ */
+  /* Page Wrap Styles
+  ------------------------------------------------ */
+  .page-wrap {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 940px; }
+
+  /* Helpers, components and WordPress related styles
+  ------------------------------------------------ */
+  /*
+  
+    Component styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    Any self contained blocks of code or Javascript plugin related styles, 
+    for example: galleries and light boxes.
+  ------------------------------------------------ */
+  /*
+  
+    Control styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    For forms and their related controls.
+  
+    Can also include  base and project specific styles 
+    related to buttons and clickable, interactive controls.
+  ------------------------------------------------ */
+  /*
+  
+    Helper styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    Any modulated styles that help with cross browser 
+    compatibility and user feedback.
+  ------------------------------------------------ */
+  .chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0; }
+
+  .ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px; }
+
+  .ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%; }
+
+  .hidden {
+    display: none !important;
+    visibility: hidden; }
+
+  .visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+
+  .visuallyhidden.focusable:active,
+  .visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto; }
+
+  .invisible {
+    visibility: hidden; }
+
+  /* Clearfix
+  ------------------------------------------------ */
+  .clearfix:before,
+  .clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+
+  .clearfix:after {
+    clear: both; }
+
+  .clearfix {
+    *zoom: 1; }
+
+  /*
+  
+    Wordpress styles
+  
+  ------------------------------------------------	
+    Version:     1.0
+    Description: 
+    
+    WordPress related styles, and shortcode styles.
+  	Default WordPress editor styles selectors are 
+  	found here http://digwp.com/2010/05/default-wordpress-css-styles-hooks/
+  ------------------------------------------------ */
+  /* Entry Container styles
+  ------------------------------------------------ */
+  .entry:before,
+  .entry:after {
+    content: " ";
+    display: table; }
+
+  .entry:after {
+    clear: both; }
+
+  .entry {
+    *zoom: 1; }
+
+  /* Alignment styles
+  ------------------------------------------------ */
+  .alignleft, img.alignleft {
+    margin-right: 1.5em;
+    display: inline;
+    float: left; }
+
+  .alignright, img.alignright {
+    margin-left: 1.5em;
+    display: inline;
+    float: right; }
+
+  .aligncenter, img.aligncenter {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    clear: both; }
+
+  blockquote.left {
+    margin-right: 20px;
+    text-align: right;
+    margin-left: 0;
+    width: 33%;
+    float: left; }
+
+  blockquote.right {
+    margin-left: 20px;
+    text-align: left;
+    margin-right: 0;
+    width: 33%;
+    float: right; }
+
+  /* Image and Gallery tyles
+  ------------------------------------------------ */
+  .hentry img {
+    max-width: 100%;
+    height: auto; }
+
+  .wp-caption {
+    margin-bottom: 1.5em;
+    text-align: center;
+    padding-top: 5px; }
+
+  .wp-caption img {
+    border: 0 none;
+    padding: 0;
+    margin: 0; }
+
+  .wp-caption p.wp-caption-text {
+    line-height: 1.5;
+    font-size: 10px;
+    margin: 0; }
+
+  .wp-smiley {
+    margin: 0 !important;
+    max-height: 1em; }
+
+  /*
+  
+  	Shortcode styles
+  
+  ------------------------------------------------ */
+  /* Columns
+  ------------------------------------------------ */
+  .article-column {
+    margin-right: 4%;
+    float: left; }
+
+  .article-column.one-fourth {
+    width: 22%; }
+
+  .article-column.one-third {
+    width: 30.66%; }
+
+  .article-column.one-half {
+    width: 44%; }
+
+  .article-column.two-thirds {
+    width: 65.32%; }
+
+  .article-column.last-column {
+    margin-right: 0 !important;
+    clear: right; }
+
+  /*
+  
+  	Comment styles
+  	
+  ------------------------------------------------ */
+  #commentform input[type="text"],
+  #commentform input[type="url"],
+  #commentform input[type="email"] {
+    width: 150px; }
+
+  ol.commentlist {
+    list-style: none;
+    margin-bottom: 1.75em; }
+
+  ol.commentlist li {
+    clear: both;
+    margin-bottom: 0.75; }
+
+  ol.commentlist li:before,
+  ol.commentlist li:after {
+    content: "";
+    display: table; }
+
+  ol.commentlist li:after {
+    clear: both; }
+
+  ol.commentlist li {
+    zoom: 1; }
+
+  ol.commentlist li p {
+    margin: 0; }
+
+  ol.commentlist li div {
+    margin-bottom: 0.352em; }
+
+  ol.commentlist li.comment {
+    margin-bottom: 1.5em; }
+
+  ol.commentlist li.comment div.comment-vcard {
+    float: left;
+    width: 10%; }
+
+  ol.commentlist li.comment div.comment-body {
+    float: left;
+    width: 90%; }
+
+  ol.commentlist li.comment div.comment-vcard img.avatar {
+    padding: 4px;
+    border: 1px solid #e1e1e1;
+    background-color: #f1f1f1;
+    padding: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    max-width: 100%;
+    max-height: 100%; }
+
+  ol.commentlist li.comment div.comment-meta {
+    font-size: 0.9em; }
+
+  ol.commentlist li.comment div.comment-meta a {
+    color: #999; }
+
+  ol.commentlist li.comment div.reply {
+    font-size: 0.8em; }
+
+  ol.commentlist li.comment div.reply a {
+    font-weight: 700; }
+
+  ol.commentlist li.comment ul.children {
+    list-style: none;
+    margin: 12px 0 0; }
+
+  ol.commentlist li.comment ul.children li.depth-2 {
+    margin: 0 0 0.75em 32px;
+    padding: 0 0 0.75em 32px; }
+
+  ol.commentlist li.comment ul.children li.depth-3 {
+    margin: 0 0 0.75em 32px;
+    padding: 0 0 0.75em 32px; }
+
+  ol.commentlist li.comment ul.children li.depth-4 {
+    margin: 0 0 0.75em 32px;
+    padding: 0 0 0.75em 32px; }
+
+  ol.commentlist li.comment ul.children li.depth-5 {
+    margin: 0 0 0.75em 32px;
+    padding: 0 0 0.75em 32px; }
+
+  #respond label span {
+    display: none; } }
+/* Media Queries
+------------------------------------------------ */
+/*
+
+  Media Query styles
+
+------------------------------------------------	
+  Version:     1.0
+  Description: 
+------------------------------------------------ */
+/* Min Width 480px - small screen and tablets
+------------------------------------------------ */
+/* Min Width 720px - medium tablets, screens and iPads
+------------------------------------------------ */
+/* Min width 1025px - larger desktop screens
+------------------------------------------------ */
+/* Print styles
+------------------------------------------------ */
+/*
+
+  Print stylesheet
+
+------------------------------------------------	
+  Description: 
+  Version:     1.0
+------------------------------------------------ */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important; }
+
+  a,
+  a:visited {
+    text-decoration: underline; }
+
+  a[href]:after {
+    content: " [" attr(href) "]"; }
+
+  abbr[title]:after {
+    content: " [" attr(title) "]"; }
+
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: ""; }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  thead {
+    display: table-header-group; }
+
+  tr,
+  img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  @page {
+    margin: 0.5cm; }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2,
+  h3 {
+    page-break-after: avoid; } }

@@ -1,0 +1,173 @@
+/*
+
+  lt3-theme WordPress Editor styles
+
+------------------------------------------------	
+  Description: 
+  Version:     1.0.1
+------------------------------------------------ */
+
+/* TinyMCE Specific Styles 
+------------------------------- */
+body.mceForceColors { background: #fff; color: #000; }
+
+body.mceBrowserDefaults { background: transparent; color: inherit; font-size: inherit; font-family: inherit; }
+
+img:-moz-broken { -moz-force-broken-image-icon: 1; width: 24px; height: 24px }
+
+font[face=mceinline] {font-family: inherit !important }
+
+*[contentEditable]:focus { outline: 0 }
+
+.mceItemTable, .mceItemTable td, .mceItemTable th, .mceItemTable caption, .mceItemVisualAid { border: 1px dashed #bbb; }
+
+a.mceItemAnchor { display: inline-block; -webkit-user-select: all; -webkit-user-modify: read-only; -moz-user-select: all; -moz-user-modify: read-only; width: 11px !important; height: 11px !important;}
+
+span.mceItemNbsp { background: #ddd }
+
+td.mceSelected, th.mceSelected { background-color: #39f !important }
+
+.mceItemMedia { border: 1px dotted #c00; background-position: center; background-repeat: no-repeat; background-color: #ffc; }
+
+.mcePageBreak { display: block; border: 0; width: 100%; height: 12px; border-top: 1px dotted #ccc; margin-top: 15px; }
+
+/* USER STYLES - EDIT FROM HERE
+------------------------------- */
+html {
+  background: #F8F8F8; 
+}
+
+html .mceContentBody {
+  max-width: 980px;
+  border-right: 1px solid #ccc; 
+  padding: 20px;
+}
+
+body {
+  font-weight: 400;
+  color: #000;
+  background: #fff;
+  margin: 0;
+}
+
+html,
+.mceContentBody,
+body,
+button,
+input,
+select,
+textarea { }
+
+/* Paragraph and Block level elements typography
+------------------------------------------------ */
+p, blockquote {
+  margin: 1em 0;
+}
+
+blockquote {
+  font-size: 1.2em;
+}
+
+p, ul, ol, dl, address, td, tr, textarea, input {
+  font-size: 1em;
+}
+
+p, blockquote, ul, ol, dl, address, td, tr, textarea, input {
+  line-height: 1.5;
+}
+
+/* Tables */
+table {
+  width: 100%;
+}
+
+td, th {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em;
+  text-align: left;
+}
+
+/* Entry Container styles
+------------------------------------------------ */
+.entry:before,
+.entry:after {
+  content: " ";
+  display: table;
+}
+
+.entry:after {
+  clear: both;
+}
+
+.entry {
+  *zoom: 1;
+}
+
+/* Alignment styles
+------------------------------------------------ */
+.alignleft, img.alignleft {
+  margin-right: 1.5em;
+  display: inline;
+  float: left;
+}
+
+.alignright, img.alignright {
+  margin-left: 1.5em;
+  display: inline;  
+  float: right;
+}
+
+.aligncenter, img.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
+
+.alignnone, img.alignnone {  }
+
+blockquote.left {
+  margin-right: 20px;
+  text-align: right;
+  margin-left: 0;
+  width: 33%;
+  float: left;
+}
+
+blockquote.right {
+  margin-left: 20px;
+  text-align: left;
+  margin-right: 0;
+  width: 33%;
+  float: right;
+}
+
+/* Image and Gallery tyles
+------------------------------------------------ */
+.hentry img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wp-caption {
+  margin-bottom: 1.5em;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.wp-caption img {
+  border: 0 none;
+  padding: 0;
+  margin: 0;
+}
+
+.wp-caption p.wp-caption-text {
+  line-height: 1.5;
+  font-size: 10px;
+  margin: 0;
+}
+
+.wp-smiley {
+  margin: 0 !important;
+  max-height: 1em;
+}

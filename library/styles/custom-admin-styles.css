@@ -1,0 +1,83 @@
+/*
+
+  lt3-theme Custom Admin styles
+
+------------------------------------------------	
+  Description: 
+  Version:     1.0.1
+------------------------------------------------ */
+
+/* Input field styles
+------------------------------------------------
+Consistent form, controls and compontent styles, 
+for site-settings and custom-meta-fields
+------------------------------------------------ */
+.lt3-form-container th,
+.lt3-form-container td {
+  vertical-align: top;
+}
+
+.lt3-form-container td { 
+  padding: 10px 0; 
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.lt3-form-container .custom-field-container:last-child {
+  border-bottom: none;
+}
+
+.lt3-form-container .label-container { 
+  /* float: left; */
+}
+
+.lt3-form-container .label-container label {
+  color: #222;
+  font-weight: 500;
+  display: block;
+}
+
+.lt3-form-container span.description { 
+  color: #b0b0b0;
+  font-weight: 200;
+}
+
+.lt3-form-container .input-container {
+  /* float: left; */
+}
+
+.lt3-form-container input[type="text"] {
+  width: 300px;
+  max-width: 90%;
+}
+
+.lt3-form-container select {
+  max-width: 300px;
+}
+
+
+.lt3-form-container textarea {
+  resize: vertical;
+  width: 500px;
+  min-height: 150px;
+  max-width: 90%;
+}
+
+.lt3-form-container input[type="text"], 
+.lt3-form-container textarea {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  padding: 6px;
+}
+
+.lt3-form-container input:focus,
+.lt3-form-container textarea:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted 9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+}
