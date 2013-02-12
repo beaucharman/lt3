@@ -31,7 +31,7 @@ function lt3_load_styles()
 	------------------------------------------------ */
 	if(!is_admin())
 	{
-  	//Theme styles here
+  	//Theme template styles here
 	} 
 	elseif(is_admin())
 	{

@@ -30,33 +30,7 @@
 ------------------------------------------------
 Field: All require the following parameters: type, id & label
 ------------------------------------------------ */
-$custom_meta_fields_array = array(	array(
-    'id'              => 'This', 
-    'title'           => 'Hi',              
-    'post_type'       => '', // 'post', 'page', 'link', 'attachment' or 'custom_post_type'             
-    'context'         => 'side', // 'normal', 'advanced', or 'side'         
-    'priority'        => '', // 'high', 'core', 'default' or 'low'
-    'fields'          => array(
-      array(
-        'type'        => 'text',
-        'id' 	        => 'rrty',
-      	'label'       => 'This is some text yo!',
-      	
-      	'description' => 'This is a description'
-      ),
-      array(
-        'type'        => 'textarea',
-        'id' 	        => 'qwe',
-      	'label'       => '',
-      	),
-      array(
-        'type'        => 'post_list',
-        'id' 	        => 's',
-        'post_type'   => 'page',
-      	'label'       => 'This is some text yo!',
-      )
-    )  
-  ));
+$custom_meta_fields_array = array();
 
 /* Create each custom meta field box instance
 ------------------------------------------------ */

@@ -23,42 +23,6 @@ $site_settings = array(
     'label'          => 'Google Analytics Code',
     'description'    => 'Define the Google Analytics tracking code for the site here.',
     'placeholder'    => 'UA-XXXXX-X'
-  ),
-  array(
-    'id'             => 'google_analytics',
-    'type'           => 'text',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
-  ),
-  array(
-    'id'             => 'google_analytics',
-    'type'           => 'text',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
-  ),array(
-    'id'             => 'google_analytics',
-    'type'           => 'textarea',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
-  ),
-  array(
-    'id'             => 'post_type_select',
-    'type'           => 'post_type_select',
-    'post_type'      => 'post',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
-  ),
-  array(
-    'id'             => 'post_type_select',
-    'type'           => 'single_checkbox',
-    'post_type'      => 'post',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
   )
 );
 
@@ -122,9 +86,7 @@ function lt3_site_settings_do_page()
         	------------------------------------------------ */
         	 case 'divider': ?>
 
-            <tr>
-            	<td colspan="2"><?php echo $site_setting['content']; ?></td>
-            </tr>
+        	   <td colspan="2"><?php echo $site_setting['content']; ?></td>
 
           <?php break;
 
