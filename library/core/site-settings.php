@@ -43,7 +43,7 @@ function lt3_site_settings_init()
 ------------------------------------------------ */
 function lt3_site_settings_add_page() 
 {
-	add_submenu_page('options-general.php', get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
+	add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
 }
 
 /* Render the settings page:
