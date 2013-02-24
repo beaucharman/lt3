@@ -6,6 +6,7 @@
 ------------------------------------------------
   Version: 1.0
   Notes:   Archived content template page.
+           Requires the lt3_is_post_type() function
 ------------------------------------------------ */ ?>
 
 <?php get_header(); ?>
