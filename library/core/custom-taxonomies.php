@@ -13,12 +13,12 @@
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
   
   To declare a taxonomy, simply add a taxonomy array to the $custom_taxonomies array variable, with required values of:
-    'slug_singluar'         => '',
+  array(
+    'slug_singuar'          => '',
     'slug_plural'           => '',
     'name_singular'         => '',
     'name_plural'           => '',
-  
-  and optional values of:       
+    // and optional values of:       
     'public'                => true,
     'show_in_nav_menus'     => true,
     'show_ui'               => true,
@@ -29,6 +29,7 @@
     'rewrite'               => '',
     'sort'                  => NULL,
     'post_type'             => array('')
+  );
 ------------------------------------------------ */
 
 /* 
@@ -47,32 +48,32 @@ add_action('init', 'lt3_register_taxonomies', 0);
 function lt3_register_taxonomies()
 {
   global $custom_taxonomies;
-  foreach($custom_taxonomies as $custom_taxonomy)
+  foreach($custom_taxonomies as $ct)
   {
     $labels = array(
-      'name'                  => __($custom_taxonomy['name_plural'], $custom_taxonomy['name_plural'] . ' general name'),
-      'singular_name'         => __($custom_taxonomy['name_singular'], $custom_taxonomy['name_singular'] . ' singular name'),
-      'search_items'          => __('Search ' . $custom_taxonomy['name_plural']),
-      'all_items'             => __('All ' . $custom_taxonomy['name_plural']),
-      'parent_item'           => __('Parent ' . $custom_taxonomy['name_singular']),
-      'parent_item_colon'     => __('Parent '. $custom_taxonomy['name_singular'] .':'),
-      'edit_item'             => __('Edit '. $custom_taxonomy['name_singular']),
-      'update_item'           => __('Update ' . $custom_taxonomy['name_singular']),
-      'add_new_item'          => __('Add New ' . $custom_taxonomy['name_singular']),
-      'new_item_name'         => __('New ' . $custom_taxonomy['name_singular']),
-      'menu_name'             => __($custom_taxonomy['name_plural'])
+      'name'                  => __($ct['name_plural'], $ct['name_plural'] . ' general name'),
+      'singular_name'         => __($ct['name_singular'], $ct['name_singular'] . ' singular name'),
+      'search_items'          => __('Search ' . $ct['name_plural']),
+      'all_items'             => __('All ' . $ct['name_plural']),
+      'parent_item'           => __('Parent ' . $ct['name_singular']),
+      'parent_item_colon'     => __('Parent '. $ct['name_singular'] .':'),
+      'edit_item'             => __('Edit '. $ct['name_singular']),
+      'update_item'           => __('Update ' . $ct['name_singular']),
+      'add_new_item'          => __('Add New ' . $ct['name_singular']),
+      'new_item_name'         => __('New ' . $ct['name_singular']),
+      'menu_name'             => __($ct['name_plural'])
     );
-    register_taxonomy($custom_taxonomy['slug_plural'], $custom_taxonomy['post_type'], array(
+    register_taxonomy($ct['slug_plural'], $ct['post_type'], array(
       'labels'                => $labels,
-      'public'                => $custom_taxonomy['public'],
-      'show_in_nav_menus'     => $custom_taxonomy['show_in_nav_menus'],
-      'show_ui'               => $custom_taxonomy['show_ui'],
-      'show_tagcloud'         => $custom_taxonomy['show_tagcloud'],
-      'hierarchical'          => $custom_taxonomy['hierarchical'],
-      'update_count_callback' => $custom_taxonomy['update_count_callback'],
-      'query_var'             => $custom_taxonomy['query_var'],
-      'rewrite'               => $custom_taxonomy['rewrite'],
-      'sort'                  => $custom_taxonomy['sort']
+      'public'                => $ct['public'],
+      'show_in_nav_menus'     => $ct['show_in_nav_menus'],
+      'show_ui'               => $ct['show_ui'],
+      'show_tagcloud'         => $ct['show_tagcloud'],
+      'hierarchical'          => $ct['hierarchical'],
+      'update_count_callback' => $ct['update_count_callback'],
+      'query_var'             => $ct['query_var'],
+      'rewrite'               => $ct['rewrite'],
+      'sort'                  => $ct['sort']
     ));
   }
 }
