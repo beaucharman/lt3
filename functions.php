@@ -1,5 +1,4 @@
 <?php if(!defined('ABSPATH')) exit;
-<<<<<<< HEAD
 /*
 
   lt3 Functions and Theme Setup
@@ -19,24 +18,6 @@
   true for development, false for production mode.
 ------------------------------------------------ */
 define('LT3_DEVELOPMENT_MODE', true);
-=======
-/**
- * lt3 Functions and Theme Setup
- *
- * @author  @beaucharman <beau.charman@gmail.com>
- * @package less than 3 theme
- * @see     https://github.com/beaucharman/lt3
- * @version 2.0 : 05/03/2013
- */
-
-/**
- * Development Mode
- *
- * Set the site mode for conditional statements.
- * TRUE for development, FALSE for production mode.
- */
-define('LT3_DEVELOPMENT_MODE', TRUE);
->>>>>>> Changes
 
 /*
 
@@ -112,11 +93,7 @@ define('LT3_MODERNIZR_LIBRARY_VERSION', '2.6.2');
 
 /* Set the text title colour
 ------------------------------------------------
-<<<<<<< HEAD
 Also Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
-=======
-Also Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
->>>>>>> Changes
 ------------------------------------------------ */
 define('HEADER_TEXTCOLOR', '222222');
 
@@ -130,11 +107,7 @@ define('HEADER_IMAGE_HEIGHT', 220);
 
 /* Sets the default header image.
 ------------------------------------------------
-<<<<<<< HEAD
 Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
-=======
-Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
->>>>>>> Changes
 ------------------------------------------------ */
 define('HEADER_IMAGE',
   trailingslashit(get_stylesheet_directory_uri())
@@ -144,11 +117,7 @@ define('HEADER_IMAGE',
 /* Set to hide the text title from the front end
 ------------------------------------------------
 Also set HEADER_TEXTCOLOR to '' and the h1 a span
-<<<<<<< HEAD
 to 'display:none', Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
-=======
-to 'display:none', Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
->>>>>>> Changes
 ------------------------------------------------ */
 define('NO_HEADER_TEXT', false);
 
