@@ -2,7 +2,7 @@
 /*
 
   lt3-theme Site Settings
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -26,7 +26,8 @@ $site_settings = array(
   )
 );
 
-/* Initialise the settings page
+/* Initialise the settings page and
+  set the $lt3_site_settings global variable.
 ------------------------------------------------ */
 add_action('admin_init', 'lt3_site_settings_init');
 add_action('admin_menu', 'lt3_site_settings_add_page');
@@ -41,17 +42,17 @@ function lt3_site_settings_init()
 
 /* Hook the options page with the required settings:
 ------------------------------------------------ */
-function lt3_site_settings_add_page() 
+function lt3_site_settings_add_page()
 {
 	add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
 }
 
 /* Render the settings page:
 ------------------------------------------------ */
-function lt3_site_settings_do_page() 
+function lt3_site_settings_do_page()
 {
 	/* Check that the user is allowed to update options */
-	if (!current_user_can('manage_options')) 
+	if (!current_user_can('manage_options'))
 	{
     wp_die('You do not have sufficient permissions to access this page.');
 	} ?>
@@ -71,7 +72,7 @@ function lt3_site_settings_do_page()
   		<?php settings_fields('lt3_site_settings'); global $site_settings, $lt3_site_settings; ?>
 
       <?php foreach($site_settings as $site_setting): ?>
-      
+
           <tr>
             	<th>
             	   <label for="lt3_settings[<?php echo $site_setting['id']; ?>]"><?php echo $site_setting['label']; ?></label>
@@ -134,14 +135,14 @@ function lt3_site_settings_do_page()
                   <?php endforeach; ?>
                 </select>
               </td>
-            
+
 
 				  <?php break; ?>
 
 				  <?php default: echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>'; break;?>
 
         <?php endswitch; ?>
-        
+
         </tr>
 
 		  <?php endforeach; ?>
@@ -160,7 +161,7 @@ function lt3_site_settings_do_page()
 
 /* Sanitize and validate input. Accepts an array, return a sanitized array.
 ------------------------------------------------ */
-function lt3_site_settings_validate($input) 
+function lt3_site_settings_validate($input)
 {
 
 	/* List the settings to be saved here:

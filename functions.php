@@ -1,24 +1,25 @@
 <?php if(!defined('ABSPATH')) exit;
-/*	
-  
+/*
+
   lt3 Functions and Theme Setup
-  
+
 ------------------------------------------------
   Version: 1
   Notes:
 ------------------------------------------------ */
 
-/* 
+/*
 
   Development Mode
 
 ------------------------------------------------ */
 
-/* Set the site mode for conditional statements. TRUE for development, FALSE for production mode.
+/* Set the site mode for conditional statements.
+  true for development, false for production mode.
 ------------------------------------------------ */
-define('LT3_DEVELOPMENT_MODE', TRUE);
+define('LT3_DEVELOPMENT_MODE', true);
 
-/* 
+/*
 
   Front End Layout and Design Options
 
@@ -48,25 +49,25 @@ define('LT3_EXCERPT_MORE', 'more &rarr;');
 
 /* Enable global comments
 ------------------------------------------------ */
-define('LT3_ENABLE_GLOBAL_COMMENTS', TRUE);
+define('LT3_ENABLE_GLOBAL_COMMENTS', true);
 
 /* Enable site search
 ------------------------------------------------ */
-define('LT3_ENABLE_SITE_SEARCH', TRUE);
+define('LT3_ENABLE_SITE_SEARCH', true);
 
 /* Show Page and Post Meta Data on pages
 ------------------------------------------------ */
-define('LT3_ENABLE_META_DATA', TRUE);
+define('LT3_ENABLE_META_DATA', true);
 
 /* Enabled Sticky posts  to be display on the Home Page
 ------------------------------------------------ */
-define('LT3_ENABLE_STICKY_POSTS', TRUE);
+define('LT3_ENABLE_STICKY_POSTS', true);
 
 /* Number of Sticky Posts to show on the Home Page
 ------------------------------------------------ */
 define('LT3_NUMBER_OF_STICKY_POSTS', 2);
 
-/* 
+/*
 
   Script and Behaviour Options
 
@@ -74,11 +75,11 @@ define('LT3_NUMBER_OF_STICKY_POSTS', 2);
 
 /* Enable Google jQuery libraries
 ------------------------------------------------ */
-define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', TRUE);
+define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', true);
 
 /* Load Modernizr
 ------------------------------------------------ */
-define('LT3_LOAD_MODERNIZR_LIBRARY', TRUE);
+define('LT3_LOAD_MODERNIZR_LIBRARY', true);
 
 /* Determine the Google jQuery library version number
 ------------------------------------------------ */
@@ -95,8 +96,8 @@ define('LT3_MODERNIZR_LIBRARY_VERSION', '2.6.2');
 ------------------------------------------------ */
 
 /* Set the text title colour
------------------------------------------------- 
-Also Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
+------------------------------------------------
+Also Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
 ------------------------------------------------ */
 define('HEADER_TEXTCOLOR', '222222');
 
@@ -108,33 +109,33 @@ define('HEADER_IMAGE_WIDTH',  980);
 ------------------------------------------------ */
 define('HEADER_IMAGE_HEIGHT', 220);
 
-/* Sets the default header image. 
------------------------------------------------- 
-Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
+/* Sets the default header image.
+------------------------------------------------
+Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
 ------------------------------------------------ */
-define('HEADER_IMAGE', 
+define('HEADER_IMAGE',
   trailingslashit(get_stylesheet_directory_uri())
   .'/library/images/header-banner.jpg'
 );
 
 /* Set to hide the text title from the front end
------------------------------------------------- 
-Also set HEADER_TEXTCOLOR to '' and the h1 a span 
-to 'display:none', Set LT3_ENABLE_CUSTOM_BACKGROUNDS to TRUE
+------------------------------------------------
+Also set HEADER_TEXTCOLOR to '' and the h1 a span
+to 'display:none', Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
 ------------------------------------------------ */
-define('NO_HEADER_TEXT', FALSE);
+define('NO_HEADER_TEXT', false);
 
 /* Enable admin option to change site header image
 ------------------------------------------------ */
-define('LT3_ENABLE_CUSTOM_HEADER', FALSE);
+define('LT3_ENABLE_CUSTOM_HEADER', false);
 
 /* Enable admin option to change site background
 ------------------------------------------------ */
-define('LT3_ENABLE_CUSTOM_BACKGROUNDS', FALSE);
+define('LT3_ENABLE_CUSTOM_BACKGROUNDS', false);
 
 /* Enable extra TinyMCE buttons
 ------------------------------------------------ */
-define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', TRUE);
+define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
 
 /*
 
@@ -144,21 +145,21 @@ define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', TRUE);
 
 /* Enable template files debug mode
 ------------------------------------------------ */
-define('LT3_ENABLE_TEMPLATE_DEBUG', TRUE);
+define('LT3_ENABLE_TEMPLATE_DEBUG', true);
 
 /* Use the custom-editor-style.css file for the TinyMCE
 ------------------------------------------------ */
-define('LT3_USE_CUSTOM_EDITOR_STYLES', TRUE);
+define('LT3_USE_CUSTOM_EDITOR_STYLES', true);
 
 /* Use the custom-login-style.css file for the Login screen
 ------------------------------------------------ */
-define('LT3_USE_CUSTOM_LOGIN_STYLES', FALSE);
+define('LT3_USE_CUSTOM_LOGIN_STYLES', false);
 
-/* Enable admin tutorial section. TRUE/ FALSE
+/* Enable admin tutorial section. true/ false
 ------------------------------------------------ */
-define('LT3_ENABLE_TUTORIAL_SECTION', FALSE);
+define('LT3_ENABLE_TUTORIAL_SECTION', false);
 
-/* 
+/*
 
   Required Constants
 
@@ -183,7 +184,7 @@ define('LT3_IMAGES_PATH', 'library/images');
 
 define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
 
-/* 
+/*
 
   Required Core Files
 
@@ -237,7 +238,7 @@ require_once(LT3_FULL_CORE_PATH . '/scripts.php');
 ------------------------------------------------ */
 require_once(LT3_FULL_CORE_PATH . '/styles.php');
 
-/* 
+/*
 
   Project Extensions
 

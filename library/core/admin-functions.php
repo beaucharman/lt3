@@ -1,8 +1,8 @@
 <?php
 /*
-  
+
   lt3-theme Admin Functions
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -26,8 +26,8 @@ function lt3_get_data_with_curl($url = '')
 		$data = curl_exec($ch);
 		curl_close($ch);
 		return $data;
-	} 
-	else 
+	}
+	else
 	{
 		/* alternative if curl_init does not exist */
 		return file_get_contents($url);
@@ -38,7 +38,7 @@ function lt3_get_data_with_curl($url = '')
 ------------------------------------------------ */
 add_filter('admin_footer_text', 'lt3_replace_admin_footer');
 function lt3_replace_admin_footer()
-{ 
+{
 	if(function_exists('lt3_get_data_with_curl')) $admin_footer = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/admin.footer.php');
 	return $admin_footer;
 }
@@ -108,8 +108,8 @@ if(LT3_ENABLE_CUSTOM_HEADER)
 			{ ?>
 				.page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
 				.page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
-			<?php } 
-			else 
+			<?php }
+			else
 			{ ?>
 				.page-header .site-description	{ color:#<?php header_textcolor(); ?>; }
 			<?php } ?>
@@ -128,9 +128,11 @@ if(LT3_ENABLE_CUSTOM_HEADER)
 function lt3_custom_userfields($contactmethods)
 {
 	/* Set user info fields */
+	$contactmethods['contact_twitter'] = 'Twitter';
+	$contactmethods['contact_linkedin'] = 'LinkedIn';
 	$contactmethods['contact_phone_office'] = 'Work Phone Number';
 	$contactmethods['contact_phone_mobile']	= 'Mobile Phone Number';
-	/* UnSet user info fields */
+	/* Unset user info fields */
 	unset($contactmethods['aim']);
 	unset($contactmethods['jabber']);
 	unset($contactmethods['yim']);
@@ -230,7 +232,7 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 		}
 		return $mce_buttons;
 	}
-	
+
 	add_filter('mce_buttons_2','edit_buttons_for_tinymce_editor_2');
 	function edit_buttons_for_tinymce_editor_2($mce_buttons)
 	{
