@@ -17,7 +17,7 @@
   _gaq.push(['_setAccount', '<?php global $lt3_site_settings; echo $lt3_site_settings['google_analytics']; ?>']);
   _gaq.push(['_trackPageview']);
 
-  (function() 
+  (function()
   {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';

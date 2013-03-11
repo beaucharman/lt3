@@ -29,9 +29,6 @@ Order Allow,Deny
 Deny from all
 </Files>
 
-# Prevent other url based security hacks
-RedirectMatch 403 \[
-
 # Protect php files within wp-content (place in /wp-content/.htaccess)
 #Order deny,allow
 #Deny from all
