@@ -8,9 +8,9 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  
+
   <title><?php lt3_title(); ?></title>
-  
+
   <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
   <meta name="description" content="<?php lt3_meta_tag_description(); ?>">
   <meta name="viewport" content="width=device-width">
@@ -31,7 +31,7 @@
 <div class="page-wrap">
 
   <header role="banner" class="page-header">
-	
+
     <hgroup>
 
       <h1 class="site-title">

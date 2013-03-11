@@ -28,9 +28,9 @@ if(LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
 		{
 			wp_deregister_script('jquery');
 			wp_register_script('jquery', 
-		    'http://ajax.googleapis.com/ajax/libs/jquery/'. LT3_GOOGLE_JQUERY_LIBRARY_VERSION .'/jquery.min.js', 
+		    'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 
 			  false, 
-			  LT3_GOOGLE_JQUERY_LIBRARY_VERSION, 
+			  '1', 
 			  true
 		  );
 		  wp_enqueue_script('jquery');
