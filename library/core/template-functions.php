@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Template Functions - Foundations
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:   All functionality that effects the front end of the theme is located in this file.
@@ -24,45 +24,45 @@ function lt3_title()
 		if(is_category())
 		{
 			single_cat_title(); echo ' &#045; ';
-		} 
+		}
 		elseif(is_tag())
 		{
 			echo 'Tag Archive for "'; single_tag_title(); echo '" &#045; ';
-		} 
+		}
 		elseif(is_day())
 		{
 			echo 'Archive for '; the_time('F jS, Y'); echo ' &#045; ';
-		} 
+		}
 		elseif(is_month())
 		{
 			echo 'Archive for '; the_time('F, Y'); echo ' &#045; ';
-		} 
+		}
 		elseif(is_year())
 		{
 			echo 'Archive for '; the_time('Y'); echo ' &#045; ';
-		} 
+		}
 		elseif(is_author())
 		{
 			echo 'Author Archive &#045; ';
-		} 
+		}
 		elseif(is_tax())
 		{
 			global $wp_query; $taxonomy_term = $wp_query->get_queried_object(); echo $taxonomy_term->name; echo ' Archive &#045; ';
-		} 
+		}
 		elseif(lt3_is_post_type())
 		{
-			global $wp_query; $post_type_obj = get_post_type_object(get_post_type($wp_query->post->ID)); 
+			global $wp_query; $post_type_obj = get_post_type_object(get_post_type($wp_query->post->ID));
 			print $post_type_obj->labels->singular_name; echo ' Archive &#045; ';
 		}
-	} 
+	}
 	elseif(is_search())
 	{
 		echo 'Search for "'; the_search_query(); echo '" &#045; ';
-	} 
+	}
 	elseif((!is_404()) && (get_the_title()) && (!is_front_page()) && ((is_single()) || (is_page())))
 	{
 		the_title(); echo ' &#045; ';
-	} 
+	}
 	elseif(is_404())
 	{
 		$window_title = 'Nothing Found Here &#040;404&#041; &#045; ';
@@ -82,24 +82,24 @@ function lt3_meta_tag_description()
 		if($meta_description != '')
 		{
 		  $content .= esc_attr($meta_description);
-		} 
-		else 
+		}
+		else
 		{
-		  if(have_posts()){ 
+		  if(have_posts()){
   		  while(have_posts())
-  		  { 
+  		  {
   		    the_post();
   		    $excerpt = esc_attr(strip_tags(get_the_excerpt()));
   		    if(strlen($excerpt) > 140) $excerpt = substr($excerpt, 0, 137) .'&hellip;';
   		    $content .= $excerpt;
-				} 
+				}
 			}
 		}
-	} 
+	}
 	elseif(is_home() || is_front_page())
 	{
 		$content .= get_bloginfo('description');
-	} 
+	}
 	elseif(is_category())
 	{
 		$cat_desc = esc_attr(trim(strip_tags(category_description ())));
@@ -107,7 +107,7 @@ function lt3_meta_tag_description()
 			$content .= $cat_desc;
 		else
 			$content .= 'Archive for the category '. single_cat_title('', false);
-	} 
+	}
 	elseif(is_tag())
 	{
 		$tag_desc = esc_attr(trim(strip_tags(tag_description())));
@@ -115,7 +115,7 @@ function lt3_meta_tag_description()
 			$content .= $tag_desc;
 		else
 			$content .= 'Archive for the tag '. single_tag_title('', false);
-	} 
+	}
 	elseif(is_author())
 	{
 		if(isset($_GET['author_name']))
@@ -123,15 +123,15 @@ function lt3_meta_tag_description()
 		else
 			$curauth = get_userdata(intval($author));
  		$content .= 'Archive for the author '. $curauth->display_name;
-	} 
+	}
 	elseif(is_year())
 	{
 		$content .= 'Archive for ' . get_the_time('Y');
-	} 
+	}
 	elseif(is_month())
 	{
 		$content .= 'Archive for ' . get_the_time('F, Y');
-	} 
+	}
 	elseif(is_day())
 	{
 		$content .= 'Archive for ' . get_the_time('jS F, Y');
@@ -151,9 +151,9 @@ add_theme_support('automatic-feed-links');
 /* Search form request filter
 ------------------------------------------------ */
 add_filter('request', 'lt3_search_form_request_filter');
-function lt3_search_form_request_filter($query_vars) 
+function lt3_search_form_request_filter($query_vars)
 {
-  if(isset($_GET['s']) && empty($_GET['s'])) 
+  if(isset($_GET['s']) && empty($_GET['s']))
   {
     $query_vars['s'] = " ";
   }
@@ -179,7 +179,7 @@ add_filter('get_the_excerpt', 'lt3_trim_excerpt');
 function lt3_trim_excerpt($text)
 {
 	global $post;
-	if ('' == $text) 
+	if ('' == $text)
 	{
 		$text = get_the_content('');
 		$text = apply_filters('the_content', $text);
@@ -203,7 +203,7 @@ function lt3_trim_excerpt($text)
 /* Remove empty paragraph tags from the_content
 ------------------------------------------------ */
 add_filter('the_content', 'lt3_remove_empty_paragraphs', 20, 1);
-function lt3_remove_empty_paragraphs($content) 
+function lt3_remove_empty_paragraphs($content)
 {
   $content = force_balance_tags($content);
   return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
@@ -248,15 +248,15 @@ function lt3_browser_body_class($classes)
 ------------------------------------------------ */
 add_filter('post_class', 'lt3_add_to_body_class');
 add_filter('body_class', 'lt3_add_to_body_class');
-function lt3_add_to_body_class($classes) 
+function lt3_add_to_body_class($classes)
 {
 	global $post;
 	if (!is_front_page() && !is_search())
 	{
 		$classes[] = 'not-front-page';
 		$classes[] = 'page-'.$post->post_name;
-	} 
-	elseif (is_front_page()) 
+	}
+	elseif (is_front_page())
 	{
 		$classes[] = 'front-page';
 	}
@@ -300,7 +300,7 @@ add_image_size('small-feature',  LT3_PAGE_CONTENT_WIDTH , 300, true);
 
 /* Function create a custom comment list
 ------------------------------------------------ */
-function lt3_advanced_comment($comment, $args, $depth) 
+function lt3_advanced_comment($comment, $args, $depth)
 {
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID() ?>">
@@ -336,7 +336,7 @@ function lt3_advanced_comment($comment, $args, $depth)
 /* Remove more text on search page
 ------------------------------------------------ */
 add_filter('excerpt_more', 'lt3_search_excerpt_more');
-function lt3_search_excerpt_more($more) 
+function lt3_search_excerpt_more($more)
 {
   if(is_search())
   {
@@ -347,9 +347,9 @@ function lt3_search_excerpt_more($more)
 
 /* Function to add more edit buttons to comments
 ------------------------------------------------ */
-function lt3_delete_comment_link($id) 
+function lt3_delete_comment_link($id)
 {
-  if(current_user_can('edit_post')) 
+  if(current_user_can('edit_post'))
   {
     echo ' | <a href="'.admin_url("comment.php?action=cdc&c=$id").'">Delete</a> | ';
     echo '<a href="'.admin_url("comment.php?action=cdc&dt=spam&c=$id").'">Spam</a>';
@@ -373,7 +373,7 @@ function lt3_is_child_of_page($post_id)
 	))
 	{
 		return true;
-	} 
+	}
 	elseif((is_page()) && (
 		(get_the_title($parent) == $post_id) ||
 		($parent == $post_id) ||
@@ -384,8 +384,8 @@ function lt3_is_child_of_page($post_id)
 	))
 	{
 		return true;
-	} 
-	else 
+	}
+	else
 	{
 		return false;
 	}
@@ -404,15 +404,15 @@ function lt3_back_to_parent_link(){
 		$post_parent = get_post($post->post_parent);
 		$slug = get_permalink($post_parent->ID);
 		$name = get_the_title($post_parent->ID);
-	} 
+	}
 	else if(is_single())
 	{
 		$category = get_the_category();
 		get_category_link($category[0]->term_id).'">'.$category[0]->cat_name;
 		$slug = get_category_link($category[0]->term_id);
 		$name = $category[0]->cat_name;
-	} 
-	else 
+	}
+	else
 	{
 		$slug = home_url();
 		$name = get_bloginfo('name');
@@ -459,23 +459,23 @@ function lt3_is_post_type($type = '')
 	if($type == '')
 	{
 		if(get_post_type($wp_query->post->ID))
-		{ 
-		  return true; 
-		} 
-		else 
-		{ 
+		{
+		  return true;
+		}
+		else
+		{
 		  return false;
 		}
-	} 
-	else 
+	}
+	else
 	{
 		if($type == get_post_type($wp_query->post->ID))
 		{
 			return true;
-		} 
-		else 
-		{ 
-		  return false; 
+		}
+		else
+		{
+		  return false;
 		}
 	}
 }
@@ -509,8 +509,8 @@ function lt3_read_more_text()
 	if(is_attachment())
 	{
 		echo 'View Full Size Image &rarr;';
-	} 
-	else 
+	}
+	else
 	{
 		echo 'Read More &rarr;';
 	}
@@ -597,8 +597,8 @@ function lt3_include_page_pagination()
 			echo '<nav class="page-pagination">';
 			wp_pagenavi(array('type' => 'multipart'));
 			echo '</nav>';
-		} 
-		else 
+		}
+		else
 		{
 			lt3_include_page_navigation();
 		}
@@ -626,8 +626,8 @@ function lt3_include_archive_pagination()
 			echo '<nav class="archive-pagination">';
 		wp_pagenavi();
 		echo '</nav>';
-	} 
-	else 
+	}
+	else
 	{
 		lt3_include_archive_navigation();
 	}
@@ -674,12 +674,12 @@ function lt3_include_default_meta()
 function lt3_has_page_pagination()
 {
 	if(wp_link_pages('echo=0'))
-	{ 
-    return TRUE; 	
+	{
+    return TRUE;
 	}
-	else 
-	{	
-	  return FALSE; 
+	else
+	{
+	  return FALSE;
   }
 }
 
@@ -694,8 +694,8 @@ function lt3_excerpt($text_raw = '', $text_limit = 20, $text_echo = TRUE){
 		 }
 		 $output_text = implode(' ', $text);
 		 $ellipses = true;
-	} 
-	else 
+	}
+	else
 	{
 		 $output_text = implode(' ', $text);
 	}
@@ -706,8 +706,8 @@ function lt3_excerpt($text_raw = '', $text_limit = 20, $text_echo = TRUE){
 	if($text_echo)
 	{
 		echo $output_text;
-	} 
-	else 
+	}
+	else
 	{
 		return	$output_text;
 	}
@@ -726,7 +726,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
 	return false;
 }
 
-/* 
+/*
 
 	Editor and Shortcode Functions
 
@@ -755,12 +755,12 @@ function lt3_add_video_wmode_transparent($html, $url, $attr){
 	if(strpos($html, "<embed src=") !== false)
 	{
 		return str_replace('</param><embed', '</param><param name="wmode" value="opaque"></param><embed wmode="opaque" ', $html);
-	} 
+	}
 	elseif(strpos ($html, 'feature=oembed') !== false)
 	{
 		return str_replace('feature=oembed', 'feature=oembed&wmode=opaque', $html);
-	} 
-	else 
+	}
+	else
 	{
 		return $html;
 	}
@@ -774,7 +774,7 @@ function lt3_add_page_excerpts()
 	add_post_type_support('page', 'excerpt');
 }
 
-/* 
+/*
 
 	Utility Functions
 
@@ -805,7 +805,7 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 			if($args[0] == 'template_include')
 			{
 				echo "<!-- debug: Base Template: {$args[1]} -->\n";
-			} 
+			}
 			elseif(strpos($args[0],'get_template_part_') === 0)
 			{
 				global $last_template_snoop;

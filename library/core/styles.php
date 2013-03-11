@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Styles
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -15,7 +15,7 @@
 	http://codex.wordpress.org/Function_Reference/wp_deregister_style
 ------------------------------------------------ */
 
-/* 
+/*
 
   Register and Enqeue local styles
 
@@ -32,7 +32,7 @@ function lt3_load_styles()
 	if(!is_admin())
 	{
   	//Theme template styles here
-	} 
+	}
 	elseif(is_admin())
 	{
   	wp_enqueue_style('lt3_custom_admin_styles');
@@ -41,8 +41,7 @@ function lt3_load_styles()
 add_action('init', 'lt3_load_styles');
 
 /*
-
-	Styles the visual editor with custom-editor-style.css to match the theme style.
-
+	Styles the visual editor with custom-editor-style.css
+	to match the theme style.
 ------------------------------------------------ */
 if(LT3_USE_CUSTOM_EDITOR_STYLES) add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');

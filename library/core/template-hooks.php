@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Template Hooks
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -17,7 +17,7 @@
 	}
 ------------------------------------------------ */
 
-/* 
+/*
 
 	Template Hook Declaration
 
@@ -26,33 +26,3 @@ function lt3_hook($hook_name)
 {
 	do_action($hook_name);
 }
-
-/*
-
-	Head Tag Action Hook Functions
-
------------------------------------------------- */
-
-/* 
-
-	Page Header Action Hook Functions
-
------------------------------------------------- */
-
-/*
-
-	Page Content Layout Action Hook Functions
-
------------------------------------------------- */
-
-/*
-
-	Page Content Tools Action Hook Functions
-
------------------------------------------------- */
-
-/* 
-
-	Page Footer Action Hook Functions
-
------------------------------------------------- */

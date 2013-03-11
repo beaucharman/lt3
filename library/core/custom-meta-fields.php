@@ -1,19 +1,19 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Meta Fields
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
-	
+
 	This file is for the custom meta fields for posts, pages, and custom post types.
-	
+
 	array(
-    'id'              => '', 
-    'title'           => '',              
-    'post_type'       => '', // 'post', 'page', 'link', 'attachment' or 'custom_post_type'             
-    'context'         => '', // 'normal', 'advanced', or 'side'         
+    'id'              => '',
+    'title'           => '',
+    'post_type'       => '', // 'post', 'page', 'link', 'attachment' or 'custom_post_type'
+    'context'         => '', // 'normal', 'advanced', or 'side'
     'priority'        => '', // 'high', 'core', 'default' or 'low'
     'fields'          => array(
       array(
@@ -21,7 +21,7 @@
         'id' 	        => '',
       	'label'       => '',
       )
-    )  
+    )
   )
 
 ------------------------------------------------ */
@@ -46,33 +46,33 @@ function create_meta_boxes()
 
 /* Class structure for a custom meta field box
 ------------------------------------------------ */
-class Custom_Field_Meta_Box 
+class Custom_Field_Meta_Box
 {
   protected $_cmfb;
-  function __construct($cmfb) 
+  function __construct($cmfb)
   {
     $this->_cmfb = $cmfb;
     add_action('add_meta_boxes', array( &$this, 'add_custom_meta_field_box'));
     add_action('save_post', array( &$this, 'save_data'));
   }
-  
+
   /* Add the Meta Box
   ------------------------------------------------ */
-  function add_custom_meta_field_box() 
+  function add_custom_meta_field_box()
   {
     add_meta_box(
-      ($this->_cmfb['id'])        ? $this->_cmfb['id']        : 'custom_meta_field_box',             
-      ($this->_cmfb['title'])     ? $this->_cmfb['title']     : 'Custom Meta Field Box',          
+      ($this->_cmfb['id'])        ? $this->_cmfb['id']        : 'custom_meta_field_box',
+      ($this->_cmfb['title'])     ? $this->_cmfb['title']     : 'Custom Meta Field Box',
       array( &$this, 'show_custom_meta_field_box'),
-      ($this->_cmfb['post_type']) ? $this->_cmfb['post_type'] : 'post', 
+      ($this->_cmfb['post_type']) ? $this->_cmfb['post_type'] : 'post',
       ($this->_cmfb['context'])   ? $this->_cmfb['context']   : 'advanced',
       ($this->_cmfb['priority'])  ? $this->_cmfb['priority']  : 'default'
     );
   }
-  
+
   /* Show the Meta box
   ------------------------------------------------ */
-  function show_custom_meta_field_box() 
+  function show_custom_meta_field_box()
   {
     global $post;
     $context = $this->_cmfb['context'];
@@ -88,9 +88,9 @@ class Custom_Field_Meta_Box
       echo '<span class="description">'.$field['description'].'</span>';
       echo '</th>';
       echo '<td class="input-container">';
-      switch($field['type']) 
+      switch($field['type'])
       {
-      
+
         /* text
         ------------------------------------------------
         Extra parameters: description & placeholder
@@ -98,7 +98,7 @@ class Custom_Field_Meta_Box
         case 'text':
           echo '<input type="text" name="'.$field_id.'" id="'.$field_id.'" placeholder="'.$field['placeholder'].'" value="'.$meta.'"><br>';
         break;
-        
+
         /* textarea
         ------------------------------------------------
         Extra Parameters: description
@@ -106,15 +106,15 @@ class Custom_Field_Meta_Box
         case 'textarea':
           echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$meta.'</textarea><br>';
         break;
-        
+
         /* post_list
         ------------------------------------------------
         Extra Parameters: description & post_type
         ------------------------------------------------ */
         case 'post_list':
-          $meta = ($meta) ? $meta : array(); 
+          $meta = ($meta) ? $meta : array();
           $items = get_posts(array(
-            'post_type'	=> $field['post_type'], 
+            'post_type'	=> $field['post_type'],
             'posts_per_page' => -1)
           );
           echo '<ul>';
@@ -126,16 +126,16 @@ class Custom_Field_Meta_Box
             echo '</li>';
             endforeach;
           echo '</ul>';
-        break;	
+        break;
       }
       echo '</td></tr>';
     }
     echo '</tbody></table>';
   }
-  
+
   /* Save the data
   ------------------------------------------------ */
-  function save_data($post_id) 
+  function save_data($post_id)
   {
     if (!wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
     {
@@ -150,21 +150,21 @@ class Custom_Field_Meta_Box
       {
         return $post_id;
       }
-    } 
-    elseif (!current_user_can('edit_post', $post_id)) 
+    }
+    elseif (!current_user_can('edit_post', $post_id))
     {
       return $post_id;
     }
-    foreach ($this->_cmfb['fields'] as $field) 
+    foreach ($this->_cmfb['fields'] as $field)
     {
       $field_id = '_' . $this->_cmfb['id'] . '_' . $field['id'];
       $old = get_post_meta($post_id, $field_id, true);
       $new = $_POST[$field_id];
-      if ($new && $new != $old) 
+      if ($new && $new != $old)
       {
         update_post_meta($post_id, $field_id, $new);
-      } 
-      elseif ('' == $new && $old) 
+      }
+      elseif ('' == $new && $old)
       {
         delete_post_meta($post_id, $field_id, $old);
       }

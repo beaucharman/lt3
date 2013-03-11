@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Widgets
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -35,7 +35,6 @@ function lt3_register_initial_sidebars()
 
 	/* Header Sidebar
 	------------------------------------------------ */
-	
 	register_sidebar(array(
 		'name' => __('Header Sidebar'),
 		'id' => 'header-sidebar-widgets',
@@ -46,10 +45,8 @@ function lt3_register_initial_sidebars()
 		'after_title' => '</h3>'
 	));
 
-
 	/* Primary Sidebar Widgets
 	------------------------------------------------ */
-  
   register_sidebar(array(
 		'name' => __('Primary Sidebar Widgets'),
 		'id' => 'primary-sidebar-widgets',
@@ -60,10 +57,8 @@ function lt3_register_initial_sidebars()
 		'after_title' => '</h3>'
   ));
 
-
 	/* Footer Sidebar
 	------------------------------------------------ */
-	
 	register_sidebar(array(
 		'name' => __('Footer Sidebar'),
 		'id' => 'footer-sidebar-widgets',
@@ -73,5 +68,4 @@ function lt3_register_initial_sidebars()
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-	
 }

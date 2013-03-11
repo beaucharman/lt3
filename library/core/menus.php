@@ -1,12 +1,12 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Menus
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
-	
+
 	For more menu locations, use:
 
 		register_nav_menu('menu_name_location', 'Description of Navigation Menu');
@@ -21,7 +21,7 @@
 
 ------------------------------------------------ */
 
-/* 
+/*
 
 	Menu Locations
 
@@ -37,7 +37,7 @@ if(function_exists('register_nav_menu')){
 	register_nav_menu('footer_menu', 'Footer Menu');
 }
 
-/* 
+/*
 
 	Menu Declarations
 
