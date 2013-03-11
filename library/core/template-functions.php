@@ -14,6 +14,15 @@
 
 ------------------------------------------------ */
 
+/* Set the content width
+------------------------------------------------ */
+global $content_width;
+if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
+
+/* Add RSS links to <head> section
+------------------------------------------------ */
+add_theme_support('automatic-feed-links');
+
 /* Render Title Function. Assign title names and attributes conditionally.
 ------------------------------------------------ */
 function lt3_title()
@@ -139,15 +148,6 @@ function lt3_meta_tag_description()
 	echo $content;
 }
 
-/* Set the content width
------------------------------------------------- */
-global $content_width;
-if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
-
-/* Add RSS links to <head> section
------------------------------------------------- */
-add_theme_support('automatic-feed-links');
-
 /* Search form request filter
 ------------------------------------------------ */
 add_filter('request', 'lt3_search_form_request_filter');
@@ -170,6 +170,18 @@ function lt3_html5_search_form($form)
   <input type="submit" id="searchsubmit" value="Go">
   </form>';
   return $form;
+}
+
+/* Remove more text on search page
+------------------------------------------------ */
+add_filter('excerpt_more', 'lt3_search_excerpt_more');
+function lt3_search_excerpt_more($more)
+{
+  if(is_search())
+  {
+    global $post;
+  	return '&hellip;';
+	}
 }
 
 /* Custom post excerpt: Remove <script> tags, set 'Read More' and 'Excerpt Length', allow links
@@ -332,18 +344,6 @@ function lt3_advanced_comment($comment, $args, $depth)
       </div>
     </div>
 <?php }
-
-/* Remove more text on search page
------------------------------------------------- */
-add_filter('excerpt_more', 'lt3_search_excerpt_more');
-function lt3_search_excerpt_more($more)
-{
-  if(is_search())
-  {
-    global $post;
-  	return '&hellip;';
-	}
-}
 
 /* Function to add more edit buttons to comments
 ------------------------------------------------ */
@@ -623,7 +623,7 @@ function lt3_include_archive_pagination()
 {
 	if(function_exists('wp_pagenavi'))
 	{
-			echo '<nav class="archive-pagination">';
+		echo '<nav class="archive-pagination">';
 		wp_pagenavi();
 		echo '</nav>';
 	}
@@ -669,7 +669,7 @@ function lt3_include_default_meta()
 	}
 }
 
-/* Will return true if has pagination.
+/* Return true if has pagination.
 ------------------------------------------------ */
 function lt3_has_page_pagination()
 {

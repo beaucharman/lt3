@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Page Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Page template.

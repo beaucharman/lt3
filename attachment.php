@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Attachment Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Attachment template page for article related media.

@@ -20,6 +20,7 @@
   Register and Enqeue local styles
 
 ------------------------------------------------ */
+add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
@@ -38,10 +39,12 @@ function lt3_load_styles()
   	wp_enqueue_style('lt3_custom_admin_styles');
 	}
 }
-add_action('init', 'lt3_load_styles');
 
 /*
 	Styles the visual editor with custom-editor-style.css
 	to match the theme style.
 ------------------------------------------------ */
-if(LT3_USE_CUSTOM_EDITOR_STYLES) add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');
+if(LT3_USE_CUSTOM_EDITOR_STYLES)
+{
+	add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');
+}

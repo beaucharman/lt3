@@ -1,12 +1,12 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme JavaScripts
-  
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
-	
+
 	To include scripts correctly, use the wp_register_script, and wp_enqueue_script functions:
 	http://codex.wordpress.org/Function_Reference/wp_register_script
 	http://codex.wordpress.org/Function_Reference/wp_enqueue_script
@@ -15,35 +15,36 @@
 	http://codex.wordpress.org/Function_Reference/wp_deregister_script
 ------------------------------------------------ */
 
-/* 
+/*
 
 	Enqeue scripts from Google
 
 ------------------------------------------------ */
 if(LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
 {
+	add_action('wp_enqueue_scripts', 'lt3_load_script_libraries');
 	function lt3_load_script_libraries()
 	{
 		if(!is_admin())
 		{
 			wp_deregister_script('jquery');
-			wp_register_script('jquery', 
-		    'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', 
-			  false, 
-			  '1', 
+			wp_register_script('jquery',
+		    'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
+			  false,
+			  '1',
 			  true
 		  );
 		  wp_enqueue_script('jquery');
 		}
 	}
-	add_action('wp_enqueue_scripts', 'lt3_load_script_libraries');
 }
 
-/* 
+/*
 
 	Register and Enqeue local scripts
 
 ------------------------------------------------ */
+add_action('wp_enqueue_scripts', 'lt3_load_scripts');
 function lt3_load_scripts()
 {
 
@@ -63,5 +64,3 @@ function lt3_load_scripts()
 		// wp_enqueue_script('lt3_shortcodes'); uncomment if using shortcodes that require this script
 	}
 }
-
-add_action('wp_enqueue_scripts', 'lt3_load_scripts');
