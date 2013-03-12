@@ -299,10 +299,18 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
+/* Add Theme Support
+------------------------------------------------ */
+add_theme_support('post-thumbnails');
+
+/* Set post thumbnail size
+------------------------------------------------ */
+set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
+
 /* Add Custom Image Styles
 ------------------------------------------------ */
-add_image_size('large-feature', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
-add_image_size('small-feature',  LT3_PAGE_CONTENT_WIDTH , 300, true);
+add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
+add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2 , 300, true);
 
 /*
 
@@ -732,9 +740,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
 
 ------------------------------------------------ */
 
-/* Add Theme Support
------------------------------------------------- */
-add_theme_support('post-thumbnails');
+
 
 /* Use Shortcodes in Widgets
 ------------------------------------------------ */
