@@ -6,6 +6,8 @@
 ------------------------------------------------
   Version:   1.0
   Notes:
+
+  http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
 ------------------------------------------------ */
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
 function lt3_initial_theme_setup()
@@ -50,6 +52,9 @@ function lt3_initial_theme_setup()
     }
     /* Update the status so this dosn't run again */
     update_option( 'theme_setup_status', '1' );
+
+    /* Consider post formats */
+    add_theme_support( 'post-formats', array( 'aside' ) );
 
     /* Lets let the admin know whats going on. */
     $msg = '
