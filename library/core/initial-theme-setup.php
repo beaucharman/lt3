@@ -25,7 +25,7 @@ function lt3_initial_theme_setup()
       'default_role'        => 'author',
       'gzipcompression'     => '1',
       'large_size_h'        => LT3_PAGE_CONTENT_WIDTH,
-      'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1.25,
+      'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1,
       'medium_size_h'       => LT3_PAGE_CONTENT_WIDTH / 2,
       'medium_size_w'       => LT3_PAGE_CONTENT_WIDTH,
       'permalink_structure' => '/%postname%/',
@@ -42,9 +42,11 @@ function lt3_initial_theme_setup()
     }
 
     /* Delete the example post, page and comment */
-    wp_delete_post(1, true);
-    wp_delete_post(2, true);
+    wp_delete_post(1, false);
+    wp_delete_post(2, false);
     wp_delete_comment(1);
+
+    /* Goodbye Dolly */
     if (file_exists(WP_PLUGIN_DIR.'/hello.php')) {
       require_once(ABSPATH.'wp-admin/includes/plugin.php');
       require_once(ABSPATH.'wp-admin/includes/file.php');
@@ -53,22 +55,10 @@ function lt3_initial_theme_setup()
     /* Update the status so this dosn't run again */
     update_option( 'theme_setup_status', '1' );
 
-    /* Consider post formats */
-    add_theme_support( 'post-formats', array( 'aside' ) );
-
     /* Lets let the admin know whats going on. */
     $msg = '
-    <div class="error">
-      <p>The ' . get_option( 'current_theme' ) . 'theme has changed your WordPress default <a href="' . admin_url( 'options-general.php' ) . '" title="See Settings">settings</a> and deleted default posts & comments.</p>
-    </div>';
-    add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
-  }
-
-  /* Else if we are re-activing the theme */
-  elseif ( $the_theme_status === '1' and isset( $_GET['activated'] ) ) {
-    $msg = '
     <div class="updated">
-      <p>The ' . get_option( 'current_theme' ) . ' theme was successfully re-activated.</p>
+      <p>The ' . get_option( 'current_theme' ) . 'theme has changed your WordPress default <a href="' . admin_url( 'options-general.php' ) . '" title="See Settings">settings</a>, discouraged search engines and deleted default posts & comments.</p>
     </div>';
     add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
   }
