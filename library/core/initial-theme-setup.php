@@ -25,7 +25,7 @@ function lt3_initial_theme_setup()
       'default_role'        => 'author',
       'gzipcompression'     => '1',
       'large_size_h'        => LT3_PAGE_CONTENT_WIDTH,
-      'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1,
+      'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1.25,
       'medium_size_h'       => LT3_PAGE_CONTENT_WIDTH / 2,
       'medium_size_w'       => LT3_PAGE_CONTENT_WIDTH,
       'permalink_structure' => '/%postname%/',
