@@ -52,7 +52,7 @@ function lt3_load_scripts()
 	------------------------------------------------ */
 	wp_register_script('lt3_modernizr', LT3_FULL_SCRIPTS_PATH .'/vendors/modernizr.'. LT3_MODERNIZR_LIBRARY_VERSION .'.js', false, LT3_MODERNIZR_LIBRARY_VERSION, false);
 	wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH .'/main.js', array(), '1.0', true);
-	wp_register_script('lt3_shortcodes', LT3_FULL_SCRIPTS_PATH .'/shortcode.min.js', array(), '1.0', true);
+	wp_register_script('lt3_shortcodes', LT3_FULL_SCRIPTS_PATH .'/shortcode.js', array(), '1.0', true);
 
 	/* Enqueue scripts here:
 	------------------------------------------------ */
