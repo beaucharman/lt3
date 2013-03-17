@@ -1,6 +1,4 @@
-# lt3 
-**A slightly powerfull, intelligent and simple WordPress theme.**
-
+![LT3 theme screenshot]('https://github.com/beaucharman/lt3/blob/master/screenshot.png' "A slightly powerfull, intelligent and simple WordPress theme.")
 ## Change Log
 
 ## Roadmap [Todo list]
@@ -28,7 +26,7 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 
 ### .htaccess file for install root
 
-#### .htaccess with Options -Indexes for wp-content 
+#### .htaccess with Options -Indexes for wp-content
 ```
   Order deny,allow
   Deny from all
