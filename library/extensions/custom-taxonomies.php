@@ -1,8 +1,8 @@
 <?php
 /*
-  
+
   lt3-theme Custom Taxonomies
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:
@@ -11,18 +11,18 @@
   http://codex.wordpress.org/Function_Reference/register_taxonomy
 
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
-  
+
   To declare a taxonomy, simply add a taxonomy array to the $custom_taxonomies array variable, with required values of:
   array(
-    'slug_singuar'          => '',
+    'slug_singuar'         => '',
     'slug_plural'           => '',
     'name_singular'         => '',
     'name_plural'           => '',
-    // and optional values of:       
+    // and optional values of:
     'public'                => true,
     'show_in_nav_menus'     => true,
     'show_ui'               => true,
-    'show_tagcloud'	        => true,
+    'show_tagcloud'         => true,
     'hierarchical'          => true,
     'update_count_callback' => NULL,
     'query_var'             => true,
@@ -32,7 +32,7 @@
   );
 ------------------------------------------------ */
 
-/* 
+/*
 
   Declare Taxonomies
 
@@ -65,15 +65,17 @@ function lt3_register_taxonomies()
     );
     register_taxonomy($ct['slug_plural'], $ct['post_type'], array(
       'labels'                => $labels,
-      'public'                => $ct['public'],
-      'show_in_nav_menus'     => $ct['show_in_nav_menus'],
-      'show_ui'               => $ct['show_ui'],
-      'show_tagcloud'         => $ct['show_tagcloud'],
-      'hierarchical'          => $ct['hierarchical'],
-      'update_count_callback' => $ct['update_count_callback'],
-      'query_var'             => $ct['query_var'],
-      'rewrite'               => $ct['rewrite'],
-      'sort'                  => $ct['sort']
+      'public'                => ($ct['public']) ? $ct['public'] : true,
+      'show_in_nav_menus'     => ($ct['show_in_nav_menus']) ? $ct['show_in_nav_menus'] : true,
+      'show_ui'               => ($ct['show_ui']) ? $ct['show_ui'] : true,
+      'show_tagcloud'         => ($ct['show_tagcloud']) ? $ct['show_tagcloud'] : true,
+      'show_admin_column'     => ($ct['show_admin_column']) ? $ct['show_admin_column'] : false,
+      'hierarchical'          => ($ct['hierarchical']) ? $ct['hierarchical'] : false,
+      'update_count_callback' => ($ct['update_count_callback']) ? $ct['update_count_callback'] : null,
+      'query_var'             => ($ct['query_var']) ? $ct['query_var'] : $ct['slug_plural'],
+      'rewrite'               => ($ct['rewrite']) ? $ct['rewrite'] : true,
+      'capabilities'          => ($ct['capabilities']) ? $ct['capabilities'] : '',
+      'sort'                  => ($ct['sort']) ? $ct['sort'] : null
     ));
   }
 }
@@ -85,15 +87,15 @@ function lt3_register_taxonomies()
 ------------------------------------------------ */
 add_action('restrict_manage_posts', 'lt3_todo_restrict_manage_posts');
 add_filter('parse_query','lt3_todo_convert_restrict');
-function lt3_todo_restrict_manage_posts() 
+function lt3_todo_restrict_manage_posts()
 {
   global $typenow;
   $args=array('public' => true, '_builtin' => false);
   $post_types = get_post_types($args);
-  if (in_array($typenow, $post_types)) 
+  if (in_array($typenow, $post_types))
   {
     $filters = get_object_taxonomies($typenow);
-    foreach ($filters as $tax_slug) 
+    foreach ($filters as $tax_slug)
     {
       $tax_obj = get_taxonomy($tax_slug);
       wp_dropdown_categories(array(
@@ -110,16 +112,16 @@ function lt3_todo_restrict_manage_posts()
   }
 }
 
-function lt3_todo_convert_restrict($query) 
+function lt3_todo_convert_restrict($query)
 {
   global $pagenow,  $typenow;
-  if ($pagenow=='edit.php') 
+  if ($pagenow=='edit.php')
   {
     $filters = get_object_taxonomies($typenow);
-    foreach ($filters as $tax_slug) 
+    foreach ($filters as $tax_slug)
     {
       $var = &$query->query_vars[$tax_slug];
-      if (isset($var)) 
+      if (isset($var))
       {
         $term = get_term_by('id',$var,$tax_slug);
         $var = $term->slug;

@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Category Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Category template page.

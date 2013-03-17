@@ -1,7 +1,7 @@
 <?php
 /*
 
-  lt3-theme Template Hooks
+  lt3 Template Hooks
 
 ------------------------------------------------
 	Version: 1.0

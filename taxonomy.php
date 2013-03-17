@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Taxonomy Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Taxonomy template page.
@@ -20,12 +20,12 @@
   <?php if(have_posts()) : ?>
 
     <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'taxonomy'); ?>
-		
+
     <?php lt3_include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('No Posts'); ?>	
+    <?php lt3_get_message('No Posts'); ?>
 
   <?php endif; ?>
 

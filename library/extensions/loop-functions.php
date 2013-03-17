@@ -1,12 +1,12 @@
 <?php
-/*	
-  
-  lt3-theme Loop Functions
-  
+/*
+
+  lt3 Loop Functions
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
-	
+
 	Control specific loop outputs.
 	Loops altered from these functions are executed when the requested is made, long before the page is rendered, reducing redundant database calls.
 	This also keeps the core files untouched.
@@ -38,15 +38,15 @@ function lt3_default_loop_outputs($query)
 	global $wp_the_query;
 	if(($wp_the_query === $query) && (!is_admin()))
 	{
-	
+
 		/* Order all posts all by title, acensding by default
 		------------------------------------------------ */
 		$query->set('orderby','title');
 		$query->set('order','ASC');
-  		
+
 		/* Place other loop alterations here:
     ------------------------------------------------ */
-  		
+
 	}
 	return $query;
 }

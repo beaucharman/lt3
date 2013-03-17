@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Front Page Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Front page and home page template page.

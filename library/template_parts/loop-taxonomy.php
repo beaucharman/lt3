@@ -3,8 +3,8 @@
 <article <?php post_class('taxonomy post-'. get_the_ID()); ?>>
 
   <h3 class="article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-	
-  <?php lt3_include_default_meta(); ?>
+
+  <?php lt3_include_post_meta(); ?>
 
   <?php if(has_post_thumbnail()) : ?>
   <figure class="post-thumbnail">

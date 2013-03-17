@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   lt3-theme Custom Post Types
-  
+
 ------------------------------------------------
 	Version:   1.0
 	Notes:
@@ -14,14 +14,14 @@
   http://tareq.wedevs.com/2011/07/add-your-custom-columns-to-wordpress-admin-panel-tables/
 
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
-  
+
   To declare a post type, simply add a custom post type array to the $custom_post_types array variable, with required values of:
     'slug_singluar' => '',
     'slug_plural'   => '',
     'name_singular' => '',
     'name_plural'   => '',
-  
-  and optional values of:       
+
+  and optional values of:
     'description'   => '',
     'public'        => true,
     'menu_position' => 20,
@@ -29,11 +29,11 @@
     'hierarchical'  => true,
     'supports'      => array(''),
     'taxonomies'    => array(''),
-    'has_archive'   => true,  
-    'rewrite'       => '' 
+    'has_archive'   => true,
+    'rewrite'       => ''
 ------------------------------------------------ */
 
-/* 
+/*
 
  Declare Post Types
 
@@ -46,7 +46,7 @@ $custom_post_types = array();
 
 ------------------------------------------------ */
 add_action('init', 'lt3_create_post_types');
-function lt3_create_post_types() 
+function lt3_create_post_types()
 {
   global $custom_post_types;
   foreach($custom_post_types as $custom_post_type)
@@ -79,7 +79,7 @@ function lt3_create_post_types()
   }
 }
 
-/* 
+/*
 
   Change Title for post types
 
@@ -91,7 +91,7 @@ function lt3_custom_title_text()
   $screen = get_current_screen();
   foreach($custom_post_types as $custom_post_type)
   {
-    if ($custom_post_type['slug_singular'] == $screen->post_type) 
+    if ($custom_post_type['slug_singular'] == $screen->post_type)
     {
       $title = 'Enter '. $custom_post_type['name_singular'] .' Title Here';
       break;
@@ -100,7 +100,7 @@ function lt3_custom_title_text()
   return $title;
 }
 
-/* 
+/*
 
   Custom Columns
 
@@ -110,7 +110,7 @@ function lt3_custom_title_text()
 ------------------------------------------------ */
 //add_filter('manage_REPLACE_posts_columns', 'change_columns');
 //add_action('manage_REPLACE_posts_custom_column', 'custom_columns', 10, 2);
-function change_columns($cols) 
+function change_columns($cols)
 {
   $cols = array(
     'cb'       => '<input type="checkbox" />',
@@ -120,9 +120,9 @@ function change_columns($cols)
   return $cols;
 }
 
-function custom_columns($column, $post_id) 
+function custom_columns($column, $post_id)
 {
-  switch ($column) 
+  switch ($column)
   {
     case "title":
       $title = get_the_title($post_id);
@@ -152,7 +152,7 @@ function sortable_columns() {
 
 ------------------------------------------------ */
 //add_action('admin_menu', 'lt3_remove_menus');
-function lt3_remove_menus() 
+function lt3_remove_menus()
 {
   global $menu;
   $restricted = array(__('Posts'), __('Comments'));
@@ -170,7 +170,7 @@ function lt3_remove_menus()
 
 ------------------------------------------------ */
 //add_action('init', 'lt3_post_and_taxonomy_flush_rewrite');
-function lt3_post_and_taxonomy_flush_rewrite() 
+function lt3_post_and_taxonomy_flush_rewrite()
 {
     global $wp_rewrite;
     $wp_rewrite->flush_rules();

@@ -1,8 +1,8 @@
 <?php
-/*	
-  
+/*
+
   Single Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Single (Post or other post type) template page.

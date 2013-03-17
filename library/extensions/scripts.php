@@ -1,7 +1,7 @@
 <?php
 /*
 
-  lt3-theme JavaScripts
+  lt3 JavaScripts
 
 ------------------------------------------------
 	Version: 1.0

@@ -6,7 +6,7 @@
     <h2 class="article-title"><?php the_title(); ?></h2>
   <?php endif; ?>
 
-  <?php lt3_include_default_meta(); ?>
+  <?php lt3_include_post_meta(); ?>
 
   <?php if(has_post_thumbnail()) : ?>
   <figure class="post-thumbnail">

@@ -1,7 +1,7 @@
 <?php
 /*
 
-  lt3-theme Widgets
+  lt3 Widgets
 
 ------------------------------------------------
 	Version: 1.0

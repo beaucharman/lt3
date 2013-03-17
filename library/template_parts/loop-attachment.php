@@ -4,7 +4,7 @@
 
   <h3 class="article-title"><?php the_title(); ?></h3>
 
-  <?php lt3_include_default_meta(); ?>
+  <?php lt3_include_post_meta(); ?>
 
   <figure>
     <figcaption><?php global $post; echo $post->post_content; ?></figcaption>

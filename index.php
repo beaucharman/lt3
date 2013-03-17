@@ -1,8 +1,8 @@
 <?php
-/*	 
-  
+/*
+
   Index Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Fallback template page.

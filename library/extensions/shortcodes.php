@@ -1,8 +1,8 @@
 <?php
-/*	
-  
-  lt3-theme Shortcodes
-  
+/*
+
+  lt3 Shortcodes
+
 ------------------------------------------------
 	Version: 1.0
 	Notes:
@@ -40,7 +40,7 @@
 /*
 
 	[lt3_home_url]
-	
+
 ------------------------------------------------ */
 add_shortcode('lt3_home_url', 'lt3_register_shortcode_home_url');
 function lt3_register_shortcode_home_url($atts, $content = null)
@@ -71,7 +71,7 @@ function lt3_register_shortcode_full_media_url($atts, $content = null)
 	$uploads = wp_upload_dir();
 	return $uploads['url'];
 }
-	
+
 /*
 
 	[lt3_parent_theme_url]
@@ -121,7 +121,7 @@ function lt3_register_shortcode_clear($atts, $content = null)
   return '<div style="clear:both;">&nbsp;</div>';
 }
 
-/* 
+/*
 
 	[lt3_divider class=""]
 
@@ -132,11 +132,11 @@ function lt3_register_shortcode_divider($atts, $content = null)
 	extract(shortcode_atts(array(
 		'class' => ''
  	), $atts));
- 	
+
 	return '<hr class="divider '. $class .'">';
 }
 
-/* 
+/*
 
 	[lt3_float_right]content[/lt3_float_right]
 
@@ -146,7 +146,7 @@ function lt3_register_shortcode_float_right($atts, $content = null)
 {
 	return '<div style="float:right;">'. do_shortcode($content) .'</div>';
 }
-	
+
 /*
 
 	[lt3_float_left]content[/lt3_float_left]
@@ -157,7 +157,7 @@ function lt3_register_shortcode_float_left($atts, $content = null)
 {
 	return '<div style="float:left;">'. do_shortcode($content) .'</div>';
 }
-	
+
 /*
 
 	[lt3_button class=""]content[/lt3_button]
@@ -169,11 +169,11 @@ function lt3_register_shortcode_button($atts, $content = null)
 	extract(shortcode_atts(array(
 		'class' => ''
  	), $atts));
- 	
+
 	$content = '<button class="'. $class .'">' . $content	. '</button>';
 	return $content;
 }
-	
+
 /*
 
 	[lt3_link class="" rel=""]content[/lt3_link]
@@ -186,7 +186,7 @@ function lt3_register_shortcode_link($atts, $content = null)
 		'class' => '',
 		'rel' => 'external'
  	), $atts));
- 	
+
 	$content = str_replace('<a', '<a class="link-'. $rel .' '. $class .'" rel="'. $rel .'" ', $content);
 	return $content;
 }
@@ -203,7 +203,7 @@ function lt3_register_shortcode_toggle_content($atts, $content = null)
 		'class' => '',
 		'title' => 'Toggle'
  	), $atts));
- 	
+
 	return '<dl class="toggle-container '. $class .'">'."\n"
 	.'<dt class="toggle-handle"><a href="javascript: void(0)">'. $title .'</a></dt>' ."\n"
 	.'<dd class="toggle-content">'. do_shortcode($content) .'</dd>'."\n"
@@ -221,7 +221,7 @@ function lt3_register_shortcode_tabbed_content($atts, $content = null)
 	extract(shortcode_atts(array(
 		'class' => ''
 	), $atts));
-	
+
 	$GLOBALS['tab_count'] = 0;
 	do_shortcode($content);
 	if(is_array($GLOBALS['tabs']))
@@ -238,7 +238,7 @@ function lt3_register_shortcode_tabbed_content($atts, $content = null)
 	}
 	return do_shortcode($return);
 }
-	
+
 /*
 
 	[lt3_tab class="" title=""]content[/lt3_tab]
@@ -250,7 +250,7 @@ function lt3_register_shortcode_tab($atts, $content = null)
 	extract(shortcode_atts(array(
 		'title' => 'Tab %d'
 	), $atts));
-	
+
 	$tab_count = $GLOBALS['tab_count'];
 	$GLOBALS['tabs'][$tab_count] = array('title' => sprintf($title, $GLOBALS['tab_count']), 'content' =>  $content);
 	$GLOBALS['tab_count']++;
@@ -267,7 +267,7 @@ function lt3_register_shortcode_section($atts, $content = null)
 	extract(shortcode_atts(array(
 		'class' => ''
  	), $atts));
- 		
+
 	return '<section class="section '. $class .'">'. do_shortcode($content) .'</section>';
 }
 
@@ -293,11 +293,11 @@ function lt3_register_shortcode_dynamic_sidebar($atts, $content = null)
 	extract(shortcode_atts(array(
 		'sidebar_id' => ''
  	), $atts));
- 	
+
 	return lt3_get_dynamic_sidebar($sidebar_id);
 }
 
-/* 
+/*
 
 	[lt3_get_template_part_content primary_part="" secondary_part=""]
 
@@ -319,11 +319,11 @@ function lt3_register_shortcode_get_template_part_content($atts, $content = null
 		  'primary_part' => 'loop' ,
 		  'secondary_part' => 'sticky'
  		), $atts));
- 		
+
  		return lt3_get_template_part_content($primary_part, $secondary_part);
 }
 
-/* 
+/*
 
 	[lt3_hidden_content private_message="" public_message=""]content[/lt3_hidden_content]
 
@@ -345,8 +345,8 @@ function lt3_register_shortcode_hidden_content($atts, $content = null)
 		  $return_string .= '<p class="warning message public hidden-content">'. $public_message .'</p>'. "\n";
 		}
 		$return_string .= '<p>THIS: <a href="'. wp_login_url(get_permalink()).' ?>" title="Login">Login</a></p>';
-	} 
-	else 
+	}
+	else
 	{
 		if($private_message)
 		{
@@ -399,7 +399,7 @@ function lt3_register_shortcode_iframe($atts, $content = null)
 		'scrolling' => 'auto',
 		'width' => '100%'
 	), $atts));
-	
+
 	return '<iframe src="'. $content
 	.'" class="iframe '. $class
 	.'" scrolling="'. $scrolling
@@ -426,7 +426,7 @@ function lt3_register_shortcode_google_map($atts, $content = null)
 			iframes</a> to view this content',
     'class' => ''
  	), $atts));
- 		
+
 	return '<iframe width="'. $width
 	.'" height="'. $height
 	.'" class="google-map '. $class
@@ -441,10 +441,10 @@ function lt3_register_shortcode_google_map($atts, $content = null)
 /*
 
 	[lt3_youtube id="" width="%|px|int" height="%|px|int" class="" name="" hd="1|0" rel="1|0" controls="1|0" showinfo="1|0"]
-	
-------------------------------------------------	
+
+------------------------------------------------
   Accepts the actual YouTube clip id or the http://youtu.be/xxx link
-  
+
   Todo:
   Implement 	allowFullScreen="true|false"
 	            allowScriptAccess="always|never"
@@ -467,7 +467,7 @@ function lt3_register_shortcode_youtube($atts, $content = null)
 			iframes</a> to view this content',
 		'showinfo' =>'1'
 	), $atts));
-	
+
 	$id = str_replace('http://youtu.be/', '', $id);
 	return '<iframe src="http://www.youtube.com/embed/'. $id
  		.'?wmode=transparent'
@@ -485,7 +485,7 @@ function lt3_register_shortcode_youtube($atts, $content = null)
  		.'</iframe>';
 }
 
-/* 
+/*
 
 	[lt3_follow_on_twitter username="username"]
 
@@ -510,7 +510,7 @@ function lt3_register_shortcode_one_half_column($atts, $content = null)
 {
 	return '<div class="article-column one-half">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_one_third', 'lt3_register_shortcode_one_third_column');
 function lt3_register_shortcode_one_third_column($atts, $content = null)
 {
@@ -522,33 +522,33 @@ function lt3_register_shortcode_two_thirds_column($atts, $content = null)
 {
 	return '<div class="article-column two-thirds">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_one_fourth', 'lt3_register_shortcode_one_fourth_column');
 function lt3_register_shortcode_one_fourth_column($atts, $content = null)
 {
 	return '<div class="article-column one-fourth">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_one_half_last', 'lt3_register_shortcode_one_half_last_column');
 function lt3_register_shortcode_one_half_last_column($atts, $content = null)
 {
 	return '<div class="article-column one-half last-column">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_one_third_last', 'lt3_register_shortcode_one_third_last_column');
 function lt3_register_shortcode_one_third_last_column($atts, $content = null)
 {
 	return '<div class="article-column one-third last-column">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_two_thirds_last', 'lt3_register_shortcode_two_thirds_last_column');
 function lt3_register_shortcode_two_thirds_last_column($atts, $content = null)
 {
 	return '<div class="article-column two-thirds last-column">'. do_shortcode($content) .'</div>';
 }
-	
+
 add_shortcode('lt3_one_fourth_last', 'lt3_register_shortcode_one_fourth_last_column');
 function lt3_register_shortcode_one_fourth_last_column($atts, $content = null)
 {
 	return '<div class="article-column one-fourth last-column">'. do_shortcode($content) .'</div>';
-}	
+}

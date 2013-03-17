@@ -1,7 +1,7 @@
 <?php
 /*
 
-  lt3-theme Template Functions - Foundations
+  lt3 Template Functions - Foundations
 
 ------------------------------------------------
 	Version: 1.0
@@ -19,9 +19,14 @@
 global $content_width;
 if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
 
-/* Add RSS links to <head> section
+/* Set post thumbnail size
 ------------------------------------------------ */
-add_theme_support('automatic-feed-links');
+set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
+
+/* Add Custom Image Styles
+------------------------------------------------ */
+add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
+add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2 , 300, true);
 
 /* Render Title Function. Assign title names and attributes conditionally.
 ------------------------------------------------ */
@@ -148,6 +153,63 @@ function lt3_meta_tag_description()
 	echo $content;
 }
 
+/* Function to change the read more text on Archive pages
+------------------------------------------------ */
+function lt3_read_more_text()
+{
+	if(is_attachment())
+	{
+		echo 'View Full Size Image &rarr;';
+	}
+	else
+	{
+		echo 'Read More &rarr;';
+	}
+}
+
+/* Function to get defined Messages
+------------------------------------------------ */
+function lt3_get_message($message_name)
+{
+	switch(strtoupper($message_name))
+	{
+		case 'NOT FOUND':
+			echo '<section class="error-message">' . "\n";
+			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
+			echo '<p>'. __('The page you are looking for does not exist. (404)') .'</p>' . "\n";
+			if(LT3_ENABLE_SITE_SEARCH)
+			{
+				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";
+				get_search_form();
+			}
+			echo "\n" . '</section>';
+			break;
+		case 'NO POSTS':
+			echo '<section class="error-message">' . "\n";
+			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
+			echo '<p>'. __('There are currently no articles for the <strong>');
+			single_cat_title();
+			echo __('</strong> category.') .'</p>' . "\n";
+			if(LT3_ENABLE_SITE_SEARCH)
+			{
+				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";
+				get_search_form();
+			}
+			echo "\n" . '</section>';
+			break;
+		case 'NO RESULTS':
+			echo '<section class="no-results">' . "\n";
+			echo '<h3>'. __('Sorry! We couldn\'t find anything&hellip;') .'</h3>' . "\n";
+			if(LT3_ENABLE_SITE_SEARCH)
+			{
+				echo '<p>'. __('Maybe try searching with a different keyword?') .'</p>' . "\n";
+				get_search_form();
+			}
+			echo "\n" . '</section>';
+		break;
+	}
+}
+
 /* Search form request filter
 ------------------------------------------------ */
 add_filter('request', 'lt3_search_form_request_filter');
@@ -184,7 +246,12 @@ function lt3_search_excerpt_more($more)
 	}
 }
 
-/* Custom post excerpt: Remove <script> tags, set 'Read More' and 'Excerpt Length', allow links
+/* Use Shortcodes in Widgets
+------------------------------------------------ */
+add_filter('widget_text', 'do_shortcode');
+
+/* Custom post excerpt: Remove <script> tags, set
+	 'Read More' and 'Excerpt Length', allow links
 ------------------------------------------------ */
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'lt3_trim_excerpt');
@@ -212,15 +279,6 @@ function lt3_trim_excerpt($text)
 	return $text;
 }
 
-/* Remove empty paragraph tags from the_content
------------------------------------------------- */
-add_filter('the_content', 'lt3_remove_empty_paragraphs', 20, 1);
-function lt3_remove_empty_paragraphs($content)
-{
-  $content = force_balance_tags($content);
-  return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
-}
-
 /* Clean up the <head>
 ------------------------------------------------ */
 add_action('init', 'lt3_remove_head_links');
@@ -236,7 +294,6 @@ function lt3_remove_head_links()
 	remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
-
 
 /* Add browser type to body class
 ------------------------------------------------ */
@@ -299,19 +356,6 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
-/* Add Theme Support
------------------------------------------------- */
-add_theme_support('post-thumbnails');
-
-/* Set post thumbnail size
------------------------------------------------- */
-set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
-
-/* Add Custom Image Styles
------------------------------------------------- */
-add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
-add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2 , 300, true);
-
 /*
 
 	Custom Theme Functions
@@ -364,41 +408,6 @@ function lt3_delete_comment_link($id)
   }
 }
 
-/* Function to check if page is child of $post_id
------------------------------------------------- */
-function lt3_is_child_of_page($post_id)
-{
-	global $post;
-	$parent = $post->post_parent;
-	$grandparents_get = get_post($parent);
-	$grandparent = $grandparents_get->post_parent;
-	$greatgrandparents_get = get_post($grandparent);
-	$greatgrandparent = $greatgrandparents_get->post_parent;
-	if((!$post_id) && (
-		($parent) ||
-		($grandparent) ||
-		($greatgrandparent)
-	))
-	{
-		return true;
-	}
-	elseif((is_page()) && (
-		(get_the_title($parent) == $post_id) ||
-		($parent == $post_id) ||
-		(get_the_title($grandparent) == $post_id) ||
-		($grandparent == $post_id) ||
-		(get_the_title($greatgrandparent) == $post_id) ||
-		($greatgrandparent == $post_id)
-	))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 /* Adds a back to parent category, page, etc link
 ------------------------------------------------
 	Need to add functionality for post type, taxonomy,
@@ -448,46 +457,6 @@ function lt3_get_comments_template()
   if(LT3_ENABLE_GLOBAL_COMMENTS) comments_template();
 }
 
-/* Function to check if current category is a child of $parent_category category
------------------------------------------------- */
-function lt3_is_child_of_category($parent_category)
-{
-	if(is_category())
-	{
-		$categories = get_categories('include='.get_query_var('cat'));
-		return ($categories[0]->category_parent == $parent_category) ? true : false;
-	}
-}
-
-/* Function to check if Custom Post Type
------------------------------------------------- */
-function lt3_is_post_type($type = '')
-{
-	global $post, $wp_query;
-	if($type == '')
-	{
-		if(get_post_type($wp_query->post->ID))
-		{
-		  return true;
-		}
-		else
-		{
-		  return false;
-		}
-	}
-	else
-	{
-		if($type == get_post_type($wp_query->post->ID))
-		{
-			return true;
-		}
-		else
-		{
-		  return false;
-		}
-	}
-}
-
 /* Function to get categories and taxonomies for a post
 ------------------------------------------------ */
 function lt3_get_taxonomies_terms_links()
@@ -510,63 +479,6 @@ function lt3_get_taxonomies_terms_links()
 	}
 }
 
-/* Function to change the read more text on Archive pages
------------------------------------------------- */
-function lt3_read_more_text()
-{
-	if(is_attachment())
-	{
-		echo 'View Full Size Image &rarr;';
-	}
-	else
-	{
-		echo 'Read More &rarr;';
-	}
-}
-
-/* Function to get defined Messages
------------------------------------------------- */
-function lt3_get_message($message_name)
-{
-	switch(strtoupper($message_name))
-	{
-		case 'NOT FOUND':
-			echo '<section class="error-message">' . "\n";
-			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
-			echo '<p>'. __('The page you are looking for does not exist. (404)') .'</p>' . "\n";
-			if(LT3_ENABLE_SITE_SEARCH)
-			{
-				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";
-				get_search_form();
-			}
-			echo "\n" . '</section>';
-			break;
-		case 'NO POSTS':
-			echo '<section class="error-message">' . "\n";
-			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
-			echo '<p>'. __('There are currently no articles for the <strong>');
-			single_cat_title();
-			echo __('</strong> category.') .'</p>' . "\n";
-			if(LT3_ENABLE_SITE_SEARCH)
-			{
-				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";
-				get_search_form();
-			}
-			echo "\n" . '</section>';
-			break;
-		case 'NO RESULTS':
-			echo '<section class="no-results">' . "\n";
-			echo '<h3>'. __('Sorry! We couldn\'t find anything&hellip;') .'</h3>' . "\n";
-			if(LT3_ENABLE_SITE_SEARCH)
-			{
-				echo '<p>'. __('Maybe try searching with a different keyword?') .'</p>' . "\n";
-				get_search_form();
-			}
-			echo "\n" . '</section>';
-		break;
-	}
-}
-
 /* Function to get Post Nav Links
 ------------------------------------------------ */
 function lt3_get_single_nav_links()
@@ -585,7 +497,6 @@ function lt3_get_archive_nav_links()
 {
 	posts_nav_link(' &mdash; ', '&larr; Previous Page', 'Next Page &rarr;');
 }
-
 
 /* Functions to include site pagination
 ------------------------------------------------ */
@@ -650,7 +561,7 @@ function lt3_include_archive_navigation()
 
 /* Default post meta information
 ------------------------------------------------ */
-function lt3_include_default_meta()
+function lt3_include_post_meta()
 {
   if(LT3_ENABLE_META_DATA)
   {
@@ -675,20 +586,6 @@ function lt3_include_default_meta()
 		the_tags('<span class="post-tags">Tags: ', ', ', '</span>');
 		echo '</p>';
 	}
-}
-
-/* Return true if has pagination.
------------------------------------------------- */
-function lt3_has_page_pagination()
-{
-	if(wp_link_pages('echo=0'))
-	{
-    return TRUE;
-	}
-	else
-	{
-	  return FALSE;
-  }
 }
 
 /* Limit the number of words in a given output
@@ -721,30 +618,14 @@ function lt3_excerpt($text_raw = '', $text_limit = 20, $text_echo = TRUE){
 	}
 }
 
-/* Tests if any of a post's assigned categories are descendants of target categories
+/* Remove empty paragraph tags from the_content
 ------------------------------------------------ */
-function lt3_post_is_in_descendant_category($cats, $_post = null)
+add_filter('the_content', 'lt3_remove_empty_paragraphs', 20, 1);
+function lt3_remove_empty_paragraphs($content)
 {
-	foreach((array) $cats as $cat)
-	{
-		$descendants = get_term_children((int) $cat, 'category');
-		if($descendants && in_category($descendants, $_post))
-			return true;
-	}
-	return false;
+  $content = force_balance_tags($content);
+  return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
 }
-
-/*
-
-	Editor and Shortcode Functions
-
------------------------------------------------- */
-
-
-
-/* Use Shortcodes in Widgets
------------------------------------------------- */
-add_filter('widget_text', 'do_shortcode');
 
 /* Remove <p> tags around images in the editor
 ------------------------------------------------ */
@@ -769,57 +650,5 @@ function lt3_add_video_wmode_transparent($html, $url, $attr){
 	else
 	{
 		return $html;
-	}
-}
-
-/* Add excerpt field to pages
------------------------------------------------- */
-add_action('init', 'lt3_add_page_excerpts');
-function lt3_add_page_excerpts()
-{
-	add_post_type_support('page', 'excerpt');
-}
-
-/*
-
-	Utility Functions
-
------------------------------------------------- */
-
-/* Remove WP Version
------------------------------------------------- */
-remove_action('wp_head', 'wp_generator');
-
-/* Obscure login screen error messages
------------------------------------------------- */
-add_filter('login_errors', 'lt3_alternate_login_error_message');
-function lt3_alternate_login_error_message()
-{
-	return '<strong>Sorry</strong>, it seems that <strong>username</strong> and <strong>password</strong> combination is incorrect!';
-}
-
-/*  Debug the template files and display which ones are being used
------------------------------------------------- */
-if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
-{
-	add_action('all','lt3_template_debug');
-	function lt3_template_debug()
-	{
-		$args = func_get_args();
-		if(!is_admin() and $args[0])
-		{
-			if($args[0] == 'template_include')
-			{
-				echo "<!-- debug: Base Template: {$args[1]} -->\n";
-			}
-			elseif(strpos($args[0],'get_template_part_') === 0)
-			{
-				global $last_template_snoop;
-				if($last_template_snoop) echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
-				$tpl = rtrim(join('-',  array_slice($args,1)),'-').'.php';
-				echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
-				$last_template_snoop = $tpl;
-			}
-		}
 	}
 }

@@ -4,7 +4,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['S
   die ('Please do not load this page directly. Thanks!');
 
 if(post_password_required())
-{ 
+{
   echo _e('This post is password protected. Enter the password to view comments.');
   return;
 }

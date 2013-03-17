@@ -1,7 +1,7 @@
 <?php
 /*
 
-  lt3-theme Styles
+  lt3 Styles
 
 ------------------------------------------------
 	Version: 1.0
@@ -34,7 +34,7 @@ function lt3_load_styles()
 	{
   	//Theme template styles here
 	}
-	elseif(is_admin())
+	else if(is_admin())
 	{
   	wp_enqueue_style('lt3_custom_admin_styles');
 	}
@@ -47,4 +47,16 @@ function lt3_load_styles()
 if(LT3_USE_CUSTOM_EDITOR_STYLES)
 {
 	add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');
+}
+
+/* This function styles the admin login screen with
+    custom-login-style.css to match the theme style.
+------------------------------------------------ */
+if(LT3_USE_CUSTOM_LOGIN_STYLES)
+{
+  add_action('login_head', 'lt3_custom_login_styles');
+  function lt3_custom_login_styles()
+  {
+    echo '<link rel="stylesheet" type="text/css" href="' . LT3_FULL_STYLES_PATH . '/custom-login-style.css">';
+  }
 }

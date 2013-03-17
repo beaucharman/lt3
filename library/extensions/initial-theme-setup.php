@@ -1,7 +1,7 @@
 <?php
 /*
 
-  Initial theme Setup
+  lt3 Initial Theme Setup
 
 ------------------------------------------------
   Version:   1.0
@@ -9,13 +9,16 @@
 
   http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
 ------------------------------------------------ */
+
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
 function lt3_initial_theme_setup()
 {
-  /* Only need to run this once */
+  /* Only need to run this once
+    ------------------------------------------------ */
   if(get_option('theme_setup_status') !== '1')
   {
-    /* Set the WordPress options the way you like */
+    /* Set the WordPress options the way you like
+    ------------------------------------------------ */
     $core_settings = array(
       'avatar_default'      => 'mystery',
       'avatar_rating'       => 'G',
@@ -23,7 +26,6 @@ function lt3_initial_theme_setup()
       'comments_per_page'   => '20',
       'date_format'         => 'd/m/Y',
       'default_role'        => 'author',
-      'gzipcompression'     => '1',
       'large_size_h'        => LT3_PAGE_CONTENT_WIDTH,
       'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1.25,
       'medium_size_h'       => LT3_PAGE_CONTENT_WIDTH / 2,
@@ -41,21 +43,33 @@ function lt3_initial_theme_setup()
       update_option( $key, $value );
     }
 
-    /* Delete the example post, page and comment */
+    /* Add Theme Support
+    ------------------------------------------------ */
+    add_theme_support('post-thumbnails');
+
+    /* Add RSS links to <head> section
+    ------------------------------------------------ */
+    add_theme_support('automatic-feed-links');
+
+    /* Delete the example post, page and comment
+    ------------------------------------------------ */
     wp_delete_post(1, false);
     wp_delete_post(2, false);
     wp_delete_comment(1);
 
-    /* Goodbye Dolly */
+    /* Goodbye Dolly
+    ------------------------------------------------ */
     if (file_exists(WP_PLUGIN_DIR.'/hello.php')) {
       require_once(ABSPATH.'wp-admin/includes/plugin.php');
       require_once(ABSPATH.'wp-admin/includes/file.php');
       delete_plugins(array('hello.php'));
     }
-    /* Update the status so this dosn't run again */
+    /* Update the status so this dosn't run again
+    ------------------------------------------------ */
     update_option( 'theme_setup_status', '1' );
 
-    /* Lets let the admin know whats going on. */
+    /* Lets let the admin know whats going on.
+    ------------------------------------------------ */
     $msg = '
     <div class="updated">
       <p>The ' . get_option( 'current_theme' ) . 'theme has changed your WordPress default <a href="' . admin_url( 'options-general.php' ) . '" title="See Settings">settings</a>, discouraged search engines and deleted default posts & comments.</p>

@@ -49,7 +49,7 @@ define('LT3_EXCERPT_MORE', 'more &rarr;');
 
 /* Enable global comments
 ------------------------------------------------ */
-define('LT3_ENABLE_GLOBAL_COMMENTS', true);
+define('LT3_ENABLE_GLOBAL_COMMENTS', false);
 
 /* Enable site search
 ------------------------------------------------ */
@@ -57,11 +57,11 @@ define('LT3_ENABLE_SITE_SEARCH', true);
 
 /* Show Page and Post Meta Data on pages
 ------------------------------------------------ */
-define('LT3_ENABLE_META_DATA', true);
+define('LT3_ENABLE_META_DATA', false);
 
 /* Enabled Sticky posts  to be display on the Home Page
 ------------------------------------------------ */
-define('LT3_ENABLE_STICKY_POSTS', true);
+define('LT3_ENABLE_STICKY_POSTS', false);
 
 /* Number of Sticky Posts to show on the Home Page
 ------------------------------------------------ */
@@ -79,7 +79,7 @@ define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', true);
 
 /* Load Modernizr
 ------------------------------------------------ */
-define('LT3_LOAD_MODERNIZR_LIBRARY', true);
+define('LT3_LOAD_MODERNIZR_LIBRARY', false);
 
 /* Determine the Modernizr version number
 ------------------------------------------------ */
@@ -87,27 +87,39 @@ define('LT3_MODERNIZR_LIBRARY_VERSION', '2.6.2');
 
 /*
 
-  Administration Options
+  Theme and Editor Options
 
 */
 
-/* Set the text title colour
-------------------------------------------------
-Also Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
+/* Enable extra TinyMCE buttons
+------------------------------------------------ */
+define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', false);
+
+/* Enable admin option to change site background
+------------------------------------------------ */
+define('LT3_ENABLE_CUSTOM_BACKGROUND', false);
+
+/* Set custom background default color.
+------------------------------------------------ */
+define('LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR', 'f8f8f8');
+
+/* Enable admin option to change site header image
+------------------------------------------------ */
+define('LT3_ENABLE_CUSTOM_HEADER', false);
+
+/* Set the text title colour | 222222
 ------------------------------------------------ */
 define('HEADER_TEXTCOLOR', '222222');
 
 /* Set the width of the header image
 ------------------------------------------------ */
-define('HEADER_IMAGE_WIDTH',  980);
+define('HEADER_IMAGE_WIDTH',  LT3_PAGE_CONTENT_WIDTH);
 
 /* Set the height of the header image
 ------------------------------------------------ */
-define('HEADER_IMAGE_HEIGHT', 220);
+define('HEADER_IMAGE_HEIGHT', LT3_PAGE_CONTENT_WIDTH / 3);
 
 /* Sets the default header image.
-------------------------------------------------
-Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
 ------------------------------------------------ */
 define('HEADER_IMAGE',
   trailingslashit(get_stylesheet_directory_uri())
@@ -116,22 +128,10 @@ define('HEADER_IMAGE',
 
 /* Set to hide the text title from the front end
 ------------------------------------------------
-Also set HEADER_TEXTCOLOR to '' and the h1 a span
-to 'display:none', Set LT3_ENABLE_CUSTOM_BACKGROUNDS to true
+Also set HEADER_TEXTCOLOR to '' and
+the h1 a span to 'display:none'
 ------------------------------------------------ */
 define('NO_HEADER_TEXT', false);
-
-/* Enable admin option to change site header image
------------------------------------------------- */
-define('LT3_ENABLE_CUSTOM_HEADER', false);
-
-/* Enable admin option to change site background
------------------------------------------------- */
-define('LT3_ENABLE_CUSTOM_BACKGROUNDS', false);
-
-/* Enable extra TinyMCE buttons
------------------------------------------------- */
-define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
 
 /*
 
@@ -141,7 +141,7 @@ define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
 
 /* Enable template files debug mode
 ------------------------------------------------ */
-define('LT3_ENABLE_TEMPLATE_DEBUG', true);
+define('LT3_ENABLE_TEMPLATE_DEBUG', false);
 
 /* Use the custom-editor-style.css file for the TinyMCE
 ------------------------------------------------ */
@@ -160,8 +160,6 @@ define('LT3_ENABLE_TUTORIAL_SECTION', false);
   Required Constants
 
 ------------------------------------------------ */
-define('LT3_FULL_CORE_PATH', get_template_directory() . '/library/core');
-
 define('LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensions');
 
 define('LT3_FULL_DASHBOARD_PATH', get_template_directory() . '/library/dashboard');
@@ -182,65 +180,73 @@ define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
 
 /*
 
-  Required Core Files
+  Required Extention Files
 
 ------------------------------------------------ */
 
 /* Initial Theme Setup
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/initial-theme-setup.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
+
+/* Helper Functions
+------------------------------------------------ */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/helper-functions.php');
 
 /* Site Settings
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/site-settings.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
 
 /* Admin Functions
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/admin-functions.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/admin-functions.php');
+
+/* Editor Functions
+------------------------------------------------ */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/editor-functions.php');
 
 /* Template Functions
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/template-functions.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/template-functions.php');
 
 /* Custom Post Types
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/custom-post-types.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-types.php');
 
 /* Custom Meta Box
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/custom-meta-fields.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-meta-fields.php');
 
 /* Loop Functions
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/loop-functions.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/loop-functions.php');
 
 /* Template Hooks
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/template-hooks.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
 
 /* Theme Widgets
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/widgets.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
 
 /* Theme Menus
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/menus.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Shortcodes
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/shortcodes.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
 
 /* Theme Scripts
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/scripts.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
 
 /* Theme Styles
 ------------------------------------------------ */
-require_once(LT3_FULL_CORE_PATH . '/styles.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /*
 
   Project Extensions
 
 ------------------------------------------------ */
-// call any project specific files here.
+// call any project specific extentions files here.

@@ -1,8 +1,8 @@
 <?php
 /*
-	
+
   404 Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   404 error template page.

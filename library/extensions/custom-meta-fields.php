@@ -1,30 +1,42 @@
 <?php
 /*
 
-  lt3-theme Meta Fields
+  lt3 Custom Meta Field Boxes
 
 ------------------------------------------------
-	Version: 1.0
-	Notes:
+  custom-meta-field-boxes.php 1.0
+  Sunday, 3rd February 2013
+  Beau Charman | @beaucharman | http://beaucharman.me
+  Version: 1.0
+  Notes:
 
-	This file is for the custom meta fields for posts, pages, and custom post types.
+  This file is for the custom meta fields for posts, pages, and custom post types.
 
-	array(
+  Simply add a new array to the $custom_meta_fields_array variable.
+  Use the following as your key and value pairs:
+
+  array(
     'id'              => '',
     'title'           => '',
-    'post_type'       => '', // 'post', 'page', 'link', 'attachment' or 'custom_post_type'
+    'post_type'       => '', // 'post', 'page', 'link', 'attachment' a custom post type slug, or array
     'context'         => '', // 'normal', 'advanced', or 'side'
     'priority'        => '', // 'high', 'core', 'default' or 'low'
     'fields'          => array(
       array(
         'type'        => '',
-        'id' 	        => '',
-      	'label'       => '',
+        'id'          => '',
+        'label'       => ''
       )
     )
   )
 
 ------------------------------------------------ */
+add_filter( 'post_mime_types', 'modify_post_mime_types' );
+function modify_post_mime_types( $post_mime_types ) {
+
+  $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
+  return $post_mime_types;
+}
 
 /* Delcare the meta boxes
 ------------------------------------------------
@@ -77,60 +89,106 @@ class Custom_Field_Meta_Box
     global $post;
     $context = $this->_cmfb['context'];
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
-    echo '<table class="form-table lt3-form-container '. $this->_cmfb['context'] . '"><tbody>';
+    echo '<ul class="lt3-form-container '. $this->_cmfb['context'] . '">';
     foreach ( $this->_cmfb['fields'] as $field )
     {
+      /* Get the field ID, existing value, and set the label & description */
       $field_id = '_' . $this->_cmfb['id'] . '_' . $field['id'];
-      $meta = get_post_meta($post->ID, $field_id, true);
-      $meta = ($meta) ? $meta : '';
-      echo '<tr><th class="label-container">';
-      echo ($field['label'] != null) ? '<label for="'.$field_id.'">'.$field['label'].'</label>' : '&nbsp;';
-      echo '<span class="description">'.$field['description'].'</span>';
-      echo '</th>';
-      echo '<td class="input-container">';
+      $value = get_post_meta($post->ID, $field_id, true);
+      $value = ($value) ? $value : '';
+      echo '<li class="custom-field-container">';
+      $label_state = ($field['label'] == null) ? 'empty' : '';
+      echo '<p class="label-container '. $label_state .'">';
+      echo ($field['label'] != null) ? '<label for="'.$field_id.'">'.$field['label'].'</label>' : '&nbsp;'; echo '</p>';
+      echo ($field['description'] != null) ? '<p class="description">'.$field['description'].'</p>' : '&nbsp;';
+      echo '<p class="input-container">';
+      /* Render required field */
       switch($field['type'])
       {
-
-        /* text
-        ------------------------------------------------
-        Extra parameters: description & placeholder
-        ------------------------------------------------ */
-        case 'text':
-          echo '<input type="text" name="'.$field_id.'" id="'.$field_id.'" placeholder="'.$field['placeholder'].'" value="'.$meta.'"><br>';
-        break;
 
         /* textarea
         ------------------------------------------------
         Extra Parameters: description
         ------------------------------------------------ */
         case 'textarea':
-          echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$meta.'</textarea><br>';
-        break;
+          echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
+          break;
+
+        /* checkbox
+        ------------------------------------------------
+        Extra Parameters: description
+        ------------------------------------------------ */
+        case 'checkbox':
+          foreach($field['options'] as $value => $key):
+          echo '<input type="checkbox" name="'.$field_id.'" id="'.$field_id.'" ', $value ? ' checked' : '',' />';
+          endforeach;
+          break;
 
         /* post_list
         ------------------------------------------------
         Extra Parameters: description & post_type
         ------------------------------------------------ */
         case 'post_list':
-          $meta = ($meta) ? $meta : array();
+          $value = ($value) ? $value : array();
           $items = get_posts(array(
-            'post_type'	=> $field['post_type'],
+            'post_type' => $field['post_type'],
             'posts_per_page' => -1)
           );
           echo '<ul>';
           foreach($items as $item):
-            $is_select = (in_array($item->ID, $meta)) ? ' checked' : '';
+            $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
             echo '<li>';
             echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
             echo '&nbsp;<label for="'.$field_id.'['. $item->ID .']">'.$item->post_title.'</label>';
             echo '</li>';
             endforeach;
           echo '</ul>';
-        break;
+          break;
+
+        /* file
+        ------------------------------------------------
+        Extra Parameters: description & post_type
+        ------------------------------------------------ */
+        case 'file':
+          echo '<p><input name="'.$field_id.'" type="text" placeholder="'.$field['placeholder'].'" class="custom_upload_file" value="'.$value.'" size="50" />
+                <input class="custom_upload_file_button button" type="button" value="Choose File" />
+                <small> <a href="#" class="custom_clear_file_button">Remove File</a></small></p>';
+            ?>
+
+            <script>
+            jQuery(function($) {
+              $('.custom_upload_file_button').click(function() {
+                $formField = $(this).siblings('.custom_upload_file');
+                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
+                window.send_to_editor = function($html) {
+                 $fileUrl = $($html).attr('href');
+                 $formField.val($fileUrl);
+                 tb_remove();
+                };
+                return false;
+              });
+              $('.custom_clear_file_button').click(function() {
+                $(this).parent().siblings('.custom_upload_file').val('');
+                return false;
+              });
+            });
+            </script>
+            <?php
+          break;
+
+        /* text | default
+        ------------------------------------------------
+        Extra parameters: description & placeholder
+        ------------------------------------------------ */
+        default:
+          echo '<input type="text" name="'.$field_id.'" id="'.$field_id.'" placeholder="'.$field['placeholder'].'" value="'.$value.'" size="50">';
+          break;
+
       }
-      echo '</td></tr>';
+      echo '</p>';
+      echo '</li>';
     }
-    echo '</tbody></table>';
+    echo '</ul>';
   }
 
   /* Save the data

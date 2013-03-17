@@ -1,8 +1,8 @@
 <?php
 /*
-	
+
   Search Template
-  
+
 ------------------------------------------------
   Version: 1.0
   Notes:   Search results template.
