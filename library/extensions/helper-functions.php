@@ -126,22 +126,26 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
 ------------------------------------------------ */
 function lt3_get_data_with_curl($url = '')
 {
-  if(function_exists('curl_init'))
+  if(!LT3_DEVELOPMENT_MODE)
   {
-    $ch = curl_init();
-    $timeout = 5;
-    curl_setopt($ch,CURLOPT_URL,$url);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
+    if(function_exists('curl_init'))
+    {
+      $ch = curl_init();
+      $timeout = 5;
+      curl_setopt($ch,CURLOPT_URL,$url);
+      curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+      curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+      $data = curl_exec($ch);
+      curl_close($ch);
+      return $data;
+    }
+    else
+    {
+      /* alternative if curl_init does not exist */
+      return file_get_contents($url);
+    }
   }
-  else
-  {
-    /* alternative if curl_init does not exist */
-    return file_get_contents($url);
-  }
+  return file_get_contents($url);
 }
 
 /*  Debug the template files and display which ones are being used
