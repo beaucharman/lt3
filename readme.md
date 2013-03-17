@@ -4,6 +4,7 @@
 ![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/screenshot.png "A slightly powerfull, intelligent and simple WordPress theme.")
 >>>>>>> update
 ## Change Log
+- Need to update this.
 
 ## Roadmap [Todo list]
 - Style sheet - Finish setting up and add some defaults
@@ -17,20 +18,20 @@
 - spacing in library / core files
 
 ## Testing
-
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 
 ## Notes for Production
 
-### Limit login attempts - plugin
+- **Limit login attempts - plugin**
 
-### Strong Passwords
+- **Strong Passwords**
 
-### Complex Database Prefix
+- **Complex Database Prefix**
 
-### .htaccess file for install root
+- **.htaccess file for install root**
 
-#### .htaccess with Options -Indexes for wp-content
+- **.htaccess with Options -Indexes for wp-content**
+
 ```
   Order deny,allow
   Deny from all
@@ -38,14 +39,18 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
   Allow from all
   </Files>
 ```
-#### Disallow Theme and Plug-in Editor Access
+- **Disallow Theme and Plug-in Editor Access**
+
 Within the wp-config.php file, place the following code:
+
 ```
   define('DISALLOW_FILE_EDIT', true);
 ```
 
-#### Enforce SSL Usage
+- **Enforce SSL Usage
+
 Within the wp-config.php file, place the following code:
+
 ```
   /* Enable SSL Encryption */
   define(‘FORCE_SSL_LOGIN’, true);
