@@ -14,54 +14,6 @@
   to can be found in the library/admin/ directory
 ------------------------------------------------ */
 
-/* gets the data from a URL
------------------------------------------------- */
-function lt3_get_data_with_curl($url = '')
-{
-  if(function_exists('curl_init'))
-  {
-    $ch = curl_init();
-    $timeout = 5;
-    curl_setopt($ch,CURLOPT_URL,$url);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
-    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
-  }
-  else
-  {
-    /* alternative if curl_init does not exist */
-    return file_get_contents($url);
-  }
-}
-
-/*  Debug the template files and display which ones are being used
------------------------------------------------- */
-if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
-{
-  add_action('all','lt3_template_debug');
-  function lt3_template_debug()
-  {
-    $args = func_get_args();
-    if(!is_admin() and $args[0])
-    {
-      if($args[0] == 'template_include')
-      {
-        echo "<!-- debug: Base Template: {$args[1]} -->\n";
-      }
-      elseif(strpos($args[0],'get_template_part_') === 0)
-      {
-        global $last_template_snoop;
-        if($last_template_snoop) echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
-        $tpl = rtrim(join('-',  array_slice($args,1)),'-').'.php';
-        echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
-        $last_template_snoop = $tpl;
-      }
-    }
-  }
-}
-
 /*
 
   Logic and conditional functions
@@ -168,4 +120,52 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
       return true;
   }
   return false;
+}
+
+/* gets the data from a URL
+------------------------------------------------ */
+function lt3_get_data_with_curl($url = '')
+{
+  if(function_exists('curl_init'))
+  {
+    $ch = curl_init();
+    $timeout = 5;
+    curl_setopt($ch,CURLOPT_URL,$url);
+    curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+  }
+  else
+  {
+    /* alternative if curl_init does not exist */
+    return file_get_contents($url);
+  }
+}
+
+/*  Debug the template files and display which ones are being used
+------------------------------------------------ */
+if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
+{
+  add_action('all','lt3_template_debug');
+  function lt3_template_debug()
+  {
+    $args = func_get_args();
+    if(!is_admin() and $args[0])
+    {
+      if($args[0] == 'template_include')
+      {
+        echo "<!-- debug: Base Template: {$args[1]} -->\n";
+      }
+      elseif(strpos($args[0],'get_template_part_') === 0)
+      {
+        global $last_template_snoop;
+        if($last_template_snoop) echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
+        $tpl = rtrim(join('-',  array_slice($args,1)),'-').'.php';
+        echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
+        $last_template_snoop = $tpl;
+      }
+    }
+  }
 }
