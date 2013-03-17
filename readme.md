@@ -1,6 +1,8 @@
 ![LT3 theme screenshot]('http://beaucharman.me/screenshot.png' "A slightly powerfull, intelligent and simple WordPress theme.")
 ## Change Log
 
+![inuit.css](http://inuitcss.com/img/content/logo.png)
+
 ## Roadmap [Todo list]
 - Style sheet - Finish setting up and add some defaults
 - Finish custom post type file
