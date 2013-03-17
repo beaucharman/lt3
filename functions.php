@@ -212,9 +212,13 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/template-functions.php');
 ------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-types.php');
 
-/* Custom Meta Box
+/* Custom Taxonomies
 ------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-meta-fields.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomies.php');
+
+/* Custom Meta Field Boxes
+------------------------------------------------ */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-meta-field-boxes.php');
 
 /* Loop Functions
 ------------------------------------------------ */

@@ -4,10 +4,14 @@
   lt3 Site Settings
 
 ------------------------------------------------
-	Version: 1.0
-	Notes:
+  site-settings.php
+  Sunday, 317th March 2013
+  Beau Charman | @beaucharman | http://beaucharman.me
 
-	To use and view the option:
+  Version: 1.0
+  Notes:
+
+  To use and view the option:
   global $lt3_site_settings;
   echo $lt3_site_settings['setting_id'])
 ------------------------------------------------ */
@@ -37,68 +41,68 @@ $lt3_site_settings = get_option('lt3_settings');
 ------------------------------------------------ */
 function lt3_site_settings_init()
 {
-	register_setting('lt3_site_settings', 'lt3_settings', 'lt3_site_settings_validate');
+  register_setting('lt3_site_settings', 'lt3_settings', 'lt3_site_settings_validate');
 }
 
 /* Hook the options page with the required settings:
 ------------------------------------------------ */
 function lt3_site_settings_add_page()
 {
-	add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
+  add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
 }
 
 /* Render the settings page:
 ------------------------------------------------ */
 function lt3_site_settings_do_page()
 {
-	/* Check that the user is allowed to update options */
-	if (!current_user_can('manage_options'))
-	{
+  /* Check that the user is allowed to update options */
+  if (!current_user_can('manage_options'))
+  {
     wp_die('You do not have sufficient permissions to access this page.');
-	} ?>
+  } ?>
 
-	<div class="wrap">
+  <div class="wrap">
 
-		<?php if($_GET['settings-updated']): ?>
-		<div id="message" class="updated fade"><p><?php bloginfo('name'); ?> Site Settings Updated.</p></div>
-		<?php endif; ?>
+    <?php if($_GET['settings-updated']): ?>
+    <div id="message" class="updated fade"><p><?php bloginfo('name'); ?> Site Settings Updated.</p></div>
+    <?php endif; ?>
 
-		<?php screen_icon('themes'); ?> <h2><?php bloginfo('name'); ?> Site Settings</h2>
+    <?php screen_icon('themes'); ?> <h2><?php bloginfo('name'); ?> Site Settings</h2>
 
-		<form method="post" action="options.php">
+    <form method="post" action="options.php">
 
-			<table class="form-table lt3-form-container">
+      <table class="form-table lt3-form-container">
 
-    		<?php settings_fields('lt3_site_settings'); global $lt3_site_settings_array, $lt3_site_settings; ?>
+        <?php settings_fields('lt3_site_settings'); global $lt3_site_settings_array, $lt3_site_settings; ?>
 
         <?php foreach($lt3_site_settings_array as $site_setting): ?>
 
         <tr>
-        	<th>
-        	   <label for="lt3_settings[<?php echo $site_setting['id']; ?>]">
+          <th>
+             <label for="lt3_settings[<?php echo $site_setting['id']; ?>]">
                 <?php echo $site_setting['label']; ?>
               </label>
 
-        	</th>
+          </th>
           <td>
 
-        	  <?php switch($site_setting['type']) :
+            <?php switch($site_setting['type']) :
 
-            	/* Divider
-            	------------------------------------------------
-            	Extra Parameters: content
-            	------------------------------------------------ */
-            	case 'divider': ?>
+              /* Divider
+              ------------------------------------------------
+              Extra Parameters: content
+              ------------------------------------------------ */
+              case 'divider': ?>
 
-            	   <td colspan="2"><?php echo $site_setting['content']; ?></td>
+                 <td colspan="2"><?php echo $site_setting['content']; ?></td>
 
               <?php break;
 
-            	/* Text Input
-            	------------------------------------------------
-            	Extra Parameters: label, placeholder, title, divider & description
-            	------------------------------------------------ */
-            	 case 'text': ?>
+              /* Text Input
+              ------------------------------------------------
+              Extra Parameters: label, placeholder, title, divider & description
+              ------------------------------------------------ */
+               case 'text': ?>
 
                     <input id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" type="text"  placeholder="<?php echo $site_setting['placeholder']; ?>" value="<?php echo $lt3_site_settings[$site_setting['id']]; ?>" size="50">
 
@@ -107,8 +111,8 @@ function lt3_site_settings_do_page()
               /* Textarea Input
               ------------------------------------------------
               Extra Parameters: label, title, divider & description
-            	------------------------------------------------ */
-            	case 'textarea': ?>
+              ------------------------------------------------ */
+              case 'textarea': ?>
 
                     <textarea id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" cols="52" rows="4"><?php echo $lt3_site_settings[$site_setting['id']]; ?></textarea>
 
@@ -122,9 +126,9 @@ function lt3_site_settings_do_page()
 
                     <input type="checkbox" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;
 
-    				  <?php break;
+              <?php break;
 
-      				/* Post Type Drop Down
+              /* Post Type Drop Down
               ------------------------------------------------
               Extra Parameters: label, title, divider & description
               ------------------------------------------------ */
@@ -139,9 +143,9 @@ function lt3_site_settings_do_page()
                     </select>
 
 
-    				  <?php break; ?>
+              <?php break; ?>
 
-    				  <?php default: echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>'; break;?>
+              <?php default: echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>'; break;?>
 
             <?php endswitch; ?>
 
@@ -150,18 +154,18 @@ function lt3_site_settings_do_page()
 
         </tr>
 
-  		  <?php endforeach; ?>
+        <?php endforeach; ?>
 
-		  </table>
+      </table>
 
-		  <p class="submit">
-			  <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>">
+      <p class="submit">
+        <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>">
         <a href="./" class="button">Cancel</a>
-			</p>
+      </p>
 
-		</form>
+    </form>
 
-	</div>
+  </div>
 
 <?php }
 
@@ -170,14 +174,14 @@ function lt3_site_settings_do_page()
 function lt3_site_settings_validate($input)
 {
 
-	/* List the settings to be saved here:
-	------------------------------------------------ */
-	global $lt3_site_settings_array;
+  /* List the settings to be saved here:
+  ------------------------------------------------ */
+  global $lt3_site_settings_array;
 
-	foreach($lt3_site_settings_array as $site_setting)
-	{
-	  $input[$site_setting['id']] =  wp_filter_nohtml_kses($input[$site_setting['id']]);
+  foreach($lt3_site_settings_array as $site_setting)
+  {
+    $input[$site_setting['id']] =  wp_filter_nohtml_kses($input[$site_setting['id']]);
   }
 
-	return $input;
+  return $input;
 }

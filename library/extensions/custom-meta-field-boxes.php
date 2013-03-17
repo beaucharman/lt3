@@ -4,15 +4,13 @@
   lt3 Custom Meta Field Boxes
 
 ------------------------------------------------
-  custom-meta-field-boxes.php 1.0
+  custom-meta-field-boxes.php 2.0
   Sunday, 3rd February 2013
   Beau Charman | @beaucharman | http://beaucharman.me
-  Version: 1.0
-  Notes:
 
   This file is for the custom meta fields for posts, pages, and custom post types.
 
-  Simply add a new array to the $custom_meta_fields_array variable.
+  Simply add a new array to the $lt3_custom_meta_fields_array variable.
   Use the following as your key and value pairs:
 
   array(
@@ -31,32 +29,35 @@
   )
 
 ------------------------------------------------ */
-add_filter( 'post_mime_types', 'modify_post_mime_types' );
-function modify_post_mime_types( $post_mime_types ) {
 
-  $post_mime_types['application/pdf'] = array( __( 'PDFs' ), __( 'Manage PDFs' ), _n_noop( 'PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>' ) );
-  return $post_mime_types;
-}
+/*
 
-/* Delcare the meta boxes
+    Delcare the meta boxes
+
 ------------------------------------------------
 Field: All require the following parameters: type, id & label
 ------------------------------------------------ */
-$custom_meta_fields_array = array();
+$lt3_custom_meta_fields_array = array();
 
-/* Create each custom meta field box instance
+/*
+
+  Create each custom meta field box instance
+
 ------------------------------------------------ */
 add_action('load-post.php', 'create_meta_boxes');
 function create_meta_boxes()
 {
-  global $custom_meta_fields_array;
-  foreach($custom_meta_fields_array as $cmfb)
+  global $lt3_custom_meta_fields_array;
+  foreach($lt3_custom_meta_fields_array as $cmfb)
   {
     new Custom_Field_Meta_Box($cmfb);
   }
 }
 
-/* Class structure for a custom meta field box
+/*
+
+  Class structure for a custom meta field box
+
 ------------------------------------------------ */
 class Custom_Field_Meta_Box
 {
@@ -89,17 +90,17 @@ class Custom_Field_Meta_Box
     global $post;
     $context = $this->_cmfb['context'];
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
-    echo '<ul class="lt3-form-container '. $this->_cmfb['context'] . '">';
+    echo '<div class="lt3-form-container '. $this->_cmfb['context'] . '">';
     foreach ( $this->_cmfb['fields'] as $field )
     {
       /* Get the field ID, existing value, and set the label & description */
       $field_id = '_' . $this->_cmfb['id'] . '_' . $field['id'];
       $value = get_post_meta($post->ID, $field_id, true);
       $value = ($value) ? $value : '';
-      echo '<li class="custom-field-container">';
+      echo '<section class="custom-field-container">';
       $label_state = ($field['label'] == null) ? 'empty' : '';
       echo '<p class="label-container '. $label_state .'">';
-      echo ($field['label'] != null) ? '<label for="'.$field_id.'">'.$field['label'].'</label>' : '&nbsp;'; echo '</p>';
+      echo ($field['label'] != null) ? '<label for="'.$field_id.'"><strong>'.$field['label'].'</strong></label>' : '&nbsp;'; echo '</p>';
       echo ($field['description'] != null) ? '<p class="description">'.$field['description'].'</p>' : '&nbsp;';
       echo '<p class="input-container">';
       /* Render required field */
@@ -152,27 +153,27 @@ class Custom_Field_Meta_Box
         case 'file':
           echo '<p><input name="'.$field_id.'" type="text" placeholder="'.$field['placeholder'].'" class="custom_upload_file" value="'.$value.'" size="50" />
                 <input class="custom_upload_file_button button" type="button" value="Choose File" />
-                <small> <a href="#" class="custom_clear_file_button">Remove File</a></small></p>';
+                <small> <a href="#" class="custom_clear_file_button">Remove File</a></small></p>';
             ?>
 
-            <script>
-            jQuery(function($) {
-              $('.custom_upload_file_button').click(function() {
-                $formField = $(this).siblings('.custom_upload_file');
-                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
-                window.send_to_editor = function($html) {
-                 $fileUrl = $($html).attr('href');
-                 $formField.val($fileUrl);
-                 tb_remove();
-                };
-                return false;
+              <script>
+              jQuery(function($) {
+                $('.custom_upload_file_button').click(function() {
+                  $formField = $(this).siblings('.custom_upload_file');
+                  tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
+                  window.send_to_editor = function($html) {
+                   $fileUrl = $($html).attr('href');
+                   $formField.val($fileUrl);
+                   tb_remove();
+                  };
+                  return false;
+                });
+                $('.custom_clear_file_button').click(function() {
+                  $(this).parent().siblings('.custom_upload_file').val('');
+                  return false;
+                });
               });
-              $('.custom_clear_file_button').click(function() {
-                $(this).parent().siblings('.custom_upload_file').val('');
-                return false;
-              });
-            });
-            </script>
+              </script>
             <?php
           break;
 
@@ -186,9 +187,9 @@ class Custom_Field_Meta_Box
 
       }
       echo '</p>';
-      echo '</li>';
+      echo '</section>';
     }
-    echo '</ul>';
+    echo '</div>';
   }
 
   /* Save the data

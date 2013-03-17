@@ -4,15 +4,16 @@
   lt3-theme Custom Taxonomies
 
 ------------------------------------------------
-  Version: 1.0
-  Notes:
+  custom-taxonomies.php 2.0
+  Thursday, 14th March 2013
+  Beau Charman | @beaucharman | http://beaucharman.me
 
   For more information about registering Taxonomies:
   http://codex.wordpress.org/Function_Reference/register_taxonomy
 
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
 
-  To declare a taxonomy, simply add a taxonomy array to the $custom_taxonomies array variable, with required values of:
+  To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
   array(
     'slug_singuar'         => '',
     'slug_plural'           => '',
@@ -29,7 +30,7 @@
     'rewrite'               => '',
     'sort'                  => NULL,
     'post_type'             => array('')
-  );
+  )
 ------------------------------------------------ */
 
 /*
@@ -37,7 +38,7 @@
   Declare Taxonomies
 
 ------------------------------------------------ */
-$custom_taxonomies = array();
+$lt3_custom_taxonomies = array();
 
 /*
 
@@ -47,8 +48,8 @@ $custom_taxonomies = array();
 add_action('init', 'lt3_register_taxonomies', 0);
 function lt3_register_taxonomies()
 {
-  global $custom_taxonomies;
-  foreach($custom_taxonomies as $ct)
+  global $lt3_custom_taxonomies;
+  foreach($lt3_custom_taxonomies as $ct)
   {
     $labels = array(
       'name'                  => __($ct['name_plural'], $ct['name_plural'] . ' general name'),
@@ -70,7 +71,7 @@ function lt3_register_taxonomies()
       'show_ui'               => ($ct['show_ui']) ? $ct['show_ui'] : true,
       'show_tagcloud'         => ($ct['show_tagcloud']) ? $ct['show_tagcloud'] : true,
       'show_admin_column'     => ($ct['show_admin_column']) ? $ct['show_admin_column'] : false,
-      'hierarchical'          => ($ct['hierarchical']) ? $ct['hierarchical'] : false,
+      'hierarchical'          => ($ct['hierarchical'])  ? $ct['hierarchical'] : false,
       'update_count_callback' => ($ct['update_count_callback']) ? $ct['update_count_callback'] : null,
       'query_var'             => ($ct['query_var']) ? $ct['query_var'] : $ct['slug_plural'],
       'rewrite'               => ($ct['rewrite']) ? $ct['rewrite'] : true,
@@ -86,7 +87,6 @@ function lt3_register_taxonomies()
 
 ------------------------------------------------ */
 add_action('restrict_manage_posts', 'lt3_todo_restrict_manage_posts');
-add_filter('parse_query','lt3_todo_convert_restrict');
 function lt3_todo_restrict_manage_posts()
 {
   global $typenow;
@@ -112,6 +112,7 @@ function lt3_todo_restrict_manage_posts()
   }
 }
 
+add_filter('parse_query','lt3_todo_convert_restrict');
 function lt3_todo_convert_restrict($query)
 {
   global $pagenow,  $typenow;
