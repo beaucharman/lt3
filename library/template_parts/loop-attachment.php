@@ -7,7 +7,9 @@
   <?php lt3_include_post_meta(); ?>
 
   <figure>
-    <figcaption><?php global $post; echo $post->post_content; ?></figcaption>
+    <figcaption>
+      <?php global $post; echo $post->post_content; ?>
+    </figcaption>
     <?php echo wp_get_attachment_image($post->ID, 'full'); ?>
   <figure>
 

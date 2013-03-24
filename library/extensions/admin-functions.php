@@ -142,8 +142,8 @@ if(LT3_ENABLE_CUSTOM_HEADER)
 	{ ?>
 		<style type="text/css">
 			#headimg {
-				width: <?= HEADER_IMAGE_WIDTH; ?>px;
-				height: <?= HEADER_IMAGE_HEIGHT; ?>px;
+				width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
+				height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
 				background: no-repeat;
 			}
 		</style>

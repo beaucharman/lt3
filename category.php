@@ -13,7 +13,7 @@
   <h2 class="content-title"><?php single_cat_title(); ?></h2>
 
   <?php if(term_description()) : ?>
-    <p class="category-description"><?php echo term_description(); ?></p>
+  <p class="category-description"><?php echo term_description(); ?></p>
   <?php endif; ?>
 
   <?php if(have_posts()) : ?>
