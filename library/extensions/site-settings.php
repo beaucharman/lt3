@@ -16,7 +16,10 @@
   echo $lt3_site_settings['setting_id'])
 ------------------------------------------------ */
 
-/* Declare the settings array
+/*
+
+  Declare the settings array
+
 ------------------------------------------------
 All accept id & tpye
 ------------------------------------------------ */
@@ -78,6 +81,18 @@ function lt3_site_settings_do_page()
         <?php foreach($lt3_site_settings_array as $site_setting): ?>
 
         <tr>
+
+          <?php if($site_setting['type'] == 'divider') :
+
+          /* divider
+          ------------------------------------------------
+          Extra Parameters: content
+          ------------------------------------------------ */ ?>
+
+          <td class="divider" colspan="2"><?php echo $site_setting['label']; ?></td>
+
+          <?php else: ?>
+
           <th>
              <label for="lt3_settings[<?php echo $site_setting['id']; ?>]">
                 <?php echo $site_setting['label']; ?>
@@ -88,60 +103,66 @@ function lt3_site_settings_do_page()
 
             <?php switch($site_setting['type']) :
 
-              /* Divider
-              ------------------------------------------------
-              Extra Parameters: content
-              ------------------------------------------------ */
-              case 'divider': ?>
-
-                 <td colspan="2"><?php echo $site_setting['content']; ?></td>
-
-              <?php break;
-
-              /* Text Input
+              /* text
               ------------------------------------------------
               Extra Parameters: label, placeholder, title, divider & description
               ------------------------------------------------ */
                case 'text': ?>
 
-                    <input id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" type="text"  placeholder="<?php echo $site_setting['placeholder']; ?>" value="<?php echo $lt3_site_settings[$site_setting['id']]; ?>" size="50">
+                <input id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" type="text"  placeholder="<?php echo $site_setting['placeholder']; ?>" value="<?php echo $lt3_site_settings[$site_setting['id']]; ?>" size="50">
 
               <?php break;
 
-              /* Textarea Input
+              /* textarea
               ------------------------------------------------
               Extra Parameters: label, title, divider & description
               ------------------------------------------------ */
               case 'textarea': ?>
 
-                    <textarea id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" cols="52" rows="4"><?php echo $lt3_site_settings[$site_setting['id']]; ?></textarea>
+                <textarea id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" cols="52" rows="4"><?php echo $lt3_site_settings[$site_setting['id']]; ?></textarea>
 
               <?php break;
 
-              /* Single Checkbox Input
+              /* single_checkbox
               ------------------------------------------------
               Extra Parameters: label, title, divider & description
               ------------------------------------------------ */
               case 'single_checkbox': ?>
 
-                    <input type="checkbox" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;
+                <input type="checkbox" value="true" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;
 
               <?php break;
 
-              /* Post Type Drop Down
+              /* multiple_checkboxes
+              ------------------------------------------------
+              Extra Parameters: label, title, divider, options & description
+              ------------------------------------------------ */
+              case 'multiple_checkboxes': ?>
+
+                <ul>
+                <?php foreach($site_setting['options'] as $key => $value): ?>
+                  <li>
+                    <input type="checkbox" value="<?= $key; ?>" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;<?= $value; ?>
+                  </li>
+                <?php endforeach;  ?>
+                </ul>
+
+              <?php break;
+
+              /* post_type_select
               ------------------------------------------------
               Extra Parameters: label, title, divider & description
               ------------------------------------------------ */
               case 'post_type_select':
+
                 $items = get_posts(array ('post_type' => $site_setting['post_type'], 'posts_per_page' => -1)); ?>
 
-                    <select name="lt3_settings[<?php echo $site_setting['id']; ?>]" id="lt3_settings[<?php echo $site_setting['id']; ?>]">
-                      <option value="">Please choose&hellip;</option>
-                      <?php foreach($items as $item): $is_select = ($item->ID == $lt3_site_settings[$site_setting['id']]) ? ' selected' : ''; ?>
-                      <option id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" value="<?php echo $item->ID; ?>"<?php echo $is_select; ?>><?php echo $item->post_title; ?></option>
-                      <?php endforeach; ?>
-                    </select>
-
+                <select name="lt3_settings[<?php echo $site_setting['id']; ?>]" id="lt3_settings[<?php echo $site_setting['id']; ?>]">
+                  <option value="">Please choose&hellip;</option>
+                  <?php foreach($items as $item): $is_select = ($item->ID == $lt3_site_settings[$site_setting['id']]) ? ' selected' : ''; ?>
+                  <option id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" value="<?php echo $item->ID; ?>"<?php echo $is_select; ?>><?php echo $item->post_title; ?></option>
+                  <?php endforeach; ?>
+                </select>
 
               <?php break; ?>
 
@@ -149,8 +170,11 @@ function lt3_site_settings_do_page()
 
             <?php endswitch; ?>
 
-          <p><span class="description"><?php echo $site_setting['description']; ?></span></p>
+            <p><span class="description"><?php echo $site_setting['description']; ?></span></p>
+
           </td>
+
+          <?php endif; ?>
 
         </tr>
 
