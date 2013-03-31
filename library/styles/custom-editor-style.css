@@ -21,32 +21,27 @@ td.mceSelected, th.mceSelected { background-color: #39f !important }
 .mceItemMedia { border: 1px dotted #c00; background-position: center; background-repeat: no-repeat; background-color: #ffc; }
 .mcePageBreak { display: block; border: 0; width: 100%; height: 12px; border-top: 1px dotted #ccc; margin-top: 15px; }
 
-/* USER STYLES - EDIT FROM HERE
-------------------------------- */
 html {
   background: #F8F8F8;
 }
 
 html .mceContentBody {
-  max-width: 980px;
+  max-width: 960px;
   border-right: 1px solid #ccc;
-  padding: 20px;
+  padding: 10px;
 }
 
+/* USER STYLES - EDIT FROM HERE
+------------------------------- */
+
+/* Global styles
+------------------------------------------------ */
 body {
   font-weight: 400;
   color: #000;
   background: #fff;
   margin: 0;
 }
-
-html,
-.mceContentBody,
-body,
-button,
-input,
-select,
-textarea { }
 
 /* Paragraph and Block level elements typography
 ------------------------------------------------ */

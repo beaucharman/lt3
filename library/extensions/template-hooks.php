@@ -4,9 +4,8 @@
   lt3 Template Hooks
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	All action and filter hook declarations and functions for the theme.
 
 	To remove parnet hooks and filter, it is recomended to use an action tied to the init hook, for example:

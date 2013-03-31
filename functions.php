@@ -75,7 +75,7 @@ define('LT3_NUMBER_OF_STICKY_POSTS', 2);
 
 /* Enable Google jQuery libraries
 ------------------------------------------------ */
-define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', true);
+define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', false);
 
 /* Load Modernizr
 ------------------------------------------------ */
@@ -145,7 +145,7 @@ define('LT3_ENABLE_TEMPLATE_DEBUG', false);
 
 /* Use the custom-editor-style.css file for the TinyMCE
 ------------------------------------------------ */
-define('LT3_USE_CUSTOM_EDITOR_STYLES', true);
+define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
 
 /* Use the custom-login-style.css file for the Login screen
 ------------------------------------------------ */

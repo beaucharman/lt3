@@ -4,8 +4,9 @@
   lt3 Template Functions - Foundations
 
 ------------------------------------------------
-	Version: 1.0
-	Notes:   All functionality that effects the front end of the theme is located in this file.
+	Version: 2.0
+	Notes:   All functionality that effects the
+	front end of the theme is located in this file.
 ------------------------------------------------ */
 
 /*
@@ -362,6 +363,27 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 
 ------------------------------------------------ */
 
+/* Add google analytics
+------------------------------------------------ */
+function lt3_show_google_analytics($analytics_key = '')
+{
+	if($analytics_key) : ?>
+		<script>
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', '<?php echo $analytics_key; ?>']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function()
+		  {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  }
+		  )();
+		</script>
+	<?php endif;
+}
+
 /* Function create a custom comment list
 ------------------------------------------------ */
 function lt3_advanced_comment($comment, $args, $depth)
@@ -638,7 +660,8 @@ function lt3_filter_ptags_on_images($content)
 /* Add Video Mode Transparent to all WP Embed Files
 ------------------------------------------------ */
 add_filter('embed_oembed_html', 'lt3_add_video_wmode_transparent', 10, 3);
-function lt3_add_video_wmode_transparent($html, $url, $attr){
+function lt3_add_video_wmode_transparent($html, $url, $attr)
+{
 	if(strpos($html, "<embed src=") !== false)
 	{
 		return str_replace('</param><embed', '</param><param name="wmode" value="opaque"></param><embed wmode="opaque" ', $html);

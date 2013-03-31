@@ -4,9 +4,8 @@
   lt3 Helper Functions
 
 ------------------------------------------------
-  Version: 1.0
+  Version: 2.0
   Notes:
-
   This files contains the functions and file references
   that are used to alter and enhance the general administration area.
 

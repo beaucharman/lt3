@@ -4,24 +4,26 @@
   lt3 Widgets
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	For more widget areas, use:
-		register_sidebar(array('name' => 'Sidebar Widget Name', 'id' => 'sidebar-widget-name', 'description' => __('These are widgets for the sidebar.','lt3')));
+		register_sidebar(
+			array(
+				'name' => 'Sidebar Widget Name',
+				'id' => 'sidebar-widget-name',
+				'description' => __('These are widgets for the sidebar.')
+			)
+		);
 
-	For more info, and variations: http://codex.wordpress.org/Function_Reference/register_sidebar
+	For more info, and variations:
+	http://codex.wordpress.org/Function_Reference/register_sidebar
 
 	To use in a theme template, use:
-		dynamic_sidebar('Sidebar Widget Name');
+		dynamic_sidebar('sidebar-id');
 
 	To unregister a sidebar to clean up the widgets area, as an example use:
-		add_action('widgets_init', 'remove_sidebar_function', 11);
+		add_action('widgets_init', 'name_of_sidebar_init_function');
 
-	Then create a similar function to this:
-		function remove_sidebar_function(){
-		 	unregister_sidebar('sidebar-id');
-		}
 ------------------------------------------------ */
 
 /*
@@ -29,12 +31,12 @@
 	Widget Areas
 
 ------------------------------------------------ */
-add_action('widgets_init', 'lt3_register_initial_sidebars');
-function lt3_register_initial_sidebars()
-{
 
-	/* Header Sidebar
-	------------------------------------------------ */
+/* Header Sidebar
+------------------------------------------------ */
+add_action('widgets_init', 'lt3_register_header_sidebar');
+function lt3_register_header_sidebar()
+{
 	register_sidebar(array(
 		'name' => __('Header Sidebar'),
 		'id' => 'header-sidebar-widgets',
@@ -44,10 +46,13 @@ function lt3_register_initial_sidebars()
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
-
-	/* Primary Sidebar Widgets
-	------------------------------------------------ */
-  register_sidebar(array(
+}
+/* Primary Sidebar Widgets
+------------------------------------------------ */
+add_action('widgets_init', 'lt3_register_primary_sidebar');
+function lt3_register_primary_sidebar()
+{
+	register_sidebar(array(
 		'name' => __('Primary Sidebar Widgets'),
 		'id' => 'primary-sidebar-widgets',
 		'description' => __('These are widgets for the Primary Sidebar.'),
@@ -55,10 +60,13 @@ function lt3_register_initial_sidebars()
 		'after_widget' => '</aside>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
-  ));
-
-	/* Footer Sidebar
-	------------------------------------------------ */
+	));
+}
+/* Footer Sidebar
+------------------------------------------------ */
+add_action('widgets_init', 'lt3_register_footer_sidebar');
+function lt3_register_footer_sidebar()
+{
 	register_sidebar(array(
 		'name' => __('Footer Sidebar'),
 		'id' => 'footer-sidebar-widgets',

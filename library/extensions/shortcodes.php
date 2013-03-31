@@ -4,9 +4,8 @@
   lt3 Shortcodes
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	function register_shortcode_shortcode_name($atts, $content = null){
 		extract(shortcode_atts(array(
 			'variable_name' => 'default_value',

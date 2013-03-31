@@ -1,17 +1,21 @@
 ![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/screenshot.png "A slightly powerfull, intelligent and simple WordPress theme.")
 ## Change Log
-- Need to update this.
+1.0
+- Changing the elegant theme over to a more modulated theme, now lt3
+
+2.0
+- Initial theme setup functionality, found in library/extensions/initial-theme-setup.php
 
 ## Roadmap [Todo list]
-- Style sheet - Finish setting up and add some defaults
-- Finish custom post type file
-- Finish custom meta field file
 - Default margin issue with entry content from a type point of view
 - Split up the theme-functions.php file into modules
 - WordPress editor styles + instructions
-- Look into theme setup functionality
 - Work on default comment styles
 - spacing in library / core files
+- set up editor styles as a sass directory
+- have conditional h1 tags
+- replace most / relavent functions with hooks
+- clean up shortcode.js
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)

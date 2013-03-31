@@ -4,9 +4,8 @@
   lt3 Loop Functions
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	Control specific loop outputs.
 	Loops altered from these functions are executed when the requested is made, long before the page is rendered, reducing redundant database calls.
 	This also keeps the core files untouched.
@@ -44,8 +43,7 @@ function lt3_default_loop_outputs($query)
 		$query->set('orderby','title');
 		$query->set('order','ASC');
 
-		/* Place other loop alterations here:
-    ------------------------------------------------ */
+		// Place other loop alterations here
 
 	}
 	return $query;

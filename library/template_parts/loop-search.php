@@ -1,8 +1,8 @@
 <?php while(have_posts()) : the_post(); ?>
 
-<article <?php post_class('search-result post-'. get_the_ID()); ?>>
+<article <?php post_class('search-result entry excerpt post-'. get_the_ID()); ?>>
 
-  <h3 class="article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+  <h2 class="article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
   <?php lt3_include_post_meta(); ?>
 
@@ -12,9 +12,7 @@
   </figure>
   <?php endif; ?>
 
-  <div class="entry excerpt">
-    <?php the_excerpt(); ?>
-  </div>
+  <?php the_excerpt(); ?>
 
   <footer class="article-footer">
     <a class="read-more" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php lt3_read_more_text(); ?></a>

@@ -4,9 +4,10 @@
   lt3 Editor Functions
 
 ------------------------------------------------
-	Version: 1.0
-	Notes:   All functionality that effects the
-					 admin are post editor
+	Version: 2.0
+	Notes:
+	All functionality that effects the
+	admin are post editor
 ------------------------------------------------ */
 
 /* Add excerpt field to pages
@@ -26,7 +27,7 @@ function lt3_modify_post_mime_types($post_mime_types)
   	__('PDFs'),
   	__('Manage PDFs'),
   	_n_noop('PDF <span class="count">(%s)</span>', 'PDFs <span class="count">(%s)</span>')
-  );
+	);
   return $post_mime_types;
 }
 

@@ -4,9 +4,8 @@
   lt3 Styles
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	To include styles correctly, use the wp_register_style, and wp_enqueue_style functions:
 	http://codex.wordpress.org/Function_Reference/wp_register_style
 	http://codex.wordpress.org/Function_Reference/wp_enqueue_style
@@ -36,6 +35,7 @@ function lt3_load_styles()
 	}
 	else if(is_admin())
 	{
+    /* Add consistency to site settings and meta field inputs */
   	wp_enqueue_style('lt3_custom_admin_styles');
 	}
 }
@@ -50,7 +50,7 @@ if(LT3_USE_CUSTOM_EDITOR_STYLES)
 }
 
 /* This function styles the admin login screen with
-    custom-login-style.css to match the theme style.
+  custom-login-style.css to match the theme style.
 ------------------------------------------------ */
 if(LT3_USE_CUSTOM_LOGIN_STYLES)
 {

@@ -2,7 +2,7 @@
 
 <article <?php post_class('attachment post-'. get_the_ID()); ?>>
 
-  <h3 class="article-title"><?php the_title(); ?></h3>
+  <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php lt3_include_post_meta(); ?>
 

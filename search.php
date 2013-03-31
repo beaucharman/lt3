@@ -14,7 +14,7 @@
 
   <?php global $wp_query; $total_results = $wp_query->found_posts; ?>
 
-  <h2 class="content-title">Search Results</h2>
+  <h1 class="content-title">Search Results</h1>
 
   <p class="search-query">
     <?php echo $total_results ?> result<?php if($total_results != 1) echo 's'; ?> found for the search term:

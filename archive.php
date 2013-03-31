@@ -13,7 +13,7 @@
 
 <?php global $post; global $wp_query; $post = $posts[0]; ?>
 
-  <h2 class="content-title"><?php
+  <h1 class="content-title"><?php
   /* Category Archive */ if(is_category()) :
   single_cat_title();
 
@@ -46,7 +46,7 @@
   /* Archive */ else :
   echo _e('Article Archive');
 
-  endif; ?></h2>
+  endif; ?></h1>
 
   <?php if(term_description()) : ?><p class="term-description"><?php echo term_description(); ?></p ><?php endif; ?>
 

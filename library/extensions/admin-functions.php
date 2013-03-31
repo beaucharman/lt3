@@ -4,12 +4,13 @@
   lt3 Admin Functions
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
+	This files contains the functions and file references
+	that are used to alter and enhance the general administration area.
 
-	This files contains the functions and file references that are used to alter and enhance the general administration area.
-
-	The admin files which the admin function file refers to can be found in the library/admin/ directory
+	The dashboard files which the admin function file refers
+	to can be found in the library/dashboard/ directory
 ------------------------------------------------ */
 
 /*
@@ -52,7 +53,7 @@ if(LT3_ENABLE_TUTORIAL_SECTION)
 		add_menu_page('User Guide', 'User Guide', 'manage_options', 'user-guide', 'lt3_user_guide');
 		function lt3_user_guide()
 		{
-			$admin_file = (function_exists('lt3_get_data_with_curl')) ? lt3_get_data_with_curl(get_template_directory_uri() . '/library/admin/admin.user-guide.php') : 'Sorry, could not find the file.';
+			$admin_file = (function_exists('lt3_get_data_with_curl')) ? lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/admin.user-guide.php') : 'Sorry, could not find the file.';
 			echo $admin_file;
 		}
 	}
@@ -129,7 +130,7 @@ if(LT3_ENABLE_CUSTOM_BACKGROUND)
 		'admin-head-callback'    => '',
 		'admin-preview-callback' => ''
 	);
-	add_theme_support( 'custom-background', $defaults );
+	add_theme_support('custom-background', $defaults);
 }
 
 /* Enable custom headers

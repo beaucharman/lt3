@@ -32,17 +32,11 @@
 
   <header role="banner" class="page-header">
 
-    <hgroup>
+    <a href="<?php echo home_url(); ?>/" title="<?php echo the_title_attribute(); ?>">
+      <?php bloginfo('name'); ?>
+    </a>
 
-      <h1 class="site-title">
-        <a href="<?php echo home_url(); ?>/" title="<?php echo the_title_attribute(); ?>" >
-          <?php bloginfo('name'); ?>
-        </a>
-      </h1>
-
-      <h2 class="site-description"><?php bloginfo('description'); ?></h2>
-
-    </hgroup>
+    <p class="site-description"><?php bloginfo('description'); ?></p>
 
     <?php if(is_active_sidebar('header-sidebar-widgets')) dynamic_sidebar('header-sidebar-widgets'); ?>
 

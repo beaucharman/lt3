@@ -10,7 +10,7 @@
 
 <?php get_header(); ?>
 
-  <h2 class="content-title"><?php single_cat_title(); ?></h2>
+  <h1 class="content-title"><?php single_cat_title(); ?></h1>
 
   <?php if(term_description()) : ?>
   <p class="category-description"><?php echo term_description(); ?></p>

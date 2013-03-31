@@ -4,9 +4,8 @@
   lt3 Menus
 
 ------------------------------------------------
-	Version: 1.0
+	Version: 2.0
 	Notes:
-
 	For more menu locations, use:
 
 		register_nav_menu('menu_name_location', 'Description of Navigation Menu');

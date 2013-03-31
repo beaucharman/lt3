@@ -1,8 +1,8 @@
 <?php while(have_posts()) : the_post(); ?>
 
-<article <?php post_class('single post-'. get_the_ID()); ?>>
+<article <?php post_class('single entry content post-'. get_the_ID()); ?>>
 
-  <h2 class="article-title"><?php the_title(); ?></h2>
+  <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php lt3_include_post_meta(); ?>
 
@@ -12,9 +12,7 @@
   </figure>
   <?php endif; ?>
 
-  <div class="entry content">
-    <?php the_content(); ?>
-  </div>
+  <?php the_content(); ?>
 
   <footer class="article-footer">
     <?php lt3_include_page_pagination(); ?>

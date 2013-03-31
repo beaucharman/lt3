@@ -8,9 +8,9 @@
 
 <?php if(!is_sticky()) continue; ?>
 
-  <article <?php post_class('sticky post-'. get_the_ID()); ?>>
+  <article <?php post_class('sticky entry excerpt post-'. get_the_ID()); ?>>
 
-    <h3 class="sticky-article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
+    <h2 class="sticky-article-title"><a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
     <?php if(has_post_thumbnail()) : ?>
     <figure class="post-thumbnail">
@@ -18,9 +18,7 @@
     </figure>
     <?php endif; ?>
 
-    <div class="entry excerpt">
-      <?php the_excerpt(); ?>
-    </div>
+    <?php the_excerpt(); ?>
 
     <footer class="article-footer">
       <a class="read-more" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php lt3_read_more_text(); ?></a>

@@ -4,9 +4,8 @@
   lt3 Initial Theme Setup
 
 ------------------------------------------------
-  Version:   1.0
+  Version:   2.0
   Notes:
-
   http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
 ------------------------------------------------ */
 
@@ -39,8 +38,10 @@ function lt3_initial_theme_setup()
       'timezone_string'     => 'Australia/Sydney',
       'use_smilies'         => '0'
     );
-    foreach ($core_settings as $key => $value) {
-      update_option( $key, $value );
+
+    foreach ($core_settings as $key => $value)
+    {
+      update_option($key, $value);
     }
 
     /* Add Theme Support
@@ -52,28 +53,38 @@ function lt3_initial_theme_setup()
     add_theme_support('automatic-feed-links');
 
     /* Delete the example post, page and comment
+    ------------------------------------------------
+    set the booleans to false if this is not a fresh
+    install, true will delete the post and pages for realz
     ------------------------------------------------ */
-    wp_delete_post(1, false);
-    wp_delete_post(2, false);
+    wp_delete_post(1, true);
+    wp_delete_post(2, true);
     wp_delete_comment(1);
 
     /* Goodbye Dolly
+    ------------------------------------------------
+    feel free to add Akismet to this block of code
     ------------------------------------------------ */
-    if (file_exists(WP_PLUGIN_DIR.'/hello.php')) {
+    if (file_exists(WP_PLUGIN_DIR.'/hello.php'))
+    {
       require_once(ABSPATH.'wp-admin/includes/plugin.php');
       require_once(ABSPATH.'wp-admin/includes/file.php');
       delete_plugins(array('hello.php'));
     }
+
     /* Update the status so this dosn't run again
     ------------------------------------------------ */
-    update_option( 'theme_setup_status', '1' );
+    update_option('theme_setup_status', '1');
 
-    /* Lets let the admin know whats going on.
+    /* Lets let the admin know whats going on with
+      a status message
     ------------------------------------------------ */
     $msg = '
     <div class="updated">
-      <p>The ' . get_option( 'current_theme' ) . 'theme has changed your WordPress default <a href="' . admin_url( 'options-general.php' ) . '" title="See Settings">settings</a>, discouraged search engines and deleted default posts & comments.</p>
+      <p>The ' . get_option('current_theme') . ' theme has changed your WordPress default <a href="'
+      . admin_url('options-general.php') . '" title="See Settings">settings</a>,
+      discouraged search engines and deleted default posts & comments.</p>
     </div>';
-    add_action( 'admin_notices', $c = create_function( '', 'echo "' . addcslashes( $msg, '"' ) . '";' ) );
+    add_action('admin_notices', $c = create_function('', 'echo "' . addcslashes($msg, '"') . '";'));
   }
 }

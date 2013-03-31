@@ -1,6 +1,6 @@
 <?php while(have_posts()) : the_post(); ?>
 
-<article <?php post_class('front-page post-'. get_the_ID()); ?>>
+<article <?php post_class('front-page entry content post-'. get_the_ID()); ?>>
 
   <?php $article_title = strtoupper(get_the_title()); if(($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
     <h2 class="article-title"><?php the_title(); ?></h2>
@@ -14,9 +14,7 @@
   </figure>
   <?php endif; ?>
 
-  <div class="entry content">
-    <?php the_content(); ?>
-  </div>
+  <?php the_content(); ?>
 
 </article>
 
