@@ -28,12 +28,19 @@ for site-settings and custom-meta-fields
 .lt3-form-container label {
   color: #222;
   font-weight: 500;
-  display: block;
 }
 
-.lt3-form-container .description {
+.custom-field-container {
+  margin-bottom: 30px;
+}
+
+.lt3-form-container .description, .lt3-form-container small {
   color: #b0b0b0;
   font-weight: 200;
+}
+
+.lt3-form-container small {
+  font-size: 0.9em;
 }
 
 .lt3-form-container input[type="text"] {
@@ -54,11 +61,9 @@ for site-settings and custom-meta-fields
 
 .lt3-form-container input[type="text"],
 .lt3-form-container textarea {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   border-radius: 4px;
   border: 1px solid #bbb;
-  padding: 6px;
+  padding: 5px;
 }
 
 .lt3-form-container input:focus,

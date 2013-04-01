@@ -5,8 +5,11 @@
 
 ------------------------------------------------
   site-settings.php
-  Sunday, 317th March 2013
-  Beau Charman | @beaucharman | http://beaucharman.me
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
   Version: 1.0
   Notes:
@@ -21,7 +24,7 @@
   Declare the settings array
 
 ------------------------------------------------
-All accept id & tpye
+All accept id & type
 ------------------------------------------------ */
 $lt3_site_settings_array = array(
   array(

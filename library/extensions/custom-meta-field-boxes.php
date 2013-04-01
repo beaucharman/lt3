@@ -4,9 +4,12 @@
   lt3 Custom Meta Field Boxes
 
 ------------------------------------------------
-  custom-meta-field-boxes.php 2.0
-  Sunday, 3rd February 2013
-  Beau Charman | @beaucharman | http://beaucharman.me
+  custom-meta-field-boxes.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
   This file is for the custom meta fields for posts, pages, and custom post types.
 
@@ -27,7 +30,6 @@
       )
     )
   )
-
 ------------------------------------------------ */
 
 /*
@@ -88,20 +90,18 @@ class Custom_Field_Meta_Box
   function show_custom_meta_field_box()
   {
     global $post;
-    $context = $this->_cmfb['context'];
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
-    echo '<div class="lt3-form-container '. $this->_cmfb['context'] . '">';
+    echo '<ul class="lt3-form-container '. $this->_cmfb['context'] . '">';
     foreach ( $this->_cmfb['fields'] as $field )
     {
       /* Get the field ID, existing value, and set the label & description */
-      $field_id = '_' . $this->_cmfb['id'] . '_' . $field['id'];
+      $field_id = $this->get_field_id($this->_cmfb['id'], $field['id'], $field['label']);
       $value = get_post_meta($post->ID, $field_id, true);
       $value = ($value) ? $value : '';
-      echo '<section class="custom-field-container">';
+      echo '<li class="custom-field-container">';
       $label_state = ($field['label'] == null) ? 'empty' : '';
       echo '<p class="label-container '. $label_state .'">';
       echo ($field['label'] != null) ? '<label for="'.$field_id.'"><strong>'.$field['label'].'</strong></label>' : '&nbsp;'; echo '</p>';
-      echo ($field['description'] != null) ? '<p class="description">'.$field['description'].'</p>' : '&nbsp;';
       echo '<p class="input-container">';
       /* Render required field */
       switch($field['type'])
@@ -109,7 +109,7 @@ class Custom_Field_Meta_Box
 
         /* textarea
         ------------------------------------------------
-        Extra Parameters: description
+        Extra Parameters: description | text
         ------------------------------------------------ */
         case 'textarea':
           echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
@@ -117,19 +117,22 @@ class Custom_Field_Meta_Box
 
         /* checkbox
         ------------------------------------------------
-        Extra Parameters: description
+        Extra Parameters: description | text, options | array
         ------------------------------------------------ */
         case 'checkbox':
-          foreach($field['options'] as $value => $key):
-          echo '<input type="checkbox" name="'.$field_id.'" id="'.$field_id.'" ', $value ? ' checked' : '',' />';
+          echo '<ul>';
+          foreach($field['options'] as $key => $option):
+          echo '<li><input type="checkbox" name="'.$field_id.'['.$key.']" id="'.$field_id.'['.$key.']" value="'.$key.'" ', $value[$key] ? ' checked' : '',' />';
+          echo '<label for="'.$field_id.'['.$key.']">&nbsp;'.$option.'</label></li>';
           endforeach;
+          echo '</ul>';
           break;
 
         /* post_list
         ------------------------------------------------
-        Extra Parameters: description & post_type
+        Extra Parameters: description | text, post_type | array
         ------------------------------------------------ */
-        case 'post_list':
+        case 'post_checkbox_list':
           $value = ($value) ? $value : array();
           $items = get_posts(array(
             'post_type' => $field['post_type'],
@@ -138,9 +141,10 @@ class Custom_Field_Meta_Box
           echo '<ul>';
           foreach($items as $item):
             $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
+            $post_type_label = (isset($field['post_type'][1])) ? '<small>('.$item->post_type.')</small>' : '';
             echo '<li>';
             echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-            echo '&nbsp;<label for="'.$field_id.'['. $item->ID .']">'.$item->post_title.'</label>';
+            echo '<label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
             echo '</li>';
             endforeach;
           echo '</ul>';
@@ -148,14 +152,13 @@ class Custom_Field_Meta_Box
 
         /* file
         ------------------------------------------------
-        Extra Parameters: description & post_type
+        Extra Parameters: description | text
         ------------------------------------------------ */
         case 'file':
-          echo '<p><input name="'.$field_id.'" type="text" placeholder="'.$field['placeholder'].'" class="custom_upload_file" value="'.$value.'" size="50" />
+          echo '<p><input name="'.$field_id.'" type="text" placeholder="'.$field['placeholder'].'" class="custom_upload_file" value="'.$value.'" size="100" />
                 <input class="custom_upload_file_button button" type="button" value="Choose File" />
-                <small> <a href="#" class="custom_clear_file_button">Remove File</a></small></p>';
+                <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small></p>';
             ?>
-
               <script>
               jQuery(function($) {
                 $('.custom_upload_file_button').click(function() {
@@ -187,9 +190,18 @@ class Custom_Field_Meta_Box
 
       }
       echo '</p>';
-      echo '</section>';
+      echo ($field['description'] != null) ? '<p class="description">'.$field['description'].'</p>' : '&nbsp;';
+      echo '</li>';
     }
-    echo '</div>';
+    echo '</ul>';
+  }
+
+  /* Get the field id
+  ------------------------------------------------ */
+  function get_field_id($id, $field, $label)
+  {
+    $actual_id = ($field) ? $field : trim(strtolower(str_replace(' ', '_', $label)));
+    return '_' . $id . '_' . $actual_id;
   }
 
   /* Save the data
@@ -216,7 +228,8 @@ class Custom_Field_Meta_Box
     }
     foreach ($this->_cmfb['fields'] as $field)
     {
-      $field_id = '_' . $this->_cmfb['id'] . '_' . $field['id'];
+      $field_id = $this->get_field_id($this->_cmfb['id'], $field['id'], $field['label']);
+
       $old = get_post_meta($post_id, $field_id, true);
       $new = $_POST[$field_id];
       if ($new && $new != $old)

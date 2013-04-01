@@ -4,6 +4,13 @@
   lt3 Menus
 
 ------------------------------------------------
+	menus.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+
 	For more menu locations, use:
 		register_nav_menu('menu_name_location', 'Description of Navigation Menu');
 
@@ -13,13 +20,6 @@
 		wp_nav_menu(array('menu' => 'Menu Name'));
 
 	For more info, and variations: http://codex.wordpress.org/Function_Reference/wp_nav_menu.
-
-	menus.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

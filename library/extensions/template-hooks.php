@@ -4,6 +4,13 @@
   lt3 Template Hooks
 
 ------------------------------------------------
+  template-hooks.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+
 	All action and filter hook declarations and functions for the theme.
 
 	To remove parnet hooks and filter, it is recomended to use an action tied to the init hook, for example:
@@ -12,13 +19,6 @@
 	function remove_parent_actions(){
 		// remove_action functions
 	}
-
-	template-hooks.php
-	@version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

@@ -16,6 +16,9 @@
 - have conditional h1 tags
 - replace most / relavent functions with hooks
 - clean up shortcode.js
+- better columns engine for posts types and taxonomies
+- add more custom fields
+- add more functionlity to site-settings
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)

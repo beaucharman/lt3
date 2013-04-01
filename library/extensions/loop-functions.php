@@ -4,6 +4,13 @@
   lt3 Loop Functions
 
 ------------------------------------------------
+	loop-functions.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+
 	Control specific loop outputs.
 	Loops altered from these functions are executed when the requested is made,
 	long before the page is rendered, reducing redundant database calls.
@@ -27,13 +34,6 @@
 	For more information: http://codex.wordpress.org/Class_Reference/WP_Query
 						  http://codex.wordpress.org/Function_Reference/query_posts
 						  http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
-
-	loop-functions.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /* Set all posts to be sorted alphabetically
