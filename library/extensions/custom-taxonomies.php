@@ -18,8 +18,7 @@
 
   To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
   array(
-    'slug_singuar'          => '',
-    'slug_plural'           => '',
+    'slug_singular'         => '',
     'name_singular'         => '',
     'name_plural'           => '',
     // and optional values of:
@@ -30,7 +29,7 @@
     'hierarchical'          => true,
     'update_count_callback' => NULL,
     'query_var'             => true,
-    'rewrite'               => '',
+    'rewrite'               => true,
     'capabilities'          => array(),
     'sort'                  => NULL,
     'post_type'             => array('')
