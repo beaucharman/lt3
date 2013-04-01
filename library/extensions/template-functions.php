@@ -180,7 +180,7 @@ function lt3_get_message($message_name)
 	switch(strtoupper($message_name))
 	{
 		case 'NOT FOUND':
-			echo '<section class="error-message">' . "\n";
+			echo '<section class="error-message not-found">' . "\n";
 			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
 			echo '<p>'. __('The page you are looking for does not exist. (404)') .'</p>' . "\n";
 			if(LT3_ENABLE_SITE_SEARCH)
@@ -191,9 +191,9 @@ function lt3_get_message($message_name)
 			echo "\n" . '</section>';
 			break;
 		case 'NO POSTS':
-			echo '<section class="error-message">' . "\n";
+			echo '<section class="error-message no-posts">' . "\n";
 			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
-			echo '<p>'. __('There are currently no articles for the <strong>');
+			echo '<p>'. __('There are currently no posts for the <strong>');
 			single_cat_title();
 			echo __('</strong> category.') .'</p>' . "\n";
 			if(LT3_ENABLE_SITE_SEARCH)

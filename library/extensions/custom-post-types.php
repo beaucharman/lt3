@@ -36,7 +36,7 @@
     'supports'      => array(''),
     'taxonomies'    => array(''),
     'has_archive'   => true,
-    'rewrite'       => ''
+    'rewrite'       => true
   )
 ------------------------------------------------ */
 
@@ -80,7 +80,7 @@ function lt3_create_custom_post_types()
         'supports'         => ($cpt['supports'])      ? $cpt['supports'] : array('title', 'editor', 'thumbnail'),
         'taxonomies'       => ($cpt['taxonomies'])    ? $cpt['taxonomies'] : array(),
         'has_archive'      => ($cpt['has_archive'])   ? $cpt['has_archive'] : true,
-        'rewrite'          => ($cpt['rewrite'])       ? $cpt['rewrite'] : $cpt['name_plural']
+        'rewrite'          => ($cpt['rewrite'])       ? $cpt['rewrite'] : true
       )
     );
   }
