@@ -4,8 +4,6 @@
   lt3 Shortcodes
 
 ------------------------------------------------
-	Version: 2.0
-	Notes:
 	function register_shortcode_shortcode_name($atts, $content = null){
 		extract(shortcode_atts(array(
 			'variable_name' => 'default_value',
@@ -32,8 +30,14 @@
 	Both will output:
 	<div style="color:red;">World</div>
 
-	More information http://codex.wordpress.org/Shortcode_API
+	More information http://codex.wordpress.org/Shortcode_API.
 
+	shortcodes.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

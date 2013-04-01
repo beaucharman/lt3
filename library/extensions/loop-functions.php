@@ -4,10 +4,9 @@
   lt3 Loop Functions
 
 ------------------------------------------------
-	Version: 2.0
-	Notes:
 	Control specific loop outputs.
-	Loops altered from these functions are executed when the requested is made, long before the page is rendered, reducing redundant database calls.
+	Loops altered from these functions are executed when the requested is made,
+	long before the page is rendered, reducing redundant database calls.
 	This also keeps the core files untouched.
 
 	By default, all pages with order posts by title, acending.
@@ -16,8 +15,9 @@
 	Example, hide cat 4 site wide by default:
 	$query->set('cat', '-12');
 
-	Use: $query->query_vars[], or conditional statements belonging to the $query array to select the required loop to alter.
-	Also use print_r($query->query_vars) to see all avaliable query vars for a particular template page.
+	Use: $query->query_vars[], or conditional statements belonging to the $query array
+	to select the required loop to alter.	Also use print_r($query->query_vars) to see
+	all avaliable query vars for a particular template page.
 	Example, show 3 posts per page if viewing post type 'books':
 	if($query->query_vars['post_type'] == 'books') $query->set('posts_per_page','3');
 
@@ -27,6 +27,13 @@
 	For more information: http://codex.wordpress.org/Class_Reference/WP_Query
 						  http://codex.wordpress.org/Function_Reference/query_posts
 						  http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
+
+	loop-functions.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /* Set all posts to be sorted alphabetically

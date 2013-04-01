@@ -4,13 +4,15 @@
   lt3 Helper Functions
 
 ------------------------------------------------
-  Version: 2.0
-  Notes:
   This files contains the functions and file references
   that are used to alter and enhance the general administration area.
 
-  The admin files which the admin function file refers
-  to can be found in the library/admin/ directory
+  helper-functions.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

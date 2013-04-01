@@ -4,8 +4,6 @@
   lt3 Widgets
 
 ------------------------------------------------
-	Version: 2.0
-	Notes:
 	For more widget areas, use:
 		register_sidebar(
 			array(
@@ -24,6 +22,12 @@
 	To unregister a sidebar to clean up the widgets area, as an example use:
 		add_action('widgets_init', 'name_of_sidebar_init_function');
 
+	widgets.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

@@ -1,4 +1,21 @@
-<?php $sticky_loop = new WP_Query(array('posts_per_page' => LT3_NUMBER_OF_STICKY_POSTS, 'post__in'  => get_option('sticky_posts'), 'ignore_sticky_posts' => 1)); ?>
+<?php
+/*
+
+  lt3 Sticky Loop Template
+
+------------------------------------------------
+  loop-sticky.js
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+------------------------------------------------ */ ?>
+
+<?php $sticky_loop = new WP_Query(array(
+    'posts_per_page' => LT3_NUMBER_OF_STICKY_POSTS,
+    'post__in'  => get_option('sticky_posts'),
+    'ignore_sticky_posts' => 1)); ?>
 
 <?php if($sticky_loop->have_posts()) : ?>
 

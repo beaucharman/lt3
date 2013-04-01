@@ -4,14 +4,19 @@
   lt3 JavaScripts
 
 ------------------------------------------------
-	Version: 2.0
-	Notes:
 	To include scripts correctly, use the wp_register_script, and wp_enqueue_script functions:
 	http://codex.wordpress.org/Function_Reference/wp_register_script
 	http://codex.wordpress.org/Function_Reference/wp_enqueue_script
 
 	Use wp_deregister_script to unregister an unneeded or troublesome script:
 	http://codex.wordpress.org/Function_Reference/wp_deregister_script
+
+	scripts.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*

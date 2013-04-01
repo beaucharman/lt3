@@ -4,13 +4,18 @@
   lt3 Admin Functions
 
 ------------------------------------------------
-	Version: 2.0
-	Notes:
 	This files contains the functions and file references
 	that are used to alter and enhance the general administration area.
 
 	The dashboard files which the admin function file refers
-	to can be found in the library/dashboard/ directory
+	to can be found in the library/dashboard/ directory.
+
+	admin-functions.php
+  @version 2.0 | April 1st 2013
+  @package lt3
+  @author  Beau Charman | @beaucharman | http://beaucharman.me
+  @link    https://github.com/beaucharman/lt3
+  @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */
 
 /*
@@ -24,7 +29,7 @@
 add_filter('admin_footer_text', 'lt3_replace_admin_footer');
 function lt3_replace_admin_footer()
 {
-	if(function_exists('lt3_get_data_with_curl')) $admin_footer = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/admin.footer.php');
+	if(function_exists('lt3_get_data_with_curl')) $admin_footer = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.footer.php');
 	return $admin_footer;
 }
 
@@ -39,7 +44,7 @@ function lt3_custom_dashboard_widgets()
 
 function lt3_create_website_support_widget_function()
 {
-	if(function_exists('lt3_get_data_with_curl')) $admin_widget = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/admin.widget.php');
+	if(function_exists('lt3_get_data_with_curl')) $admin_widget = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.widget.php');
 	echo $admin_widget;
 }
 
@@ -53,7 +58,7 @@ if(LT3_ENABLE_TUTORIAL_SECTION)
 		add_menu_page('User Guide', 'User Guide', 'manage_options', 'user-guide', 'lt3_user_guide');
 		function lt3_user_guide()
 		{
-			$admin_file = (function_exists('lt3_get_data_with_curl')) ? lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/admin.user-guide.php') : 'Sorry, could not find the file.';
+			$admin_file = (function_exists('lt3_get_data_with_curl')) ? lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.user-guide.php') : 'Sorry, could not find the file.';
 			echo $admin_file;
 		}
 	}
