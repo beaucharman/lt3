@@ -10,9 +10,6 @@
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
-  This files contains the functions and file references
-  that are used to alter and enhance the general administration area.
 ------------------------------------------------ */
 
 /*
@@ -171,6 +168,84 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
         echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
         $last_template_snoop = $tpl;
       }
+    }
+  }
+}
+
+/*  Debug Tool : var_dump with style
+------------------------------------------------
+https://gist.github.com/beaucharman/9f2706c267161c218321
+------------------------------------------------ */
+if (!function_exists('debug_tool')) 
+{
+  function debug_tool($args = null)
+  {
+    $options = array(
+      'variable' => 'breakpoint',
+      'label'    => 'Debug',
+      'echo'     => true,
+      'exit'     => false
+    );
+    foreach($options as $key => $value)
+    {
+      $options[$key] = (isset($args[$key])) ? $args[$key] : $value;
+    }
+    global $debug_counter;
+    $breakpoint = false;  
+    if($options['variable'] == 'breakpoint') 
+    {
+      $breakpoint = true;
+    }
+    $background_color = ($breakpoint) ? 'd9edf7' : 'eee';
+    $text_color       = ($breakpoint) ? '3a87ad' : '444';
+    $border_color     = ($breakpoint) ? 'bce8f1' : 'ddd';
+    $opening_tag_array = array(
+      '<pre style="',
+      'line-height:1.4; ',
+      'background-color: #' . $background_color . '; ',
+      'color: #' . $text_color . '; ',
+      'border: 1px solid #' . $border_color . '; ',
+      'padding: 10px; ',
+      'margin: 10px 0; ',
+      'text-align: left;">');
+    $opening_tag = implode($opening_tag_array);
+    $closing_tag = '</pre>';
+    $exit_message = $opening_tag . 'exit();' . $closing_tag;
+    
+    if($breakpoint)
+    {
+      if(!isset($debug_counter))
+      {
+        $debug_counter = 1;
+      }
+      $output = $opening_tag . $options['label'] . ' Breakpoint => ' . $debug_counter . $closing_tag;
+      $debug_counter++;
+    }
+    else 
+    {
+      /* Store the result of a var dump */
+      ob_start();
+      var_dump($options['variable']);
+      $output = ob_get_clean();
+      
+      /* Add to the result */
+      $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
+      $output = $opening_tag . $options['label'] . ' => ' . $output . $closing_tag;
+    }
+    
+    if($options['exit']) 
+    {
+      echo $output;
+      exit($exit_message);
+    }
+    
+    if ($options['echo'])
+    {
+      echo $output;
+    }
+    else 
+    {
+      return $output;
     }
   }
 }
