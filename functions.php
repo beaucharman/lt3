@@ -93,7 +93,7 @@ define('LT3_MODERNIZR_LIBRARY_VERSION', '2.6.2');
 
   Theme and Editor Options
 
-*/
+------------------------------------------------ */
 
 /* Enable extra TinyMCE buttons
 ------------------------------------------------ */
