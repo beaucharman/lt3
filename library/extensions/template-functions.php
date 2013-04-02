@@ -193,9 +193,20 @@ function lt3_get_message($message_name)
 		case 'NO POSTS':
 			echo '<section class="error-message no-posts">' . "\n";
 			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
-			echo '<p>'. __('There are currently no posts for the <strong>');
+			echo '<p>'. __('There are currently no posts associated with the <strong>');
 			single_cat_title();
 			echo __('</strong> category.') .'</p>' . "\n";
+			if(LT3_ENABLE_SITE_SEARCH)
+			{
+				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";
+				get_search_form();
+			}
+			echo "\n" . '</section>';
+			break;
+		case 'NO ARTICLES':
+			echo '<section class="error-message no-articles">' . "\n";
+			echo '<h3>'. __('Oops! Nothing Found Here :(') .'</h3><div>' . "\n";
+			echo '<p>'. __('There are currently no articles here.') . '</p>' . "\n";
 			if(LT3_ENABLE_SITE_SEARCH)
 			{
 				echo '<p>'. __('Try searching our site for what you are after.') .'</p></div>' . "\n";

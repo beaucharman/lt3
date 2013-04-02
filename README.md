@@ -19,6 +19,7 @@
 - better columns engine for posts types and taxonomies
 - add more custom fields
 - add more functionlity to site-settings
+- convert custom taxonomy and post type functions into classes
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)

@@ -23,19 +23,19 @@
   To declare a custom post type, simply add a new custom post type array to the
   `lt3_$custom_post_types` master array, with required key and value pairs of:
   array(
-    'slug_singular' => '',
-    'name_singular' => '',
-    'name_plural'   => '',
-  //and optional pairs of:
-    'description'   => '',
-    'public'        => true,
-    'menu_position' => 20,
-    'menu_icon'     => NULL,
-    'hierarchical'  => true,
-    'supports'      => array(''),
-    'taxonomies'    => array(''),
-    'has_archive'   => true,
-    'rewrite'       => true
+    'name'           => '',
+    'label_singular' => '',
+    'label_plural'   => '',
+    //and optional pairs of:
+    'description'    => '',
+    'public'         => true,
+    'menu_position'  => 20,
+    'menu_icon'      => null,
+    'hierarchical'   => false,
+    'supports'       => array(''),
+    'taxonomies'     => array(''),
+    'has_archive'    => true,
+    'rewrite'        => true
   )
 ------------------------------------------------ */
 
@@ -58,23 +58,23 @@ function lt3_create_custom_post_types()
   foreach($lt3_custom_post_types_array as $cpt)
   {
     $labels = array(
-      'name'               => __($cpt['name_plural']),
-      'singular_name'      => __($cpt['name_singular']),
-      'add_new_item'       => __('Add New '. $cpt['name_singular']),
-      'edit_item'          => __('Edit '. $cpt['name_singular']),
-      'new_item'           => __('New '. $cpt['name_singular']),
-      'view_item'          => __('View '. $cpt['name_singular']),
-      'search_items'       => __('Search '. $cpt['name_plural']),
-      'not_found'          => __('No '. $cpt['name_plural'] .' found'),
-      'not_found_in_trash' => __('No '. $cpt['name_plural'] .' found in Trash')
+      'name'               => __($cpt['label_plural']),
+      'singular_name'      => __($cpt['label_singular']),
+      'add_new_item'       => __('Add New '. $cpt['label_singular']),
+      'edit_item'          => __('Edit '. $cpt['label_singular']),
+      'new_item'           => __('New '. $cpt['label_singular']),
+      'view_item'          => __('View '. $cpt['label_singular']),
+      'search_items'       => __('Search '. $cpt['label_plural']),
+      'not_found'          => __('No '. $cpt['label_plural'] .' found'),
+      'not_found_in_trash' => __('No '. $cpt['label_plural'] .' found in Trash')
     );
     register_post_type(
-      $cpt['slug_singular'], array(
+      $cpt['name'], array(
         'labels'           => $labels,
         'description'      => ($cpt['description'])   ? $cpt['description'] : '',
         'public'           => ($cpt['public'])        ? $cpt['public'] : true,
         'menu_position'    => ($cpt['menu_position']) ? $cpt['menu_position'] : 20,
-        'menu_icon'        => ($cpt['menu_icon'])     ? $cpt['menu_icon'] : NULL,
+        'menu_icon'        => ($cpt['menu_icon'])     ? $cpt['menu_icon'] : null,
         'hierarchical'     => ($cpt['hierarchical'])  ? $cpt['hierarchical'] : false,
         'supports'         => ($cpt['supports'])      ? $cpt['supports'] : array('title', 'editor', 'thumbnail'),
         'taxonomies'       => ($cpt['taxonomies'])    ? $cpt['taxonomies'] : array(),
@@ -97,9 +97,9 @@ function custom_post_type_title_text()
   $screen = get_current_screen();
   foreach($lt3_custom_post_types_array as $cpt)
   {
-    if ($cpt['slug_singular'] == $screen->post_type)
+    if ($cpt['name'] == $screen->post_type)
     {
-      $title = 'Enter '. $cpt['name_singular'] .' Title Here';
+      $title = 'Enter '. $cpt['label_singular'] .' Title Here';
       break;
     }
   }
@@ -111,7 +111,7 @@ function custom_post_type_title_text()
   Flush permalink rewrites after creating custom post types and taxonomies
 
 ------------------------------------------------ */
-//add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
+add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
 function lt3_post_type_and_taxonomy_flush_rewrites()
 {
   global $wp_rewrite;

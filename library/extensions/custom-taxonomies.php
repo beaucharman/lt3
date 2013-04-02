@@ -18,21 +18,21 @@
 
   To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
   array(
-    'slug_singular'         => '',
-    'name_singular'         => '',
-    'name_plural'           => '',
+    'name'                  => '',
+    'label_singular'        => '',
+    'label_plural'          => '',
+    'post_type'             => array(''),
     // and optional values of:
     'public'                => true,
-    'show_in_nav_menus'     => true,
     'show_ui'               => true,
+    'show_in_nav_menus'     => true,
     'show_tagcloud'         => true,
-    'hierarchical'          => true,
-    'update_count_callback' => NULL,
+    'hierarchical'          => false,
+    'update_count_callback' => null,
     'query_var'             => true,
     'rewrite'               => true,
     'capabilities'          => array(),
-    'sort'                  => NULL,
-    'post_type'             => array('')
+    'sort'                  => null
   )
 ------------------------------------------------ */
 
@@ -55,28 +55,28 @@ function lt3_register_taxonomies()
   foreach($lt3_custom_taxonomies as $ct)
   {
     $labels = array(
-      'name'                  => __($ct['name_plural'], $ct['name_plural'] . ' general name'),
-      'singular_name'         => __($ct['name_singular'], $ct['name_singular'] . ' singular name'),
-      'search_items'          => __('Search ' . $ct['name_plural']),
-      'all_items'             => __('All ' . $ct['name_plural']),
-      'parent_item'           => __('Parent ' . $ct['name_singular']),
-      'parent_item_colon'     => __('Parent '. $ct['name_singular'] .':'),
-      'edit_item'             => __('Edit '. $ct['name_singular']),
-      'update_item'           => __('Update ' . $ct['name_singular']),
-      'add_new_item'          => __('Add New ' . $ct['name_singular']),
-      'new_item_name'         => __('New ' . $ct['name_singular']),
-      'menu_name'             => __($ct['name_plural'])
+      'name'                  => __($ct['label_plural'], $ct['label_plural'] . ' general name'),
+      'singular_name'         => __($ct['label_singular'], $ct['label_singular'] . ' singular name'),
+      'search_items'          => __('Search ' . $ct['label_plural']),
+      'all_items'             => __('All ' . $ct['label_plural']),
+      'parent_item'           => __('Parent ' . $ct['label_singular']),
+      'parent_item_colon'     => __('Parent '. $ct['label_singular'] .':'),
+      'edit_item'             => __('Edit '. $ct['label_singular']),
+      'update_item'           => __('Update ' . $ct['label_singular']),
+      'add_new_item'          => __('Add New ' . $ct['label_singular']),
+      'new_item_name'         => __('New ' . $ct['label_singular']),
+      'menu_name'             => __($ct['label_plural'])
     );
-    register_taxonomy($ct['slug_singular'], $ct['post_type'], array(
+    register_taxonomy($ct['name'], $ct['post_type'], array(
       'labels'                => $labels,
       'public'                => ($ct['public'])                ? $ct['public'] : true,
-      'show_in_nav_menus'     => ($ct['show_in_nav_menus'])     ? $ct['show_in_nav_menus'] : true,
       'show_ui'               => ($ct['show_ui'])               ? $ct['show_ui'] : true,
+      'show_in_nav_menus'     => ($ct['show_in_nav_menus'])     ? $ct['show_in_nav_menus'] : true,
       'show_tagcloud'         => ($ct['show_tagcloud'])         ? $ct['show_tagcloud'] : true,
       'show_admin_column'     => ($ct['show_admin_column'])     ? $ct['show_admin_column'] : false,
       'hierarchical'          => ($ct['hierarchical'])          ? $ct['hierarchical'] : false,
       'update_count_callback' => ($ct['update_count_callback']) ? $ct['update_count_callback'] : null,
-      'query_var'             => ($ct['query_var'])             ? $ct['query_var'] : $ct['slug_plural'],
+      'query_var'             => ($ct['query_var'])             ? $ct['query_var'] : $ct['name'],
       'rewrite'               => ($ct['rewrite'])               ? $ct['rewrite'] : true,
       'capabilities'          => ($ct['capabilities'])          ? $ct['capabilities'] : array(),
       'sort'                  => ($ct['sort'])                  ? $ct['sort'] : null
