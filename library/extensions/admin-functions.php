@@ -66,7 +66,7 @@ if(LT3_ENABLE_TUTORIAL_SECTION)
 
 /* Remove gobal comments functionality
 ------------------------------------------------ */
-if(!OOTS_ENABLE_GLOBAL_COMMENTS)
+if(!LT3_ENABLE_GLOBAL_COMMENTS)
 {
   /* Remove the comments admin menu item */
   add_action( 'admin_menu', 'lt3_remove_admin_menus' );
@@ -82,7 +82,7 @@ if(!OOTS_ENABLE_GLOBAL_COMMENTS)
     $post_types = get_post_types('', 'names');
     foreach ($post_types as $post_type) {
       remove_post_type_support($post_type, 'comments');
-    }  
+    }
   }
 
   /* Remove comments notifications from the adminbar */
@@ -100,6 +100,7 @@ if(!OOTS_ENABLE_GLOBAL_COMMENTS)
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
   }
 }
+
 /* Remove Widgets from Admin
 ------------------------------------------------ */
 function lt3_remove_dashboard_widgets()
