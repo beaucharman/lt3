@@ -24,7 +24,6 @@
 
   <title><?php lt3_title(); ?></title>
 
-  <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
   <meta name="description" content="<?php lt3_meta_tag_description(); ?>">
   <meta name="viewport" content="width=device-width">
 
@@ -45,9 +44,11 @@
 
   <header role="banner" class="page-header">
 
+    <?php if(is_home() || is_front_page()) echo '<h1>'; ?>
     <a href="<?php echo home_url(); ?>/" title="<?php echo the_title_attribute(); ?>">
       <?php bloginfo('name'); ?>
     </a>
+    <?php if(is_home() || is_front_page()) echo '</h1>'; ?>
 
     <p class="site-description"><?php bloginfo('description'); ?></p>
 
