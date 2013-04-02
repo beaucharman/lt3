@@ -64,28 +64,42 @@ if(LT3_ENABLE_TUTORIAL_SECTION)
 	}
 }
 
-/* Remove Comments Functionality
+/* Remove gobal comments functionality
 ------------------------------------------------ */
 if(!OOTS_ENABLE_GLOBAL_COMMENTS)
 {
-  add_action( 'admin_menu', 'my_remove_admin_menus' );
-  function my_remove_admin_menus() {
-      remove_menu_page( 'edit-comments.php' );
+  /* Remove the comments admin menu item */
+  add_action( 'admin_menu', 'lt3_remove_admin_menus' );
+  function lt3_remove_admin_menus()
+  {
+    remove_menu_page( 'edit-comments.php' );
   }
-  
-  add_action('init', 'remove_comment_support', 100);
-  function remove_comment_support() {
-      remove_post_type_support( 'post', 'comments' );
-      remove_post_type_support( 'page', 'comments' );
+
+  /* Remove comments support for all post types */
+  add_action('init', 'lt3_remove_comment_support', 100);
+  function lt3_remove_comment_support()
+  {
+    $post_types = get_post_types('', 'names');
+    foreach ($post_types as $post_type) {
+      remove_post_type_support($post_type, 'comments');
+    }  
   }
-  
-  add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
-  function mytheme_admin_bar_render() {
-      global $wp_admin_bar;
-      $wp_admin_bar->remove_menu('comments');
+
+  /* Remove comments notifications from the adminbar */
+  add_action( 'wp_before_admin_bar_render', 'lt3_admin_bar_render' );
+  function lt3_admin_bar_render()
+  {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+  }
+
+  /* Remove the comments Dashboardwidget */
+  add_action('wp_dashboard_setup', 'lt3_remove_comments_dashboard_widget');
+  function lt3_remove_comments_dashboard_widget()
+  {
+    remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
   }
 }
-
 /* Remove Widgets from Admin
 ------------------------------------------------ */
 function lt3_remove_dashboard_widgets()
