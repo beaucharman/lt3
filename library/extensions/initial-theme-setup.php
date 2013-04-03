@@ -49,10 +49,6 @@ function lt3_initial_theme_setup()
       update_option($key, $value);
     }
 
-    /* Add Theme Support
-    ------------------------------------------------ */
-    add_theme_support('post-thumbnails');
-
     /* Add RSS links to <head> section
     ------------------------------------------------ */
     add_theme_support('automatic-feed-links');

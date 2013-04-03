@@ -40,18 +40,19 @@
 Field: All require the following parameters: type, id & label
 ------------------------------------------------ */
 $lt3_custom_meta_fields_array = array();
+
 /*
 
   Create each custom meta field box instance
 
 ------------------------------------------------ */
-add_action('load-post.php', 'lt3_create_meta_boxes');
+add_action('init', 'lt3_create_meta_boxes');
 function lt3_create_meta_boxes()
 {
   global $lt3_custom_meta_fields_array;
   foreach($lt3_custom_meta_fields_array as $cmfb)
   {
-    new Custom_Field_Meta_Box($cmfb);
+    new LT3_Custom_Field_Meta_Box($cmfb);
   }
 }
 
@@ -60,24 +61,24 @@ function lt3_create_meta_boxes()
   Class structure for a custom meta field box
 
 ------------------------------------------------ */
-class Custom_Field_Meta_Box
+class LT3_Custom_Field_Meta_Box
 {
   protected $_cmfb;
   function __construct($cmfb)
   {
     $this->_cmfb = $cmfb;
-    add_action('add_meta_boxes', array( &$this, 'lt3_add_custom_meta_field_box'));
-    add_action('save_post', array( &$this, 'lt3_save_data'));
+    add_action('add_meta_boxes', array( &$this, 'add_custom_meta_field_box'));
+    add_action('save_post', array( &$this, 'save_data'));
   }
 
   /* Add the Meta Box
   ------------------------------------------------ */
-  function lt3_add_custom_meta_field_box()
+  function add_custom_meta_field_box()
   {
     add_meta_box(
       ($this->_cmfb['id'])        ? $this->_cmfb['id']        : 'custom_meta_field_box',
       ($this->_cmfb['title'])     ? $this->_cmfb['title']     : 'Custom Meta Field Box',
-      array( &$this, 'lt3_show_custom_meta_field_box'),
+      array( &$this, 'show_custom_meta_field_box'),
       ($this->_cmfb['post_type']) ? $this->_cmfb['post_type'] : 'post',
       ($this->_cmfb['context'])   ? $this->_cmfb['context']   : 'advanced',
       ($this->_cmfb['priority'])  ? $this->_cmfb['priority']  : 'default'
@@ -86,7 +87,7 @@ class Custom_Field_Meta_Box
 
   /* Show the Meta box
   ------------------------------------------------ */
-  function lt3_show_custom_meta_field_box()
+  function show_custom_meta_field_box()
   {
     global $post;
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
@@ -205,7 +206,7 @@ class Custom_Field_Meta_Box
 
   /* Save the data
   ------------------------------------------------ */
-  function lt3_save_data($post_id)
+  function save_data($post_id)
   {
     if (!wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
     {

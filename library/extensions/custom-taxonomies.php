@@ -34,6 +34,30 @@
     'capabilities'          => array(),
     'sort'                  => null
   )
+
+  new LT3_Custom_Taxonomy(
+    'name',
+    array(
+      'book'
+    ),
+    array(
+      'label_singular'        => 'Type',
+      'label_plural'          => 'Types',
+      'menu_label'            => 'Tpy'
+    ),
+    array(
+      'public'                => true,
+      'show_ui'               => true,
+      'show_in_nav_menus'     => true,
+      'show_tagcloud'         => true,
+      'hierarchical'          => false,
+      'update_count_callback' => null,
+      'query_var'             => true,
+      'rewrite'               => true,
+      'capabilities'          => array(),
+      'sort'                  => null
+    )
+  );
 ------------------------------------------------ */
 
 /*
@@ -41,46 +65,71 @@
   Declare Taxonomies
 
 ------------------------------------------------ */
-$lt3_custom_taxonomies = array();
 
 /*
 
   Register Taxonomies
 
 ------------------------------------------------ */
-add_action('init', 'lt3_register_taxonomies', 0);
-function lt3_register_taxonomies()
+class LT3_Custom_Taxonomy
 {
-  global $lt3_custom_taxonomies;
-  foreach($lt3_custom_taxonomies as $ct)
+  public $name;
+  public $post_type;
+  public $labels;
+  public $options;
+
+  /* Class constructor */
+  public function __construct($name, $post_type, $labels, $options = array())
   {
+    $this->name      = strtolower(str_replace(' ', '_', $name));
+    $this->post_type = $post_type;
+    $this->labels    = $labels;
+    $this->options   = $options;
+
+    if(!taxonomy_exists($this->name))
+    {
+      add_action('init', array(&$this, 'register_custom_taxonomies'), 0);
+    }
+  }
+
+  public function register_custom_taxonomies()
+  {
+
     $labels = array(
-      'name'                  => __($ct['label_plural'], $ct['label_plural'] . ' general name'),
-      'singular_name'         => __($ct['label_singular'], $ct['label_singular'] . ' singular name'),
-      'search_items'          => __('Search ' . $ct['label_plural']),
-      'all_items'             => __('All ' . $ct['label_plural']),
-      'parent_item'           => __('Parent ' . $ct['label_singular']),
-      'parent_item_colon'     => __('Parent '. $ct['label_singular'] .':'),
-      'edit_item'             => __('Edit '. $ct['label_singular']),
-      'update_item'           => __('Update ' . $ct['label_singular']),
-      'add_new_item'          => __('Add New ' . $ct['label_singular']),
-      'new_item_name'         => __('New ' . $ct['label_singular']),
-      'menu_name'             => __($ct['label_plural'])
+      'name'                  => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
+      'singular_name'         => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
+      'menu_name'             => ($this->labels['menu_label'])
+        ? __($this->labels['menu_label']) : __($this->labels['label_plural']),
+      'search_items'          => __('Search ' . $this->labels['label_plural']),
+      'all_items'             => __('All ' . $this->labels['label_plural']),
+      'parent_item'           => __('Parent ' . $this->labels['label_singular']),
+      'parent_item_colon'     => __('Parent '. $this->labels['label_singular'] .':'),
+      'edit_item'             => __('Edit '. $this->labels['label_singular']),
+      'update_item'           => __('Update ' . $this->labels['label_singular']),
+      'add_new_item'          => __('Add New ' . $this->labels['label_singular']),
+      'new_item_name'         => __('New ' . $this->labels['label_singular']),
+
     );
-    register_taxonomy($ct['name'], $ct['post_type'], array(
-      'labels'                => $labels,
-      'public'                => ($ct['public'])                ? $ct['public'] : true,
-      'show_ui'               => ($ct['show_ui'])               ? $ct['show_ui'] : true,
-      'show_in_nav_menus'     => ($ct['show_in_nav_menus'])     ? $ct['show_in_nav_menus'] : true,
-      'show_tagcloud'         => ($ct['show_tagcloud'])         ? $ct['show_tagcloud'] : true,
-      'show_admin_column'     => ($ct['show_admin_column'])     ? $ct['show_admin_column'] : false,
-      'hierarchical'          => ($ct['hierarchical'])          ? $ct['hierarchical'] : false,
-      'update_count_callback' => ($ct['update_count_callback']) ? $ct['update_count_callback'] : null,
-      'query_var'             => ($ct['query_var'])             ? $ct['query_var'] : $ct['name'],
-      'rewrite'               => ($ct['rewrite'])               ? $ct['rewrite'] : true,
-      'capabilities'          => ($ct['capabilities'])          ? $ct['capabilities'] : array(),
-      'sort'                  => ($ct['sort'])                  ? $ct['sort'] : null
-    ));
+
+    $options = array_merge(
+      array(
+        'labels'                => $labels,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_nav_menus'     => true,
+        'show_tagcloud'         => true,
+        'show_admin_column'     => false,
+        'hierarchical'          => false,
+        'update_count_callback' => null,
+        'query_var'             => $this->name,
+        'rewrite'               => true,
+        'capabilities'          => array(),
+        'sort'                  => null
+      ),
+      $this->options
+    );
+
+    register_taxonomy($this->name, $this->post_type, $options);
   }
 }
 
@@ -103,13 +152,13 @@ function lt3_todo_restrict_manage_posts()
       $tax_obj = get_taxonomy($tax_slug);
       wp_dropdown_categories(array(
         'show_option_all' => __('Show All '.$tax_obj->label),
-        'taxonomy' => $tax_slug,
-        'name' => $tax_obj->name,
-        'orderby' => 'term_order',
-        'selected' => $_GET[$tax_obj->query_var],
-        'hierarchical' => $tax_obj->hierarchical,
-        'show_count' => false,
-        'hide_empty' => true
+        'taxonomy'        => $tax_slug,
+        'name'            => $tax_obj->name,
+        'orderby'         => 'term_order',
+        'selected'        => $_GET[$tax_obj->query_var],
+        'hierarchical'    => $tax_obj->hierarchical,
+        'show_count'      => false,
+        'hide_empty'      => true
       ));
     }
   }

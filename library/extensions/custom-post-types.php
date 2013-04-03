@@ -38,6 +38,23 @@
     'has_archive'    => true,
     'rewrite'        => true
   )
+
+  new LT3_Custom_Post_Type('book',
+  array(
+    'label_singular' => 'Book Title',
+    'label_plural'   => 'Book Titles',
+    'menu_label'     => 'Books'
+  ),
+  array(
+    'public'         => true,
+    'menu_icon'      => null,
+    'hierarchical'   => false,
+    'supports'       => array('title', 'thumbnail'),
+    'taxonomies'     => array(''),
+    'has_archive'    => true,
+    'rewrite'        => true
+  )
+);
 ------------------------------------------------ */
 
 /*
@@ -45,20 +62,36 @@
  Declare custom post types
 
 ------------------------------------------------ */
-$lt3_custom_post_types_array = array();
 
 /*
 
   Register custom post types
 
 ------------------------------------------------ */
-add_action('init', 'lt3_create_custom_post_types');
-function lt3_create_custom_post_types()
+class LT3_Custom_Post_Type
 {
-  global $lt3_custom_post_types_array;
-  foreach($lt3_custom_post_types_array as $cpt)
+  public $name;
+  public $labels;
+  public $options;
+
+  /* Class constructor */
+  public function __construct($name, $labels = array(), $options = array())
+  {
+    $this->name    = strtolower(str_replace(' ', '_', $name));
+    $this->labels  = $labels;
+    $this->options = $options;
+
+    if(!post_type_exists($this->name))
+    {
+      add_action('init', array(&$this, 'register_custom_post_type'));
+      add_filter('enter_title_here', array(&$this, 'custom_post_type_title_text'));
+    }
+  }
+
+  public function register_custom_post_type()
   {
     $labels = array(
+<<<<<<< HEAD
       'name'               => __($cpt['label_plural']),
       'singular_name'      => __($cpt['label_singular']),
       'menu_name'          => ($cpt['menu_label']) ? __($cpt['menu_label']) : __($cpt['label_plural']),
@@ -70,43 +103,55 @@ function lt3_create_custom_post_types()
       'search_items'       => __('Search '. $cpt['label_plural']),
       'not_found'          => __('No '. $cpt['label_plural'] .' found'),
       'not_found_in_trash' => __('No '. $cpt['label_plural'] .' found in Trash'),
+=======
+      'name'               => __($this->labels['label_plural']),
+      'singular_name'      => __($this->labels['label_singular']),
+      'menu_name'          => ($this->labels['menu_label'])
+        ? __($this->labels['menu_label']) : __($this->labels['label_plural']),
+      'add_new_item'       => __('Add New '. $this->labels['label_singular']),
+      'edit_item'          => __('Edit '. $this->labels['label_singular']),
+      'new_item'           => __('New '. $this->labels['label_singular']),
+      'all_items'          => __('All '. $this->labels['label_plural']),
+      'view_item'          => __('View '. $this->labels['label_singular']),
+      'search_items'       => __('Search '. $this->labels['label_plural']),
+      'not_found'          => __('No '. $this->labels['label_plural'] .' found'),
+      'not_found_in_trash' => __('No '. $this->labels['label_plural'] .' found in Trash')
+>>>>>>> Core
     );
-    register_post_type(
-      $cpt['name'], array(
+
+    $options = array_merge(
+      array(
         'labels'           => $labels,
-        'description'      => ($cpt['description'])   ? $cpt['description'] : '',
-        'public'           => ($cpt['public'])        ? $cpt['public'] : true,
-        'menu_position'    => ($cpt['menu_position']) ? $cpt['menu_position'] : 20,
-        'menu_icon'        => ($cpt['menu_icon'])     ? $cpt['menu_icon'] : null,
-        'hierarchical'     => ($cpt['hierarchical'])  ? $cpt['hierarchical'] : false,
-        'supports'         => ($cpt['supports'])      ? $cpt['supports'] : array('title', 'editor', 'thumbnail'),
-        'taxonomies'       => ($cpt['taxonomies'])    ? $cpt['taxonomies'] : array(),
-        'has_archive'      => ($cpt['has_archive'])   ? $cpt['has_archive'] : true,
-        'rewrite'          => ($cpt['rewrite'])       ? $cpt['rewrite'] : true
-      )
+        'description'      => '',
+        'public'           => true,
+        'menu_position'    => 20,
+        'menu_icon'        => null,
+        'hierarchical'     => false,
+        'supports'         => array('title', 'editor', 'thumbnail'),
+        'taxonomies'       => array(),
+        'has_archive'      => true,
+        'rewrite'          => true
+      ),
+      $this->options
     );
+
+    register_post_type($this->name, $options);
   }
-}
 
-/*
+  /*
 
-  Change title placeholder for custom post types
+    Change title placeholder for custom post types
 
------------------------------------------------- */
-add_filter('enter_title_here', 'custom_post_type_title_text');
-function custom_post_type_title_text()
-{
-  global $lt3_custom_post_types_array;
-  $screen = get_current_screen();
-  foreach($lt3_custom_post_types_array as $cpt)
+  ------------------------------------------------ */
+  public function custom_post_type_title_text()
   {
-    if ($cpt['name'] == $screen->post_type)
+    $screen = get_current_screen();
+    if ($this->name == $screen->post_type)
     {
-      $title = 'Enter '. $cpt['label_singular'] .' Title Here';
-      break;
+      $title = 'Enter '. $this->labels['label_singular'] .' Title Here';
     }
+    return $title;
   }
-  return $title;
 }
 
 /*

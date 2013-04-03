@@ -29,6 +29,10 @@ if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
 ------------------------------------------------ */
 set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
 
+/* Add Theme Support
+------------------------------------------------ */
+add_theme_support('post-thumbnails');
+
 /* Add Custom Image Styles
 ------------------------------------------------ */
 add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
