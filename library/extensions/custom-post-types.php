@@ -91,19 +91,6 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     $labels = array(
-<<<<<<< HEAD
-      'name'               => __($cpt['label_plural']),
-      'singular_name'      => __($cpt['label_singular']),
-      'menu_name'          => ($cpt['menu_label']) ? __($cpt['menu_label']) : __($cpt['label_plural']),
-      'add_new_item'       => __('Add New '. $cpt['label_singular']),
-      'edit_item'          => __('Edit '. $cpt['label_singular']),
-      'new_item'           => __('New '. $cpt['label_singular']),
-      'all_items'          => __('All '. $cpt['label_plural']),
-      'view_item'          => __('View '. $cpt['label_singular']),
-      'search_items'       => __('Search '. $cpt['label_plural']),
-      'not_found'          => __('No '. $cpt['label_plural'] .' found'),
-      'not_found_in_trash' => __('No '. $cpt['label_plural'] .' found in Trash'),
-=======
       'name'               => __($this->labels['label_plural']),
       'singular_name'      => __($this->labels['label_singular']),
       'menu_name'          => ($this->labels['menu_label'])
@@ -116,7 +103,6 @@ class LT3_Custom_Post_Type
       'search_items'       => __('Search '. $this->labels['label_plural']),
       'not_found'          => __('No '. $this->labels['label_plural'] .' found'),
       'not_found_in_trash' => __('No '. $this->labels['label_plural'] .' found in Trash')
->>>>>>> Core
     );
 
     $options = array_merge(
