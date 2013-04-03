@@ -27,6 +27,7 @@
     'label_singular' => '',
     'label_plural'   => '',
     //and optional pairs of:
+    'menu_label'     => '',
     'description'    => '',
     'public'         => true,
     'menu_position'  => 20,
@@ -60,13 +61,15 @@ function lt3_create_custom_post_types()
     $labels = array(
       'name'               => __($cpt['label_plural']),
       'singular_name'      => __($cpt['label_singular']),
+      'menu_name'          => ($cpt['menu_label']) ? __($cpt['menu_label']) : __($cpt['label_plural']),
       'add_new_item'       => __('Add New '. $cpt['label_singular']),
       'edit_item'          => __('Edit '. $cpt['label_singular']),
       'new_item'           => __('New '. $cpt['label_singular']),
+      'all_items'          => __('All '. $cpt['label_plural']),
       'view_item'          => __('View '. $cpt['label_singular']),
       'search_items'       => __('Search '. $cpt['label_plural']),
       'not_found'          => __('No '. $cpt['label_plural'] .' found'),
-      'not_found_in_trash' => __('No '. $cpt['label_plural'] .' found in Trash')
+      'not_found_in_trash' => __('No '. $cpt['label_plural'] .' found in Trash'),
     );
     register_post_type(
       $cpt['name'], array(
