@@ -35,6 +35,46 @@ function lt3_modify_post_mime_types($post_mime_types)
   return $post_mime_types;
 }
 
+/* Adds style select to the TinyMCE Editor
+------------------------------------------------ */
+add_filter('mce_buttons_2', 'lt3_mce_styleselect_editor_buttons');
+function lt3_mce_styleselect_editor_buttons($buttons)
+{
+  array_unshift($buttons, 'styleselect');
+  return $buttons;
+}
+
+/* Allocate styles for the TinyMCE Editor style select
+------------------------------------------------ */
+add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
+function lt3_mce_styleselect_editor_settings($settings) {
+  if (!empty($settings['theme_advanced_styles']))
+  {
+    $settings['theme_advanced_styles'] .= ';';
+  }
+  else
+  {
+    $settings['theme_advanced_styles'] = '';
+  }
+
+  $classes = array(
+    __('Lead')       => 'lead',
+    __('Disclaimer') => 'disclaimer',
+    __('Warning')    => 'warning',
+    __('Notice')     => 'notice',
+    __('Muted')      => 'muted',
+  );
+
+  $class_settings = '';
+  foreach ( $classes as $name => $value )
+  {
+    $class_settings .= "{$name}={$value};";
+  }
+
+  $settings['theme_advanced_styles'] .= trim($class_settings, '; ');
+  return $settings;
+}
+
 /* Add more buttons to the TinyMCE editor
 ------------------------------------------------ */
 if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
