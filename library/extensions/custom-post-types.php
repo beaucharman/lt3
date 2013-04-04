@@ -38,17 +38,46 @@
     'taxonomies'     => array(''),
     'has_archive'    => true,
     'rewrite'        => true
+<<<<<<< HEAD
   );
+=======
+  )
 
-  new LT3_Custom_Post_Type('name', $labels, $options);
-  
+  $labels =  array(
+    'label_singular' => 'Book Title',
+    'label_plural'   => 'Book Titles',
+    'menu_label'     => 'Books'
+  );
+  $options = array(
+    'public'         => true,
+    'menu_icon'      => null,
+    'hierarchical'   => false,
+    'supports'       => array('title', 'thumbnail'),
+    'taxonomies'     => array(''),
+    'has_archive'    => true,
+    'rewrite'        => true
+  );
+  $book = new LT3_Custom_Post_Type('book', $labels, $options);
+
 ------------------------------------------------ */
 
 /*
 
  Declare custom post types
+>>>>>>> Changes
+
+  new LT3_Custom_Post_Type('name', $labels, $options);
+  
+------------------------------------------------ */
+
+<<<<<<< HEAD
+/*
+
+ Declare custom post types
 
 ------------------------------------------------ */
+=======
+>>>>>>> Changes
 class LT3_Custom_Post_Type
 {
   public $name;
@@ -70,7 +99,14 @@ class LT3_Custom_Post_Type
     }
   }
 
+<<<<<<< HEAD
   /* Register custom post types
+=======
+  /*
+
+  Register the custom post type
+
+>>>>>>> Changes
   ------------------------------------------------ */
   public function register_custom_post_type()
   {

@@ -37,10 +37,33 @@
     'rewrite'               => true,
     'capabilities'          => array(),
     'sort'                  => null
+<<<<<<< HEAD
   );
   
   new LT3_Custom_Taxonomy('name', $post_type, $labels, $options)
   
+=======
+  )
+
+  $labels = array(
+    'label_singular'        => 'Book Genres',
+    'label_plural'          => 'Book Genre',
+    'menu_label'            => 'Genre' // optional
+  );
+  $options = array(
+    'public'                => true,
+    'show_ui'               => true,
+    'show_in_nav_menus'     => true,
+    'show_tagcloud'         => true,
+    'hierarchical'          => false,
+    'update_count_callback' => null,
+    'query_var'             => true,
+    'rewrite'               => true,
+    'capabilities'          => array(),
+    'sort'                  => null
+  );
+  $genre = new LT3_Custom_Taxonomy('genre', 'book', $labels, $options);
+>>>>>>> Changes
 ------------------------------------------------ */
 
 /*
