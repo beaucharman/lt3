@@ -16,13 +16,17 @@
 
   You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
 
-  To declare a taxonomy, simply add a taxonomy array to the $lt3_custom_taxonomies array variable, with required values of:
-  array(
-    'name'                  => '',
+  To declare a taxonomy, add a new class.
+
+  $post_type =''; // string or array
+  
+  $labels = array(
     'label_singular'        => '',
     'label_plural'          => '',
-    'post_type'             => array(''),
-    // and optional values of:
+    'menu_label'            => ''
+  );
+  
+  $options = array(
     'public'                => true,
     'show_ui'               => true,
     'show_in_nav_menus'     => true,
@@ -33,42 +37,15 @@
     'rewrite'               => true,
     'capabilities'          => array(),
     'sort'                  => null
-  )
-
-  new LT3_Custom_Taxonomy(
-    'name',
-    array(
-      'book'
-    ),
-    array(
-      'label_singular'        => 'Type',
-      'label_plural'          => 'Types',
-      'menu_label'            => 'Tpy'
-    ),
-    array(
-      'public'                => true,
-      'show_ui'               => true,
-      'show_in_nav_menus'     => true,
-      'show_tagcloud'         => true,
-      'hierarchical'          => false,
-      'update_count_callback' => null,
-      'query_var'             => true,
-      'rewrite'               => true,
-      'capabilities'          => array(),
-      'sort'                  => null
-    )
   );
+  
+  new LT3_Custom_Taxonomy('name', $post_type, $labels, $options)
+  
 ------------------------------------------------ */
 
 /*
 
   Declare Taxonomies
-
------------------------------------------------- */
-
-/*
-
-  Register Taxonomies
 
 ------------------------------------------------ */
 class LT3_Custom_Taxonomy
@@ -92,6 +69,8 @@ class LT3_Custom_Taxonomy
     }
   }
 
+  /* Register Taxonomies
+  ------------------------------------------------ */
   public function register_custom_taxonomies()
   {
 
