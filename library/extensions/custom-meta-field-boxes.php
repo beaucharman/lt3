@@ -143,7 +143,7 @@ class LT3_Custom_Field_Meta_Box
             echo '<ul>';
             foreach($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-              $post_type_label = (isset($field['post_type'][1])) ? '<small>('.$item->post_type.')</small>' : '';
+              post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type'])) ? '<small>('.$item->post_type.')</small>' : '';
               echo '<li>';
               echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '<label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
