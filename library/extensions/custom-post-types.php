@@ -41,6 +41,7 @@
   );
 
   new LT3_Custom_Post_Type('name', $labels, $options);
+  
 ------------------------------------------------ */
 
 /*
