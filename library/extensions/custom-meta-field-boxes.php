@@ -16,7 +16,7 @@
   Simply add a new array to the $lt3_custom_meta_fields_array variable.
   Use the following as your key and value pairs:
 
-  array(
+  $args = array(
     'id'              => '',
     'title'           => '',
     'post_type'       => '', // 'post', 'page', 'link', 'attachment' a custom post type slug, or array
@@ -29,32 +29,11 @@
         'label'       => ''
       )
     )
-  )
------------------------------------------------- */
+  );
 
-/*
-
-    Delcare the meta boxes
-
-------------------------------------------------
-Field: All require the following parameters: type, id & label
------------------------------------------------- */
-$lt3_custom_meta_fields_array = array();
-
-/*
-
-  Create each custom meta field box instance
+  new LT3_Custom_Field_Meta_Box($args);
 
 ------------------------------------------------ */
-add_action('init', 'lt3_create_meta_boxes');
-function lt3_create_meta_boxes()
-{
-  global $lt3_custom_meta_fields_array;
-  foreach($lt3_custom_meta_fields_array as $cmfb)
-  {
-    new LT3_Custom_Field_Meta_Box($cmfb);
-  }
-}
 
 /*
 
@@ -138,19 +117,21 @@ class LT3_Custom_Field_Meta_Box
             'post_type' => $field['post_type'],
             'posts_per_page' => -1)
           );
-          
-          if($items):
+
+          if($items)
+          {
             echo '<ul>';
             foreach($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-              post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type'])) ? '<small>('.$item->post_type.')</small>' : '';
+              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type'])) ? '<small>('.$item->post_type.')</small>' : '';
               echo '<li>';
               echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '<label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
               echo '</li>';
               endforeach;
             echo '</ul>';
-          else 
+          }
+          else
           {
             echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
           }

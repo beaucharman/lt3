@@ -20,6 +20,8 @@
 - add more custom fields
 - add more functionlity to site-settings
 - convert custom taxonomy and post type functions into classes
+- Tabbed settings page http://wp.smashingmagazine.com/2011/10/20/create-tabs-wordpress-settings-pages/
+- add a custom user role extension
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)

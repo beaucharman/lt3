@@ -19,23 +19,6 @@
   echo $lt3_site_settings['setting_id'])
 ------------------------------------------------ */
 
-/*
-
-  Declare the settings array
-
-------------------------------------------------
-All accept id & type
------------------------------------------------- */
-$lt3_site_settings_array = array(
-  array(
-    'id'             => 'google_analytics',
-    'type'           => 'text',
-    'label'          => 'Google Analytics Code',
-    'description'    => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder'    => 'UA-XXXXX-X'
-  )
-);
-
 /* Initialise the settings page and
   set the $lt3_site_settings global variable.
 ------------------------------------------------ */

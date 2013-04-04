@@ -18,38 +18,14 @@
 
   To declare a taxonomy, add a new class.
 
-  $post_type =''; // string or array
-  
+  $post_type = ''; // string or array
+
   $labels = array(
     'label_singular'        => '',
     'label_plural'          => '',
     'menu_label'            => ''
   );
-  
-  $options = array(
-    'public'                => true,
-    'show_ui'               => true,
-    'show_in_nav_menus'     => true,
-    'show_tagcloud'         => true,
-    'hierarchical'          => false,
-    'update_count_callback' => null,
-    'query_var'             => true,
-    'rewrite'               => true,
-    'capabilities'          => array(),
-    'sort'                  => null
-<<<<<<< HEAD
-  );
-  
-  new LT3_Custom_Taxonomy('name', $post_type, $labels, $options)
-  
-=======
-  )
 
-  $labels = array(
-    'label_singular'        => 'Book Genres',
-    'label_plural'          => 'Book Genre',
-    'menu_label'            => 'Genre' // optional
-  );
   $options = array(
     'public'                => true,
     'show_ui'               => true,
@@ -62,13 +38,16 @@
     'capabilities'          => array(),
     'sort'                  => null
   );
-  $genre = new LT3_Custom_Taxonomy('genre', 'book', $labels, $options);
->>>>>>> Changes
+
+  $help = '';
+
+  new LT3_Custom_Taxonomy('name', $post_type, $labels, $options, $help);
+
 ------------------------------------------------ */
 
 /*
 
-  Declare Taxonomies
+  Custom Taxonomies Class
 
 ------------------------------------------------ */
 class LT3_Custom_Taxonomy
@@ -77,18 +56,21 @@ class LT3_Custom_Taxonomy
   public $post_type;
   public $labels;
   public $options;
+  public $help;
 
   /* Class constructor */
-  public function __construct($name, $post_type, $labels, $options = array())
+  public function __construct($name, $post_type, $labels, $options = array(), $help = null)
   {
     $this->name      = strtolower(str_replace(' ', '_', $name));
     $this->post_type = $post_type;
     $this->labels    = $labels;
     $this->options   = $options;
+    $this->help      = $help;
 
     if(!taxonomy_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_taxonomies'), 0);
+      if($this->help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
     }
   }
 
@@ -133,54 +115,16 @@ class LT3_Custom_Taxonomy
 
     register_taxonomy($this->name, $this->post_type, $options);
   }
-}
 
-/*
-
-  Create Taxonomy drop downs for all post types
-
------------------------------------------------- */
-add_action('restrict_manage_posts', 'lt3_todo_restrict_manage_posts');
-function lt3_todo_restrict_manage_posts()
-{
-  global $typenow;
-  $args=array('public' => true, '_builtin' => false);
-  $post_types = get_post_types($args);
-  if (in_array($typenow, $post_types))
+  /* Add contextual help for custom post types
+  ------------------------------------------------ */
+  public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
-    $filters = get_object_taxonomies($typenow);
-    foreach ($filters as $tax_slug)
+    $context = 'edit-' . $this->name;
+    if ($context == $screen->id)
     {
-      $tax_obj = get_taxonomy($tax_slug);
-      wp_dropdown_categories(array(
-        'show_option_all' => __('Show All '.$tax_obj->label),
-        'taxonomy'        => $tax_slug,
-        'name'            => $tax_obj->name,
-        'orderby'         => 'term_order',
-        'selected'        => $_GET[$tax_obj->query_var],
-        'hierarchical'    => $tax_obj->hierarchical,
-        'show_count'      => false,
-        'hide_empty'      => true
-      ));
+      $contextual_help = $this->help;
     }
-  }
-}
-
-add_filter('parse_query','lt3_todo_convert_restrict');
-function lt3_todo_convert_restrict($query)
-{
-  global $pagenow,  $typenow;
-  if ($pagenow=='edit.php')
-  {
-    $filters = get_object_taxonomies($typenow);
-    foreach ($filters as $tax_slug)
-    {
-      $var = &$query->query_vars[$tax_slug];
-      if (isset($var))
-      {
-        $term = get_term_by('id',$var,$tax_slug);
-        $var = $term->slug;
-      }
-    }
+    return $contextual_help;
   }
 }

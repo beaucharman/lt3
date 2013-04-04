@@ -39,10 +39,11 @@ document.documentElement.className = document.documentElement.className.replace(
   }
 }());
 
-/* jQuery No Conflict
--------------------------------------
-Useful to prevent thrid party plugins from conflicting with
-your jQuery because of other libraries they might load in.
-use instead jQuery(function($){ ... });
-------------------------------------- */
-// jQuery.noConflict();
+// jQuery No Conflict
+// To prevent thrid party plugins from conflicting with
+// your jQuery, simple use the following anonymous function:
+/*
+(function ($) {
+  // ...
+}(jQuery));
+*/

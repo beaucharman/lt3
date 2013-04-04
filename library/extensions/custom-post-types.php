@@ -27,7 +27,7 @@
     'label_plural'   => '',
     'menu_label'     => '' // optional
   );
-  
+
   $options = array( // optional
     'description'    => '',
     'public'         => true,
@@ -38,75 +38,55 @@
     'taxonomies'     => array(''),
     'has_archive'    => true,
     'rewrite'        => true
-<<<<<<< HEAD
   );
-=======
-  )
 
-  $labels =  array(
-    'label_singular' => 'Book Title',
-    'label_plural'   => 'Book Titles',
-    'menu_label'     => 'Books'
+  $help = array(
+    array(
+      'message'      => ''
+    ),
+    array(
+      'context'      => 'edit',
+      'message'      => ''
+    )
   );
-  $options = array(
-    'public'         => true,
-    'menu_icon'      => null,
-    'hierarchical'   => false,
-    'supports'       => array('title', 'thumbnail'),
-    'taxonomies'     => array(''),
-    'has_archive'    => true,
-    'rewrite'        => true
-  );
-  $book = new LT3_Custom_Post_Type('book', $labels, $options);
+
+  new LT3_Custom_Post_Type('name', $labels, $options, $help);
 
 ------------------------------------------------ */
 
 /*
 
  Declare custom post types
->>>>>>> Changes
-
-  new LT3_Custom_Post_Type('name', $labels, $options);
-  
------------------------------------------------- */
-
-<<<<<<< HEAD
-/*
-
- Declare custom post types
 
 ------------------------------------------------ */
-=======
->>>>>>> Changes
 class LT3_Custom_Post_Type
 {
   public $name;
   public $labels;
   public $options;
+  public $help;
 
-  /* Class constructor 
+  /* Class constructor
   ------------------------------------------------ */
-  public function __construct($name, $labels, $options = array())
+  public function __construct($name, $labels, $options = array(), $help = null)
   {
     $this->name    = strtolower(str_replace(' ', '_', $name));
     $this->labels  = $labels;
     $this->options = $options;
+    $this->help    = $help;
 
     if(!post_type_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
       add_filter('enter_title_here', array(&$this, 'custom_post_type_title_text'));
+      if($this->help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
     }
   }
 
-<<<<<<< HEAD
-  /* Register custom post types
-=======
   /*
 
   Register the custom post type
 
->>>>>>> Changes
   ------------------------------------------------ */
   public function register_custom_post_type()
   {
@@ -158,16 +138,30 @@ class LT3_Custom_Post_Type
     }
     return $title;
   }
-}
 
-/*
+  /*
 
-  Flush permalink rewrites after creating custom post types and taxonomies
+    Add contextual help for custom post types
 
------------------------------------------------- */
-add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
-function lt3_post_type_and_taxonomy_flush_rewrites()
-{
-  global $wp_rewrite;
-  $wp_rewrite->flush_rules();
+  ------------------------------------------------ */
+  public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
+  {
+    foreach($this->help as $help)
+    {
+      if(!$help['context'])
+      {
+        $context = $this->name;
+      }
+      else
+      {
+        $context = $help['context'] . '-' . $this->name;
+      }
+
+      if ($context == $screen->id)
+      {
+        $contextual_help = $help['message'];
+      }
+    }
+    return $contextual_help;
+  }
 }

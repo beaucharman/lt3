@@ -51,6 +51,7 @@ function lt3_register_header_sidebar()
 		'after_title' => '</h3>'
 	));
 }
+
 /* Primary Sidebar Widgets
 ------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_primary_sidebar');
@@ -66,6 +67,7 @@ function lt3_register_primary_sidebar()
 		'after_title' => '</h3>'
 	));
 }
+
 /* Footer Sidebar
 ------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_footer_sidebar');
