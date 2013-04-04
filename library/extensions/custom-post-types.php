@@ -70,10 +70,7 @@ class LT3_Custom_Post_Type
     }
   }
 
-  /*
-
-    Register custom post types
-  
+  /* Register custom post types
   ------------------------------------------------ */
   public function register_custom_post_type()
   {
