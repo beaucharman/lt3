@@ -138,16 +138,22 @@ class LT3_Custom_Field_Meta_Box
             'post_type' => $field['post_type'],
             'posts_per_page' => -1)
           );
-          echo '<ul>';
-          foreach($items as $item):
-            $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-            $post_type_label = (isset($field['post_type'][1])) ? '<small>('.$item->post_type.')</small>' : '';
-            echo '<li>';
-            echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-            echo '<label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
-            echo '</li>';
-            endforeach;
-          echo '</ul>';
+          
+          if($items):
+            echo '<ul>';
+            foreach($items as $item):
+              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
+              $post_type_label = (isset($field['post_type'][1])) ? '<small>('.$item->post_type.')</small>' : '';
+              echo '<li>';
+              echo '<input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+              echo '<label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
+              echo '</li>';
+              endforeach;
+            echo '</ul>';
+          else 
+          {
+            echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
+          }
           break;
 
         /* file
