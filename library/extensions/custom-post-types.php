@@ -20,14 +20,15 @@
   You can also turn the custom post types declarations into a plugin.
   For more information: http://codex.wordpress.org/Writing_a_Plugin
 
-  To declare a custom post type, simply add a new custom post type array to the
-  `lt3_$custom_post_types` master array, with required key and value pairs of:
-  array(
-    'name'           => '',
+  To declare a custom post type, simply add a new class.
+
+  $labels = array(
     'label_singular' => '',
     'label_plural'   => '',
-    //and optional pairs of:
-    'menu_label'     => '',
+    'menu_label'     => '' // optional
+  );
+  
+  $options = array( // optional
     'description'    => '',
     'public'         => true,
     'menu_position'  => 20,
@@ -37,35 +38,14 @@
     'taxonomies'     => array(''),
     'has_archive'    => true,
     'rewrite'        => true
-  )
+  );
 
-  new LT3_Custom_Post_Type('book',
-  array(
-    'label_singular' => 'Book Title',
-    'label_plural'   => 'Book Titles',
-    'menu_label'     => 'Books'
-  ),
-  array(
-    'public'         => true,
-    'menu_icon'      => null,
-    'hierarchical'   => false,
-    'supports'       => array('title', 'thumbnail'),
-    'taxonomies'     => array(''),
-    'has_archive'    => true,
-    'rewrite'        => true
-  )
-);
+  new LT3_Custom_Post_Type('name', $labels, $options);
 ------------------------------------------------ */
 
 /*
 
  Declare custom post types
-
------------------------------------------------- */
-
-/*
-
-  Register custom post types
 
 ------------------------------------------------ */
 class LT3_Custom_Post_Type
@@ -74,8 +54,9 @@ class LT3_Custom_Post_Type
   public $labels;
   public $options;
 
-  /* Class constructor */
-  public function __construct($name, $labels = array(), $options = array())
+  /* Class constructor 
+  ------------------------------------------------ */
+  public function __construct($name, $labels, $options = array())
   {
     $this->name    = strtolower(str_replace(' ', '_', $name));
     $this->labels  = $labels;
@@ -88,6 +69,11 @@ class LT3_Custom_Post_Type
     }
   }
 
+  /*
+
+    Register custom post types
+  
+  ------------------------------------------------ */
   public function register_custom_post_type()
   {
     $labels = array(
