@@ -131,6 +131,21 @@ blockquote.right {
   float: right;
 }
 
+.lead {
+  font-size: 1.5em;
+}
+
+.disclaimer {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.warning {  }
+
+.notice {  }
+
+.muted {  } 
+
 /* Image and Gallery tyles
 ------------------------------------------------ */
 .hentry img {
