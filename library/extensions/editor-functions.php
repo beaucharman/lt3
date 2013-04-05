@@ -62,7 +62,7 @@ function lt3_mce_styleselect_editor_settings($settings) {
     __('Disclaimer') => 'disclaimer',
     __('Warning')    => 'warning',
     __('Notice')     => 'notice',
-    __('Muted')      => 'muted',
+    __('Muted')      => 'muted'
   );
 
   $class_settings = '';
