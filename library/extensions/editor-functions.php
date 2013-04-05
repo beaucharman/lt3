@@ -11,7 +11,7 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
-	All functionality that effects the admin are post editor.
+	All functionality that effects the admin and post editor.
 ------------------------------------------------ */
 
 /* Add excerpt field to pages
