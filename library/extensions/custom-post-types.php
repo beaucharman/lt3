@@ -51,23 +51,28 @@
   );
 
   new LT3_Custom_Post_Type('name', $labels, $options, $help);
-
 ------------------------------------------------ */
 
 /*
 
- Declare custom post types
+ Declare custom post types class
 
 ------------------------------------------------ */
 class LT3_Custom_Post_Type
 {
   public $name;
   public $labels;
-
   public $options;
   public $help;
 
   /* Class constructor
+  ------------------------------------------------
+    __construct()
+    @param  $name | string
+    @param  $labels | array
+    @param  $options | array
+    @param  $help | array
+    @return post_type object
   ------------------------------------------------ */
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
@@ -84,10 +89,11 @@ class LT3_Custom_Post_Type
     }
   }
 
-  /*
-
-  Register the custom post type
-
+  /* Register custom post type
+  ------------------------------------------------
+    register_custom_post_type()
+    @param  null
+    @return post_type
   ------------------------------------------------ */
   public function register_custom_post_type()
   {
@@ -133,10 +139,12 @@ class LT3_Custom_Post_Type
     register_post_type($this->name, $options);
   }
 
-  /*
-
+  /* Custom post type title text
+  ------------------------------------------------  
+    custom_post_type_title_text()
+    @param  null
+    @return $title | string
     Change title placeholder for custom post types
-
   ------------------------------------------------ */
   public function custom_post_type_title_text()
   {
@@ -148,10 +156,15 @@ class LT3_Custom_Post_Type
     return $title;
   }
 
-  /*
-
-    Add contextual help for custom post types
-
+  /* Add contextual help for custom post types
+  ------------------------------------------------
+    add_custom_contextual_help()
+    @param  $contextual_help
+    @param  $screen_id | integer
+    @param  $screen
+    @return $contextual_help
+    Creates a pretty version of a string, like
+    a pug version of a dog.
   ------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
@@ -174,10 +187,10 @@ class LT3_Custom_Post_Type
     return $contextual_help;
   }
 
-  /* Prettify Words
+  /* Prettify words
   ------------------------------------------------
-    lt3_prettify_words()
-    @arg    $words | string
+    prettify_words()
+    @param  $words | string
     @return string
     Creates a pretty version of a string, like
     a pug version of a dog.
@@ -187,10 +200,10 @@ class LT3_Custom_Post_Type
     return ucwords(str_replace('_', ' ', $words));
   }
 
-  /* Uglify Words
+  /* Uglify words
   ------------------------------------------------
-    lt3_uglify_words()
-    @arg    $words | string
+    uglify_words()
+    @param  $words | string
     @return string
     creates a url firendly version of the given string.
   ------------------------------------------------ */
@@ -199,11 +212,11 @@ class LT3_Custom_Post_Type
     return strToLower(str_replace(' ', '_', $words));
   }
 
-  /* Plurify Words
+  /* Plurify words
   ------------------------------------------------
-    lt3_plurafy_words()
-    @arg    $words | string
-    @return string
+    plurafy_words()
+    @param  $words | string
+    @return $words | string
     Plurifies most common words. Not currently working
     proper nouns, or more complex words, for example
     knife -> knives, leaf -> leaves.
