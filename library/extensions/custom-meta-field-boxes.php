@@ -55,12 +55,12 @@ class LT3_Custom_Field_Meta_Box
   function add_custom_meta_field_box()
   {
     add_meta_box(
-      ($this->_cmfb['id'])        ? $this->_cmfb['id']        : 'custom_meta_field_box',
-      ($this->_cmfb['title'])     ? $this->_cmfb['title']     : 'Custom Meta Field Box',
+      (isset($this->_cmfb['id']))        ? $this->_cmfb['id']        : 'custom_meta_field_box',
+      (isset($this->_cmfb['title']))     ? $this->_cmfb['title']     : 'Custom Meta Field Box',
       array( &$this, 'show_custom_meta_field_box'),
-      ($this->_cmfb['post_type']) ? $this->_cmfb['post_type'] : 'post',
-      ($this->_cmfb['context'])   ? $this->_cmfb['context']   : 'advanced',
-      ($this->_cmfb['priority'])  ? $this->_cmfb['priority']  : 'default'
+      (isset($this->_cmfb['post_type'])) ? $this->_cmfb['post_type'] : 'post',
+      (isset($this->_cmfb['context']))   ? $this->_cmfb['context']   : 'advanced',
+      (isset($this->_cmfb['priority']))  ? $this->_cmfb['priority']  : 'default'
     );
   }
 
