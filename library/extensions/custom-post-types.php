@@ -63,14 +63,15 @@ class LT3_Custom_Post_Type
 {
   public $name;
   public $labels;
+
   public $options;
   public $help;
 
   /* Class constructor
   ------------------------------------------------ */
-  public function __construct($name, $labels, $options = array(), $help = null)
+  public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
-    $this->name    = strtolower(str_replace(' ', '_', $name));
+    $this->name    = $this->uglify_words($name);
     $this->labels  = $labels;
     $this->options = $options;
     $this->help    = $help;
@@ -90,21 +91,28 @@ class LT3_Custom_Post_Type
   ------------------------------------------------ */
   public function register_custom_post_type()
   {
-    $labels = array(
-      'name'               => __($this->labels['label_plural']),
-      'singular_name'      => __($this->labels['label_singular']),
-      'menu_name'          => ($this->labels['menu_label'])
-        ? __($this->labels['menu_label']) : __($this->labels['label_plural']),
-      'add_new_item'       => __('Add New '. $this->labels['label_singular']),
-      'edit_item'          => __('Edit '. $this->labels['label_singular']),
-      'new_item'           => __('New '. $this->labels['label_singular']),
-      'all_items'          => __('All '. $this->labels['label_plural']),
-      'view_item'          => __('View '. $this->labels['label_singular']),
-      'search_items'       => __('Search '. $this->labels['label_plural']),
-      'not_found'          => __('No '. $this->labels['label_plural'] .' found'),
-      'not_found_in_trash' => __('No '. $this->labels['label_plural'] .' found in Trash')
+    /* Create the labels */
+    $label_singular = $this->prettify_words($this->name);
+    $label_plural = $this->plurafy_words($label_singular);
+    $labels = array_merge(
+      array(
+        'name'               => __($label_plural),
+        'singular_name'      => __($label_singular),
+        'menu_name'          => ($this->labels['menu_label'])
+          ? __($this->labels['menu_label']) : __($label_plural),
+        'add_new_item'       => __('Add New '. $label_singular),
+        'edit_item'          => __('Edit '. $label_singular),
+        'new_item'           => __('New '. $label_singular),
+        'all_items'          => __('All '. $label_plural),
+        'view_item'          => __('View '. $label_singular),
+        'search_items'       => __('Search '. $label_plural),
+        'not_found'          => __('No '. $label_plural .' found'),
+        'not_found_in_trash' => __('No '. $label_plural .' found in Trash')
+      ),
+      $this->labels
     );
 
+    /* Configure the options */
     $options = array_merge(
       array(
         'labels'           => $labels,
@@ -113,7 +121,7 @@ class LT3_Custom_Post_Type
         'menu_position'    => 20,
         'menu_icon'        => null,
         'hierarchical'     => false,
-        'supports'         => array('title', 'editor', 'thumbnail'),
+        'supports'         => array('title', 'editor'),
         'taxonomies'       => array(),
         'has_archive'      => true,
         'rewrite'          => true
@@ -121,6 +129,7 @@ class LT3_Custom_Post_Type
       $this->options
     );
 
+    /* Register the new post type */
     register_post_type($this->name, $options);
   }
 
@@ -163,5 +172,55 @@ class LT3_Custom_Post_Type
       }
     }
     return $contextual_help;
+  }
+
+  /* Prettify Words
+  ------------------------------------------------
+    lt3_prettify_words()
+    @arg    $words | string
+    @return string
+    Creates a pretty version of a string, like
+    a pug version of a dog.
+  ------------------------------------------------ */
+  function prettify_words($words)
+  {
+    return ucwords(str_replace('_', ' ', $words));
+  }
+
+  /* Uglify Words
+  ------------------------------------------------
+    lt3_uglify_words()
+    @arg    $words | string
+    @return string
+    creates a url firendly version of the given string.
+  ------------------------------------------------ */
+  function uglify_words($words)
+  {
+    return strToLower(str_replace(' ', '_', $words));
+  }
+
+  /* Plurify Words
+  ------------------------------------------------
+    lt3_plurafy_words()
+    @arg    $words | string
+    @return string
+    Plurifies most common words. Not currently working
+    proper nouns, or more complex words, for example
+    knife -> knives, leaf -> leaves.
+  ------------------------------------------------ */
+  function plurafy_words($words)
+  {
+    if(strToLower(substr($words, -1)) == 'y')
+    {
+      return substr_replace($words, 'ies', -1);
+    }
+    if(strToLower(substr($words, -1)) == 's')
+    {
+      return $words . 'es';
+    }
+    else
+    {
+      return $words . 's';
+    }
   }
 }

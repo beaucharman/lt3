@@ -18,7 +18,12 @@
 
 ------------------------------------------------*/
 
-/* Function to check if page is child of $post_id
+/* lt3 is Child of Page
+------------------------------------------------
+lt3_is_child_of_page()
+@args   $post_id | integer
+@return boolean
+Function to check if page is child of $post_id
 ------------------------------------------------ */
 function lt3_is_child_of_page($post_id)
 {
@@ -53,7 +58,13 @@ function lt3_is_child_of_page($post_id)
   }
 }
 
-/* Function to check if current category is a child of $parent_category category
+/* lt3 is Cild of Category
+------------------------------------------------
+lt3_is_child_of_category()
+@param  $parent_category | integer
+@return boolean
+Function to check if current category is a child
+of $parent_category category
 ------------------------------------------------ */
 function lt3_is_child_of_category($parent_category)
 {
@@ -64,7 +75,12 @@ function lt3_is_child_of_category($parent_category)
   }
 }
 
-/* Function to check if Custom Post Type
+/* lt3 is Post Tyoe
+------------------------------------------------
+  lt3_is_post_type()
+  @param  $type | string
+  @return boolean
+  Function to check if Custom Post Type
 ------------------------------------------------ */
 function lt3_is_post_type($type = '')
 {
@@ -93,7 +109,12 @@ function lt3_is_post_type($type = '')
   }
 }
 
-/* Return true if has pagination.
+/* lt3 Has Page Pagination
+------------------------------------------------
+  lt3_has_page_pagination()
+  @param null
+  @return boolean
+  Return true if has pagination.
 ------------------------------------------------ */
 function lt3_has_page_pagination()
 {
@@ -107,7 +128,14 @@ function lt3_has_page_pagination()
   }
 }
 
-/* Tests if any of a post's assigned categories are descendants of target categories
+/* lt3 Post is in Descendant Category
+------------------------------------------------
+  lt3_post_is_in_descendant_category()
+  @param  $cat | array
+  @param  $_post
+  @return boolean
+  Tests if any of a post's assigned categories are
+  descendants of target categories
 ------------------------------------------------ */
 function lt3_post_is_in_descendant_category($cats, $_post = null)
 {
@@ -120,7 +148,12 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
   return false;
 }
 
-/* gets the data from a URL
+/* lt3 Get Data with cURL
+------------------------------------------------
+  lt3_get_data_with_curl()
+  @param  $url | string
+  @return file output
+  gets the data from a URL
 ------------------------------------------------ */
 function lt3_get_data_with_curl($url = '')
 {
@@ -146,7 +179,12 @@ function lt3_get_data_with_curl($url = '')
   return file_get_contents($url);
 }
 
-/*  Debug the template files and display which ones are being used
+/* lt3_template_debug
+------------------------------------------------
+  lt3_template_debug()
+  @param null
+  @return debug output string
+  Debug the template files and display which ones are being used
 ------------------------------------------------ */
 if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
@@ -172,11 +210,65 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   }
 }
 
-/*  Debug Tool : var_dump with style
+/* Prettify Words
 ------------------------------------------------
-https://gist.github.com/beaucharman/9f2706c267161c218321
+  lt3_prettify_words()
+  @arg    $words | string
+  @return string
+  Creates a pretty version of a string, like
+  a pug version of a dog.
 ------------------------------------------------ */
-if (!function_exists('debug_tool')) 
+function lt3_prettify_words($words)
+{
+  return ucwords(str_replace('_', ' ', $words));
+}
+
+/* Uglify Words
+------------------------------------------------
+  lt3_uglify_words()
+  @arg    $words | string
+  @return string
+  creates a url firendly version of the given string.
+------------------------------------------------ */
+function lt3_uglify_words($words)
+{
+  return strToLower(str_replace(' ', '_', $words));
+}
+
+/* Plurify Words
+------------------------------------------------
+  lt3_plurafy_words()
+  @arg    $words | string
+  @return string
+  Plurifies most common words. Not currently working
+  proper nouns, or more complex words, for example
+  knife -> knives, leaf -> leaves.
+------------------------------------------------ */
+function lt3_plurafy_words($words)
+{
+  if(strToLower(substr($words, -1)) == 'y')
+  {
+    return substr_replace($words, 'ies', -1);
+  }
+  if(strToLower(substr($words, -1)) == 's')
+  {
+    return $words . 'es';
+  }
+  else
+  {
+    return $words . 's';
+  }
+}
+
+/* Debug Tool
+------------------------------------------------
+  debug_tool()
+  @param  $args | array
+  @return mixed
+  var_dump with style
+  https://gist.github.com/beaucharman/9f2706c267161c218321
+------------------------------------------------ */
+if (!function_exists('debug_tool'))
 {
   function debug_tool($args = null)
   {
@@ -191,8 +283,8 @@ if (!function_exists('debug_tool'))
       $options[$key] = (isset($args[$key])) ? $args[$key] : $value;
     }
     global $debug_counter;
-    $breakpoint = false;  
-    if($options['variable'] == 'breakpoint') 
+    $breakpoint = false;
+    if($options['variable'] == 'breakpoint')
     {
       $breakpoint = true;
     }
@@ -211,7 +303,7 @@ if (!function_exists('debug_tool'))
     $opening_tag = implode($opening_tag_array);
     $closing_tag = '</pre>';
     $exit_message = $opening_tag . 'exit();' . $closing_tag;
-    
+
     if($breakpoint)
     {
       if(!isset($debug_counter))
@@ -221,29 +313,29 @@ if (!function_exists('debug_tool'))
       $output = $opening_tag . $options['label'] . ' Breakpoint => ' . $debug_counter . $closing_tag;
       $debug_counter++;
     }
-    else 
+    else
     {
       /* Store the result of a var dump */
       ob_start();
       var_dump($options['variable']);
       $output = ob_get_clean();
-      
+
       /* Add to the result */
       $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
       $output = $opening_tag . $options['label'] . ' => ' . $output . $closing_tag;
     }
-    
-    if($options['exit']) 
+
+    if($options['exit'])
     {
       echo $output;
       exit($exit_message);
     }
-    
+
     if ($options['echo'])
     {
       echo $output;
     }
-    else 
+    else
     {
       return $output;
     }
