@@ -61,7 +61,7 @@ class LT3_Custom_Taxonomy
   /* Class constructor */
   public function __construct($name, $post_type, $labels, $options = array(), $help = null)
   {
-    $this->name      = strtolower(str_replace(' ', '_', $name));
+    $this->name      = $this->uglify_words($name);
     $this->post_type = $post_type;
     $this->labels    = $labels;
     $this->options   = $options;
@@ -116,7 +116,7 @@ class LT3_Custom_Taxonomy
     register_taxonomy($this->name, $this->post_type, $options);
   }
 
-  /* Add contextual help for custom post types
+  /* Add contextual help for taxonomies
   ------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
@@ -126,5 +126,55 @@ class LT3_Custom_Taxonomy
       $contextual_help = $this->help;
     }
     return $contextual_help;
+  }
+  
+   /* Prettify words
+  ------------------------------------------------
+    prettify_words()
+    @param  $words | string
+    @return string
+    Creates a pretty version of a string, like
+    a pug version of a dog.
+  ------------------------------------------------ */
+  public function prettify_words($words)
+  {
+    return ucwords(str_replace('_', ' ', $words));
+  }
+
+  /* Uglify words
+  ------------------------------------------------
+    uglify_words()
+    @param  $words | string
+    @return string
+    creates a url firendly version of the given string.
+  ------------------------------------------------ */
+  public function uglify_words($words)
+  {
+    return strToLower(str_replace(' ', '_', $words));
+  }
+
+  /* Plurify words
+  ------------------------------------------------
+    plurafy_words()
+    @param  $words | string
+    @return $words | string
+    Plurifies most common words. Not currently working
+    proper nouns, or more complex words, for example
+    knife -> knives, leaf -> leaves.
+  ------------------------------------------------ */
+  public function plurafy_words($words)
+  {
+    if(strToLower(substr($words, -1)) == 'y')
+    {
+      return substr_replace($words, 'ies', -1);
+    }
+    if(strToLower(substr($words, -1)) == 's')
+    {
+      return $words . 'es';
+    }
+    else
+    {
+      return $words . 's';
+    }
   }
 }
