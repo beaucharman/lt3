@@ -59,7 +59,7 @@ function lt3_mce_styleselect_editor_settings($settings) {
 
   $classes = array(
     __('Lead')       => 'lead',
-    __('Disclaimer') => 'disclaimer',
+    __('Small')      => 'small',
     __('Warning')    => 'warning',
     __('Notice')     => 'notice',
     __('Muted')      => 'muted'
