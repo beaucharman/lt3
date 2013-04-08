@@ -44,41 +44,12 @@ function lt3_mce_styleselect_editor_buttons($buttons)
   return $buttons;
 }
 
-/* Allocate styles for the TinyMCE Editor style select
------------------------------------------------- */
-add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
-function lt3_mce_styleselect_editor_settings($settings) {
-  if (!empty($settings['theme_advanced_styles']))
-  {
-    $settings['theme_advanced_styles'] .= ';';
-  }
-  else
-  {
-    $settings['theme_advanced_styles'] = '';
-  }
-
-  $classes = array(
-    __('Lead')       => 'lead',
-    __('Disclaimer') => 'disclaimer',
-    __('Warning')    => 'warning',
-    __('Notice')     => 'notice',
-    __('Muted')      => 'muted'
-  );
-
-  $class_settings = '';
-  foreach ( $classes as $name => $value )
-  {
-    $class_settings .= "{$name}={$value};";
-  }
-
-  $settings['theme_advanced_styles'] .= trim($class_settings, '; ');
-  return $settings;
-}
-
 /* Add more buttons to the TinyMCE editor
 ------------------------------------------------ */
 if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 
+  /* Level 3 buttons
+  ------------------------------------------------ */
   add_filter('mce_buttons','edit_buttons_for_tinymce_editor_1');
 	function edit_buttons_for_tinymce_editor_1($mce_buttons)
 	{
@@ -114,6 +85,8 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 		return $mce_buttons;
 	}
 
+  /* Level 2 buttons
+  ------------------------------------------------ */
 	add_filter('mce_buttons_2','edit_buttons_for_tinymce_editor_2');
 	function edit_buttons_for_tinymce_editor_2($mce_buttons)
 	{
@@ -150,4 +123,35 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 		}
 		return $mce_buttons;
 	}
+
+  /* Allocate styles for the TinyMCE Editor style select
+  ------------------------------------------------ */
+  add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
+  function lt3_mce_styleselect_editor_settings($settings) {
+    if (!empty($settings['theme_advanced_styles']))
+    {
+      $settings['theme_advanced_styles'] .= ';';
+    }
+    else
+    {
+      $settings['theme_advanced_styles'] = '';
+    }
+
+    $classes = array(
+      __('Lead')       => 'lead',
+      __('Disclaimer') => 'disclaimer',
+      __('Warning')    => 'warning',
+      __('Notice')     => 'notice',
+      __('Muted')      => 'muted'
+    );
+
+    $class_settings = '';
+    foreach ( $classes as $name => $value )
+    {
+      $class_settings .= "{$name}={$value};";
+    }
+
+    $settings['theme_advanced_styles'] .= trim($class_settings, '; ');
+    return $settings;
+  }
 }
