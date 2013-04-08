@@ -202,7 +202,7 @@ function lt3_todo_convert_restrict($query)
       if (isset($var))
       {
         $term = get_term_by('id',$var,$tax_slug);
-        $var = $term->slug;
+        if($term) $var = $term->slug;
       }
     }
   }
