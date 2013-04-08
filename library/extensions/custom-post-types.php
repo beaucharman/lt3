@@ -195,7 +195,7 @@ class LT3_Custom_Post_Type
     Creates a pretty version of a string, like
     a pug version of a dog.
   ------------------------------------------------ */
-  function prettify_words($words)
+  public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
   }
@@ -207,7 +207,7 @@ class LT3_Custom_Post_Type
     @return string
     creates a url firendly version of the given string.
   ------------------------------------------------ */
-  function uglify_words($words)
+  public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
   }
@@ -221,7 +221,7 @@ class LT3_Custom_Post_Type
     proper nouns, or more complex words, for example
     knife -> knives, leaf -> leaves.
   ------------------------------------------------ */
-  function plurafy_words($words)
+  public function plurafy_words($words)
   {
     if(strToLower(substr($words, -1)) == 'y')
     {
