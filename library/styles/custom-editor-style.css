@@ -135,11 +135,11 @@ blockquote.right {
   font-size: 1.5em;
 }
 
-<<<<<<< HEAD
+.lead {
+  font-size: 1.5em;
+}
+
 .disclaimer {
-=======
-.small {
->>>>>>> Styles
   font-size: 0.9em;
   color: #555;
 }
@@ -148,11 +148,7 @@ blockquote.right {
 
 .notice {  }
 
-<<<<<<< HEAD
-.muted {  } 
-=======
 .muted {  }
->>>>>>> Styles
 
 /* Image and Gallery tyles
 ------------------------------------------------ */
