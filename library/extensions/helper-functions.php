@@ -188,6 +188,7 @@ function lt3_get_data_with_curl($url = '')
 ------------------------------------------------ */
 if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
+
   add_action('all','lt3_template_debug');
   function lt3_template_debug()
   {

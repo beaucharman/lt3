@@ -35,15 +35,6 @@ function lt3_modify_post_mime_types($post_mime_types)
   return $post_mime_types;
 }
 
-/* Adds style select to the TinyMCE Editor
------------------------------------------------- */
-add_filter('mce_buttons_2', 'lt3_mce_styleselect_editor_buttons');
-function lt3_mce_styleselect_editor_buttons($buttons)
-{
-  array_unshift($buttons, 'styleselect');
-  return $buttons;
-}
-
 /* Add more buttons to the TinyMCE editor
 ------------------------------------------------ */
 if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
@@ -123,6 +114,15 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 		}
 		return $mce_buttons;
 	}
+
+  /* Adds style select to the TinyMCE Editor
+  ------------------------------------------------ */
+  add_filter('mce_buttons_2', 'lt3_mce_styleselect_editor_buttons');
+  function lt3_mce_styleselect_editor_buttons($buttons)
+  {
+    array_unshift($buttons, 'styleselect');
+    return $buttons;
+  }
 
   /* Allocate styles for the TinyMCE Editor style select
   ------------------------------------------------ */

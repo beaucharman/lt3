@@ -14,6 +14,18 @@
 
 /*
 
+  Flush permalink rewrites after creating custom post types and taxonomies
+
+------------------------------------------------ */
+// add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
+function lt3_post_type_and_taxonomy_flush_rewrites()
+{
+  global $wp_rewrite;
+  $wp_rewrite->flush_rules();
+}
+
+/*
+
   Declare the site settings array
 
 ------------------------------------------------
@@ -29,15 +41,3 @@ $lt3_site_settings_array = array(
     'placeholder'    => 'UA-XXXXX-X'
   )
 );
-
-/*
-
-  Flush permalink rewrites after creating custom post types and taxonomies
-
------------------------------------------------- */
-// add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
-function lt3_post_type_and_taxonomy_flush_rewrites()
-{
-  global $wp_rewrite;
-  $wp_rewrite->flush_rules();
-}

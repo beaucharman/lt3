@@ -96,24 +96,21 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     /* Create the labels */
-    $label_singular = $this->prettify_words($this->name);
-    $label_plural = $this->plurafy_words($label_singular);
-    $labels = array_merge(
-      array(
-        'name'               => __($label_plural),
-        'singular_name'      => __($label_singular),
-        'menu_name'          => ($this->labels['menu_label'])
-          ? __($this->labels['menu_label']) : __($label_plural),
-        'add_new_item'       => __('Add New '. $label_singular),
-        'edit_item'          => __('Edit '. $label_singular),
-        'new_item'           => __('New '. $label_singular),
-        'all_items'          => __('All '. $label_plural),
-        'view_item'          => __('View '. $label_singular),
-        'search_items'       => __('Search '. $label_plural),
-        'not_found'          => __('No '. $label_plural .' found'),
-        'not_found_in_trash' => __('No '. $label_plural .' found in Trash')
-      ),
-      $this->labels
+    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
+    $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
+    $labels = array(
+      'name'               => __($label_plural),
+      'singular_name'      => __($label_singular),
+      'menu_name'          => __($menu_name),
+      'add_new_item'       => __('Add New '. $label_singular),
+      'edit_item'          => __('Edit '. $label_singular),
+      'new_item'           => __('New '. $label_singular),
+      'all_items'          => __('All '. $label_plural),
+      'view_item'          => __('View '. $label_singular),
+      'search_items'       => __('Search '. $label_plural),
+      'not_found'          => __('No '. $label_plural .' found'),
+      'not_found_in_trash' => __('No '. $label_plural .' found in Trash')
     );
 
     /* Configure the options */
@@ -138,7 +135,7 @@ class LT3_Custom_Post_Type
   }
 
   /* Custom post type title text
-  ------------------------------------------------  
+  ------------------------------------------------
     custom_post_type_title_text()
     @param  null
     @return $title | string
@@ -149,7 +146,7 @@ class LT3_Custom_Post_Type
     $screen = get_current_screen();
     if ($this->name == $screen->post_type)
     {
-      $title = 'Enter '. $this->labels['label_singular'] .' Title Here';
+      $title = 'Enter '. $this->prettify_words($this->name) .' Title Here';
     }
     return $title;
   }
