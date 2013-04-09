@@ -16,13 +16,17 @@
 
   To declare a custom post type, simply add a new class:
 
+  // Required
+  $name = '';
+
+  // Optional
   $labels = array(
     'label_singular' => '',
     'label_plural'   => '',
-    'menu_label'     => '' // optional
+    'menu_label'     => ''
   );
 
-  $options = array( // optional
+  $options = array(
     'description'    => '',
     'public'         => true,
     'menu_position'  => 20,
@@ -44,7 +48,7 @@
     )
   );
 
-  new LT3_Custom_Post_Type('name', $labels, $options, $help);
+  new LT3_Custom_Post_Type($name, $labels, $options, $help);
 ------------------------------------------------ */
 
 /*
