@@ -11,16 +11,10 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
-  For more information about registering Post Types:
+  For more information on registering post types:
   http://codex.wordpress.org/Function_Reference/register_post_type
 
-  For information about setting up custom columns:
-  http://tareq.wedevs.com/2011/07/add-your-custom-columns-to-wordpress-admin-panel-tables/
-
-  You can also turn the custom post types declarations into a plugin.
-  For more information: http://codex.wordpress.org/Writing_a_Plugin
-
-  To declare a custom post type, simply add a new class.
+  To declare a custom post type, simply add a new class:
 
   $labels = array(
     'label_singular' => '',
