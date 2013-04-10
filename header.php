@@ -58,4 +58,4 @@
 
   </header>
 
-  <section role="content" class="page-content">
+  <section class="page-content">
