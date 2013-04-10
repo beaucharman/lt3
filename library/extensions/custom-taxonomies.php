@@ -59,24 +59,24 @@
 class LT3_Custom_Taxonomy
 {
   public $_name;
-  public $post_type;
-  public $labels;
-  public $options;
-  public $help;
+  public $_post_type;
+  public $_labels;
+  public $_options;
+  public $_help;
 
   /* Class constructor */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
     $this->_name      = $this->uglify_words($name);
-    $this->post_type = $post_type;
-    $this->labels    = $labels;
-    $this->options   = $options;
-    $this->help      = $help;
+    $this->_post_type = $post_type;
+    $this->_labels    = $labels;
+    $this->_options   = $options;
+    $this->_help      = $help;
 
     if(!taxonomy_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_taxonomies'), 0);
-      if($this->help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+      if($this->_help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
     }
   }
 
@@ -89,9 +89,9 @@ class LT3_Custom_Taxonomy
   public function register_custom_taxonomies()
   {
     /* Create the labels */
-    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->_name);
-    $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
-    $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
+    $label_singular = (isset($this->_labels['label_singular'])) ? $this->_labels['label_singular'] : $this->prettify_words($this->_name);
+    $label_plural   = (isset($this->_labels['label_plural'])) ? $this->_labels['label_plural'] : $this->plurafy_words($label_singular);
+    $menu_name      = (isset($this->_labels['menu_label'])) ? $this->_labels['menu_label'] : $label_plural;
     $labels = array(
       'name'                  => __($label_plural, $label_plural . ' general name'),
       'singular_name'         => __($label_singular, $label_singular . ' singular name'),
@@ -123,11 +123,11 @@ class LT3_Custom_Taxonomy
         'capabilities'          => array(),
         'sort'                  => null
       ),
-      $this->options
+      $this->_options
     );
 
     /* Register the new taxonomy */
-    register_taxonomy($this->_name, $this->post_type, $options);
+    register_taxonomy($this->_name, $this->_post_type, $options);
   }
 
   /* Add contextual help for taxonomies
@@ -137,7 +137,7 @@ class LT3_Custom_Taxonomy
     $context = 'edit-' . $this->_name;
     if ($context == $screen->id)
     {
-      $contextual_help = $this->help;
+      $contextual_help = $this->_help;
     }
     return $contextual_help;
   }

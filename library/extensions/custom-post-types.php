@@ -60,31 +60,31 @@
 class LT3_Custom_Post_Type
 {
   public $_name;
-  public $labels;
-  public $options;
-  public $help;
+  public $_labels;
+  public $_options;
+  public $_help;
 
   /* Class constructor
   ------------------------------------------------
     __construct()
-    @param  $name | string
-    @param  $labels | array
-    @param  $options | array
-    @param  $help | array
-    @return post_type object
+    @param  $name     | string
+    @param  $labels   | array
+    @param  $options  | array
+    @param  $help     | array
+    @return post_type | object
   ------------------------------------------------ */
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
     $this->_name    = $this->uglify_words($name);
-    $this->labels  = $labels;
-    $this->options = $options;
-    $this->help    = $help;
+    $this->_labels  = $labels;
+    $this->_options = $options;
+    $this->_help    = $help;
 
     if(!post_type_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
       add_filter('enter_title_here', array(&$this, 'custom_post_type_title_text'));
-      if($this->help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+      if($this->_help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
     }
   }
 
@@ -97,9 +97,9 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     /* Create the labels */
-    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->_name);
-    $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
-    $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
+    $label_singular = (isset($this->_labels['label_singular'])) ? $this->_labels['label_singular'] : $this->prettify_words($this->_name);
+    $label_plural   = (isset($this->_labels['label_plural'])) ? $this->_labels['label_plural'] : $this->plurafy_words($label_singular);
+    $menu_name      = (isset($this->_labels['menu_label'])) ? $this->_labels['menu_label'] : $label_plural;
     $labels = array(
       'name'               => __($label_plural),
       'singular_name'      => __($label_singular),
@@ -128,7 +128,7 @@ class LT3_Custom_Post_Type
         'has_archive'      => true,
         'rewrite'          => true
       ),
-      $this->options
+      $this->_options
     );
 
     /* Register the new post type */
@@ -164,7 +164,7 @@ class LT3_Custom_Post_Type
   ------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
-    foreach($this->help as $help)
+    foreach($this->_help as $help)
     {
       if(!$help['context'])
       {

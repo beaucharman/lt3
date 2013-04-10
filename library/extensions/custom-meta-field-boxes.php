@@ -51,6 +51,12 @@ class LT3_Custom_Field_Meta_Box
   protected $_context;
   protected $_priority;
   protected $_fields;
+
+  /* Class constructor
+  ------------------------------------------------
+    __construct()
+    @param  $cmfb | array
+  ------------------------------------------------ */
   function __construct($cmfb)
   {
 
@@ -123,10 +129,10 @@ class LT3_Custom_Field_Meta_Box
 
           /* textarea
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
-            @param description | text | optional
+            @param type        | string
+            @param id          | string
+            @param label       | string | optional
+            @param description | text   | optional
           ------------------------------------------------ */
           case 'textarea':
             echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
@@ -134,11 +140,11 @@ class LT3_Custom_Field_Meta_Box
 
           /* checkbox
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
-            @param description | text | optional
-            @param options | array
+            @param type        | string
+            @param id          | string
+            @param options     | array
+            @param label       | string | optional
+            @param description | text   | optional
           ------------------------------------------------ */
           case 'checkbox':
             echo '<ul>';
@@ -153,15 +159,15 @@ class LT3_Custom_Field_Meta_Box
 
           /* select
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
-            @param null_label | string | optional
-            @param description | text | optional
-            @param options | array
+            @param type         | string
+            @param id           | string
+            @param options      | array
+            @param label        | string | optional
+            @param null_option  | string | optional
+            @param description  | text   | optional
           ------------------------------------------------ */
           case 'select':
-            $field_null_label = (isset($field['null_label'])) ? $field['null_label'] : 'Select';
+            $field_null_label = (isset($field['null_option'])) ? $field['null_option'] : 'Select';
             echo '<select name="'.$field_id.'" id="'.$field_id.'">';
             echo '  <option value="">'. $field_null_label .'&hellip;</option>';
             foreach($field['options'] as $option => $label):
@@ -172,11 +178,11 @@ class LT3_Custom_Field_Meta_Box
 
           /* radio
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
-            @param description | text | optional
-            @param options | array
+            @param type        | string
+            @param id          | string
+            @param options     | array
+            @param label       | string | optional
+            @param description | text   | optional
           ------------------------------------------------ */
           case 'radio':
             echo '<ul>';
@@ -191,11 +197,11 @@ class LT3_Custom_Field_Meta_Box
 
           /* post_checkbox
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
+            @param type        | string
+            @param id          | string
+            @param post_type   | string
+            @param label       | string | optional
             @param description | string | optional
-            @param post_type | string
           ------------------------------------------------ */
           case 'post_checkbox':
             $value = ($value) ? $value : array();
@@ -225,9 +231,9 @@ class LT3_Custom_Field_Meta_Box
 
           /* file
           ------------------------------------------------
-            @param type | string
-            @param id | integer
-            @param label | string | optional
+            @param type        | string
+            @param id          | string
+            @param label       | string | optional
             @param description | string | optional
             @param placeholder | string | optional
           ------------------------------------------------ */
@@ -260,9 +266,9 @@ class LT3_Custom_Field_Meta_Box
 
           /* text | default
           ------------------------------------------------
-            @param type | string | optional
-            @param id | integer
-            @param label | string | optional
+            @param id          | string
+            @param type        | string | optional
+            @param label       | string | optional
             @param description | string | optional
             @param placeholder | string | optional
           ------------------------------------------------ */
@@ -288,8 +294,8 @@ class LT3_Custom_Field_Meta_Box
   /* Get field id
   ------------------------------------------------
     get_field_id()
-    @param $box_id | integer
-    @param $field_id | string
+    @param $box_id       | string
+    @param $field_id     | string
     @return the field id | string
     Get the field id to use throughout class
   ------------------------------------------------ */
