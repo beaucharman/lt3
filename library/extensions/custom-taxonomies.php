@@ -76,26 +76,33 @@ class LT3_Custom_Taxonomy
   }
 
   /* Register Taxonomies
+  ------------------------------------------------
+    register_custom_taxonomies()
+    @param  null
+    @return taxonomy
   ------------------------------------------------ */
   public function register_custom_taxonomies()
   {
-
+    /* Create the labels */
+    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
+    $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
     $labels = array(
-      'name'                  => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
-      'singular_name'         => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
-      'menu_name'             => ($this->labels['menu_label'])
-        ? __($this->labels['menu_label']) : __($this->labels['label_plural']),
-      'search_items'          => __('Search ' . $this->labels['label_plural']),
-      'all_items'             => __('All ' . $this->labels['label_plural']),
-      'parent_item'           => __('Parent ' . $this->labels['label_singular']),
-      'parent_item_colon'     => __('Parent '. $this->labels['label_singular'] .':'),
-      'edit_item'             => __('Edit '. $this->labels['label_singular']),
-      'update_item'           => __('Update ' . $this->labels['label_singular']),
-      'add_new_item'          => __('Add New ' . $this->labels['label_singular']),
-      'new_item_name'         => __('New ' . $this->labels['label_singular']),
+      'name'                  => __($label_plural, $label_plural . ' general name'),
+      'singular_name'         => __($label_singular, $label_singular . ' singular name'),
+      'menu_name'             => __($menu_name),
+      'search_items'          => __('Search ' . $label_plural),
+      'all_items'             => __('All ' . $label_plural),
+      'parent_item'           => __('Parent ' . $label_singular),
+      'parent_item_colon'     => __('Parent '. $label_singular .':'),
+      'edit_item'             => __('Edit '. $label_singular),
+      'update_item'           => __('Update ' . $label_singular),
+      'add_new_item'          => __('Add New ' . $label_singular),
+      'new_item_name'         => __('New ' . $label_singular),
 
     );
 
+    /* Configure the options */
     $options = array_merge(
       array(
         'labels'                => $labels,
@@ -114,6 +121,7 @@ class LT3_Custom_Taxonomy
       $this->options
     );
 
+    /* Register the new taxonomy */
     register_taxonomy($this->name, $this->post_type, $options);
   }
 
