@@ -16,6 +16,8 @@
 
   Flush permalink rewrites after creating custom post types and taxonomies
 
+  Settings > Permalinks
+
 ------------------------------------------------ */
 // add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
 function lt3_post_type_and_taxonomy_flush_rewrites()
