@@ -58,7 +58,7 @@
 ------------------------------------------------ */
 class LT3_Custom_Taxonomy
 {
-  public $name;
+  public $_name;
   public $post_type;
   public $labels;
   public $options;
@@ -67,13 +67,13 @@ class LT3_Custom_Taxonomy
   /* Class constructor */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
-    $this->name      = $this->uglify_words($name);
+    $this->_name      = $this->uglify_words($name);
     $this->post_type = $post_type;
     $this->labels    = $labels;
     $this->options   = $options;
     $this->help      = $help;
 
-    if(!taxonomy_exists($this->name))
+    if(!taxonomy_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_taxonomies'), 0);
       if($this->help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
@@ -89,7 +89,7 @@ class LT3_Custom_Taxonomy
   public function register_custom_taxonomies()
   {
     /* Create the labels */
-    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->_name);
     $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
     $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
     $labels = array(
@@ -118,7 +118,7 @@ class LT3_Custom_Taxonomy
         'show_admin_column'     => false,
         'hierarchical'          => false,
         'update_count_callback' => null,
-        'query_var'             => $this->name,
+        'query_var'             => $this->_name,
         'rewrite'               => true,
         'capabilities'          => array(),
         'sort'                  => null
@@ -127,14 +127,14 @@ class LT3_Custom_Taxonomy
     );
 
     /* Register the new taxonomy */
-    register_taxonomy($this->name, $this->post_type, $options);
+    register_taxonomy($this->_name, $this->post_type, $options);
   }
 
   /* Add contextual help for taxonomies
   ------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
-    $context = 'edit-' . $this->name;
+    $context = 'edit-' . $this->_name;
     if ($context == $screen->id)
     {
       $contextual_help = $this->help;

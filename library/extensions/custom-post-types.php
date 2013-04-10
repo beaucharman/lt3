@@ -59,7 +59,7 @@
 ------------------------------------------------ */
 class LT3_Custom_Post_Type
 {
-  public $name;
+  public $_name;
   public $labels;
   public $options;
   public $help;
@@ -75,12 +75,12 @@ class LT3_Custom_Post_Type
   ------------------------------------------------ */
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
-    $this->name    = $this->uglify_words($name);
+    $this->_name    = $this->uglify_words($name);
     $this->labels  = $labels;
     $this->options = $options;
     $this->help    = $help;
 
-    if(!post_type_exists($this->name))
+    if(!post_type_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
       add_filter('enter_title_here', array(&$this, 'custom_post_type_title_text'));
@@ -97,7 +97,7 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     /* Create the labels */
-    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $label_singular = (isset($this->labels['label_singular'])) ? $this->labels['label_singular'] : $this->prettify_words($this->_name);
     $label_plural   = (isset($this->labels['label_plural'])) ? $this->labels['label_plural'] : $this->plurafy_words($label_singular);
     $menu_name      = (isset($this->labels['menu_label'])) ? $this->labels['menu_label'] : $label_plural;
     $labels = array(
@@ -132,7 +132,7 @@ class LT3_Custom_Post_Type
     );
 
     /* Register the new post type */
-    register_post_type($this->name, $options);
+    register_post_type($this->_name, $options);
   }
 
   /* Custom post type title text
@@ -145,9 +145,9 @@ class LT3_Custom_Post_Type
   public function custom_post_type_title_text()
   {
     $screen = get_current_screen();
-    if ($this->name == $screen->post_type)
+    if ($this->_name == $screen->post_type)
     {
-      $title = 'Enter '. $this->prettify_words($this->name) .' Title Here';
+      $title = 'Enter '. $this->prettify_words($this->_name) .' Title Here';
     }
     return $title;
   }
@@ -168,11 +168,11 @@ class LT3_Custom_Post_Type
     {
       if(!$help['context'])
       {
-        $context = $this->name;
+        $context = $this->_name;
       }
       else
       {
-        $context = $help['context'] . '-' . $this->name;
+        $context = $help['context'] . '-' . $this->_name;
       }
 
       if ($context == $screen->id)

@@ -214,7 +214,7 @@ class LT3_Custom_Field_Meta_Box
                 echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
                 echo '  <label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
                 echo '</li>';
-                endforeach;
+              endforeach;
               echo '</ul>';
             }
             else
