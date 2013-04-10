@@ -36,7 +36,7 @@ function lt3_load_styles()
 	------------------------------------------------ */
 	if(!is_admin())
 	{
-  	//Theme template styles here
+  	//Enqueue conditional theme template styles here
 	}
 	else if(is_admin())
 	{

@@ -68,9 +68,9 @@ function lt3_load_scripts()
 	------------------------------------------------ */
 	if(!is_admin())
 	{
-		if(is_singular() && get_option('thread_comments'))
+		if(is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)
 		{
-			wp_enqueue_script('	comment-reply');
+			wp_enqueue_script('comment-reply');
 		}
 
 		if(LT3_LOAD_MODERNIZR_LIBRARY)
@@ -78,11 +78,12 @@ function lt3_load_scripts()
 			wp_enqueue_script('lt3_modernizr');
 		}
 
-		/* Load in a separate plugin script for development,
+		/* Load in separate scripts for development,
 			change this to a concatenated file for deployment */
 		if(LT3_DEVELOPMENT_MODE)
 		{
-			//wp_enqueue_script('lt3_plugins');
+			// wp_enqueue_script('lt3_plugins');
+			// Enqueue other theme template scripts here
 		}
 
 		wp_enqueue_script('lt3_main');

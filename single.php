@@ -13,7 +13,6 @@
 
   Single (Post or other post type) template page.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
   <?php if(have_posts()) : ?>

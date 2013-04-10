@@ -11,7 +11,6 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
   <?php if(have_posts()) : ?>

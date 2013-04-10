@@ -13,7 +13,6 @@
 
 	This files contains the functions and file references
 	that are used to alter and enhance the general administration area.
-
 	The dashboard files which the admin function file refers
 	to can be found in the library/dashboard/ directory.
 ------------------------------------------------ */

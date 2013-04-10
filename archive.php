@@ -13,7 +13,6 @@
 
   Archived content template page. Requires the lt3_is_post_type() function.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
 <?php global $post; global $wp_query; $post = $posts[0]; ?>

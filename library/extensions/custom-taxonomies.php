@@ -14,7 +14,8 @@
   For more information about registering Taxonomies:
   http://codex.wordpress.org/Function_Reference/register_taxonomy
 
-  You can also turn the custom post types declarations into a plugin. for more information: http://codex.wordpress.org/Writing_a_Plugin
+  You can also turn the custom post types declarations into a plugin. For more information:
+  http://codex.wordpress.org/Writing_a_Plugin
 
   To declare a taxonomy, add a new class.
 
@@ -127,7 +128,7 @@ class LT3_Custom_Taxonomy
     }
     return $contextual_help;
   }
-  
+
    /* Prettify words
   ------------------------------------------------
     prettify_words()

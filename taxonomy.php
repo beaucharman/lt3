@@ -13,7 +13,6 @@
 
   Taxonomy template page.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
   <?php $taxonomy_term = $wp_query->get_queried_object(); ?>

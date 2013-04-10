@@ -11,9 +11,6 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
-  Version: 1.0
-  Notes:
-
   To use and view the option:
   global $lt3_site_settings;
   echo $lt3_site_settings['setting_id'])

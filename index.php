@@ -13,7 +13,6 @@
 
   Fallback template page.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
   <?php if(have_posts()) : ?>

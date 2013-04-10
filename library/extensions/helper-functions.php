@@ -82,10 +82,10 @@ function lt3_is_child_of_category($parent_category)
   @return boolean
   Function to check if Custom Post Type
 ------------------------------------------------ */
-function lt3_is_post_type($type = '')
+function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
-  if($type == '')
+  if($type)
   {
     if(get_post_type($wp_query->post->ID))
     {

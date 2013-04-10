@@ -11,7 +11,6 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */ ?>
-
 <?php while(have_posts()) : the_post(); ?>
 
 <article <?php post_class('archive entry excerpt post-'. get_the_ID()); ?>>

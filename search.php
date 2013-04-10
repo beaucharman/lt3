@@ -13,7 +13,6 @@
 
   Search results template.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
 <?php if(LT3_ENABLE_SITE_SEARCH) : ?>

@@ -12,7 +12,6 @@
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
   This file is for the custom meta fields for posts, pages, and custom post types.
-
   Simply add a new array to the $lt3_custom_meta_fields_array variable.
   Use the following as your key and value pairs:
 

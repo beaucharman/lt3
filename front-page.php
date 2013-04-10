@@ -13,7 +13,6 @@
 
   Front page and home page template.
 ------------------------------------------------ */ ?>
-
 <?php get_header(); ?>
 
   <?php	lt3_default_sticky_posts(); ?>

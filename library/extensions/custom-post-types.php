@@ -14,7 +14,7 @@
   For more information on registering post types:
   http://codex.wordpress.org/Function_Reference/register_post_type
 
-  To declare a custom post type, simply add a new class:
+  To declare a custom post type, simply add a new class with the following arguments:
 
   // Required
   $name = '';
