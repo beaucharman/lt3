@@ -17,7 +17,8 @@
   You can also turn the custom post types declarations into a plugin. For more information:
   http://codex.wordpress.org/Writing_a_Plugin
 
-  To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class with the following arguments.
+  To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
+  with the following arguments.
 
   // Required
   $name = '';
