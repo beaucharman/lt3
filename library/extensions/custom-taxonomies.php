@@ -19,6 +19,10 @@
 
   To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class with the following arguments.
 
+  // Required
+  $name = '';
+
+  // Optional
   $post_type = ''; // string or array
 
   $labels = array(
@@ -42,7 +46,7 @@
 
   $help = '';
 
-  new LT3_Custom_Taxonomy('name', $post_type, $labels, $options, $help);
+  new LT3_Custom_Taxonomy($name, $post_type, $labels, $options, $help);
 
 ------------------------------------------------ */
 
@@ -60,7 +64,7 @@ class LT3_Custom_Taxonomy
   public $help;
 
   /* Class constructor */
-  public function __construct($name, $post_type, $labels, $options = array(), $help = null)
+  public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
     $this->name      = $this->uglify_words($name);
     $this->post_type = $post_type;
