@@ -11,7 +11,7 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */ ?>
-<?php while(have_posts()) : the_post(); ?>
+<?php while(have_posts()) : the_post(); global $post; ?>
 
 <article <?php post_class('attachment post-'. get_the_ID()); ?>>
 
@@ -20,11 +20,9 @@
   <?php lt3_include_post_meta(); ?>
 
   <figure>
-    <figcaption>
-      <?php global $post; echo $post->post_content; ?>
-    </figcaption>
+    <figcaption><?php echo $post->post_content; ?></figcaption>
     <?php echo wp_get_attachment_image($post->ID, 'full'); ?>
-  <figure>
+  </figure>
 
   <footer class="article-footer"><?php lt3_back_to_parent_link(); ?></footer>
 

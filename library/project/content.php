@@ -34,12 +34,19 @@ function lt3_post_type_and_taxonomy_flush_rewrites()
 All accept id & type
 library/project/config.php
 ------------------------------------------------ */
-$lt3_site_settings_array = array(
+$args = array(
   array(
     'id'             => 'google_analytics',
     'type'           => 'text',
-    'label'          => 'Google Analytics Code',
     'description'    => 'Define the Google Analytics tracking code for the site here.',
     'placeholder'    => 'UA-XXXXX-X'
-  )
+  ),
+  array(
+    'id'             => 'Textarea Test',
+    'type'           => 'textarea',
+    'description'    => 'Define the textarea content here...'
+  ),
+
 );
+
+new LT3_Site_Settings($args);

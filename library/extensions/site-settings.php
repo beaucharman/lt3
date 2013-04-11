@@ -16,179 +16,233 @@
   echo $lt3_site_settings['setting_id'])
 ------------------------------------------------ */
 
-/* Initialise the settings page and
-  set the $lt3_site_settings global variable.
------------------------------------------------- */
-add_action('admin_init', 'lt3_site_settings_init');
-add_action('admin_menu', 'lt3_site_settings_add_page');
-$lt3_site_settings = get_option('lt3_settings');
-
-/* Register the LT3 site settings:
------------------------------------------------- */
-function lt3_site_settings_init()
+class LT3_Site_Settings
 {
-  register_setting('lt3_site_settings', 'lt3_settings', 'lt3_site_settings_validate');
-}
+  public $_settings_group;
+  public $_settings_name;
+  public $_settings_fields;
+  public $_settings_menu_name;
+  public $_settings_title;
+  public $_site_settings;
 
-/* Hook the options page with the required settings:
------------------------------------------------- */
-function lt3_site_settings_add_page()
-{
-  add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', 'lt3_site_settings_do_page');
-}
-
-/* Render the settings page:
------------------------------------------------- */
-function lt3_site_settings_do_page()
-{
-  /* Check that the user is allowed to update options */
-  if (!current_user_can('manage_options'))
-  {
-    wp_die('You do not have sufficient permissions to access this page.');
-  } ?>
-
-  <div class="wrap">
-
-    <?php if($_GET['settings-updated']): ?>
-    <div id="message" class="updated fade"><p><?php bloginfo('name'); ?> Site Settings Updated.</p></div>
-    <?php endif; ?>
-
-    <?php screen_icon('themes'); ?> <h2><?php bloginfo('name'); ?> Site Settings</h2>
-
-    <form method="post" action="options.php">
-
-      <table class="form-table lt3-form-container">
-
-        <?php settings_fields('lt3_site_settings'); global $lt3_site_settings_array, $lt3_site_settings; ?>
-
-        <?php foreach($lt3_site_settings_array as $site_setting): ?>
-
-        <tr>
-
-          <?php if($site_setting['type'] == 'divider') :
-
-          /* divider
-          ------------------------------------------------
-          Extra Parameters: content
-          ------------------------------------------------ */ ?>
-
-          <td class="divider" colspan="2"><?php echo $site_setting['label']; ?></td>
-
-          <?php else: ?>
-
-          <th>
-             <label for="lt3_settings[<?php echo $site_setting['id']; ?>]">
-                <?php echo $site_setting['label']; ?>
-              </label>
-
-          </th>
-          <td>
-
-            <?php switch($site_setting['type']) :
-
-              /* text
-              ------------------------------------------------
-              Extra Parameters: label, placeholder, title, divider & description
-              ------------------------------------------------ */
-               case 'text': ?>
-
-                <input id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" type="text"  placeholder="<?php echo $site_setting['placeholder']; ?>" value="<?php echo $lt3_site_settings[$site_setting['id']]; ?>" size="50">
-
-              <?php break;
-
-              /* textarea
-              ------------------------------------------------
-              Extra Parameters: label, title, divider & description
-              ------------------------------------------------ */
-              case 'textarea': ?>
-
-                <textarea id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" cols="52" rows="4"><?php echo $lt3_site_settings[$site_setting['id']]; ?></textarea>
-
-              <?php break;
-
-              /* single_checkbox
-              ------------------------------------------------
-              Extra Parameters: label, title, divider & description
-              ------------------------------------------------ */
-              case 'single_checkbox': ?>
-
-                <input type="checkbox" value="true" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;
-
-              <?php break;
-
-              /* multiple_checkboxes
-              ------------------------------------------------
-              Extra Parameters: label, title, divider, options & description
-              ------------------------------------------------ */
-              case 'multiple_checkboxes': ?>
-
-                <ul>
-                <?php foreach($site_setting['options'] as $key => $value): ?>
-                  <li>
-                    <input type="checkbox" value="<?= $key; ?>" id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]"<?php if($lt3_site_settings[$site_setting['id']]) echo ' checked'; ?>>&nbsp;<?= $value; ?>
-                  </li>
-                <?php endforeach;  ?>
-                </ul>
-
-              <?php break;
-
-              /* post_type_select
-              ------------------------------------------------
-              Extra Parameters: label, title, divider & description
-              ------------------------------------------------ */
-              case 'post_type_select':
-
-                $items = get_posts(array ('post_type' => $site_setting['post_type'], 'posts_per_page' => -1)); ?>
-
-                <select name="lt3_settings[<?php echo $site_setting['id']; ?>]" id="lt3_settings[<?php echo $site_setting['id']; ?>]">
-                  <option value="">Please choose&hellip;</option>
-                  <?php foreach($items as $item): $is_select = ($item->ID == $lt3_site_settings[$site_setting['id']]) ? ' selected' : ''; ?>
-                  <option id="lt3_settings[<?php echo $site_setting['id']; ?>]" name="lt3_settings[<?php echo $site_setting['id']; ?>]" value="<?php echo $item->ID; ?>"<?php echo $is_select; ?>><?php echo $item->post_title; ?></option>
-                  <?php endforeach; ?>
-                </select>
-
-              <?php break; ?>
-
-              <?php default: echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>'; break;?>
-
-            <?php endswitch; ?>
-
-            <p><span class="description"><?php echo $site_setting['description']; ?></span></p>
-
-          </td>
-
-          <?php endif; ?>
-
-        </tr>
-
-        <?php endforeach; ?>
-
-      </table>
-
-      <p class="submit">
-        <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>">
-        <a href="./" class="button">Cancel</a>
-      </p>
-
-    </form>
-
-  </div>
-
-<?php }
-
-/* Sanitize and validate input. Accepts an array, return a sanitized array.
------------------------------------------------- */
-function lt3_site_settings_validate($input)
-{
-
-  /* List the settings to be saved here:
+  /* Class constructor
+  ------------------------------------------------
+    __construct()
+    @param  $_site_settings | array
+    @return void
   ------------------------------------------------ */
-  global $lt3_site_settings_array;
-
-  foreach($lt3_site_settings_array as $site_setting)
+  public function __construct($settings_group, $settings_name, $settings_fields, $settings_menu_name, $settings_title)
   {
-    $input[$site_setting['id']] =  wp_filter_nohtml_kses($input[$site_setting['id']]);
+    $this->_settings_fields_group  = $this->uglify_words($settings_group);
+    $this->_settings_fields_name   = $this->uglify_words($settings_name);
+    $this->_settings_fields_fields = $settings_fields;
+    $this->_settings_menu_name     = ($settings_menu_name) ? $settings_menu_name : prettify_words($this->_settings_fields_group);
+    $this->_settings_title         = ($settings_title) ? $settings_title : get_bloginfo('name') . prettify_words($this->_settings_fields_group);
+    $this->_site_settings          = get_option($this->_settings_fields_name);
+
+    /* Initialise the settings page and
+      set the $lt3_site_settings global variable.
+    ------------------------------------------------ */
+    add_action('admin_init', array(&$this, 'site_settings_init'));
+    add_action('admin_menu', array(&$this, 'site_settings_add_page'));
   }
 
-  return $input;
+  /* Register the LT3 site settings:
+  ------------------------------------------------ */
+  public function site_settings_init()
+  {
+    register_setting('lt3_site_settings', 'lt3_settings', array(&$this, 'site_settings_validate'));
+  }
+
+  /* Hook the options page with the required settings:
+  ------------------------------------------------ */
+  public function site_settings_add_page()
+  {
+    add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', array(&$this, 'site_settings_render_page'));
+  }
+
+  /* Render the settings page:
+  ------------------------------------------------ */
+  function site_settings_render_page()
+  {
+    /* Check that the user is allowed to update options */
+    if (!current_user_can('manage_options'))
+    {
+      wp_die('You do not have sufficient permissions to access this page.');
+    }
+
+    echo '<div class="wrap">';
+
+    if(isset($_GET['settings-updated']))
+    {
+      echo '<div id="message" class="updated fade"><p>'. get_bloginfo('name') .' Site Settings Updated.</p></div>';
+    }
+
+    /* Show the page settings title */
+    screen_icon('themes'); echo '<h2>'. get_bloginfo('name') .' Site Settings</h2>';
+
+    echo '<form method="post" action="options.php">';
+    echo '<table class="form-table lt3-form-container">';
+
+    settings_fields('lt3_site_settings');
+
+    foreach($this->_settings_fields as $field)
+    {
+
+      /* Get the value for the current setting */
+      $value = (isset($this->_site_settings[$field['id']])) ? $this->_site_settings[$field['id']] : '';
+
+      /* Get the label for the current setting */
+      $label = (isset($field['label'])) ? $field['label'] : $this->prettify_words($field['id']);
+
+      /* and get the id also */
+      $id = $field['id'];
+
+      echo '<tr>';
+
+      if($field['type'] == 'divider')
+      {
+
+        /* divider
+        ------------------------------------------------
+        @param $label | string
+        ------------------------------------------------ */
+        echo '<td class="divider" colspan="2">'. $field['label'] .'</td>';
+      }
+
+      echo '<th>';
+      echo '  <label for="lt3_settings[<?php echo $id; ?>]">'. $label .'</label>';
+      echo '</th>';
+
+      echo '<td>';
+
+      switch($field['type'])
+      {
+
+        /* text
+        ------------------------------------------------
+        Extra Parameters: label, placeholder, title, divider & description
+        ------------------------------------------------ */
+        case 'text':
+          echo '<input id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" type="text"  placeholder="'. $field['placeholder'] .'" value="'. $value .'" size="50">';
+          break;
+
+        /* textarea
+        ------------------------------------------------
+        Extra Parameters: label, title, divider & description
+        ------------------------------------------------ */
+        case 'textarea':
+          echo '<textarea id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" cols="52" rows="4">'. $value .'</textarea>';
+          break;
+
+        /* checkbox
+        ------------------------------------------------
+        Extra Parameters: label, title, divider & description
+        ------------------------------------------------ */
+        case 'checkbox':
+          echo '<input type="checkbox" value="true" id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']"', $value ? ' checked' : '', '>';
+        break;
+
+        /* multiple_checkboxes
+        ------------------------------------------------
+        Extra Parameters: label, title, divider, options & description
+        ------------------------------------------------ */
+        case 'multiple_checkboxes':
+          echo '<ul>';
+          foreach($field['options'] as $key => $value)
+          {
+            echo '<li>';
+            echo '<input type="checkbox" value="'. $key .'" id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']"', $value ? ' checked' : '', '>';
+            echo '&nbsp;<label for"lt3_settings['. $field['id'] .']">'. $value . '</label>';
+            echo '</li>';
+          }
+          echo '</ul>';
+          break;
+
+        /* post_type_select
+        ------------------------------------------------
+        Extra Parameters: label, title, divider & description
+        ------------------------------------------------ */
+        case 'post_type_select':
+
+          $items = get_posts(array ('post_type' => $field['post_type'], 'posts_per_page' => -1));
+          echo '<select name="lt3_settings['. $field['id'] .']" id="lt3_settings['. $field['id'] .']">';
+          echo '<option value="">Select&hellip;</option>';
+          foreach($items as $item)
+          {
+            $is_select = ($item->ID == $value) ? ' selected' : '';
+            echo '  <option id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" value="'. $item->ID .'"'.  $is_select .'>'. $item->post_title .'</option>';
+          }
+          echo '</select>';
+          break;
+
+        default:
+          echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>';
+          break;
+
+      } // end switch
+
+      /* Render the setting description if possible */
+      if(isset($field['description']))
+      {
+        echo '<p><span class="description">'. $field['description'] .'</span></p>';
+      }
+      echo '</td>';
+
+    echo '</tr>';
+
+    } // end foreach
+
+    echo '</table>';
+
+    echo '<p class="submit">';
+    echo '  <input type="submit" class="button-primary" value="Save Changes">';
+    echo '  <a href="./" class="button">Cancel</a>';
+    echo '</p>';
+
+    echo '</form>';
+
+    echo '</div>';
+
+  }
+
+  /* Sanitize and validate input. Accepts an array, return a sanitized array.
+  ------------------------------------------------ */
+  public function site_settings_validate($input)
+  {
+
+    /* List the settings to be saved here:
+    ------------------------------------------------ */
+    foreach($this->_settings_fields as $field)
+    {
+      $input[$field['id']] =  wp_filter_nohtml_kses($input[$field['id']]);
+    }
+
+    return $input;
+  }
+
+   /* Prettify words
+  ------------------------------------------------
+    prettify_words()
+    @param  $words | string
+    @return string
+    Creates a pretty version of a string, like
+    a pug version of a dog.
+  ------------------------------------------------ */
+  public function prettify_words($words)
+  {
+    return ucwords(str_replace('_', ' ', $words));
+  }
+
+  /* Uglify words
+  ------------------------------------------------
+    uglify_words()
+    @param  $words | string
+    @return string
+    creates a url firendly version of the given string.
+  ------------------------------------------------ */
+  public function uglify_words($words)
+  {
+    return strToLower(str_replace(' ', '_', $words));
+  }
 }

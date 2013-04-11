@@ -89,7 +89,7 @@ function lt3_title()
 	}
 	elseif(is_404())
 	{
-		$window_title = 'Nothing Found Here &#040;404&#041; &#045; ';
+		echo 'Nothing Found Here &#040;404&#041; &#045; ';
 	}
 	bloginfo('name'); if(get_bloginfo('description')){ echo ' &#045; '; bloginfo('description'); } /* Always include */
 }
@@ -341,7 +341,7 @@ add_filter('body_class', 'lt3_add_to_body_class');
 function lt3_add_to_body_class($classes)
 {
 	global $post;
-	if (!is_front_page() && !is_search())
+	if (!is_front_page() && !is_search() && isset($post->post_name))
 	{
 		$classes[] = 'not-front-page';
 		$classes[] = 'page-'.$post->post_name;
