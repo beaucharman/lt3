@@ -49,8 +49,16 @@ $args = array(
 
 );
 
-new LT3_Site_Settings_Page(
-  'lt3_site_settings_2',
-  'lt3_settings 3',
-  $args
+new LT3_Site_Settings_Page('lt3_site_settings_4','lt3_settings4',$args);
+
+$args = array(
+  array(
+    'id'             => 'google_analytics',
+    'type'           => 'textarea',
+    'description'    => 'Define the Google Analytics tracking code for the site here.',
+    'placeholder'    => 'UA-XXXXX-X'
+  )
+
 );
+
+new LT3_Site_Settings_Page('lt3_site_settings_2','lt3_settings',$args);
