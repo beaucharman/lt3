@@ -49,4 +49,8 @@ $args = array(
 
 );
 
-new LT3_Site_Settings($args);
+new LT3_Site_Settings_Page(
+  'lt3_site_settings_2',
+  'lt3_settings 3',
+  $args
+);

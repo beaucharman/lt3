@@ -16,7 +16,7 @@
   echo $lt3_site_settings['setting_id'])
 ------------------------------------------------ */
 
-class LT3_Site_Settings
+class LT3_Site_Settings_Page
 {
   public $_settings_group;
   public $_settings_name;
@@ -31,14 +31,16 @@ class LT3_Site_Settings
     @param  $_site_settings | array
     @return void
   ------------------------------------------------ */
-  public function __construct($settings_group, $settings_name, $settings_fields, $settings_menu_name, $settings_title)
+  public function __construct($settings_group, $settings_name, $settings_fields = array(), $settings_menu_name = '', $settings_title = '')
   {
     $this->_settings_fields_group  = $this->uglify_words($settings_group);
     $this->_settings_fields_name   = $this->uglify_words($settings_name);
-    $this->_settings_fields_fields = $settings_fields;
-    $this->_settings_menu_name     = ($settings_menu_name) ? $settings_menu_name : prettify_words($this->_settings_fields_group);
-    $this->_settings_title         = ($settings_title) ? $settings_title : get_bloginfo('name') . prettify_words($this->_settings_fields_group);
+    $this->_settings_fields = $settings_fields;
+    $this->_settings_menu_name     = ($settings_menu_name) ? $settings_menu_name : $this->prettify_words($this->_settings_fields_name);
+    $this->_settings_title         = ($settings_title) ? $settings_title : get_bloginfo('name') . $this->prettify_words($this->_settings_fields_name);
     $this->_site_settings          = get_option($this->_settings_fields_name);
+
+    //debug_tool(array('variable' => '', 'exit' => true));
 
     /* Initialise the settings page and
       set the $lt3_site_settings global variable.
@@ -51,14 +53,14 @@ class LT3_Site_Settings
   ------------------------------------------------ */
   public function site_settings_init()
   {
-    register_setting('lt3_site_settings', 'lt3_settings', array(&$this, 'site_settings_validate'));
+    register_setting($this->_settings_fields_group, $this->_settings_fields_name, array(&$this, 'site_settings_validate'));
   }
 
   /* Hook the options page with the required settings:
   ------------------------------------------------ */
   public function site_settings_add_page()
   {
-    add_theme_page(get_bloginfo('name') . ' Site Settings', 'Site Settings', 'manage_options', 'lt3_site_settings', array(&$this, 'site_settings_render_page'));
+    add_theme_page($this->_settings_title, $this->_settings_menu_name, 'manage_options', $this->_settings_fields_group, array(&$this, 'site_settings_render_page'));
   }
 
   /* Render the settings page:
@@ -84,10 +86,12 @@ class LT3_Site_Settings
     echo '<form method="post" action="options.php">';
     echo '<table class="form-table lt3-form-container">';
 
-    settings_fields('lt3_site_settings');
+    settings_fields($this->_settings_fields_group);
 
     foreach($this->_settings_fields as $field)
     {
+      /* Set the page's field name */
+      $fields_name = $this->_settings_fields_name;
 
       /* Get the value for the current setting */
       $value = (isset($this->_site_settings[$field['id']])) ? $this->_site_settings[$field['id']] : '';
@@ -111,7 +115,7 @@ class LT3_Site_Settings
       }
 
       echo '<th>';
-      echo '  <label for="lt3_settings[<?php echo $id; ?>]">'. $label .'</label>';
+      echo '  <label for="'. $fields_name .'[<?php echo $id; ?>]">'. $label .'</label>';
       echo '</th>';
 
       echo '<td>';
@@ -124,7 +128,7 @@ class LT3_Site_Settings
         Extra Parameters: label, placeholder, title, divider & description
         ------------------------------------------------ */
         case 'text':
-          echo '<input id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" type="text"  placeholder="'. $field['placeholder'] .'" value="'. $value .'" size="50">';
+          echo '<input id="'. $fields_name .'['. $field['id'] .']" name="'. $fields_name .'['. $field['id'] .']" type="text"  placeholder="'. $field['placeholder'] .'" value="'. $value .'" size="50">';
           break;
 
         /* textarea
@@ -132,7 +136,7 @@ class LT3_Site_Settings
         Extra Parameters: label, title, divider & description
         ------------------------------------------------ */
         case 'textarea':
-          echo '<textarea id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" cols="52" rows="4">'. $value .'</textarea>';
+          echo '<textarea id="'. $fields_name .'['. $field['id'] .']" name="'. $fields_name .'['. $field['id'] .']" cols="52" rows="4">'. $value .'</textarea>';
           break;
 
         /* checkbox
@@ -140,7 +144,7 @@ class LT3_Site_Settings
         Extra Parameters: label, title, divider & description
         ------------------------------------------------ */
         case 'checkbox':
-          echo '<input type="checkbox" value="true" id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']"', $value ? ' checked' : '', '>';
+          echo '<input type="checkbox" value="true" id="'. $fields_name .'['. $field['id'] .']" name="'. $fields_name .'['. $field['id'] .']"', $value ? ' checked' : '', '>';
         break;
 
         /* multiple_checkboxes
@@ -152,8 +156,8 @@ class LT3_Site_Settings
           foreach($field['options'] as $key => $value)
           {
             echo '<li>';
-            echo '<input type="checkbox" value="'. $key .'" id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']"', $value ? ' checked' : '', '>';
-            echo '&nbsp;<label for"lt3_settings['. $field['id'] .']">'. $value . '</label>';
+            echo '<input type="checkbox" value="'. $key .'" id="'. $fields_name .'['. $field['id'] .']" name="'. $fields_name .'['. $field['id'] .']"', $value ? ' checked' : '', '>';
+            echo '&nbsp;<label for"'. $fields_name .'['. $field['id'] .']">'. $value . '</label>';
             echo '</li>';
           }
           echo '</ul>';
@@ -166,12 +170,12 @@ class LT3_Site_Settings
         case 'post_type_select':
 
           $items = get_posts(array ('post_type' => $field['post_type'], 'posts_per_page' => -1));
-          echo '<select name="lt3_settings['. $field['id'] .']" id="lt3_settings['. $field['id'] .']">';
+          echo '<select name="'. $fields_name .'['. $field['id'] .']" id="'. $fields_name .'['. $field['id'] .']">';
           echo '<option value="">Select&hellip;</option>';
           foreach($items as $item)
           {
             $is_select = ($item->ID == $value) ? ' selected' : '';
-            echo '  <option id="lt3_settings['. $field['id'] .']" name="lt3_settings['. $field['id'] .']" value="'. $item->ID .'"'.  $is_select .'>'. $item->post_title .'</option>';
+            echo '  <option id="'. $fields_name .'['. $field['id'] .']" name="'. $fields_name .'['. $field['id'] .']" value="'. $item->ID .'"'.  $is_select .'>'. $item->post_title .'</option>';
           }
           echo '</select>';
           break;
