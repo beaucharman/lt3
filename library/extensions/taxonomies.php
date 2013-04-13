@@ -1,10 +1,10 @@
 <?php
 /*
 
-  lt3-theme Custom Taxonomies
+  lt3 Custom Taxonomies
 
 ------------------------------------------------
-  custom-taxonomies.php
+  taxonomies.php
   @version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me

@@ -4,7 +4,7 @@
   lt3 Admin Functions
 
 ------------------------------------------------
-	admin-functions.php
+	admin.php
   @version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
@@ -63,7 +63,7 @@ if(LT3_ENABLE_TUTORIAL_SECTION)
 	}
 }
 
-/* Remove gobal comments functionality
+/* Remove comments functionality globally
 ------------------------------------------------ */
 if(!LT3_ENABLE_GLOBAL_COMMENTS)
 {

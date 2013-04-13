@@ -4,7 +4,7 @@
   lt3 Custom Meta Field Boxes
 
 ------------------------------------------------
-  custom-meta-field-boxes.php
+  meta-field-boxes.php
   @version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me

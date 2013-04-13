@@ -4,7 +4,7 @@
   lt3 Custom Post Types
 
 ------------------------------------------------
-  custom-post-types.php
+  post-types.php
   @version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
@@ -50,6 +50,18 @@
   );
 
   new LT3_Custom_Post_Type($name, $labels, $options, $help);
+
+------------------------------------------------
+
+  Flush permalink rewrites after creating custom post types and taxonomies
+
+  // add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
+  function lt3_post_type_and_taxonomy_flush_rewrites()
+  {
+    global $wp_rewrite;
+    $wp_rewrite->flush_rules();
+  }
+
 ------------------------------------------------ */
 
 /*

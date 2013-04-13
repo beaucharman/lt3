@@ -24,7 +24,7 @@
 
 /*
 
-	Menu Locations
+	Register Menu Locations
 
 ------------------------------------------------ */
 if(function_exists('register_nav_menu')){
@@ -44,7 +44,10 @@ if(function_exists('register_nav_menu')){
 
 ------------------------------------------------ */
 
-/* Main Navigation Menu
+/* Page Header Menu
+------------------------------------------------
+  lt3_page_header_menu()
+	Main navigation menu
 ------------------------------------------------ */
 function lt3_page_header_menu()
 {
@@ -59,7 +62,10 @@ function lt3_page_header_menu()
 	);
 }
 
-/* Footer Menu
+/* Page Footer Menu
+------------------------------------------------
+  lt3_page_footer_menu()
+	Footer menu
 ------------------------------------------------ */
 function lt3_page_footer_menu()
 {

@@ -36,7 +36,10 @@
 
 ------------------------------------------------ */
 
-/* Header Sidebar
+/* Register Header Sidebar
+------------------------------------------------
+	lt3_register_header_sidebar()
+	Header sidebar
 ------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_header_sidebar');
 function lt3_register_header_sidebar()
@@ -52,7 +55,10 @@ function lt3_register_header_sidebar()
 	));
 }
 
-/* Primary Sidebar Widgets
+/* Register Header Sidebar
+------------------------------------------------
+	lt3_register_header_sidebar()
+	Primary Sidebar Widgets
 ------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_primary_sidebar');
 function lt3_register_primary_sidebar()
@@ -61,14 +67,17 @@ function lt3_register_primary_sidebar()
 		'name' => __('Primary Sidebar Widgets'),
 		'id' => 'primary-sidebar-widgets',
 		'description' => __('These are widgets for the Primary Sidebar.'),
-		'before_widget' => '<aside class="widget primary-sidebar-widget %2$s %1$s">',
-		'after_widget' => '</aside>',
+		'before_widget' => '<div class="widget primary-sidebar-widget %2$s %1$s">',
+		'after_widget' => '</div>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>'
 	));
 }
 
-/* Footer Sidebar
+/* Register Footer Sidebar
+------------------------------------------------
+	lt3_register_footer_sidebar()
+	Footer Sidebar
 ------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_footer_sidebar');
 function lt3_register_footer_sidebar()

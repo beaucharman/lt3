@@ -30,6 +30,10 @@ for site-settings and custom-meta-fields
   font-weight: 500;
 }
 
+.lt3-form-container ul {
+  margin: 0;
+}
+
 .custom-field-container {
   margin-bottom: 30px;
 }

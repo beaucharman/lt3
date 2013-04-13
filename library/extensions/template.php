@@ -1,10 +1,10 @@
 <?php
 /*
 
-  lt3 Template Functions - Foundations
+  lt3 Template Functions
 
 ------------------------------------------------
-	template-functions.php
+	template.php
 	@version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me

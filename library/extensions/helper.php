@@ -4,7 +4,7 @@
   lt3 Helper Functions
 
 ------------------------------------------------
-  helper-functions.php
+  helper.php
   @version 2.0 | April 1st 2013
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
@@ -20,10 +20,10 @@
 
 /* lt3 is Child of Page
 ------------------------------------------------
-lt3_is_child_of_page()
-@args   $post_id | integer
-@return boolean
-Function to check if page is child of $post_id
+  lt3_is_child_of_page()
+  @param  $post_id | integer
+  @return boolean
+  Function to check if page is child of $post_id
 ------------------------------------------------ */
 function lt3_is_child_of_page($post_id)
 {
@@ -60,11 +60,11 @@ function lt3_is_child_of_page($post_id)
 
 /* lt3 is Cild of Category
 ------------------------------------------------
-lt3_is_child_of_category()
-@param  $parent_category | integer
-@return boolean
-Function to check if current category is a child
-of $parent_category category
+  lt3_is_child_of_category()
+  @param  $parent_category | integer
+  @return boolean
+  Function to check if current category is a child
+  of $parent_category category
 ------------------------------------------------ */
 function lt3_is_child_of_category($parent_category)
 {
@@ -214,7 +214,7 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 /* Prettify Words
 ------------------------------------------------
   lt3_prettify_words()
-  @arg    $words | string
+  @param  $words | string
   @return string
   Creates a pretty version of a string, like
   a pug version of a dog.
@@ -227,7 +227,7 @@ function lt3_prettify_words($words)
 /* Uglify Words
 ------------------------------------------------
   lt3_uglify_words()
-  @arg    $words | string
+  @param  $words | string
   @return string
   creates a url firendly version of the given string.
 ------------------------------------------------ */
@@ -239,7 +239,7 @@ function lt3_uglify_words($words)
 /* Plurify Words
 ------------------------------------------------
   lt3_plurafy_words()
-  @arg    $words | string
+  @param  $words | string
   @return string
   Plurifies most common words. Not currently working
   proper nouns, or more complex words, for example
