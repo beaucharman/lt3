@@ -11,7 +11,7 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 
-  library/extensions/site-settings.php
+  source file: library/extensions/site-settings.php
 ------------------------------------------------ */
 
 /* Declare the Site Settings options

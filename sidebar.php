@@ -11,7 +11,6 @@
   @link    https://github.com/beaucharman/lt3
   @licence GNU http://www.gnu.org/licenses/lgpl.txt
 ------------------------------------------------ */ ?>
-
 <aside class="primary-sidebar">
 
   <?php if(is_active_sidebar('primary-sidebar-widgets')) dynamic_sidebar('primary-sidebar-widgets'); ?>
