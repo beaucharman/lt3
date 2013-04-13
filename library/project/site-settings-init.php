@@ -14,11 +14,15 @@
   library/extensions/site-settings.php
 ------------------------------------------------ */
 
-/* Declare the Site Settings options and fields */
+/* Declare the Site Settings options
+------------------------------------------------ */
 $settings_group     = 'lt3_site_settings';
 $settings_name      = 'lt3_settings';
 $settings_menu_name = 'Site Settings';
 $settings_title     = get_bloginfo('name') . ' Site Setings';
+
+/* Declare the Site Settings fields
+------------------------------------------------ */
 $args = array(
   array(
     'id'             => 'google_analytics',
@@ -28,10 +32,12 @@ $args = array(
   )
 );
 
-/* Declare a new instance of the Site Settings class */
+/* Declare a new instance of the Site Settings class
+------------------------------------------------ */
 new LT3_Site_Settings_Page($settings_group, $settings_name, $args, $settings_menu_name, $settings_title);
 
-/* Create a global variable of the Site Settings */
+/* Create a global variable of the Site Settings
+------------------------------------------------ */
 if(!is_admin())
 {
   $lt3_site_settings = get_option($settings_name);

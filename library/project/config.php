@@ -149,7 +149,7 @@ define('LT3_ENABLE_TEMPLATE_DEBUG', false);
 
 /* Use the custom-editor-style.css file for the TinyMCE
 ------------------------------------------------ */
-define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
+define('LT3_USE_CUSTOM_EDITOR_STYLES', true);
 
 /* Use the custom-login-style.css file for the Login screen
 ------------------------------------------------ */

@@ -5,23 +5,16 @@
 
 2.0
 - Initial theme setup functionality, found in library/extensions/initial-theme-setup.php
+- Conditional h1
+- Split the theme-functions.php file up into modules
+- Convert custom taxonomy and post type functions into classes
 
 ## Roadmap [Todo list]
-- Default margin issue with entry content from a type point of view
-- Split up the theme-functions.php file into modules
-- WordPress editor styles + instructions
+- WordPress editor styles + instructions in Sass
 - Work on default comment styles
-- spacing in library / core files
-- set up editor styles as a sass directory
-- have conditional h1 tags
-- replace most / relavent functions with hooks
-- clean up shortcode.js
-- better columns engine for posts types and taxonomies
-- add more custom fields
-- add more functionlity to site-settings
-- convert custom taxonomy and post type functions into classes
-- Tabbed settings page http://wp.smashingmagazine.com/2011/10/20/create-tabs-wordpress-settings-pages/
-- add a custom user role extension
+- Replace most / relavent functions with hooks
+- Better columns engine for posts types and taxonomies
+- Add a custom user role extension
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
