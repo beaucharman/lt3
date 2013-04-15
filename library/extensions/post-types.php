@@ -18,7 +18,7 @@
   with the following arguments:
 
   // Required
-  $name = 'article';
+  $name = '';
 
   // Optional
   $labels = array(
@@ -49,7 +49,7 @@
     )
   );
 
-  $Articles = new LT3_Custom_Post_Type($name, $labels, $options, $help);
+  $PostType = new LT3_Custom_Post_Type($name, $labels, $options, $help);
 
 ------------------------------------------------
 
@@ -170,7 +170,7 @@ class LT3_Custom_Post_Type
     @param  $user_args | array
     @return post type data
   ------------------------------------------------ */
-  function get($user_args = array())
+  public function get($user_args = array())
   {
     $args = array_merge(
       array(
