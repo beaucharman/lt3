@@ -25,13 +25,13 @@
 global $content_width;
 if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
 
-/* Set post thumbnail size
------------------------------------------------- */
-set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
-
 /* Add Theme Support
 ------------------------------------------------ */
 add_theme_support('post-thumbnails');
+
+/* Set post thumbnail size
+------------------------------------------------ */
+set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
 
 /* Add Custom Image Styles
 ------------------------------------------------ */
