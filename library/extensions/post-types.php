@@ -18,7 +18,7 @@
   with the following arguments:
 
   // Required
-  $name = '';
+  $name = 'article';
 
   // Optional
   $labels = array(
@@ -49,7 +49,7 @@
     )
   );
 
-  new LT3_Custom_Post_Type($name, $labels, $options, $help);
+  $Articles = new LT3_Custom_Post_Type($name, $labels, $options, $help);
 
 ------------------------------------------------
 
@@ -162,6 +162,35 @@ class LT3_Custom_Post_Type
       $title = 'Enter '. $this->prettify_words($this->_name) .' Title Here';
     }
     return $title;
+  }
+
+  /* Get
+  ------------------------------------------------
+    get()
+    @param  $user_args | array
+    @return post type data
+  ------------------------------------------------ */
+  function get($user_args = array())
+  {
+    $args = array_merge(
+      array(
+      'posts_per_page'  => -1,
+      'offset'          => 0,
+      'orderby'         => 'post_date',
+      'order'           => 'DESC',
+      'include'         => '',
+      'exclude'         => '',
+      'meta_key'        => '',
+      'meta_value'      => '',
+      'post_type'       => $this->_name,
+      'post_mime_type'  => '',
+      'post_parent'     => '',
+      'post_status'     => 'publish',
+      'suppress_filters' => true
+      ),
+      $user_args
+    );
+    return get_posts($args);
   }
 
   /* Add contextual help for custom post types
