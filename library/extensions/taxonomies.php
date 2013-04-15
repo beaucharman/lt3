@@ -142,11 +142,11 @@ class LT3_Custom_Taxonomy
       array(
         'orderby'       => 'name',
         'order'         => 'ASC',
-        'hide_empty'    => true,
+        'hide_empty'    => false,
         'exclude'       => array(),
         'exclude_tree'  => array(),
         'include'       => array(),
-        'number'        => -1,
+        'number'        => null,
         'fields'        => 'all',
         'slug'          => '',
         'parent'        => '',
@@ -161,7 +161,7 @@ class LT3_Custom_Taxonomy
       ),
       $user_args
     );
-    return get_terms($this->_name, $args);
+    return get_terms($this->_name);
   }
 
   /* Add contextual help for taxonomies
