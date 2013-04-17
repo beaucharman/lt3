@@ -8,6 +8,7 @@
 - Conditional h1
 - Split the theme-functions.php file up into modules
 - Convert custom taxonomy and post type functions into classes
+- Add get method to post type class
 
 ## Roadmap [Todo list]
 - WordPress editor styles + instructions in Sass
@@ -15,6 +16,7 @@
 - Replace most / relavent functions with hooks
 - Better columns engine for posts types and taxonomies
 - Add a custom user role extension
+- Easy get terms, get term and get the terms methods for custom taxonomies
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
