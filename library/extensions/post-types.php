@@ -170,7 +170,7 @@ class LT3_Custom_Post_Type
     @param  $user_args | array
     @return post type data
   ------------------------------------------------ */
-  public function get($user_args = array())
+  public function get($user_args = array(), $single = false)
   {
     $args = array_merge(
       array(
@@ -190,6 +190,11 @@ class LT3_Custom_Post_Type
       ),
       $user_args
     );
+    if($single)
+    {
+      $items = get_posts($args);
+      return $items[0];
+    }
     return get_posts($args);
   }
 
