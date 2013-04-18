@@ -19,7 +19,7 @@ function lt3_initial_theme_setup()
 {
   /* Only need to run this once
     ------------------------------------------------ */
-  if(get_option('theme_setup_status') !== '1')
+  if (get_option('theme_setup_status') !== '1')
   {
     /* Set the WordPress options the way you like
     ------------------------------------------------ */
