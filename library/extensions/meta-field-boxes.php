@@ -150,8 +150,9 @@ class LT3_Custom_Field_Meta_Box
             echo '<ul>';
             foreach($field['options'] as $option => $label):
               echo '<li>';
+              echo '  <label for="'.$field_id.'['.$option.']">';
               echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.$field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option]) ? ' checked' : '',' />';
-              echo '  <label for="'.$field_id.'['.$option.']">&nbsp;'.$label.'</label>';
+              echo '  &nbsp;'.$label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
@@ -188,8 +189,9 @@ class LT3_Custom_Field_Meta_Box
             echo '<ul>';
             foreach($field['options'] as $option => $label):
               echo '<li>';
+              echo '  <label for="'.$option.'">';
               echo '  <input type="radio" name="'.$field_id.'" id="'.$option.'" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
-              echo '  <label for="'.$option.'">&nbsp;'.$label.'</label>';
+              echo '  &nbsp;'.$label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
@@ -217,8 +219,9 @@ class LT3_Custom_Field_Meta_Box
                 $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
                 $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type'])) ? '<small>('.$item->post_type.')</small>' : '';
                 echo '<li>';
+                echo '  <label for="'.$field_id.'['. $item->ID .']">';
                 echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-                echo '  <label for="'.$field_id.'['. $item->ID .']">&nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
+                echo '  &nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
                 echo '</li>';
               endforeach;
               echo '</ul>';
