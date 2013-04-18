@@ -27,6 +27,7 @@ function lt3_initial_theme_setup()
       'avatar_default'      => 'mystery',
       'avatar_rating'       => 'G',
       'blog_public'         => '0',
+      'blogdescription'     => '',
       'comments_per_page'   => '20',
       'date_format'         => 'd/m/Y',
       'default_role'        => 'author',
