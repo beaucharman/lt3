@@ -157,7 +157,7 @@ class LT3_Custom_Post_Type
   public function custom_post_type_title_text()
   {
     $screen = get_current_screen();
-    if ($this->_name == $screen->post_type)
+    if($this->_name == $screen->post_type)
     {
       $title = 'Enter '. $this->prettify_words($this->_name) .' Title Here';
     }
@@ -221,7 +221,7 @@ class LT3_Custom_Post_Type
         $context = $help['context'] . '-' . $this->_name;
       }
 
-      if ($context == $screen->id)
+      if($context == $screen->id)
       {
         $contextual_help = $help['message'];
       }

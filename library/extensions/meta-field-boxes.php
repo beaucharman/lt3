@@ -342,24 +342,24 @@ class LT3_Custom_Field_Meta_Box
   {
     if(isset($_POST['custom_meta_fields_box_nonce']))
     {
-      if (!wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
+      if(!wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
       {
         return $post_id;
       }
-      if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+      if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
       {
         return $post_id;
       }
       if(isset($_POST['post_type']))
       {
-        if ('page' == $_POST['post_type']) {
-          if (!current_user_can('edit_page', $post_id))
+        if('page' == $_POST['post_type']) {
+          if(!current_user_can('edit_page', $post_id))
           {
             return $post_id;
           }
         }
       }
-      elseif (!current_user_can('edit_post', $post_id))
+      elseif(!current_user_can('edit_post', $post_id))
       {
         return $post_id;
       }
@@ -370,11 +370,11 @@ class LT3_Custom_Field_Meta_Box
         {
           $old = get_post_meta($post_id, $field_id, true);
           $new = $_POST[$field_id];
-          if ($new && $new != $old)
+          if($new && $new != $old)
           {
             update_post_meta($post_id, $field_id, $new);
           }
-          elseif ('' == $new && $old)
+          elseif('' == $new && $old)
           {
             delete_post_meta($post_id, $field_id, $old);
           }

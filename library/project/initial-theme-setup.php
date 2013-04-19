@@ -67,7 +67,7 @@ function lt3_initial_theme_setup()
     ------------------------------------------------
     feel free to add Akismet to this block of code
     ------------------------------------------------ */
-    if (file_exists(WP_PLUGIN_DIR.'/hello.php'))
+    if(file_exists(WP_PLUGIN_DIR.'/hello.php'))
     {
       require_once(ABSPATH.'wp-admin/includes/plugin.php');
       require_once(ABSPATH.'wp-admin/includes/file.php');

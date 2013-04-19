@@ -306,11 +306,11 @@ function lt3_register_shortcode_shortcode_raw($atts, $content = null)
 	$content = trim(do_shortcode(shortcode_unautop($content)));
 
 	/* Remove '' from the start of the string. */
-	if (substr($content, 0, 4) == '')
+	if(substr($content, 0, 4) == '')
     	$content = substr($content, 4);
 
 	/* Remove '' from the end of the string. */
-	if (substr($content, -3, 3) == '')
+	if(substr($content, -3, 3) == '')
     	$content = substr($content, 0, -3);
 
 	/* Remove any instances of ''. */

@@ -168,7 +168,7 @@ function lt3_custom_restrict_manage_posts()
   global $typenow;
   $args=array('public' => true, '_builtin' => false);
   $post_types = get_post_types($args);
-  if (in_array($typenow, $post_types))
+  if(in_array($typenow, $post_types))
   {
     $filters = get_object_taxonomies($typenow);
     foreach ($filters as $tax_slug)
@@ -192,13 +192,13 @@ add_filter('parse_query','lt3_todo_convert_restrict');
 function lt3_todo_convert_restrict($query)
 {
   global $pagenow,  $typenow;
-  if ($pagenow=='edit.php')
+  if($pagenow=='edit.php')
   {
     $filters = get_object_taxonomies($typenow);
     foreach ($filters as $tax_slug)
     {
       $var = &$query->query_vars[$tax_slug];
-      if (isset($var))
+      if(isset($var))
       {
         $term = get_term_by('id',$var,$tax_slug);
         if($term) $var = $term->slug;

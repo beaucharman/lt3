@@ -169,7 +169,7 @@ class LT3_Custom_Taxonomy
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     $context = 'edit-' . $this->_name;
-    if ($context == $screen->id)
+    if($context == $screen->id)
     {
       $contextual_help = $this->_help;
     }

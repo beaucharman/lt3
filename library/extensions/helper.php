@@ -269,7 +269,7 @@ function lt3_plurafy_words($words)
   var_dump with style
   https://gist.github.com/beaucharman/9f2706c267161c218321
 ------------------------------------------------ */
-if (!function_exists('debug_tool'))
+if(!function_exists('debug_tool'))
 {
   function debug_tool($args = null)
   {
@@ -332,7 +332,7 @@ if (!function_exists('debug_tool'))
       exit($exit_message);
     }
 
-    if ($options['echo'])
+    if($options['echo'])
     {
       echo $output;
     }

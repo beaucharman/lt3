@@ -279,7 +279,7 @@ add_filter('get_the_excerpt', 'lt3_trim_excerpt');
 function lt3_trim_excerpt($text)
 {
 	global $post;
-	if ('' == $text)
+	if('' == $text)
 	{
 		$text = get_the_content('');
 		$text = apply_filters('the_content', $text);
@@ -341,12 +341,12 @@ add_filter('body_class', 'lt3_add_to_body_class');
 function lt3_add_to_body_class($classes)
 {
 	global $post;
-	if (!is_front_page() && !is_search() && isset($post->post_name))
+	if(!is_front_page() && !is_search() && isset($post->post_name))
 	{
 		$classes[] = 'not-front-page';
 		$classes[] = 'page-'.$post->post_name;
 	}
-	elseif (is_front_page())
+	elseif(is_front_page())
 	{
 		$classes[] = 'front-page';
 	}
@@ -417,7 +417,7 @@ function lt3_advanced_comment($comment, $args, $depth)
           <?php printf(__('%s'), get_comment_author_link()) ?>
         </a> said:
       </div>
-      <?php if ($comment->comment_approved == '0') : ?>
+      <?php if($comment->comment_approved == '0') : ?>
       <div>
         <em><?php _e('Your comment is awaiting moderation.') ?></em>
         <br>
@@ -426,7 +426,7 @@ function lt3_advanced_comment($comment, $args, $depth)
       <div class="comment-text"><?php comment_text() ?></div>
       <div class="comment-meta">
         <small>on the <?php printf(__('%1$s'), get_comment_date('l, F j, Y')) ?>
-          <?php if (current_user_can('edit_post')) : ?>
+          <?php if(current_user_can('edit_post')) : ?>
           (<?php edit_comment_link(__('Edit'),'','') ?><?php lt3_delete_comment_link() ?>)
           <?php endif; ?>
         </small>

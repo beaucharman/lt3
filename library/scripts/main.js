@@ -32,7 +32,7 @@ document.documentElement.className = document.documentElement.className.replace(
   while (length--)
   {
     method = methods[length];
-    if (!console[method])
+    if(!console[method])
     {
       console[method] = noop;
     }

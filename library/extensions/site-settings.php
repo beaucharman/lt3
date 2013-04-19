@@ -75,7 +75,7 @@ class LT3_Site_Settings_Page
   function site_settings_render_page()
   {
     /* Check that the user is allowed to update options */
-    if (!current_user_can('manage_options'))
+    if(!current_user_can('manage_options'))
     {
       wp_die('You do not have sufficient permissions to access this page.');
     }
