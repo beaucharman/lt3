@@ -1,16 +1,14 @@
 <?php
-/*
-
-  lt3 Single Loop Template
-
-------------------------------------------------
-  loop-single.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */ ?>
+/**
+ * Loop Single
+ * ------------------------------------------------------------------------
+ * loop-single.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */ ?>
 <?php while(have_posts()) : the_post(); ?>
 
 <article <?php post_class('single entry content post-'. get_the_ID()); ?>>

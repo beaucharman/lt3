@@ -1,16 +1,24 @@
 <?php
+/**
+ * Widgets
+ * ------------------------------------------------------------------------
+ * widgets.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * For more info, and variations:
+ * http://codex.wordpress.org/Function_Reference/register_sidebar
+ *
+ * To use in a theme template, use:
+ *	 dynamic_sidebar('sidebar-id');
+ *
+ * To unregister a sidebar to clean up the widgets area, as an example use:
+ *	 add_action('widgets_init', 'name_of_sidebar_init_function');
+ */
 /*
-
-  lt3 Widgets
-
-------------------------------------------------
-	widgets.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
 	For more widget areas, use:
 		register_sidebar(
 			array(
@@ -19,28 +27,17 @@
 				'description' => __('These are widgets for the sidebar.')
 			)
 		);
+*/
 
-	For more info, and variations:
-	http://codex.wordpress.org/Function_Reference/register_sidebar
+/* ------------------------------------------------------------------------
+	 Widget Areas
+   ------------------------------------------------------------------------ */
 
-	To use in a theme template, use:
-		dynamic_sidebar('sidebar-id');
-
-	To unregister a sidebar to clean up the widgets area, as an example use:
-		add_action('widgets_init', 'name_of_sidebar_init_function');
------------------------------------------------- */
-
-/*
-
-	Widget Areas
-
------------------------------------------------- */
-
-/* Register Header Sidebar
-------------------------------------------------
-	lt3_register_header_sidebar()
-	Header sidebar
------------------------------------------------- */
+/**
+ * Register Header Sidebar
+ * ------------------------------------------------------------------------
+ * lt3_register_header_sidebar()
+ * ------------------------------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_header_sidebar');
 function lt3_register_header_sidebar()
 {
@@ -55,11 +52,11 @@ function lt3_register_header_sidebar()
 	));
 }
 
-/* Register Header Sidebar
-------------------------------------------------
-	lt3_register_header_sidebar()
-	Primary Sidebar Widgets
------------------------------------------------- */
+/**
+ * Register Primary Sidebar
+ * ------------------------------------------------------------------------
+ * lt3_register_primary_sidebar()
+ * ------------------------------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_primary_sidebar');
 function lt3_register_primary_sidebar()
 {
@@ -74,11 +71,11 @@ function lt3_register_primary_sidebar()
 	));
 }
 
-/* Register Footer Sidebar
-------------------------------------------------
-	lt3_register_footer_sidebar()
-	Footer Sidebar
------------------------------------------------- */
+/**
+ * Register Footer Sidebar
+ * ------------------------------------------------------------------------
+ * lt3_register_footer_sidebar()
+ * ------------------------------------------------------------------------ */
 add_action('widgets_init', 'lt3_register_footer_sidebar');
 function lt3_register_footer_sidebar()
 {

@@ -1,18 +1,16 @@
-/*
-
-  lt3-theme WordPress Editor styles
-
-------------------------------------------------
-  custom-editor-styles.css
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */
+/**
+ * Custom Editor styles
+ * ------------------------------------------------------------------------
+ * custom-editor-styles.css
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */
 
 /* Global styles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 html {
   background: #F8F8F8;
 }
@@ -31,7 +29,7 @@ body {
 }
 
 /* Paragraph and Block level elements typography
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 p, blockquote {
   margin: 1em 0;
 }
@@ -60,7 +58,7 @@ td, th {
 }
 
 /* Entry Container styles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 .entry:before,
 .entry:after {
   content: " ";
@@ -76,7 +74,7 @@ td, th {
 }
 
 /* Alignment styles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 .alignleft, img.alignleft {
   margin-right: 1.5em;
   display: inline;
@@ -130,7 +128,7 @@ blockquote.right {
 .muted {  }
 
 /* Image and Gallery tyles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 .hentry img {
   max-width: 100%;
   height: auto;

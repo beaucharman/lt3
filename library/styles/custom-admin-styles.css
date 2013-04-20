@@ -1,21 +1,20 @@
-/*
+/**
+ * Custom Admin styles
+ * ------------------------------------------------------------------------
+ * custom-admin-style.css
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */
 
-  lt3-theme Custom Admin styles
-
-------------------------------------------------
-  custom-admin-style.css
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */
-
-/* Input field styles
-------------------------------------------------
-Consistent form, controls and compontent styles,
-for site-settings and custom-meta-fields
------------------------------------------------- */
+/**
+ * Input field styles
+ * ------------------------------------------------------------------------
+ * Consistent form, controls and compontent styles,
+ * for site-settings and custom-meta-fields
+ */
 .lt3-form-container th,
 .lt3-form-container td {
   vertical-align: top;

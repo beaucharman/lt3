@@ -9,7 +9,7 @@
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+  @license GNU http://www.gnu.org/licenses/lgpl.txt
 
 	function register_shortcode_shortcode_name($atts, $content = null){
 		extract(shortcode_atts(array(
@@ -38,24 +38,18 @@
 	<div style="color:red;">World</div>
 
 	More information http://codex.wordpress.org/Shortcode_API.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
-/*
-
-	[lt3_home_url]
-
------------------------------------------------- */
+/* [lt3_home_url]
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_home_url', 'lt3_register_shortcode_home_url');
 function lt3_register_shortcode_home_url($atts, $content = null)
 {
 	return home_url();
 }
 
-/*
-
-	[lt3_base_media_url]
-
------------------------------------------------- */
+/* [lt3_base_media_url]
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_base_media_url', 'lt3_register_shortcode_base_media_url');
 function lt3_register_shortcode_base_media_url($atts, $content = null)
 {
@@ -63,11 +57,8 @@ function lt3_register_shortcode_base_media_url($atts, $content = null)
 	return $uploads['baseurl'];
 }
 
-/*
-
-	[lt3_full_media_url]
-
------------------------------------------------- */
+/* [lt3_full_media_url]
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_full_media_url', 'lt3_register_shortcode_full_media_url');
 function lt3_register_shortcode_full_media_url($atts, $content = null)
 {
@@ -79,7 +70,7 @@ function lt3_register_shortcode_full_media_url($atts, $content = null)
 
 	[lt3_parent_theme_url]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_parent_theme_url', 'lt3_register_shortcode_parent_theme_url');
 function lt3_register_shortcode_parent_theme_url($atts, $content = null)
 {
@@ -90,7 +81,7 @@ function lt3_register_shortcode_parent_theme_url($atts, $content = null)
 
 	[lt3_child_theme_url]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_child_theme_url', 'lt3_register_shortcode_child_theme_url');
 function lt3_register_shortcode_child_theme_url($atts, $content = null)
 {
@@ -101,7 +92,7 @@ function lt3_register_shortcode_child_theme_url($atts, $content = null)
 
 	[lt3_replace_with_content]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_replace_with_content', 'lt3_register_shortcode_replace_with_content');
 function lt3_register_shortcode_replace_with_content($atts, $content = null)
 {
@@ -117,7 +108,7 @@ function lt3_register_shortcode_replace_with_content($atts, $content = null)
 
 	[lt3_clear]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_clear', 'lt3_register_shortcode_clear');
 function lt3_register_shortcode_clear($atts, $content = null)
 {
@@ -128,7 +119,7 @@ function lt3_register_shortcode_clear($atts, $content = null)
 
 	[lt3_divider class=""]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_divider', 'lt3_register_shortcode_divider');
 function lt3_register_shortcode_divider($atts, $content = null)
 {
@@ -143,7 +134,7 @@ function lt3_register_shortcode_divider($atts, $content = null)
 
 	[lt3_float_right]content[/lt3_float_right]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_float_right', 'lt3_register_shortcode_float_right');
 function lt3_register_shortcode_float_right($atts, $content = null)
 {
@@ -154,7 +145,7 @@ function lt3_register_shortcode_float_right($atts, $content = null)
 
 	[lt3_float_left]content[/lt3_float_left]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_float_left', 'lt3_register_shortcode_float_left');
 function lt3_register_shortcode_float_left($atts, $content = null)
 {
@@ -165,7 +156,7 @@ function lt3_register_shortcode_float_left($atts, $content = null)
 
 	[lt3_button class=""]content[/lt3_button]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_button', 'lt3_register_shortcode_button');
 function lt3_register_shortcode_button($atts, $content = null)
 {
@@ -181,7 +172,7 @@ function lt3_register_shortcode_button($atts, $content = null)
 
 	[lt3_link class="" rel=""]content[/lt3_link]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_link', 'lt3_register_shortcode_link');
 function lt3_register_shortcode_link($atts, $content = null)
 {
@@ -198,7 +189,7 @@ function lt3_register_shortcode_link($atts, $content = null)
 
 	[lt3_section class=""]content[/lt3_section]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_section', 'lt3_register_shortcode_section');
 function lt3_register_shortcode_section($atts, $content = null)
 {
@@ -213,7 +204,7 @@ function lt3_register_shortcode_section($atts, $content = null)
 
 	[lt3_dynamic_sidebar sidebar_id="id"]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_dynamic_sidebar', 'lt3_register_shortcode_dynamic_sidebar');
 if(!function_exists('lt3_get_dynamic_sidebar'))
 {
@@ -239,7 +230,7 @@ function lt3_register_shortcode_dynamic_sidebar($atts, $content = null)
 
 	[lt3_get_template_part_content primary_part="" secondary_part=""]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_get_template_part_content', 'lt3_register_shortcode_get_template_part_content');
 function lt3_get_template_part_content($template_part_primary, $template_part_secondary)
 {
@@ -265,7 +256,7 @@ function lt3_register_shortcode_get_template_part_content($atts, $content = null
 
 	[lt3_hidden_content private_message="" public_message=""]content[/lt3_hidden_content]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode("lt3_hidden_content", "lt3_register_shortcode_hidden_content");
 function lt3_register_shortcode_hidden_content($atts, $content = null)
 {
@@ -299,7 +290,7 @@ function lt3_register_shortcode_hidden_content($atts, $content = null)
 
 	[lt3_raw]content[/lt3_raw] Remove formatting from around Shorcodes in the editor
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_raw', 'lt3_register_shortcode_shortcode_raw');
 function lt3_register_shortcode_shortcode_raw($atts, $content = null)
 {
@@ -323,7 +314,7 @@ function lt3_register_shortcode_shortcode_raw($atts, $content = null)
 
 	[lt3_iframe class="" scrolling="auto|yes|no" width="%|px|int" height="%|px|int" ]src[/lt3_iframe]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_iframe', 'lt3_register_shortcode_iframe');
 function lt3_register_shortcode_iframe($atts, $content = null)
 {
@@ -351,7 +342,7 @@ function lt3_register_shortcode_iframe($atts, $content = null)
 
 	[lt3_google_map width="%|px|int" height="%|px|int" class="" ]src[/lt3_google_map]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode("lt3_google_map", "lt3_register_shortcode_google_map");
 function lt3_register_shortcode_google_map($atts, $content = null)
 {
@@ -386,7 +377,7 @@ function lt3_register_shortcode_google_map($atts, $content = null)
   Todo:
   Implement 	allowFullScreen="true|false"
 	            allowScriptAccess="always|never"
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_youtube', 'lt3_register_shortcode_youtube');
 function lt3_register_shortcode_youtube($atts, $content = null)
 {
@@ -427,7 +418,7 @@ function lt3_register_shortcode_youtube($atts, $content = null)
 
 	[lt3_follow_on_twitter username="username"]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_follow_on_twitter', 'lt3_register_shortcode_follow_on_twitter');
 function lt3_register_shortcode_follow_on_twitter($atts, $content = '')
 {
@@ -442,7 +433,7 @@ function lt3_register_shortcode_follow_on_twitter($atts, $content = '')
 
 	Column Shortcode [lt3_fraction] / [lt3_fraction_last]
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_shortcode('lt3_one_half', 'lt3_register_shortcode_one_half_column');
 function lt3_register_shortcode_one_half_column($atts, $content = null)
 {

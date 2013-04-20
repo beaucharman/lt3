@@ -1,22 +1,20 @@
 <?php if(!defined('ABSPATH')) exit;
-/*
+/**
+ * Functions
+ * ------------------------------------------------------------------------
+ * header.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * lt3 Functions and Theme Setup
+ * ------------------------------------------------------------------------ */
 
-  lt3 Functions and Theme Setup
-
-------------------------------------------------
-  functions.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */
-
-/*
-
-  Required Constants
-
------------------------------------------------- */
+/* ------------------------------------------------------------------------
+   Required Constants
+   ------------------------------------------------------------------------ */
 define('LT3_FULL_PROJECT_PATH', get_template_directory() . '/library/project');
 
 define('LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensions');
@@ -37,89 +35,83 @@ define('LT3_IMAGES_PATH', 'library/images');
 
 define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
 
-/*
-
-  Site Configuration
-
------------------------------------------------- */
+/* ------------------------------------------------------------------------
+   Site Configuration
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_PROJECT_PATH . '/config.php');
 
-/*
-
-  Required Extention Files
-
------------------------------------------------- */
+/* ------------------------------------------------------------------------
+   Required Extention Files
+   ------------------------------------------------------------------------ */
 
 /* Initial Theme Setup
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_PROJECT_PATH . '/initial-theme-setup.php');
 
 /* Helper Functions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/helper.php');
 
 /* Site Settings
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
 
 /* Admin Functions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
 
 /* Editor Functions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
 
 /* Template Functions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/template.php');
 
 /* Custom Post Types
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/post-types.php');
 
 /* Custom Taxonomies
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/taxonomies.php');
 
 /* Custom Meta Field Boxes
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/meta-field-boxes.php');
 
 /* Loop Functions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
 
 /* Template Hooks
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
 
 /* Theme Widgets
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
 
 /* Theme Menus
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Shortcodes
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
 
 /* Theme Scripts
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
 
 /* Theme Styles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
-/*
-
-  Project Extensions
-
------------------------------------------------- */
+/* ------------------------------------------------------------------------
+   Project Extensions
+   ------------------------------------------------------------------------ */
 
 /* Site Settings Init
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');

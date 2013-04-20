@@ -1,21 +1,19 @@
 <?php
-/*
-
-  lt3 Editor Functions
-
-------------------------------------------------
-	editor.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
-	All functionality that effects the admin and post editor.
------------------------------------------------- */
+/**
+ * Editor
+ * ------------------------------------------------------------------------
+ * editor.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * All extra functionality that effects the admin and post editor.
+ * ------------------------------------------------------------------------ */
 
 /* Add excerpt field to pages
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_action('init', 'lt3_add_page_excerpts');
 function lt3_add_page_excerpts()
 {
@@ -23,7 +21,7 @@ function lt3_add_page_excerpts()
 }
 
 /* Add PDFs to the media type filter for posts
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('post_mime_types', 'lt3_modify_post_mime_types');
 function lt3_modify_post_mime_types($post_mime_types)
 {
@@ -36,11 +34,11 @@ function lt3_modify_post_mime_types($post_mime_types)
 }
 
 /* Add more buttons to the TinyMCE editor
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 
   /* Level 3 buttons
-  ------------------------------------------------ */
+     ------------------------------------------------------------------------ */
   add_filter('mce_buttons','edit_buttons_for_tinymce_editor_1');
 	function edit_buttons_for_tinymce_editor_1($mce_buttons)
 	{
@@ -77,7 +75,7 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 	}
 
   /* Level 2 buttons
-  ------------------------------------------------ */
+     ------------------------------------------------------------------------ */
 	add_filter('mce_buttons_2','edit_buttons_for_tinymce_editor_2');
 	function edit_buttons_for_tinymce_editor_2($mce_buttons)
 	{
@@ -116,7 +114,7 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
 	}
 
   /* Adds style select to the TinyMCE Editor
-  ------------------------------------------------ */
+     ------------------------------------------------------------------------ */
   add_filter('mce_buttons_2', 'lt3_mce_styleselect_editor_buttons');
   function lt3_mce_styleselect_editor_buttons($buttons)
   {
@@ -125,7 +123,7 @@ if(LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
   }
 
   /* Allocate styles for the TinyMCE Editor style select
-  ------------------------------------------------ */
+     ------------------------------------------------------------------------ */
   add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
   function lt3_mce_styleselect_editor_settings($settings) {
     if(!empty($settings['theme_advanced_styles']))

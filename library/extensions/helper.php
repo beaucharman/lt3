@@ -9,8 +9,8 @@
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */
+  @license GNU http://www.gnu.org/licenses/lgpl.txt
+   ------------------------------------------------------------------------ */
 
 /*
 
@@ -24,7 +24,7 @@
   @param  $post_id | integer
   @return boolean
   Function to check if page is child of $post_id
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_is_child_of_page($post_id)
 {
   global $post;
@@ -65,7 +65,7 @@ function lt3_is_child_of_page($post_id)
   @return boolean
   Function to check if current category is a child
   of $parent_category category
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_is_child_of_category($parent_category)
 {
   if(is_category())
@@ -81,7 +81,7 @@ function lt3_is_child_of_category($parent_category)
   @param  $type | string
   @return boolean
   Function to check if Custom Post Type
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
@@ -115,7 +115,7 @@ function lt3_is_post_type($type = null)
   @param null
   @return boolean
   Return true if has pagination.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_has_page_pagination()
 {
   if(wp_link_pages('echo=0'))
@@ -136,7 +136,7 @@ function lt3_has_page_pagination()
   @return boolean
   Tests if any of a post's assigned categories are
   descendants of target categories
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_post_is_in_descendant_category($cats, $_post = null)
 {
   foreach((array) $cats as $cat)
@@ -154,7 +154,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
   @param  $url | string
   @return file output
   gets the data from a URL
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_data_with_curl($url = '')
 {
   if(!LT3_DEVELOPMENT_MODE)
@@ -185,7 +185,7 @@ function lt3_get_data_with_curl($url = '')
   @param null
   @return debug output string
   Debug the template files and display which ones are being used
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
 
@@ -218,7 +218,7 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   @return string
   Creates a pretty version of a string, like
   a pug version of a dog.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_prettify_words($words)
 {
   return ucwords(str_replace('_', ' ', $words));
@@ -230,7 +230,7 @@ function lt3_prettify_words($words)
   @param  $words | string
   @return string
   creates a url firendly version of the given string.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_uglify_words($words)
 {
   return strToLower(str_replace(' ', '_', $words));
@@ -244,7 +244,7 @@ function lt3_uglify_words($words)
   Plurifies most common words. Not currently working
   proper nouns, or more complex words, for example
   knife -> knives, leaf -> leaves.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_plurafy_words($words)
 {
   if(strToLower(substr($words, -1)) == 'y')
@@ -268,7 +268,7 @@ function lt3_plurafy_words($words)
   @return mixed
   var_dump with style
   https://gist.github.com/beaucharman/9f2706c267161c218321
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 if(!function_exists('debug_tool'))
 {
   function debug_tool($args = null)

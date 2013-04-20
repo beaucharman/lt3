@@ -1,23 +1,25 @@
 <?php
-/*
-
-  lt3 Default Loop Template
-
-------------------------------------------------
-  loop.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */ ?>
+/**
+ * Loop
+ * ------------------------------------------------------------------------
+ * loop.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */ ?>
 <?php while(have_posts()) : the_post(); ?>
 
 <?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
 
 <article <?php post_class('post-'. get_the_ID() . ' entry ' . $output_type ); ?>>
 
-  <h1 class="article-title"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+  <h1 class="article-title">
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+      <?php the_title(); ?>
+    </a>
+  </h1>
 
   <?php lt3_include_post_meta(); ?>
 

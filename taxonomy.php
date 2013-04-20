@@ -1,22 +1,22 @@
 <?php
-/*
-
-  Taxonomy Template
-
-------------------------------------------------
-  taxonomy.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
-  Taxonomy template page.
------------------------------------------------- */ ?>
+/**
+ * Taxonomy Template
+ * ------------------------------------------------------------------------
+ * taxonomy.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * Taxonomy template page.
+ * ------------------------------------------------------------------------ */ ?>
 <?php get_header(); ?>
 
   <?php $taxonomy_term = $wp_query->get_queried_object(); ?>
-  <h1 class="content-title"><?php echo $taxonomy_term->name; ?> <?php echo _e('Archive'); ?></h1>
+  <h1 class="content-title"><?php
+    echo $taxonomy_term->name;
+  ?> <?php echo _e('Archive'); ?></h1>
 
   <?php if(term_description()) : ?>
     <p class="taxonomy-description"><?php echo term_description(); ?></p>

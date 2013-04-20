@@ -9,7 +9,7 @@
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+  @license GNU http://www.gnu.org/licenses/lgpl.txt
 
 	Control specific loop outputs.
 	Loops altered from these functions are executed when the requested is made,
@@ -35,10 +35,10 @@
 		http://codex.wordpress.org/Class_Reference/WP_Query
 		http://codex.wordpress.org/Function_Reference/query_posts
 		http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /* Set all posts to be sorted alphabetically
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_action('pre_get_posts', 'lt3_default_loop_outputs');
 function lt3_default_loop_outputs($query)
 {
@@ -47,7 +47,7 @@ function lt3_default_loop_outputs($query)
 	{
 
 		/* Order all posts all by title, acensding by default
-		------------------------------------------------ */
+		   ------------------------------------------------------------------------ */
 		$query->set('orderby','title');
 		$query->set('order','ASC');
 

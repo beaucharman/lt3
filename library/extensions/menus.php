@@ -9,7 +9,7 @@
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+  @license GNU http://www.gnu.org/licenses/lgpl.txt
 
 	For more menu locations, use:
 		register_nav_menu('menu_name_location', 'Description of Navigation Menu');
@@ -20,21 +20,21 @@
 		wp_nav_menu(array('menu' => 'Menu Name'));
 
 	For more info, and variations: http://codex.wordpress.org/Function_Reference/wp_nav_menu.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /*
 
 	Register Menu Locations
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 if(function_exists('register_nav_menu')){
 
 	/* Main Navigation Menu
-	------------------------------------------------ */
+	   ------------------------------------------------------------------------ */
 	register_nav_menu('main_navigation_menu', 'Main Navigation Menu');
 
 	/* Footer Menu
-	------------------------------------------------ */
+	   ------------------------------------------------------------------------ */
 	register_nav_menu('footer_menu', 'Footer Menu');
 }
 
@@ -42,13 +42,13 @@ if(function_exists('register_nav_menu')){
 
 	Menu Declarations
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /* Page Header Menu
 ------------------------------------------------
   lt3_page_header_menu()
 	Main navigation menu
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_page_header_menu()
 {
 	wp_nav_menu(
@@ -66,7 +66,7 @@ function lt3_page_header_menu()
 ------------------------------------------------
   lt3_page_footer_menu()
 	Footer menu
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_page_footer_menu()
 {
 	wp_nav_menu(

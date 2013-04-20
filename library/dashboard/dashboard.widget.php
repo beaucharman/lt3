@@ -1,16 +1,14 @@
 <?php
-/*
-
-  lt3 Dashboard Footer Include
-
-------------------------------------------------
-  dashboard.widget.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */ ?>
+/**
+ * Dashboard Widget
+ * ------------------------------------------------------------------------
+ * dashboard.widget.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */ ?>
 
 <h2>Welcome to your website's administration area</h2>
 <p>For some online lessons on using WordPress, the software powering this site, visit:

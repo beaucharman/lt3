@@ -1,33 +1,36 @@
 <?php
-/*
+/**
+ * Footer
+ * ------------------------------------------------------------------------
+ * footer.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */ ?>
+      </section>
 
-  Footer Template
+      <footer class="page-footer">
 
-------------------------------------------------
-  footer.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
------------------------------------------------- */ ?>
-  </section>
+        <?php if(is_active_sidebar('footer-sidebar-widgets'))
+          dynamic_sidebar('footer-sidebar-widgets'); ?>
 
-  <footer class="page-footer">
+        <?php lt3_page_footer_menu(); ?>
 
-    <?php if(is_active_sidebar('footer-sidebar-widgets')) dynamic_sidebar('footer-sidebar-widgets'); ?>
+        <p class="site-information">
+          &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
+        </p>
 
-    <?php lt3_page_footer_menu(); ?>
+      </footer>
 
-    <p class="site-information">&copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?></p>
+    </div>
 
-  </footer>
+    <?php /* Google Analytics */
+      global $lt3_site_settings;
+      lt3_show_google_analytics($lt3_site_settings['google_analytics']); ?>
 
-</div>
+    <?php wp_footer(); ?>
 
-<?php global $lt3_site_settings; lt3_show_google_analytics($lt3_site_settings['google_analytics']); ?>
-
-<?php wp_footer(); ?>
-
-</body>
+  </body>
 </html>

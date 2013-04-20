@@ -9,37 +9,37 @@
   @package lt3
   @author  Beau Charman | @beaucharman | http://beaucharman.me
   @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
+  @license GNU http://www.gnu.org/licenses/lgpl.txt
 
 	All functionality that effects the front end of the theme is located in this file.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /*
 
 	Template Functions
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /* Set the content width
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 global $content_width;
 if(! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
 
 /* Add Theme Support
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_theme_support('post-thumbnails');
 
 /* Set post thumbnail size
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
 
 /* Add Custom Image Styles
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
 add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2 , 300, true);
 
 /* Render Title Function. Assign title names and attributes conditionally.
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_title()
 {
 	global $post;
@@ -95,7 +95,7 @@ function lt3_title()
 }
 
 /* Default header description meta tag - Filter Function
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_meta_tag_description()
 {
 	global $post;
@@ -164,7 +164,7 @@ function lt3_meta_tag_description()
 }
 
 /* Function to change the read more text on Archive pages
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_read_more_text()
 {
 	if(is_attachment())
@@ -178,7 +178,7 @@ function lt3_read_more_text()
 }
 
 /* Function to get defined Messages
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_message($message_name)
 {
 	switch(strtoupper($message_name))
@@ -232,7 +232,7 @@ function lt3_get_message($message_name)
 }
 
 /* Search form request filter
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('request', 'lt3_search_form_request_filter');
 function lt3_search_form_request_filter($query_vars)
 {
@@ -244,7 +244,7 @@ function lt3_search_form_request_filter($query_vars)
 }
 
 /* Search form replacement
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('get_search_form', 'lt3_html5_search_form');
 function lt3_html5_search_form($form)
 {
@@ -256,7 +256,7 @@ function lt3_html5_search_form($form)
 }
 
 /* Remove more text on search page
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('excerpt_more', 'lt3_search_excerpt_more');
 function lt3_search_excerpt_more($more)
 {
@@ -268,12 +268,12 @@ function lt3_search_excerpt_more($more)
 }
 
 /* Use Shortcodes in Widgets
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('widget_text', 'do_shortcode');
 
 /* Custom post excerpt: Remove <script> tags, set
 	 'Read More' and 'Excerpt Length', allow links
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
 add_filter('get_the_excerpt', 'lt3_trim_excerpt');
 function lt3_trim_excerpt($text)
@@ -301,7 +301,7 @@ function lt3_trim_excerpt($text)
 }
 
 /* Clean up the <head>
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_action('init', 'lt3_remove_head_links');
 function lt3_remove_head_links()
 {
@@ -317,7 +317,7 @@ function lt3_remove_head_links()
 }
 
 /* Add browser type to body class
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('body_class','lt3_browser_body_class');
 function lt3_browser_body_class($classes)
 {
@@ -335,7 +335,7 @@ function lt3_browser_body_class($classes)
 }
 
 /* Add to the Body Class filter
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('post_class', 'lt3_add_to_body_class');
 add_filter('body_class', 'lt3_add_to_body_class');
 function lt3_add_to_body_class($classes)
@@ -354,7 +354,7 @@ function lt3_add_to_body_class($classes)
 }
 
 /* HTML5 friendly figure tags instead of captions
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('img_caption_shortcode', 'lt3_img_caption_shortcode_filter',10,3);
 function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 {
@@ -381,7 +381,7 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 
 	Custom Theme Functions
 
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 
 /* lt3 Show Google Analytics
 
@@ -389,7 +389,7 @@ lt3_show_google_analytics
 @param $analytics_key | string
 @return analytics code | string
 Add google analytics
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_show_google_analytics($analytics_key = '')
 {
 	if($analytics_key) : ?>
@@ -403,7 +403,7 @@ function lt3_show_google_analytics($analytics_key = '')
 }
 
 /* Function create a custom comment list
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_advanced_comment($comment, $args, $depth)
 {
   $GLOBALS['comment'] = $comment; ?>
@@ -438,7 +438,7 @@ function lt3_advanced_comment($comment, $args, $depth)
 <?php }
 
 /* Function to add more edit buttons to comments
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_delete_comment_link($id)
 {
   if(current_user_can('edit_post'))
@@ -451,7 +451,7 @@ function lt3_delete_comment_link($id)
 /* Adds a back to parent category, page, etc link
 ------------------------------------------------
 	Need to add functionality for post type, taxonomy,
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_back_to_parent_link(){
 	global $post;
 	$post = get_post($post);
@@ -481,7 +481,7 @@ function lt3_back_to_parent_link(){
 }
 
 /* Sticky Notes
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_default_sticky_posts()
 {
   if(LT3_ENABLE_STICKY_POSTS)
@@ -491,14 +491,14 @@ function lt3_default_sticky_posts()
 }
 
 /* Get the Comments Template
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_comments_template()
 {
   if(LT3_ENABLE_GLOBAL_COMMENTS) comments_template();
 }
 
 /* Function to get categories and taxonomies for a post
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_taxonomies_terms_links()
 {
 	global $post, $post_id;
@@ -520,7 +520,7 @@ function lt3_get_taxonomies_terms_links()
 }
 
 /* Function to get Post Nav Links
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_single_nav_links()
 {
 	echo '<div class="next-single">';
@@ -532,14 +532,14 @@ function lt3_get_single_nav_links()
 }
 
 /* Function to get Category Nav Links
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_get_archive_nav_links()
 {
 	posts_nav_link(' &mdash; ', '&larr; Previous Page', 'Next Page &rarr;');
 }
 
 /* Functions to include site pagination
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_include_single_navigation()
 {
 	echo '<nav class="single-navigation clear-fix">';
@@ -600,7 +600,7 @@ function lt3_include_archive_navigation()
 }
 
 /* Default post meta information
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_include_post_meta()
 {
   if(LT3_ENABLE_META_DATA)
@@ -629,7 +629,7 @@ function lt3_include_post_meta()
 }
 
 /* Limit the number of words in a given output
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 function lt3_excerpt($text_raw = '', $text_limit = 20, $text_echo = TRUE){
 	$text = explode(' ', $text_raw);
 	$ellipses = false;
@@ -659,7 +659,7 @@ function lt3_excerpt($text_raw = '', $text_limit = 20, $text_echo = TRUE){
 }
 
 /* Remove empty paragraph tags from the_content
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('the_content', 'lt3_remove_empty_paragraphs', 20, 1);
 function lt3_remove_empty_paragraphs($content)
 {
@@ -668,7 +668,7 @@ function lt3_remove_empty_paragraphs($content)
 }
 
 /* Remove <p> tags around images in the editor
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('the_content', 'lt3_filter_ptags_on_images');
 function lt3_filter_ptags_on_images($content)
 {
@@ -676,7 +676,7 @@ function lt3_filter_ptags_on_images($content)
 }
 
 /* Add Video Mode Transparent to all WP Embed Files
------------------------------------------------- */
+   ------------------------------------------------------------------------ */
 add_filter('embed_oembed_html', 'lt3_add_video_wmode_transparent', 10, 3);
 function lt3_add_video_wmode_transparent($html, $url, $attr)
 {

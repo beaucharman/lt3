@@ -1,32 +1,30 @@
+
 <?php
+/**
+ * Post Types
+ * ------------------------------------------------------------------------
+ * post-types.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * For more information on registering post types:
+ * http://codex.wordpress.org/Function_Reference/register_post_type
+ *
+ * To declare a custom post type, simply add a new LT3_Custom_Post_Type class
+ * with the following arguments:
+ */
 /*
-
-  lt3 Custom Post Types
-
-------------------------------------------------
-  post-types.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
-  For more information on registering post types:
-  http://codex.wordpress.org/Function_Reference/register_post_type
-
-  To declare a custom post type, simply add a new LT3_Custom_Post_Type class
-  with the following arguments:
-
   // Required
   $name = '';
-
   // Optional
   $labels = array(
     'label_singular' => '',
     'label_plural'   => '',
     'menu_label'     => ''
   );
-
   $options = array(
     'description'    => '',
     'public'         => true,
@@ -38,7 +36,6 @@
     'has_archive'    => true,
     'rewrite'        => true
   );
-
   $help = array(
     array(
       'message'      => ''
@@ -48,27 +45,20 @@
       'message'      => ''
     )
   );
-
   $PostType = new LT3_Custom_Post_Type($name, $labels, $options, $help);
-
-------------------------------------------------
-
-  Flush permalink rewrites after creating custom post types and taxonomies
-
-  // add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
+*/
+/*
+  // Flush permalink rewrites after creating custom post types and taxonomies
+  add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
   function lt3_post_type_and_taxonomy_flush_rewrites()
   {
     global $wp_rewrite;
     $wp_rewrite->flush_rules();
   }
+ * ------------------------------------------------------------------------ */
 
------------------------------------------------- */
-
-/*
-
- Declare custom post types class
-
------------------------------------------------- */
+/* Declare custom post types class
+   ------------------------------------------------------------------------ */
 class LT3_Custom_Post_Type
 {
   public $_name;
@@ -76,15 +66,15 @@ class LT3_Custom_Post_Type
   public $_options;
   public $_help;
 
-  /* Class constructor
-  ------------------------------------------------
-    __construct()
-    @param  $name     | string
-    @param  $labels   | array
-    @param  $options  | array
-    @param  $help     | array
-    @return post_type | object
-  ------------------------------------------------ */
+  /**
+   * Class constructor
+   * __construct()
+   * @param  $name     | string
+   * @param  $labels   | array
+   * @param  $options  | array
+   * @param  $help     | array
+   * @return post_type | class instance
+   *  ------------------------------------------------------------------------ */
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
     $this->_name    = $this->uglify_words($name);
@@ -100,12 +90,13 @@ class LT3_Custom_Post_Type
     }
   }
 
-  /* Register custom post type
-  ------------------------------------------------
-    register_custom_post_type()
-    @param  null
-    @return post_type
-  ------------------------------------------------ */
+  /**
+   * Register custom post type
+   * ------------------------------------------------------------------------
+   * register_custom_post_type()
+   * @param  null
+   * @return post_type
+   * ------------------------------------------------------------------------ */
   public function register_custom_post_type()
   {
     /* Create the labels */
@@ -147,13 +138,15 @@ class LT3_Custom_Post_Type
     register_post_type($this->_name, $options);
   }
 
-  /* Custom post type title text
-  ------------------------------------------------
-    custom_post_type_title_text()
-    @param  null
-    @return $title | string
-    Change title placeholder for custom post types
-  ------------------------------------------------ */
+  /**
+   * Custom post type title text
+   * ------------------------------------------------------------------------
+   * custom_post_type_title_text()
+   * @param  null
+   * @return $title | string
+   *
+   * Change title placeholder for custom post types
+   * ------------------------------------------------------------------------ */
   public function custom_post_type_title_text()
   {
     $screen = get_current_screen();
@@ -164,12 +157,13 @@ class LT3_Custom_Post_Type
     return $title;
   }
 
-  /* Get
-  ------------------------------------------------
-    get()
-    @param  $user_args | array
-    @return post type data
-  ------------------------------------------------ */
+  /**
+   * Get
+   * ------------------------------------------------------------------------
+   * get()
+   * @param  $user_args | array
+   * @return post type data
+   * ------------------------------------------------------------------------ */
   public function get($user_args = array(), $single = false)
   {
     $args = array_merge(
@@ -198,16 +192,15 @@ class LT3_Custom_Post_Type
     return get_posts($args);
   }
 
-  /* Add contextual help for custom post types
-  ------------------------------------------------
-    add_custom_contextual_help()
-    @param  $contextual_help
-    @param  $screen_id | integer
-    @param  $screen
-    @return $contextual_help
-    Creates a pretty version of a string, like
-    a pug version of a dog.
-  ------------------------------------------------ */
+  /**
+   * Add Custom Contextual Help
+   * ------------------------------------------------------------------------
+   * add_custom_contextual_help()
+   * @param  $contextual_help
+   * @param  $screen_id | integer
+   * @param  $screen
+   * @return $contextual_help
+   * ------------------------------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     foreach($this->_help as $help)
@@ -229,40 +222,43 @@ class LT3_Custom_Post_Type
     return $contextual_help;
   }
 
-  /* Prettify words
-  ------------------------------------------------
-    prettify_words()
-    @param  $words | string
-    @return string
-    Creates a pretty version of a string, like
-    a pug version of a dog.
-  ------------------------------------------------ */
+  /**
+   * Prettify Words
+   * ------------------------------------------------------------------------
+   * prettify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * Creates a pretty version of a string, like a pug version of a dog.
+   * ------------------------------------------------------------------------ */
   public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
   }
 
-  /* Uglify words
-  ------------------------------------------------
-    uglify_words()
-    @param  $words | string
-    @return string
-    creates a url firendly version of the given string.
-  ------------------------------------------------ */
+  /**
+   * Uglify Words
+   * ------------------------------------------------------------------------
+   * uglify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * Creates a url firendly version of the given string.
+   * ------------------------------------------------------------------------ */
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
   }
 
-  /* Plurify words
-  ------------------------------------------------
-    plurafy_words()
-    @param  $words | string
-    @return $words | string
-    Plurifies most common words. Not currently working
-    proper nouns, or more complex words, for example
-    knife -> knives, leaf -> leaves.
-  ------------------------------------------------ */
+  /**
+   * Plurify Words
+   * ------------------------------------------------------------------------
+   * plurafy_words()
+   * @param  $words | string
+   * @return $words | string
+   * Plurifies most common words. Not currently working proper nouns,
+   * or more complex words, for example knife => knives, leaf => leaves.
+   * ------------------------------------------------------------------------ */
   public function plurafy_words($words)
   {
     if(strToLower(substr($words, -1)) == 'y')

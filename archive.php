@@ -1,18 +1,16 @@
 <?php
-/*
-
-  Archive Template
-
-------------------------------------------------
-  archive.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @licence GNU http://www.gnu.org/licenses/lgpl.txt
-
-  Archived content template page. Requires the lt3_is_post_type() function.
------------------------------------------------- */ ?>
+/**
+ * Archive
+ * ------------------------------------------------------------------------
+ * archive.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * Archived content template page. Requires the lt3_is_post_type() function.
+ * ------------------------------------------------------------------------ */ ?>
 <?php get_header(); ?>
 
 <?php global $post; global $wp_query; $post = $posts[0]; ?>
