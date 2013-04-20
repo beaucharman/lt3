@@ -1,30 +1,28 @@
 <?php
-/*
+/**
+ * Helper
+ * ------------------------------------------------------------------------
+ * helper.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * ------------------------------------------------------------------------ */
 
-  lt3 Helper Functions
-
-------------------------------------------------
-  helper.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @license GNU http://www.gnu.org/licenses/lgpl.txt
+/* ------------------------------------------------------------------------
+   Logic and conditional functions
    ------------------------------------------------------------------------ */
 
-/*
-
-  Logic and conditional functions
-
-------------------------------------------------*/
-
-/* lt3 is Child of Page
-------------------------------------------------
-  lt3_is_child_of_page()
-  @param  $post_id | integer
-  @return boolean
-  Function to check if page is child of $post_id
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 is Child of Page
+ * ------------------------------------------------------------------------
+ * lt3_is_child_of_page()
+ * @param  $post_id | integer
+ * @return boolean
+ *
+ * Function to check if page is child of $post_id
+ * ------------------------------------------------------------------------ */
 function lt3_is_child_of_page($post_id)
 {
   global $post;
@@ -58,14 +56,16 @@ function lt3_is_child_of_page($post_id)
   }
 }
 
-/* lt3 is Cild of Category
-------------------------------------------------
-  lt3_is_child_of_category()
-  @param  $parent_category | integer
-  @return boolean
-  Function to check if current category is a child
-  of $parent_category category
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 is Cild of Category
+ * ------------------------------------------------------------------------
+ * lt3_is_child_of_category()
+ * @param  $parent_category | integer
+ * @return boolean
+ *
+ * Function to check if current category is a child
+ * of $parent_category category
+ * ------------------------------------------------------------------------ */
 function lt3_is_child_of_category($parent_category)
 {
   if(is_category())
@@ -75,13 +75,14 @@ function lt3_is_child_of_category($parent_category)
   }
 }
 
-/* lt3 is Post Tyoe
-------------------------------------------------
-  lt3_is_post_type()
-  @param  $type | string
-  @return boolean
-  Function to check if Custom Post Type
-   ------------------------------------------------------------------------ */
+/** lt3 is Post Tyoe
+ * ------------------------------------------------------------------------
+ * lt3_is_post_type()
+ * @param  $type | string
+ * @return boolean
+ *
+ * Function to check if Custom Post Type
+ * ------------------------------------------------------------------------ */
 function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
@@ -109,13 +110,15 @@ function lt3_is_post_type($type = null)
   }
 }
 
-/* lt3 Has Page Pagination
-------------------------------------------------
-  lt3_has_page_pagination()
-  @param null
-  @return boolean
-  Return true if has pagination.
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Has Page Pagination
+ * ------------------------------------------------------------------------
+ * lt3_has_page_pagination()
+ * @param null
+ * @return boolean
+ *
+ * Return true if has pagination.
+ * ------------------------------------------------------------------------ */
 function lt3_has_page_pagination()
 {
   if(wp_link_pages('echo=0'))
@@ -128,15 +131,17 @@ function lt3_has_page_pagination()
   }
 }
 
-/* lt3 Post is in Descendant Category
-------------------------------------------------
-  lt3_post_is_in_descendant_category()
-  @param  $cat | array
-  @param  $_post
-  @return boolean
-  Tests if any of a post's assigned categories are
-  descendants of target categories
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Post is in Descendant Category
+ * ------------------------------------------------------------------------
+ * lt3_post_is_in_descendant_category()
+ * @param  $cat | array
+ * @param  $_post
+ * @return boolean
+ *
+ * Tests if any of a post's assigned categories are
+ * descendants of target categories
+ * ------------------------------------------------------------------------ */
 function lt3_post_is_in_descendant_category($cats, $_post = null)
 {
   foreach((array) $cats as $cat)
@@ -148,13 +153,15 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
   return false;
 }
 
-/* lt3 Get Data with cURL
-------------------------------------------------
-  lt3_get_data_with_curl()
-  @param  $url | string
-  @return file output
-  gets the data from a URL
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Get Data with cURL
+ * ------------------------------------------------------------------------
+ * lt3_get_data_with_curl()
+ * @param  $url | string
+ * @return file output
+ *
+ * gets the data from a URL
+ * ------------------------------------------------------------------------ */
 function lt3_get_data_with_curl($url = '')
 {
   if(!LT3_DEVELOPMENT_MODE)
@@ -179,13 +186,15 @@ function lt3_get_data_with_curl($url = '')
   return file_get_contents($url);
 }
 
-/* lt3_template_debug
-------------------------------------------------
-  lt3_template_debug()
-  @param null
-  @return debug output string
-  Debug the template files and display which ones are being used
-   ------------------------------------------------------------------------ */
+/**
+ * lt3_template_debug
+ * ------------------------------------------------------------------------
+ * lt3_template_debug()
+ * @param null
+ * @return debug output string
+ *
+ * Debug the template files and display which ones are being used
+ * ------------------------------------------------------------------------ */
 if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
 
@@ -211,40 +220,46 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   }
 }
 
-/* Prettify Words
-------------------------------------------------
-  lt3_prettify_words()
-  @param  $words | string
-  @return string
-  Creates a pretty version of a string, like
-  a pug version of a dog.
-   ------------------------------------------------------------------------ */
+/**
+ * Prettify Words
+ * ------------------------------------------------------------------------
+ * lt3_prettify_words()
+ * @param  $words | string
+ * @return string
+ *
+ * Creates a pretty version of a string, like
+ * a pug version of a dog.
+ * ------------------------------------------------------------------------ */
 function lt3_prettify_words($words)
 {
   return ucwords(str_replace('_', ' ', $words));
 }
 
-/* Uglify Words
-------------------------------------------------
-  lt3_uglify_words()
-  @param  $words | string
-  @return string
-  creates a url firendly version of the given string.
-   ------------------------------------------------------------------------ */
+/**
+ * Uglify Words
+ * ------------------------------------------------------------------------
+ * lt3_uglify_words()
+ * @param  $words | string
+ * @return string
+ *
+ * creates a url firendly version of the given string.
+ * ------------------------------------------------------------------------ */
 function lt3_uglify_words($words)
 {
   return strToLower(str_replace(' ', '_', $words));
 }
 
-/* Plurify Words
-------------------------------------------------
-  lt3_plurafy_words()
-  @param  $words | string
-  @return string
-  Plurifies most common words. Not currently working
-  proper nouns, or more complex words, for example
-  knife -> knives, leaf -> leaves.
-   ------------------------------------------------------------------------ */
+/**
+ * Plurify Words
+ * ------------------------------------------------------------------------
+ * lt3_plurafy_words()
+ * @param  $words | string
+ * @return string
+ *
+ * Plurifies most common words. Not currently working
+ * proper nouns, or more complex words, for example
+ * knife -> knives, leaf -> leaves.
+ * ------------------------------------------------------------------------ */
 function lt3_plurafy_words($words)
 {
   if(strToLower(substr($words, -1)) == 'y')
@@ -261,14 +276,16 @@ function lt3_plurafy_words($words)
   }
 }
 
-/* Debug Tool
-------------------------------------------------
-  debug_tool()
-  @param  $args | array
-  @return mixed
-  var_dump with style
-  https://gist.github.com/beaucharman/9f2706c267161c218321
-   ------------------------------------------------------------------------ */
+/**
+ * Debug Tool
+ * ------------------------------------------------------------------------
+ * debug_tool()
+ * @param  $args | array
+ * @return mixed
+ *
+ * var_dump with style
+ * https://gist.github.com/beaucharman/9f2706c267161c218321
+ * ------------------------------------------------------------------------ */
 if(!function_exists('debug_tool'))
 {
   function debug_tool($args = null)

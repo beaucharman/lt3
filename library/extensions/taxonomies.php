@@ -1,37 +1,33 @@
 <?php
+/**
+ * Taxonomies
+ * ------------------------------------------------------------------------
+ * taxonomies.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * For more information about registering Taxonomies:
+ * http://codex.wordpress.org/Function_Reference/register_taxonomy
+ *
+ * You can also turn the custom post types declarations into a plugin.
+ * For more information: http://codex.wordpress.org/Writing_a_Plugin
+ *
+ * To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
+ * with the following arguments:
+ */
 /*
-
-  lt3 Custom Taxonomies
-
-------------------------------------------------
-  taxonomies.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @license GNU http://www.gnu.org/licenses/lgpl.txt
-
-  For more information about registering Taxonomies:
-  http://codex.wordpress.org/Function_Reference/register_taxonomy
-
-  You can also turn the custom post types declarations into a plugin. For more information:
-  http://codex.wordpress.org/Writing_a_Plugin
-
-  To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
-  with the following arguments.
-
   // Required
   $name = '';
-
   // Optional
   $post_type = ''; // string or array
-
   $labels = array(
     'label_singular'        => '',
     'label_plural'          => '',
     'menu_label'            => ''
   );
-
   $options = array(
     'public'                => true,
     'show_ui'               => true,
@@ -44,17 +40,12 @@
     'capabilities'          => array(),
     'sort'                  => null
   );
-
   $help = '';
-
   $Taxonomy = new LT3_Custom_Taxonomy($name, $post_type, $labels, $options, $help);
+ */
 
-   ------------------------------------------------------------------------ */
-
-/*
-
-  Custom Taxonomies Class
-
+/* ------------------------------------------------------------------------
+   Custom taxonomy class
    ------------------------------------------------------------------------ */
 class LT3_Custom_Taxonomy
 {
@@ -80,12 +71,13 @@ class LT3_Custom_Taxonomy
     }
   }
 
-  /* Register Taxonomies
-  ------------------------------------------------
-    register_custom_taxonomies()
-    @param  null
-    @return taxonomy
-     ------------------------------------------------------------------------ */
+  /**
+   * Register Taxonomies
+   * ------------------------------------------------------------------------
+   * register_custom_taxonomies()
+   * @param  null
+   * @return taxonomy
+   * ------------------------------------------------------------------------ */
   public function register_custom_taxonomies()
   {
     /* Create the labels */
@@ -130,12 +122,13 @@ class LT3_Custom_Taxonomy
     register_taxonomy($this->_name, $this->_post_type, $options);
   }
 
-  /* Get
-  ------------------------------------------------
-    get()
-    @param  $user_args | array
-    @return post type data
-     ------------------------------------------------------------------------ */
+  /**
+   * Get
+   * ------------------------------------------------------------------------
+   * get()
+   * @param  $user_args | array
+   * @return post type data
+   * ------------------------------------------------------------------------ */
   public function get($user_args = array())
   {
     $args = array_merge(
@@ -164,8 +157,11 @@ class LT3_Custom_Taxonomy
     return get_terms($this->_name);
   }
 
-  /* Add contextual help for taxonomies
-     ------------------------------------------------------------------------ */
+  /**
+   * Add custom contextual help
+   * ------------------------------------------------------------------------
+   * add_custom_contextual_help()
+   * ------------------------------------------------------------------------ */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     $context = 'edit-' . $this->_name;
@@ -176,40 +172,46 @@ class LT3_Custom_Taxonomy
     return $contextual_help;
   }
 
-   /* Prettify words
-  ------------------------------------------------
-    prettify_words()
-    @param  $words | string
-    @return string
-    Creates a pretty version of a string, like
-    a pug version of a dog.
-     ------------------------------------------------------------------------ */
+  /**
+   * Prettify words
+   * ------------------------------------------------------------------------
+   * prettify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * Creates a pretty version of a string, like
+   * a pug version of a dog.
+   * ------------------------------------------------------------------------ */
   public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
   }
 
-  /* Uglify words
-  ------------------------------------------------
-    uglify_words()
-    @param  $words | string
-    @return string
-    creates a url firendly version of the given string.
-     ------------------------------------------------------------------------ */
+  /**
+   * Uglify words
+   * ------------------------------------------------------------------------
+   * uglify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * creates a url firendly version of the given string.
+   * ------------------------------------------------------------------------ */
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
   }
 
-  /* Plurify words
-  ------------------------------------------------
-    plurafy_words()
-    @param  $words | string
-    @return $words | string
-    Plurifies most common words. Not currently working
-    proper nouns, or more complex words, for example
-    knife -> knives, leaf -> leaves.
-     ------------------------------------------------------------------------ */
+  /**
+   * Plurify words
+   * ------------------------------------------------------------------------
+   * plurafy_words()
+   * @param  $words | string
+   * @return $words | string
+   *
+   * Plurifies most common words. Not currently working
+   * proper nouns, or more complex words, for example
+   * knife -> knives, leaf -> leaves.
+   * ------------------------------------------------------------------------ */
   public function plurafy_words($words)
   {
     if(strToLower(substr($words, -1)) == 'y')

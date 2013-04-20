@@ -37,5 +37,5 @@ new LT3_Site_Settings_Page($group, $name, $args, $menu_name, $title);
    ------------------------------------------------------------------------ */
 if(!is_admin())
 {
-  $lt3_site_settings = get_option($settings_name);
+  $lt3_site_settings = get_option($name);
 }

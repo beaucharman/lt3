@@ -1,21 +1,18 @@
 <?php
-/*
-
-  lt3 Site Settings
-
-------------------------------------------------
-  site-settings.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @license GNU http://www.gnu.org/licenses/lgpl.txt
-
-  To use and view the option:
-  global $lt3_site_settings;
-  echo $lt3_site_settings['setting_id'])
-   ------------------------------------------------------------------------ */
-
+/**
+ * Site Settings
+ * ------------------------------------------------------------------------
+ * site-settings.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * To use and view the option:
+ *   global $lt3_site_settings;
+ *   echo $lt3_site_settings['setting_id'])
+ * ------------------------------------------------------------------------ */
 class LT3_Site_Settings_Page
 {
   public $_settings_group;
@@ -25,12 +22,13 @@ class LT3_Site_Settings_Page
   public $_settings_title;
   public $_site_settings;
 
-  /* Class Constructor
-  ------------------------------------------------
-    __construct()
-    @param  $_site_settings | array
-    @return void
-     ------------------------------------------------------------------------ */
+  /**
+   * Class Constructor
+   * ------------------------------------------------------------------------
+   * __construct()
+   * @param  $_site_settings | array
+   * @return void
+  * ------------------------------------------------------------------------ */
   public function __construct($settings_group, $settings_name, $settings_fields = array(), $settings_menu_name = '', $settings_title = '')
   {
     $this->_settings_fields_group  = $this->uglify_words($settings_group);
@@ -40,38 +38,42 @@ class LT3_Site_Settings_Page
     $this->_settings_title         = ($settings_title) ? $settings_title : get_bloginfo('name'). ' ' .$this->prettify_words($this->_settings_fields_name);
     $this->_site_settings          = get_option($this->_settings_fields_name);
 
-    /* Initialise the settings page and
-      set the $lt3_site_settings global variable.
-       ------------------------------------------------------------------------ */
+    /**
+     * Initialise the settings page and
+     * set the $lt3_site_settings global variable.
+     * ------------------------------------------------------------------------ */
     add_action('admin_init', array(&$this, 'site_settings_init'));
     add_action('admin_menu', array(&$this, 'site_settings_add_page'));
   }
 
-  /* Site Settings Init
-  ------------------------------------------------
-    site_settings_init()
-    Register the LT3 site settings
-     ------------------------------------------------------------------------ */
+  /**
+   * Site Settings Init
+   * ------------------------------------------------------------------------
+   * site_settings_init()
+   * Register the LT3 site settings
+   * ------------------------------------------------------------------------ */
   public function site_settings_init()
   {
     register_setting($this->_settings_fields_group, $this->_settings_fields_name, array(&$this, 'site_settings_validate'));
   }
 
-  /* Site Settings Add Page
-  ------------------------------------------------
-    site_settings_add_page()
-    Hook the options page with the required settings
-     ------------------------------------------------------------------------ */
+  /**
+   * Site Settings Add Page
+   * ------------------------------------------------------------------------
+   * site_settings_add_page()
+   * Hook the options page with the required settings
+   * ------------------------------------------------------------------------ */
   public function site_settings_add_page()
   {
     add_theme_page($this->_settings_title, $this->_settings_menu_name, 'manage_options', $this->_settings_fields_group, array(&$this, 'site_settings_render_page'));
   }
 
-  /*  Site Settings Render Page
-  ------------------------------------------------
-    site_settings_render_page()
-    Render the settings page
-     ------------------------------------------------------------------------ */
+  /**
+   * Site Settings Render Page
+   * ------------------------------------------------------------------------
+   * site_settings_render_page()
+   * Render the settings page
+   * ------------------------------------------------------------------------ */
   function site_settings_render_page()
   {
     /* Check that the user is allowed to update options */
@@ -117,10 +119,11 @@ class LT3_Site_Settings_Page
 
         if($field['type'] == 'divider')
         {
-          /* divider
-          ------------------------------------------------
-            @param $label | string
-             ------------------------------------------------------------------------ */
+          /**
+           * divider
+           * ------------------------------------------------------------------------
+           * @param $label | string
+           * ------------------------------------------------------------------------ */
           echo '<td class="divider" colspan="2">'. $label .'</td>';
         }
         else
@@ -134,43 +137,47 @@ class LT3_Site_Settings_Page
           switch($field['type'])
           {
 
-            /* text
-            ------------------------------------------------
-              @param id          | string
-              @param label       | string
-              @param description | string
-               ------------------------------------------------------------------------ */
+            /**
+             * text
+             * ------------------------------------------------------------------------
+             * @param id          | string
+             * @param label       | string
+             * @param description | string
+             * ------------------------------------------------------------------------ */
             case 'text':
               echo '<input id="'. $fields_name .'['. $id .']" name="'. $fields_name .'['. $id .']" type="text"  placeholder="'. $field['placeholder'] .'" value="'. $value .'" size="50">';
               break;
 
-            /* textarea
-            ------------------------------------------------
-              @param id          | string
-              @param label       | string
-              @param description | string
-               ------------------------------------------------------------------------ */
+            /**
+             * textarea
+             * ------------------------------------------------------------------------
+             * @param id          | string
+             * @param label       | string
+             * @param description | string
+             * ------------------------------------------------------------------------ */
             case 'textarea':
               echo '<textarea id="'. $fields_name .'['. $id .']" name="'. $fields_name .'['. $id .']" cols="52" rows="4">'. $value .'</textarea>';
               break;
 
-            /* checkbox
-            ------------------------------------------------
-              @param id          | string
-              @param label       | string
-              @param description | string
-               ------------------------------------------------------------------------ */
+            /**
+             * checkbox
+             * ------------------------------------------------------------------------
+             * @param id          | string
+             * @param label       | string
+             * @param description | string
+             * ------------------------------------------------------------------------ */
             case 'checkbox':
               echo '<input type="checkbox" value="'. $id .'" id="'. $fields_name .'['. $id .']" name="'. $fields_name .'['. $id .']"', $value ? ' checked' : '','>';
               break;
 
-            /* post_type_select
-            ------------------------------------------------
-              @param id          | string
-              @param label       | string
-              @param post_type   | string || array
-              @param description | string
-               ------------------------------------------------------------------------ */
+            /**
+             * post_type_select
+             * ------------------------------------------------------------------------
+             * @param id          | string
+             * @param label       | string
+             * @param post_type   | string || array
+             * @param description | string
+             * ------------------------------------------------------------------------ */
             case 'post_type_select':
 
               $items = get_posts(array ('post_type' => $field['post_type'], 'posts_per_page' => -1));
@@ -184,8 +191,7 @@ class LT3_Site_Settings_Page
               echo '</select>';
               break;
 
-            /* default
-               ------------------------------------------------------------------------ */
+            /* default */
             default:
               echo '<tr><td colspan="2"><span style="color: red;">Sorry, the type allocated for this input is not correct.</span></td></tr>';
               break;
@@ -212,16 +218,17 @@ class LT3_Site_Settings_Page
     echo '</div>';
   }
 
-  /*  Site Settings Validate
-  ------------------------------------------------
-    @param  $input | array
-    @return $input | array
-    Sanitize and validate input. Accepts an array, return a sanitized array.
-     ------------------------------------------------------------------------ */
+  /**
+   * Site Settings Validate
+   * ------------------------------------------------------------------------
+   * @param  $input | array
+   * @return $input | array
+   *
+   * Sanitize and validate input. Accepts an array, return a sanitized array.
+   * ------------------------------------------------------------------------ */
   public function site_settings_validate($input)
   {
-    /* List the settings to be saved here:
-       ------------------------------------------------------------------------ */
+    /* List the settings to be saved here: */
     foreach($this->_settings_fields as $field)
     {
       if(isset($field['id']) && $field['type'] != 'divider')
@@ -232,26 +239,30 @@ class LT3_Site_Settings_Page
     return $input;
   }
 
-   /* Prettify words
-  ------------------------------------------------
-    prettify_words()
-    @param  $words | string
-    @return string
-    Creates a pretty version of a string, like
-    a pug version of a dog.
-     ------------------------------------------------------------------------ */
+  /**
+   * Prettify words
+   * ------------------------------------------------------------------------
+   * prettify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * Creates a pretty version of a string, like
+   * a pug version of a dog.
+   * ------------------------------------------------------------------------ */
   public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
   }
 
-  /* Uglify words
-  ------------------------------------------------
-    uglify_words()
-    @param  $words | string
-    @return string
-    creates a url firendly version of the given string.
-     ------------------------------------------------------------------------ */
+  /**
+   * Uglify words
+   * ------------------------------------------------------------------------
+   * uglify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * creates a url firendly version of the given string.
+   * ------------------------------------------------------------------------ */
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));

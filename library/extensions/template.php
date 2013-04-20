@@ -1,24 +1,17 @@
 <?php
-/*
-
-  lt3 Template Functions
-
-------------------------------------------------
-	template.php
-	@version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @license GNU http://www.gnu.org/licenses/lgpl.txt
-
-	All functionality that effects the front end of the theme is located in this file.
-   ------------------------------------------------------------------------ */
-
-/*
-
-	Template Functions
-
-   ------------------------------------------------------------------------ */
+/**
+ * Template
+ * ------------------------------------------------------------------------
+ * template.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * All functionality that effects the front end of the
+ * theme is located in this file.
+ * ------------------------------------------------------------------------ */
 
 /* Set the content width
    ------------------------------------------------------------------------ */
@@ -377,19 +370,19 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 	. 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
-/*
-
-	Custom Theme Functions
-
+/* ------------------------------------------------------------------------
+   Custom Theme Functions
    ------------------------------------------------------------------------ */
 
-/* lt3 Show Google Analytics
-
-lt3_show_google_analytics
-@param $analytics_key | string
-@return analytics code | string
-Add google analytics
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Show Google Analytics
+ * ------------------------------------------------------------------------
+ * lt3_show_google_analytics
+ * @param $analytics_key | string
+ * @return analytics code | string
+ *
+ * Add google analytics
+ * ------------------------------------------------------------------------ */
 function lt3_show_google_analytics($analytics_key = '')
 {
 	if($analytics_key) : ?>
@@ -448,10 +441,11 @@ function lt3_delete_comment_link($id)
   }
 }
 
-/* Adds a back to parent category, page, etc link
-------------------------------------------------
-	Need to add functionality for post type, taxonomy,
-   ------------------------------------------------------------------------ */
+/**
+ * Adds a back to parent category, page, etc link
+ * ------------------------------------------------------------------------
+ * Need to add functionality for post type, taxonomy,
+ * ------------------------------------------------------------------------ */
 function lt3_back_to_parent_link(){
 	global $post;
 	$post = get_post($post);

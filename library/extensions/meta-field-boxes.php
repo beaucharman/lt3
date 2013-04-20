@@ -1,23 +1,21 @@
 <?php
+/**
+ * Post Types
+ * ------------------------------------------------------------------------
+ * post-types.php
+ * @version 2.0 | April 1st 2013
+ * @package lt3
+ * @author  Beau Charman | @beaucharman | http://beaucharman.me
+ * @link    https://github.com/beaucharman/lt3
+ * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ *
+ * This file is for the custom meta fields for posts, pages, and custom post types.
+ * Currently supports text, textarea, checkbox, radio, select, post_checkbox and file
+ *
+ * To declare a custom field meta box, simply add a new LT3_Custom_Field_Meta_Box class
+ * with the following arguments:
+ */
 /*
-
-  lt3 Custom Meta Field Boxes
-
-------------------------------------------------
-  meta-field-boxes.php
-  @version 2.0 | April 1st 2013
-  @package lt3
-  @author  Beau Charman | @beaucharman | http://beaucharman.me
-  @link    https://github.com/beaucharman/lt3
-  @license GNU http://www.gnu.org/licenses/lgpl.txt
-
-  This file is for the custom meta fields for posts, pages, and custom post types.
-
-  Currently supports text, textarea, checkbox, radio, select, post_checkbox and file
-
-  To declare a custom field meta box, simply add a new LT3_Custom_Field_Meta_Box class
-  with the following arguments:
-
   $args = array(
     'id'              => '',
     'title'           => '',
@@ -32,15 +30,11 @@
       )
     )
   );
-
   new LT3_Custom_Field_Meta_Box($args);
+*/
 
-   ------------------------------------------------------------------------ */
-
-/*
-
-  Class structure for a custom meta field box class
-
+/* ------------------------------------------------------------------------
+   Custom custom meta field box class
    ------------------------------------------------------------------------ */
 class LT3_Custom_Field_Meta_Box
 {
@@ -52,11 +46,12 @@ class LT3_Custom_Field_Meta_Box
   protected $_priority;
   protected $_fields;
 
-  /* Class constructor
-  ------------------------------------------------
-    __construct()
-    @param  $cmfb | array
-     ------------------------------------------------------------------------ */
+  /**
+   * Class constructor
+   * ------------------------------------------------------------------------
+   * __construct()
+   * @param  $cmfb | array
+   * ------------------------------------------------------------------------ */
   function __construct($cmfb)
   {
 
@@ -75,10 +70,11 @@ class LT3_Custom_Field_Meta_Box
     add_action('save_post', array( &$this, 'save_data'));
   }
 
-  /* Add custom meta field box
-  ------------------------------------------------
-    add_custom_meta_field_box()
-     ------------------------------------------------------------------------ */
+  /**
+   * Add custom meta field box
+   * ------------------------------------------------------------------------
+   * add_custom_meta_field_box()
+   * ------------------------------------------------------------------------ */
   public function add_custom_meta_field_box()
   {
     add_meta_box(
@@ -91,14 +87,16 @@ class LT3_Custom_Field_Meta_Box
     );
   }
 
-  /* Show custom meta field box
-  ------------------------------------------------
-    show_custom_meta_field_box()
-     ------------------------------------------------------------------------ */
+  /**
+   * Show custom meta field box
+   * ------------------------------------------------------------------------
+   * show_custom_meta_field_box()
+   * ------------------------------------------------------------------------ */
   public function show_custom_meta_field_box()
   {
     global $post;
-    echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
+    echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.
+      wp_create_nonce(basename(__FILE__)).'" />';
     echo '<ul class="lt3-form-container '. $this->_context . '">';
 
     foreach ($this->_fields as $field)
@@ -111,7 +109,8 @@ class LT3_Custom_Field_Meta_Box
       $value = ($value) ? $value : '';
 
       /* Get the label */
-      $field_label = (isset($field['label'])) ? $field['label'] : $this->prettify_words($field['id']);
+      $field_label = (isset($field['label']))
+        ? $field['label'] : $this->prettify_words($field['id']);
 
       echo '<li class="custom-field-container">';
 
@@ -127,84 +126,94 @@ class LT3_Custom_Field_Meta_Box
         switch($field['type'])
         {
 
-          /* textarea
-          ------------------------------------------------
-            @param type        | string
-            @param id          | string
-            @param label       | string | optional
-            @param description | text   | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * textarea
+           * ------------------------------------------------------------------------
+           * @param type        | string
+           * @param id          | string
+           * @param label       | string | optional
+           * @param description | text   | optional
+           * ------------------------------------------------------------------------ */
           case 'textarea':
             echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
             break;
 
-          /* checkbox
-          ------------------------------------------------
-            @param type        | string
-            @param id          | string
-            @param options     | array
-            @param label       | string | optional
-            @param description | text   | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * checkbox
+           * ------------------------------------------------------------------------
+           * @param type        | string
+           * @param id          | string
+           * @param options     | array
+           * @param label       | string | optional
+           * @param description | text   | optional
+           * ------------------------------------------------------------------------ */
           case 'checkbox':
             echo '<ul>';
             foreach($field['options'] as $option => $label):
               echo '<li>';
               echo '  <label for="'.$field_id.'['.$option.']">';
-              echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.$field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option]) ? ' checked' : '',' />';
+              echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.
+                $field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option])
+                  ? ' checked' : '',' />';
               echo '  &nbsp;'.$label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
             break;
 
-          /* select
-          ------------------------------------------------
-            @param type         | string
-            @param id           | string
-            @param options      | array
-            @param label        | string | optional
-            @param null_option  | string | optional
-            @param description  | text   | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * select
+           * ------------------------------------------------------------------------
+           * @param type         | string
+           * @param id           | string
+           * @param options      | array
+           * @param label        | string | optional
+           * @param null_option  | string | optional
+           * @param description  | text   | optional
+           * ------------------------------------------------------------------------ */
           case 'select':
-            $field_null_label = (isset($field['null_option'])) ? $field['null_option'] : 'Select';
+            $field_null_label = (isset($field['null_option']))
+              ? $field['null_option'] : 'Select';
             echo '<select name="'.$field_id.'" id="'.$field_id.'">';
             echo '  <option value="">'. $field_null_label .'&hellip;</option>';
             foreach($field['options'] as $option => $label):
-            echo '  <option value="'.$option.'" ', $value == $option ? ' selected' : '','>'. $label .'</option>';
+            echo '  <option value="'.$option.'" ', $value == $option
+              ? ' selected' : '','>'. $label .'</option>';
             endforeach;
             echo '</select>';
             break;
 
-          /* radio
-          ------------------------------------------------
-            @param type        | string
-            @param id          | string
-            @param options     | array
-            @param label       | string | optional
-            @param description | text   | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * radio
+           * ------------------------------------------------------------------------
+           * @param type        | string
+           * @param id          | string
+           * @param options     | array
+           * @param label       | string | optional
+           * @param description | text   | optional
+           * ------------------------------------------------------------------------ */
           case 'radio':
             echo '<ul>';
             foreach($field['options'] as $option => $label):
               echo '<li>';
               echo '  <label for="'.$option.'">';
-              echo '  <input type="radio" name="'.$field_id.'" id="'.$option.'" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
+              echo '  <input type="radio" name="'.$field_id.'" id="'.$option.
+                '" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
               echo '  &nbsp;'.$label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
             break;
 
-          /* post_checkbox
-          ------------------------------------------------
-            @param type        | string
-            @param id          | string
-            @param post_type   | string
-            @param label       | string | optional
-            @param description | string | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * post_checkbox
+           * ------------------------------------------------------------------------
+           * @param type        | string
+           * @param id          | string
+           * @param post_type   | string
+           * @param label       | string | optional
+           * @param description | string | optional
+           * ------------------------------------------------------------------------ */
           case 'post_checkbox':
             $value = ($value) ? $value : array();
             $items = get_posts(array(
@@ -217,10 +226,12 @@ class LT3_Custom_Field_Meta_Box
               echo '<ul>';
               foreach($items as $item):
                 $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-                $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type'])) ? '<small>('.$item->post_type.')</small>' : '';
+                $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
+                  ? '<small>('.$item->post_type.')</small>' : '';
                 echo '<li>';
                 echo '  <label for="'.$field_id.'['. $item->ID .']">';
-                echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+                echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .
+                  ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
                 echo '  &nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
                 echo '</li>';
               endforeach;
@@ -232,19 +243,21 @@ class LT3_Custom_Field_Meta_Box
             }
             break;
 
-          /* file
-          ------------------------------------------------
-            @param type        | string
-            @param id          | string
-            @param label       | string | optional
-            @param description | string | optional
-            @param placeholder | string | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * file
+           * ------------------------------------------------------------------------
+           * @param type        | string
+           * @param id          | string
+           * @param label       | string | optional
+           * @param description | string | optional
+           * @param placeholder | string | optional
+           * ------------------------------------------------------------------------ */
           case 'file':
             $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-            echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'.$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
-                  <input class="custom_upload_file_button button" type="button" value="Choose File" />
-                  <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
+            echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'.
+              $field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
+              <input class="custom_upload_file_button button" type="button" value="Choose File" />
+              <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
             ?>
               <script>
               jQuery(function($) {
@@ -267,17 +280,19 @@ class LT3_Custom_Field_Meta_Box
             <?php
             break;
 
-          /* text | default
-          ------------------------------------------------
-            @param id          | string
-            @param type        | string | optional
-            @param label       | string | optional
-            @param description | string | optional
-            @param placeholder | string | optional
-             ------------------------------------------------------------------------ */
+          /**
+           * text | default
+           * ------------------------------------------------------------------------
+           * @param id          | string
+           * @param type        | string | optional
+           * @param label       | string | optional
+           * @param description | string | optional
+           * @param placeholder | string | optional
+           * ------------------------------------------------------------------------ */
           default:
             $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-            echo '<input type="text" name="'.$field_id.'" id="'.$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
+            echo '<input type="text" name="'.$field_id.'" id="'
+              .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
             break;
         }
       }
@@ -294,50 +309,57 @@ class LT3_Custom_Field_Meta_Box
     echo '</ul>';
   }
 
-  /* Get field id
-  ------------------------------------------------
-    get_field_id()
-    @param $box_id       | string
-    @param $field_id     | string
-    @return the field id | string
-    Get the field id to use throughout class
-     ------------------------------------------------------------------------ */
+  /**
+   * Get field id
+   * ------------------------------------------------------------------------
+   * get_field_id()
+   * @param $box_id       | string
+   * @param $field_id     | string
+   * @return the field id | string
+   *
+   * Get the field id to use throughout class
+   * ------------------------------------------------------------------------ */
   public function get_field_id($box_id, $field_id)
   {
     return $this->uglify_words($box_id . '_' . $field_id);
   }
 
-  /* Prettify words
-  ------------------------------------------------
-    prettify_words()
-    @param  $words | string
-    @return string
-    Creates a pretty version of a string, like
-    a pug version of a dog.
-     ------------------------------------------------------------------------ */
+  /**
+   * Prettify words
+   * ------------------------------------------------------------------------
+   * prettify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * Creates a pretty version of a string, like
+   * a pug version of a dog.
+   * ------------------------------------------------------------------------ */
   public function prettify_words($words)
   {
     return ucwords(str_replace('_', ' ', $words));
   }
 
-  /* Uglify words
-  ------------------------------------------------
-    uglify_words()
-    @param  $words | string
-    @return string
-    creates a url firendly version of the given string.
-     ------------------------------------------------------------------------ */
+  /**
+   * Uglify words
+   * ------------------------------------------------------------------------
+   * uglify_words()
+   * @param  $words | string
+   * @return string
+   *
+   * creates a url firendly version of the given string.
+   * ------------------------------------------------------------------------ */
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
   }
 
-  /* Save data
-  ------------------------------------------------
-    save_data()
-    @param $post_id | integer
-    @return null
-     ------------------------------------------------------------------------ */
+  /**
+   * Save data
+   * ------------------------------------------------------------------------
+   * save_data()
+   * @param $post_id | integer
+   * @return null
+   * ------------------------------------------------------------------------ */
   public function save_data($post_id)
   {
     if(isset($_POST['custom_meta_fields_box_nonce']))
