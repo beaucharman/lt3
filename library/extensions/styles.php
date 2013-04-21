@@ -44,7 +44,7 @@ function lt3_load_styles()
  */
 if(LT3_USE_CUSTOM_EDITOR_STYLES)
 {
-	add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');
+  add_editor_style(LT3_STYLES_PATH .'/custom-editor-style.css');
 }
 
 /**
