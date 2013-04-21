@@ -23,16 +23,16 @@ add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
-	/* Register styles here: */
-	wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH .'/custom-admin-styles.css');
-
-	/* Enqueue styles here: */
-	if(!is_admin())
-	{
+  /* Register styles here: */
+  wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH .'/custom-admin-styles.css');
+  
+  /* Enqueue styles here: */
+  if(!is_admin())
+  {
     // Enqueue conditional theme template styles here
-	}
-	else if(is_admin())
-	{
+  }
+  else if(is_admin())
+  {
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
   } 
