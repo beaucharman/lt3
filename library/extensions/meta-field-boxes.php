@@ -121,181 +121,181 @@ class LT3_Custom_Field_Meta_Box
       echo '<p class="input-container">';
 
       /* Render required field */
-      if(isset($field['type']))
+      $field['type'] = (isset($field['type'])) ? $field['type'] : '';
+
+      switch($field['type'])
       {
-        switch($field['type'])
-        {
 
-          /**
-           * textarea
-           * ------------------------------------------------------------------------
-           * @param type        | string
-           * @param id          | string
-           * @param label       | string | optional
-           * @param description | text   | optional
-           * ------------------------------------------------------------------------ */
-          case 'textarea':
-            echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
-            break;
+        /**
+         * textarea
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param label       | string | optional
+         * @param description | text   | optional
+         * ------------------------------------------------------------------------ */
+        case 'textarea':
+          echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
+          break;
 
-          /**
-           * checkbox
-           * ------------------------------------------------------------------------
-           * @param type        | string
-           * @param id          | string
-           * @param options     | array
-           * @param label       | string | optional
-           * @param description | text   | optional
-           * ------------------------------------------------------------------------ */
-          case 'checkbox':
+        /**
+         * checkbox
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param options     | array
+         * @param label       | string | optional
+         * @param description | text   | optional
+         * ------------------------------------------------------------------------ */
+        case 'checkbox':
+          echo '<ul>';
+          foreach($field['options'] as $option => $label):
+            echo '<li>';
+            echo '  <label for="'.$field_id.'['.$option.']">';
+            echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.
+              $field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option])
+                ? ' checked' : '',' />';
+            echo '  &nbsp;'.$label.'</label>';
+            echo '</li>';
+          endforeach;
+          echo '</ul>';
+          break;
+
+        /**
+         * select
+         * ------------------------------------------------------------------------
+         * @param type         | string
+         * @param id           | string
+         * @param options      | array
+         * @param label        | string | optional
+         * @param null_option  | string | optional
+         * @param description  | text   | optional
+         * ------------------------------------------------------------------------ */
+        case 'select':
+          $field_null_label = (isset($field['null_option']))
+            ? $field['null_option'] : 'Select';
+          echo '<select name="'.$field_id.'" id="'.$field_id.'">';
+          echo '  <option value="">'. $field_null_label .'&hellip;</option>';
+          foreach($field['options'] as $option => $label):
+          echo '  <option value="'.$option.'" ', $value == $option
+            ? ' selected' : '','>'. $label .'</option>';
+          endforeach;
+          echo '</select>';
+          break;
+
+        /**
+         * radio
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param options     | array
+         * @param label       | string | optional
+         * @param description | text   | optional
+         * ------------------------------------------------------------------------ */
+        case 'radio':
+          echo '<ul>';
+          foreach($field['options'] as $option => $label):
+            echo '<li>';
+            echo '  <label for="'.$option.'">';
+            echo '  <input type="radio" name="'.$field_id.'" id="'.$option.
+              '" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
+            echo '  &nbsp;'.$label.'</label>';
+            echo '</li>';
+          endforeach;
+          echo '</ul>';
+          break;
+
+        /**
+         * post_checkbox
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param post_type   | string
+         * @param label       | string | optional
+         * @param description | string | optional
+         * ------------------------------------------------------------------------ */
+        case 'post_checkbox':
+          $value = ($value) ? $value : array();
+          $items = get_posts(array(
+            'post_type' => $field['post_type'],
+            'posts_per_page' => -1)
+          );
+
+          if($items)
+          {
             echo '<ul>';
-            foreach($field['options'] as $option => $label):
+            foreach($items as $item):
+              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
+              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
+                ? '<small>('.$item->post_type.')</small>' : '';
               echo '<li>';
-              echo '  <label for="'.$field_id.'['.$option.']">';
-              echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.
-                $field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option])
-                  ? ' checked' : '',' />';
-              echo '  &nbsp;'.$label.'</label>';
+              echo '  <label for="'.$field_id.'['. $item->ID .']">';
+              echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .
+                ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+              echo '  &nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
-            break;
+          }
+          else
+          {
+            echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
+          }
+          break;
 
-          /**
-           * select
-           * ------------------------------------------------------------------------
-           * @param type         | string
-           * @param id           | string
-           * @param options      | array
-           * @param label        | string | optional
-           * @param null_option  | string | optional
-           * @param description  | text   | optional
-           * ------------------------------------------------------------------------ */
-          case 'select':
-            $field_null_label = (isset($field['null_option']))
-              ? $field['null_option'] : 'Select';
-            echo '<select name="'.$field_id.'" id="'.$field_id.'">';
-            echo '  <option value="">'. $field_null_label .'&hellip;</option>';
-            foreach($field['options'] as $option => $label):
-            echo '  <option value="'.$option.'" ', $value == $option
-              ? ' selected' : '','>'. $label .'</option>';
-            endforeach;
-            echo '</select>';
-            break;
-
-          /**
-           * radio
-           * ------------------------------------------------------------------------
-           * @param type        | string
-           * @param id          | string
-           * @param options     | array
-           * @param label       | string | optional
-           * @param description | text   | optional
-           * ------------------------------------------------------------------------ */
-          case 'radio':
-            echo '<ul>';
-            foreach($field['options'] as $option => $label):
-              echo '<li>';
-              echo '  <label for="'.$option.'">';
-              echo '  <input type="radio" name="'.$field_id.'" id="'.$option.
-                '" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
-              echo '  &nbsp;'.$label.'</label>';
-              echo '</li>';
-            endforeach;
-            echo '</ul>';
-            break;
-
-          /**
-           * post_checkbox
-           * ------------------------------------------------------------------------
-           * @param type        | string
-           * @param id          | string
-           * @param post_type   | string
-           * @param label       | string | optional
-           * @param description | string | optional
-           * ------------------------------------------------------------------------ */
-          case 'post_checkbox':
-            $value = ($value) ? $value : array();
-            $items = get_posts(array(
-              'post_type' => $field['post_type'],
-              'posts_per_page' => -1)
-            );
-
-            if($items)
-            {
-              echo '<ul>';
-              foreach($items as $item):
-                $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-                $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                  ? '<small>('.$item->post_type.')</small>' : '';
-                echo '<li>';
-                echo '  <label for="'.$field_id.'['. $item->ID .']">';
-                echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .
-                  ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-                echo '  &nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
-                echo '</li>';
-              endforeach;
-              echo '</ul>';
-            }
-            else
-            {
-              echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
-            }
-            break;
-
-          /**
-           * file
-           * ------------------------------------------------------------------------
-           * @param type        | string
-           * @param id          | string
-           * @param label       | string | optional
-           * @param description | string | optional
-           * @param placeholder | string | optional
-           * ------------------------------------------------------------------------ */
-          case 'file':
-            $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-            echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'.
-              $field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
-              <input class="custom_upload_file_button button" type="button" value="Choose File" />
-              <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
-            ?>
-              <script>
-              jQuery(function($) {
-                $('.custom_upload_file_button').click(function() {
-                  $formField = $(this).siblings('.custom_upload_file');
-                  tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
-                  window.send_to_editor = function($html) {
-                   $fileUrl = $($html).attr('href');
-                   $formField.val($fileUrl);
-                   tb_remove();
-                  };
-                  return false;
-                });
-                $('.custom_clear_file_button').click(function() {
-                  $(this).parent().siblings('.custom_upload_file').val('');
-                  return false;
-                });
+        /**
+         * file
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param label       | string | optional
+         * @param description | string | optional
+         * @param placeholder | string | optional
+         * ------------------------------------------------------------------------ */
+        case 'file':
+          $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+          echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'.
+            $field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
+            <input class="custom_upload_file_button button" type="button" value="Choose File" />
+            <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
+          ?>
+            <script>
+            jQuery(function($) {
+              $('.custom_upload_file_button').click(function() {
+                $formField = $(this).siblings('.custom_upload_file');
+                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
+                window.send_to_editor = function($html) {
+                 $fileUrl = $($html).attr('href');
+                 $formField.val($fileUrl);
+                 tb_remove();
+                };
+                return false;
               });
-              </script>
-            <?php
-            break;
+              $('.custom_clear_file_button').click(function() {
+                $(this).parent().siblings('.custom_upload_file').val('');
+                return false;
+              });
+            });
+            </script>
+          <?php
+          break;
 
-          /**
-           * text | default
-           * ------------------------------------------------------------------------
-           * @param id          | string
-           * @param type        | string | optional
-           * @param label       | string | optional
-           * @param description | string | optional
-           * @param placeholder | string | optional
-           * ------------------------------------------------------------------------ */
-          default:
-            $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-            echo '<input type="text" name="'.$field_id.'" id="'
-              .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
-            break;
-        }
+        /**
+         * text | default
+         * ------------------------------------------------------------------------
+         * @param id          | string
+         * @param type        | string | optional
+         * @param label       | string | optional
+         * @param description | string | optional
+         * @param placeholder | string | optional
+         * ------------------------------------------------------------------------ */
+        default:
+          $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+          echo '<input type="text" name="'.$field_id.'" id="'
+            .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
+          break;
       }
+
       echo '</p>';
 
       /* Display the description */
