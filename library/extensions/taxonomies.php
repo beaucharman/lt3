@@ -123,41 +123,6 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Get
-   * ------------------------------------------------------------------------
-   * get()
-   * @param  $user_args | array
-   * @return post type data
-   * ------------------------------------------------------------------------ */
-  public function get($user_args = array())
-  {
-    $args = array_merge(
-      array(
-        'orderby'       => 'name',
-        'order'         => 'ASC',
-        'hide_empty'    => false,
-        'exclude'       => array(),
-        'exclude_tree'  => array(),
-        'include'       => array(),
-        'number'        => null,
-        'fields'        => 'all',
-        'slug'          => '',
-        'parent'        => '',
-        'hierarchical'  => true,
-        'child_of'      => 0,
-        'get'           => '',
-        'name__like'    => null,
-        'pad_counts'    => false,
-        'offset'        => null,
-        'search'        => null,
-        'cache_domain'  => 'core'
-      ),
-      $user_args
-    );
-    return get_terms($this->_name);
-  }
-
-  /**
    * Add custom contextual help
    * ------------------------------------------------------------------------
    * add_custom_contextual_help()

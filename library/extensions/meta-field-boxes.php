@@ -184,6 +184,43 @@ class LT3_Custom_Field_Meta_Box
           break;
 
         /**
+         * post_select
+         * ------------------------------------------------------------------------
+         * @param type         | string
+         * @param id           | string
+         * @param post_type    | string
+         * @param label        | string | optional
+         * @param null_option  | string | optional
+         * @param description  | text   | optional
+         * ------------------------------------------------------------------------ */
+        case 'post_select':
+          $items = get_posts(array(
+            'post_type' => $field['post_type'],
+            'posts_per_page' => -1)
+          );
+
+          if($items)
+          {
+            $field_null_label = (isset($field['null_option']))
+              ? $field['null_option'] : 'Select';
+            echo '<select name="'.$field_id.'" id="'.$field_id.'">';
+            echo '  <option value="">'. $field_null_label .'&hellip;</option>';
+            foreach($items as $item):
+              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
+              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
+                ? ' <small>('.$item->post_type.')</small>' : '';
+              echo '  <option value="'.$item->ID.'" ', $value == $item->ID
+                ? ' selected' : '','>'. $item->post_title . $post_type_label.'</option>';
+            endforeach;
+            echo '</select>';
+          }
+          else
+          {
+            echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
+          }
+          break;
+
+        /**
          * radio
          * ------------------------------------------------------------------------
          * @param type        | string
@@ -227,12 +264,12 @@ class LT3_Custom_Field_Meta_Box
             foreach($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? '<small>('.$item->post_type.')</small>' : '';
+                ? ' <small>('.$item->post_type.')</small>' : '';
               echo '<li>';
               echo '  <label for="'.$field_id.'['. $item->ID .']">';
               echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .
                 ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-              echo '  &nbsp;'.$item->post_title. ' '.$post_type_label.'</label>';
+              echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
               echo '</li>';
             endforeach;
             echo '</ul>';
