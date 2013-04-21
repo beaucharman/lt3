@@ -29,13 +29,13 @@ function lt3_load_styles()
 	/* Enqueue styles here: */
 	if(!is_admin())
 	{
-  	// Enqueue conditional theme template styles here
+    // Enqueue conditional theme template styles here
 	}
 	else if(is_admin())
 	{
     /* Add consistency to site settings and meta field inputs */
-  	wp_enqueue_style('lt3_custom_admin_styles');
-	}
+    wp_enqueue_style('lt3_custom_admin_styles');
+  } 
 }
 
 /**
