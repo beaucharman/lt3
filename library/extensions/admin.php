@@ -188,12 +188,13 @@ function lt3_custom_restrict_manage_posts()
     foreach ($filters as $tax_slug)
     {
       $tax_obj = get_taxonomy($tax_slug);
+      $selected = (isset($_GET[$tax_obj->query_var])) ? $_GET[$tax_obj->query_var] : '';
       wp_dropdown_categories(array(
         'show_option_all' => __('Show All '.$tax_obj->label),
         'taxonomy'        => $tax_slug,
         'name'            => $tax_obj->name,
         'orderby'         => 'term_order',
-        'selected'        => $_GET[$tax_obj->query_var],
+        'selected'        => $selected,
         'hierarchical'    => $tax_obj->hierarchical,
         'show_count'      => false,
         'hide_empty'      => true

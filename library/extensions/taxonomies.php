@@ -123,6 +123,40 @@ class LT3_Custom_Taxonomy
   }
 
   /**
+   * Get
+   * ------------------------------------------------------------------------
+   * get()
+   * @param  $user_args | array
+   * @return term data
+   * ------------------------------------------------------------------------ */
+  public function get($user_args = array())
+  {
+    $args = array_merge(
+      array(
+        'orderby'       => 'name',
+        'order'         => 'ASC',
+        'hide_empty'    => false,
+        'exclude'       => array(),
+        'exclude_tree'  => array(),
+        'include'       => array(),
+        'number'        => '',
+        'fields'        => 'all',
+        'slug'          => '',
+        'parent'        => '',
+        'hierarchical'  => true,
+        'child_of'      => 0,
+        'get'           => '',
+        'name__like'    => '',
+        'pad_counts'    => false,
+        'offset'        => '',
+        'search'        => '',
+        'cache_domain'  => 'core'
+      ), $user_args
+    );
+    return get_terms('product_category');
+  }
+
+  /**
    * Add custom contextual help
    * ------------------------------------------------------------------------
    * add_custom_contextual_help()

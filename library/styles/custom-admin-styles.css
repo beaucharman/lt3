@@ -47,19 +47,20 @@
 }
 
 .lt3-form-container input[type="text"] {
-  width: 300px;
-  max-width: 90%;
+  width: 100%;
+  max-width: 300px;
 }
 
 .lt3-form-container select {
+  width: 100%;
   max-width: 300px;
 }
 
 .lt3-form-container textarea {
   resize: vertical;
-  width: 500px;
+  width: 100%;
   min-height: 150px;
-  max-width: 90%;
+  max-width: 500px;
 }
 
 .lt3-form-container input[type="text"],

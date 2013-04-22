@@ -85,7 +85,6 @@ class LT3_Custom_Post_Type
     if(!post_type_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
-      add_filter('enter_title_here', array(&$this, 'custom_post_type_title_text'));
       if($this->_help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
     }
   }
@@ -136,25 +135,6 @@ class LT3_Custom_Post_Type
 
     /* Register the new post type */
     register_post_type($this->_name, $options);
-  }
-
-  /**
-   * Custom post type title text
-   * ------------------------------------------------------------------------
-   * custom_post_type_title_text()
-   * @param  null
-   * @return $title | string
-   *
-   * Change title placeholder for custom post types
-   * ------------------------------------------------------------------------ */
-  public function custom_post_type_title_text()
-  {
-    $screen = get_current_screen();
-    if($this->_name == $screen->post_type)
-    {
-      $title = 'Enter '. $this->prettify_words($this->_name) .' Title Here';
-    }
-    return $title;
   }
 
   /**
