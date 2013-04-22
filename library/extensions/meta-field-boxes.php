@@ -274,7 +274,8 @@ class LT3_Custom_Field_Meta_Box
           }
           else
           {
-            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type']) .' items to choose from.';
+            echo 'Sorry, there are currently no '.lt3_prettify_words($field['post_type'])
+              .' items to choose from.';
           }
           break;
 
@@ -292,8 +293,8 @@ class LT3_Custom_Field_Meta_Box
           foreach($field['options'] as $option => $label):
             echo '<li>';
             echo '  <label for="'.$option.'">';
-            echo '  <input type="radio" name="'.$field_id.'" id="'.$option.
-              '" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
+            echo '  <input type="radio" name="'.$field_id.'" id="'.$option
+              .'" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
             echo '  &nbsp;'.$label.'</label>';
             echo '</li>';
           endforeach;
@@ -325,8 +326,8 @@ class LT3_Custom_Field_Meta_Box
                 ? ' <small>('.$item->post_type.')</small>' : '';
               echo '<li>';
               echo '  <label for="'.$field_id.'['. $item->ID .']">';
-              echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID .
-                ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+              echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID
+                .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
               echo '</li>';
             endforeach;
@@ -334,7 +335,8 @@ class LT3_Custom_Field_Meta_Box
           }
           else
           {
-            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type']) .' items to choose from.';
+            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type'])
+              .' items to choose from.';
           }
           break;
 
@@ -349,8 +351,8 @@ class LT3_Custom_Field_Meta_Box
          * ------------------------------------------------------------------------ */
         case 'file':
           $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-          echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'.
-            $field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
+          echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'
+            .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
             <input class="custom_upload_file_button button" type="button" value="Choose File" />
             <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
           ?>

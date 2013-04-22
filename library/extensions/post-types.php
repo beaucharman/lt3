@@ -85,7 +85,10 @@ class LT3_Custom_Post_Type
     if(!post_type_exists($this->_name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
-      if($this->_help) add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+      if($this->_help)
+      {
+        add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+      }
     }
   }
 
@@ -100,14 +103,11 @@ class LT3_Custom_Post_Type
   {
     /* Create the labels */
     $label_singular = (isset($this->_labels['label_singular']))
-      ? $this->_labels['label_singular']
-      : $this->prettify_words($this->_name);
+      ? $this->_labels['label_singular'] : $this->prettify_words($this->_name);
     $label_plural = (isset($this->_labels['label_plural']))
-      ? $this->_labels['label_plural']
-      : $this->plurafy_words($label_singular);
+      ? $this->_labels['label_plural'] : $this->plurafy_words($label_singular);
     $menu_name = (isset($this->_labels['menu_label']))
-      ? $this->_labels['menu_label']
-      : $label_plural;
+      ? $this->_labels['menu_label'] : $label_plural;
     $labels = array(
       'name'               => __($label_plural),
       'singular_name'      => __($label_singular),
