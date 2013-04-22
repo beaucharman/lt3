@@ -153,7 +153,7 @@ class LT3_Custom_Taxonomy
         'cache_domain'  => 'core'
       ), $user_args
     );
-    return get_terms('product_category');
+    return get_terms($this->_name, $args);
   }
 
   /**
