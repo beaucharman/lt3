@@ -364,18 +364,6 @@ function lt3_register_shortcode_youtube($atts, $content = null)
  		.'</iframe>';
 }
 
-/* [lt3_follow_on_twitter username="username"]
-   ------------------------------------------------------------------------ */
-add_shortcode('lt3_follow_on_twitter', 'lt3_register_shortcode_follow_on_twitter');
-function lt3_register_shortcode_follow_on_twitter($atts, $content = '')
-{
-	extract(shortcode_atts(array('username' => get_bloginfo('name')), $atts));
-	$twitter_follow_content = '<a href="https://twitter.com/'. $username .'" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @'. $username .'</a>';
-	$twitter_follow_content .= '<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.';
-	$twitter_follow_content .= 'src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-	return $twitter_follow_content;
-}
-
 /* [lt3_fraction] / [lt3_fraction_last]
    ------------------------------------------------------------------------ */
 add_shortcode('lt3_one_half', 'lt3_register_shortcode_one_half_column');

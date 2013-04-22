@@ -35,14 +35,17 @@
 
       <header role="banner" class="page-header">
         <?php if(is_home() || is_front_page()) echo '<h1>'; ?>
-        <a href="<?php echo home_url(); ?>/" title="<?php echo the_title_attribute(); ?>" class="site-title" >
+        <a href="<?php echo home_url('/'); ?>" title="<?php echo the_title_attribute(); ?>" class="site-title" >
           <?php bloginfo('name'); ?>
         </a>
         <?php if(is_home() || is_front_page()) echo '</h1>'; ?>
 
-        <?php if(bloginfo('description')): ?><p class="site-description"><?php bloginfo('description'); ?></p><?php endif; ?>
+        <?php if(bloginfo('description')): ?>
+        <p class="site-description"><?php bloginfo('description'); ?></p>
+        <?php endif; ?>
 
-        <?php if(is_active_sidebar('header-sidebar-widgets')) dynamic_sidebar('header-sidebar-widgets'); ?>
+        <?php if(is_active_sidebar('header-sidebar-widgets'))
+          dynamic_sidebar('header-sidebar-widgets'); ?>
 
         <?php lt3_page_header_menu(); ?>
       </header>

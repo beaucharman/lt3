@@ -211,8 +211,11 @@ if(LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
       elseif(strpos($args[0],'get_template_part_') === 0)
       {
         global $last_template_snoop;
-        if($last_template_snoop) echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
-        $tpl = rtrim(join('-',  array_slice($args,1)),'-').'.php';
+        if($last_template_snoop)
+        {
+          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
+        }
+        $tpl = rtrim(join('-',  array_slice($args,1)),'-') . '.php';
         echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
         $last_template_snoop = $tpl;
       }

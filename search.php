@@ -20,8 +20,8 @@
   <h1 class="content-title">Search Results</h1>
 
   <p class="search-query">
-    <?php echo $total_results ?> result<?php if($total_results != 1) echo 's'; ?> found for the search term:
-    <span><?php echo esc_html($s, 1); ?></span>
+    <?php echo $total_results ?> result<?php if($total_results != 1) echo 's'; ?>
+    found for the search term: <span><?php echo esc_html($s, 1); ?></span>
   </p>
 
   <?php if(have_posts()) : ?>
