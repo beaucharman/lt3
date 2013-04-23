@@ -86,28 +86,21 @@ function lt3_is_child_of_category( $parent_category )
 function lt3_is_post_type( $type = null )
 {
   global $post, $wp_query;
-  if ( $type )
+  if( $type )
   {
-    if ( get_post_type( $wp_query->post->ID ) )
+    if( $type == get_post_type( $wp_query->post->ID ) )
     {
       return true;
-    }
-    else
-    {
-      return false;
     }
   }
   else
   {
-    if ( $type == get_post_type( $wp_query->post->ID ) )
+    if( get_post_type( $wp_query->post->ID ) )
     {
       return true;
     }
-    else
-    {
-      return false;
-    }
   }
+  return false;
 }
 
 /**

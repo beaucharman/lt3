@@ -31,7 +31,6 @@ function lt3_initial_theme_setup()
       'large_size_w'        => LT3_PAGE_CONTENT_WIDTH * 1.25,
       'medium_size_h'       => LT3_PAGE_CONTENT_WIDTH / 2,
       'medium_size_w'       => LT3_PAGE_CONTENT_WIDTH,
-      'permalink_structure' => '/%postname%/',
       'posts_per_page'      => '20',
       'thumbnail_crop'      => '1',
       'thumbnail_size_h'    => LT3_PAGE_CONTENT_WIDTH / 4,

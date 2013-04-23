@@ -36,11 +36,11 @@
 
   /* Taxonomy Archive */ elseif ( is_tax() ) :
   $taxonomy_term = $wp_query->get_queried_object();
-  echo $taxonomy_term->name; echo _e( 'Archive' );
+  echo $taxonomy_term->name; echo _e( ' Archive' );
 
   /* Post Type Archive */ elseif ( lt3_is_post_type() ) :
   $post_type_obj = get_post_type_object( get_post_type( $wp_query->post->ID ) );
-  print $post_type_obj->labels->name; echo _e( 'Archive' );
+  print $post_type_obj->labels->name; echo _e( ' Archive' );
 
   /* Paged Archive */ elseif ( isset( $_GET['paged'] ) && !empty( $_GET['paged'] ) ) :
   echo _e( 'Article Archives' );

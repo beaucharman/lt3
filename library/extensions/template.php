@@ -31,8 +31,15 @@ set_post_thumbnail_size( LT3_PAGE_CONTENT_WIDTH / 4, 9999 );
 add_image_size( 'large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
 add_image_size( 'small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2, 300, true );
 
-/* Render Title Function. Assign title names and attributes conditionally.
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Title
+ * ------------------------------------------------------------------------
+ * lt3_title()
+ * @param  null
+ * @return string
+ *
+ * Render Title Function. Assign title names and attributes conditionally.
+ * ------------------------------------------------------------------------ */
 function lt3_title()
 {
 	global $post;
@@ -89,8 +96,18 @@ function lt3_title()
   bloginfo( 'description' ); } /* Always include */
 }
 
-/* Default header description meta tag - Filter Function
+/*
    ------------------------------------------------------------------------ */
+
+/**
+ * lt3 Meta Tag Description
+ * ------------------------------------------------------------------------
+ * lt3_meta_tag_description()
+ * @param  null
+ * @return string
+ *
+ * Default header description meta tag
+ * ------------------------------------------------------------------------ */
 function lt3_meta_tag_description()
 {
 	global $post;
@@ -158,8 +175,15 @@ function lt3_meta_tag_description()
 	echo $content;
 }
 
-/* Function to change the read more text on Archive pages
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Read More Text
+ * ------------------------------------------------------------------------
+ * lt3_read_more_text()
+ * @param  null
+ * @return string
+ *
+ * Function to change the read more text on Archive pages
+ * ------------------------------------------------------------------------ */
 function lt3_read_more_text()
 {
 	if ( is_attachment() )
@@ -172,8 +196,15 @@ function lt3_read_more_text()
 	}
 }
 
-/* Function to get defined Messages
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Get Message
+ * ------------------------------------------------------------------------
+ * lt3_get_message()
+ * @param  null
+ * @return string
+ *
+ * Function to get defined feedback and notification messages.
+ * ------------------------------------------------------------------------ */
 function lt3_get_message( $message_name )
 {
 	switch( strtoupper( $message_name ) )
@@ -226,8 +257,16 @@ function lt3_get_message( $message_name )
 	}
 }
 
-/* Search form request filter
-   ------------------------------------------------------------------------ */
+/**
+ * lt3 Search Form Request Filter
+ * ------------------------------------------------------------------------
+ * lt3_search_form_request_filter()
+ * @param  $query_vars | array
+ * @return array
+ *
+ * Callback for the WordPress 'request' filter. A fix for some errors that
+ * occur for an empty search query.
+ * ------------------------------------------------------------------------ */
 add_filter( 'request', 'lt3_search_form_request_filter' );
 function lt3_search_form_request_filter( $query_vars )
 {
@@ -461,13 +500,6 @@ function lt3_back_to_parent_link(){
 		$post_parent = get_post( $post->post_parent );
 		$slug = get_permalink( $post_parent->ID );
 		$name = get_the_title( $post_parent->ID );
-	}
-	else if ( is_single() )
-	{
-		$category = get_the_category();
-		get_category_link( $category[0]->term_id ) . '">' . $category[0]->cat_name;
-		$slug = get_category_link( $category[0]->term_id );
-		$name = $category[0]->cat_name;
 	}
 	else
 	{

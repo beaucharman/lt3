@@ -47,7 +47,7 @@
         </a>
         <?php if ( is_home() || is_front_page() ) echo '</h1>'; ?>
 
-        <?php if ( bloginfo( 'description' ) ): ?>
+        <?php if ( get_bloginfo( 'description' ) ): ?>
         <p class="site-description"><?php bloginfo( 'description' ); ?></p>
         <?php endif; ?>
 
