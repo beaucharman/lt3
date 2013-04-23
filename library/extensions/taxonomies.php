@@ -18,6 +18,7 @@
  * To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
  * with the following arguments:
  */
+
 /*
   // Required
   $name = '';

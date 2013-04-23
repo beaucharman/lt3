@@ -15,6 +15,7 @@
  * To declare a custom post type, simply add a new LT3_Custom_Post_Type class
  * with the following arguments:
  */
+
 /*
   // Required
   $name = '';
@@ -46,6 +47,7 @@
    );
   $PostType = new LT3_Custom_Post_Type( $name, $labels, $options, $help );
 */
+
 /*
   // Flush permalink rewrites after creating custom post types and taxonomies
   add_action( 'init', 'lt3_post_type_and_taxonomy_flush_rewrites' );

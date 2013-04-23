@@ -15,6 +15,7 @@
  * To declare a custom field meta box, simply add a new LT3_Custom_Field_Meta_Box class
  * with the following arguments:
  */
+
 /*
   $args = array(
     'id'              => '',
