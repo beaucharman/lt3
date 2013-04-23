@@ -1,4 +1,4 @@
-![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/screenshot.png "A slightly powerfull, intelligent and simple WordPress theme.")
+![LT3 theme screenshot]( https://raw.github.com/beaucharman/lt3/master/screenshot.png "A slightly powerfull, intelligent and simple WordPress theme." )
 ## Change Log
 1.0
 - Changing the elegant theme over to a more modulated theme, now lt3
@@ -19,7 +19,7 @@
 - Easy get terms, get term and get the terms methods for custom taxonomies
 
 ## Testing
-Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
+Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
 
 ## Notes for Production
 
@@ -36,7 +36,7 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 ```
   Order deny,allow
   Deny from all
-  <Files ~ ".(xml|css|jpe?g|png|gif|js)$">
+  <Files ~ ".( xml|css|jpe?g|png|gif|js )$">
   Allow from all
   </Files>
 ```
@@ -45,7 +45,7 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 Within the wp-config.php file, place the following code:
 
 ```
-  define('DISALLOW_FILE_EDIT', true);
+  define( 'DISALLOW_FILE_EDIT', true );
 ```
 
 - **Enforce SSL Usage
@@ -54,6 +54,6 @@ Within the wp-config.php file, place the following code:
 
 ```
   /* Enable SSL Encryption */
-  define(‘FORCE_SSL_LOGIN’, true);
-  define(‘FORCE_SSL_ADMIN’, true);
+  define( ‘FORCE_SSL_LOGIN’, true );
+  define( ‘FORCE_SSL_ADMIN’, true );
 ```

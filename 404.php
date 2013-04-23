@@ -13,6 +13,6 @@
  * ------------------------------------------------------------------------ */ ?>
 <?php get_header(); ?>
 
-  <?php lt3_get_message('Not Found'); ?>
+  <?php lt3_get_message( 'Not Found' ); ?>
 
 <?php get_footer(); ?>

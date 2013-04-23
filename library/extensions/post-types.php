@@ -23,32 +23,32 @@
     'label_singular' => '',
     'label_plural'   => '',
     'menu_label'     => ''
-  );
+   );
   $options = array(
     'description'    => '',
     'public'         => true,
     'menu_position'  => 20,
     'menu_icon'      => null,
     'hierarchical'   => false,
-    'supports'       => array(''),
-    'taxonomies'     => array(''),
+    'supports'       => array( '' ),
+    'taxonomies'     => array( '' ),
     'has_archive'    => true,
     'rewrite'        => true
-  );
+   );
   $help = array(
     array(
       'message'      => ''
-    ),
+     ),
     array(
       'context'      => 'edit',
       'message'      => ''
-    )
-  );
-  $PostType = new LT3_Custom_Post_Type($name, $labels, $options, $help);
+     )
+   );
+  $PostType = new LT3_Custom_Post_Type( $name, $labels, $options, $help );
 */
 /*
   // Flush permalink rewrites after creating custom post types and taxonomies
-  add_action('init', 'lt3_post_type_and_taxonomy_flush_rewrites');
+  add_action( 'init', 'lt3_post_type_and_taxonomy_flush_rewrites' );
   function lt3_post_type_and_taxonomy_flush_rewrites()
   {
     global $wp_rewrite;
@@ -75,19 +75,19 @@ class LT3_Custom_Post_Type
    * @param  $help     | array
    * @return post_type | class instance
    *  ------------------------------------------------------------------------ */
-  public function __construct($name, $labels = array(), $options = array(), $help = null)
+  public function __construct( $name, $labels = array(), $options = array(), $help = null )
   {
-    $this->_name    = $this->uglify_words($name);
+    $this->_name    = $this->uglify_words( $name );
     $this->_labels  = $labels;
     $this->_options = $options;
     $this->_help    = $help;
 
-    if(!post_type_exists($this->_name))
+    if ( !post_type_exists( $this->_name ) )
     {
-      add_action('init', array(&$this, 'register_custom_post_type'));
-      if($this->_help)
+      add_action( 'init', array( &$this, 'register_custom_post_type' ) );
+      if ( $this->_help )
       {
-        add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
+        add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
       }
     }
   }
@@ -102,25 +102,25 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     /* Create the labels */
-    $label_singular = (isset($this->_labels['label_singular']))
-      ? $this->_labels['label_singular'] : $this->prettify_words($this->_name);
-    $label_plural = (isset($this->_labels['label_plural']))
-      ? $this->_labels['label_plural'] : $this->plurafy_words($label_singular);
-    $menu_name = (isset($this->_labels['menu_label']))
+    $label_singular = ( isset( $this->_labels['label_singular'] ) )
+      ? $this->_labels['label_singular'] : $this->prettify_words( $this->_name );
+    $label_plural = ( isset( $this->_labels['label_plural'] ) )
+      ? $this->_labels['label_plural'] : $this->plurafy_words( $label_singular );
+    $menu_name = ( isset( $this->_labels['menu_label'] ) )
       ? $this->_labels['menu_label'] : $label_plural;
     $labels = array(
-      'name'               => __($label_plural),
-      'singular_name'      => __($label_singular),
-      'menu_name'          => __($menu_name),
-      'add_new_item'       => __('Add New '. $label_singular),
-      'edit_item'          => __('Edit '. $label_singular),
-      'new_item'           => __('New '. $label_singular),
-      'all_items'          => __('All '. $label_plural),
-      'view_item'          => __('View '. $label_singular),
-      'search_items'       => __('Search '. $label_plural),
-      'not_found'          => __('No '. $label_plural .' found'),
-      'not_found_in_trash' => __('No '. $label_plural .' found in Trash')
-    );
+      'name'               => __( $label_plural ),
+      'singular_name'      => __( $label_singular ),
+      'menu_name'          => __( $menu_name ),
+      'add_new_item'       => __( 'Add New ' . $label_singular ),
+      'edit_item'          => __( 'Edit ' . $label_singular ),
+      'new_item'           => __( 'New ' . $label_singular ),
+      'all_items'          => __( 'All ' . $label_plural ),
+      'view_item'          => __( 'View ' . $label_singular ),
+      'search_items'       => __( 'Search ' . $label_plural ),
+      'not_found'          => __( 'No ' . $label_plural . ' found' ),
+      'not_found_in_trash' => __( 'No ' . $label_plural . ' found in Trash' )
+     );
 
     /* Configure the options */
     $options = array_merge(
@@ -131,16 +131,16 @@ class LT3_Custom_Post_Type
         'menu_position'    => 20,
         'menu_icon'        => null,
         'hierarchical'     => false,
-        'supports'         => array('title', 'editor'),
+        'supports'         => array( 'title', 'editor' ),
         'taxonomies'       => array(),
         'has_archive'      => true,
         'rewrite'          => true
-      ),
+       ),
       $this->_options
-    );
+     );
 
     /* Register the new post type */
-    register_post_type($this->_name, $options);
+    register_post_type( $this->_name, $options );
   }
 
   /**
@@ -150,7 +150,7 @@ class LT3_Custom_Post_Type
    * @param  $user_args | array
    * @return post type data
    * ------------------------------------------------------------------------ */
-  public function get($user_args = array(), $single = false)
+  public function get( $user_args = array(), $single = false )
   {
     $args = array_merge(
       array(
@@ -167,15 +167,15 @@ class LT3_Custom_Post_Type
       'post_parent'     => '',
       'post_status'     => 'publish',
       'suppress_filters' => true
-      ),
+       ),
       $user_args
-    );
-    if($single)
+     );
+    if ( $single )
     {
-      $items = get_posts($args);
+      $items = get_posts( $args );
       return $items[0];
     }
-    return get_posts($args);
+    return get_posts( $args );
   }
 
   /**
@@ -187,11 +187,11 @@ class LT3_Custom_Post_Type
    * @param  $screen
    * @return $contextual_help
    * ------------------------------------------------------------------------ */
-  public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
+  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
   {
-    foreach($this->_help as $help)
+    foreach( $this->_help as $help )
     {
-      if(!$help['context'])
+      if ( !$help['context'] )
       {
         $context = $this->_name;
       }
@@ -200,7 +200,7 @@ class LT3_Custom_Post_Type
         $context = $help['context'] . '-' . $this->_name;
       }
 
-      if($context == $screen->id)
+      if ( $context == $screen->id )
       {
         $contextual_help = $help['message'];
       }
@@ -217,9 +217,9 @@ class LT3_Custom_Post_Type
    *
    * Creates a pretty version of a string, like a pug version of a dog.
    * ------------------------------------------------------------------------ */
-  public function prettify_words($words)
+  public function prettify_words( $words )
   {
-    return ucwords(str_replace('_', ' ', $words));
+    return ucwords( str_replace( '_', ' ', $words ) );
   }
 
   /**
@@ -231,9 +231,9 @@ class LT3_Custom_Post_Type
    *
    * Creates a url firendly version of the given string.
    * ------------------------------------------------------------------------ */
-  public function uglify_words($words)
+  public function uglify_words( $words )
   {
-    return strToLower(str_replace(' ', '_', $words));
+    return strToLower( str_replace( ' ', '_', $words ) );
   }
 
   /**
@@ -245,13 +245,13 @@ class LT3_Custom_Post_Type
    * Plurifies most common words. Not currently working proper nouns,
    * or more complex words, for example knife => knives, leaf => leaves.
    * ------------------------------------------------------------------------ */
-  public function plurafy_words($words)
+  public function plurafy_words( $words )
   {
-    if(strToLower(substr($words, -1)) == 'y')
+    if ( strToLower( substr( $words, -1 ) ) == 'y' )
     {
-      return substr_replace($words, 'ies', -1);
+      return substr_replace( $words, 'ies', -1 );
     }
-    if(strToLower(substr($words, -1)) == 's')
+    if ( strToLower( substr( $words, -1 ) ) == 's' )
     {
       return $words . 'es';
     }

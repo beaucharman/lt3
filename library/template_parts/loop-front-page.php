@@ -9,20 +9,20 @@
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
  * ------------------------------------------------------------------------ */ ?>
-<?php while(have_posts()) : the_post(); ?>
+<?php while( have_posts() ) : the_post(); ?>
 
-<article <?php post_class('front-page entry content post-'. get_the_ID()); ?>>
+<article <?php post_class( 'front-page entry content post-'. get_the_ID() ); ?>>
 
-  <?php $article_title = strtoupper(get_the_title());
-    if(($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
+  <?php $article_title = strtoupper( get_the_title() );
+    if ( ( $article_title != 'HOME' ) && ( $article_title != 'HOME PAGE' ) ) : ?>
     <h2 class="article-title"><?php the_title(); ?></h2>
   <?php endif; ?>
 
   <?php lt3_include_post_meta(); ?>
 
-  <?php if(has_post_thumbnail()) : ?>
+  <?php if ( has_post_thumbnail() ) : ?>
   <figure class="post-thumbnail">
-    <?php the_post_thumbnail('medium'); ?>
+    <?php the_post_thumbnail( 'medium' ); ?>
   </figure>
   <?php endif; ?>
 

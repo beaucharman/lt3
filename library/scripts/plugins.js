@@ -12,10 +12,10 @@
  * ------------------------------------------------------------------------ */
 
 /* Remove the .js class from the html tag is javascript is enabled */
-document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+document.documentElement.className = document.documentElement.className.replace( /\bno-js\b/g, '' ) + ' js ';
 
 /* Avoid `console` errors in browsers that lack a console. [from boilerplate] */
-(function()
+( function()
 {
   var method;
   var noop = function () {};
@@ -26,13 +26,13 @@ document.documentElement.className = document.documentElement.className.replace(
     'timeStamp', 'trace', 'warn'
   ];
   var length = methods.length;
-  var console = (window.console = window.console || {});
-  while (length--)
+  var console = ( window.console = window.console || {} );
+  while ( length-- )
   {
     method = methods[length];
-    if(!console[method])
+    if ( !console[method] )
     {
       console[method] = noop;
     }
   }
-}());
+}() );

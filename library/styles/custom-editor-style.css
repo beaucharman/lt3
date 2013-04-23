@@ -94,7 +94,7 @@ td, th {
   clear: both;
 }
 
-.alignnone, img.alignnone {  }
+.alignnone, img.alignnone { }
 
 blockquote.left {
   margin-right: 20px;
@@ -121,11 +121,11 @@ blockquote.right {
   color: #555;
 }
 
-.warning {  }
+.warning { }
 
-.notice {  }
+.notice { }
 
-.muted {  }
+.muted { }
 
 /* Image and Gallery tyles
    ------------------------------------------------------------------------ */

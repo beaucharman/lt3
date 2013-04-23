@@ -1,4 +1,4 @@
-<?php if(!defined('ABSPATH')) exit;
+<?php if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Functions
  * ------------------------------------------------------------------------
@@ -15,30 +15,30 @@
 /* ------------------------------------------------------------------------
    Required Constants
    ------------------------------------------------------------------------ */
-define('LT3_FULL_PROJECT_PATH', get_template_directory() . '/library/project');
+define( 'LT3_FULL_PROJECT_PATH', get_template_directory() . '/library/project' );
 
-define('LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensions');
+define( 'LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensions' );
 
-define('LT3_FULL_DASHBOARD_PATH', get_template_directory() . '/library/dashboard');
+define( 'LT3_FULL_DASHBOARD_PATH', get_template_directory() . '/library/dashboard' );
 
-define('LT3_FULL_SCRIPTS_PATH', get_template_directory_uri() . '/library/scripts');
+define( 'LT3_FULL_SCRIPTS_PATH', get_template_directory_uri() . '/library/scripts' );
 
-define('LT3_SCRIPTS_PATH', 'library/scripts');
+define( 'LT3_SCRIPTS_PATH', 'library/scripts' );
 
-define('LT3_FULL_STYLES_PATH', get_template_directory_uri() . '/library/styles');
+define( 'LT3_FULL_STYLES_PATH', get_template_directory_uri() . '/library/styles' );
 
-define('LT3_STYLES_PATH', 'library/styles');
+define( 'LT3_STYLES_PATH', 'library/styles' );
 
-define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/library/images');
+define( 'LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/library/images' );
 
-define('LT3_IMAGES_PATH', 'library/images');
+define( 'LT3_IMAGES_PATH', 'library/images' );
 
-define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
+define( 'LT3_TEMPLATE_PARTS_PATH', 'library/template_parts' );
 
 /* ------------------------------------------------------------------------
    Site Configuration
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_PROJECT_PATH . '/config.php');
+require_once( LT3_FULL_PROJECT_PATH . '/config.php' );
 
 /* ------------------------------------------------------------------------
    Required Extention Files
@@ -46,67 +46,67 @@ require_once(LT3_FULL_PROJECT_PATH . '/config.php');
 
 /* Initial Theme Setup
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_PROJECT_PATH . '/initial-theme-setup.php');
+require_once( LT3_FULL_PROJECT_PATH . '/initial-theme-setup.php' );
 
 /* Helper Functions
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/helper.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/helper.php' );
 
 /* Site Settings
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/site-settings.php' );
 
 /* Admin Functions
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/admin.php' );
 
 /* Editor Functions
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/editor.php' );
 
 /* Template Functions
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/template.php' );
 
 /* Custom Post Types
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/post-types.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/post-types.php' );
 
 /* Custom Taxonomies
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/taxonomies.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/taxonomies.php' );
 
 /* Custom Meta Field Boxes
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/meta-field-boxes.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/meta-field-boxes.php' );
 
 /* Loop Functions
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/loop.php' );
 
 /* Template Hooks
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php' );
 
 /* Theme Widgets
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/widgets.php' );
 
 /* Theme Menus
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/menus.php' );
 
 /* Shortcodes
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php' );
 
 /* Theme Scripts
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/scripts.php' );
 
 /* Theme Styles
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
+require_once( LT3_FULL_EXTENSIONS_PATH . '/styles.php' );
 
 /* ------------------------------------------------------------------------
    Project Extensions
@@ -114,4 +114,4 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /* Site Settings Init
    ------------------------------------------------------------------------ */
-require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
+require_once( LT3_FULL_PROJECT_PATH . '/site-settings-init.php' );

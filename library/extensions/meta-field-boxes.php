@@ -27,10 +27,10 @@
         'type'        => '',
         'id'          => '',
         'label'       => ''
-      )
-    )
-  );
-  new LT3_Custom_Field_Meta_Box($args);
+       )
+     )
+   );
+  new LT3_Custom_Field_Meta_Box( $args );
 */
 
 /* ------------------------------------------------------------------------
@@ -52,22 +52,25 @@ class LT3_Custom_Field_Meta_Box
    * __construct()
    * @param  $cmfb | array
    * ------------------------------------------------------------------------ */
-  function __construct($cmfb)
+  function __construct( $cmfb )
   {
 
     /* Set class values */
     $this->_cmfb      = $cmfb;
-    $this->_id        = $this->uglify_words('_cmfb_'. $this->_cmfb['id']);
-    $this->_title     = (isset($this->_cmfb['title']))
-      ? $this->_cmfb['title'] : $this->prettify_words($this->_cmfb['id']);
-    $this->_post_type = (isset($this->_cmfb['post_type'])) ? $this->_cmfb['post_type'] : 'post';
-    $this->_context   = (isset($this->_cmfb['context']))   ? $this->_cmfb['context']   : 'advanced';
-    $this->_priority  = (isset($this->_cmfb['priority']))  ? $this->_cmfb['priority']  : 'default';
+    $this->_id        = $this->uglify_words( '_cmfb_'. $this->_cmfb['id'] );
+    $this->_title     = ( isset( $this->_cmfb['title'] ) )
+      ? $this->_cmfb['title'] : $this->prettify_words( $this->_cmfb['id'] );
+    $this->_post_type = ( isset( $this->_cmfb['post_type'] ) )
+      ? $this->_cmfb['post_type'] : 'post';
+    $this->_context   = ( isset( $this->_cmfb['context'] ) )
+      ? $this->_cmfb['context']   : 'advanced';
+    $this->_priority  = ( isset( $this->_cmfb['priority'] ) )
+      ? $this->_cmfb['priority']  : 'default';
     $this->_fields    = $this->_cmfb['fields'];
 
     /* Magic */
-    add_action('add_meta_boxes', array( &$this, 'add_custom_meta_field_box'));
-    add_action('save_post', array( &$this, 'save_data'));
+    add_action( 'add_meta_boxes', array(  &$this, 'add_custom_meta_field_box' ) );
+    add_action( 'save_post', array(  &$this, 'save_data' ) );
   }
 
   /**
@@ -80,11 +83,11 @@ class LT3_Custom_Field_Meta_Box
     add_meta_box(
       $this->_id,
       $this->_title,
-      array( &$this, 'show_custom_meta_field_box'),
+      array(  &$this, 'show_custom_meta_field_box' ),
       $this->_post_type,
       $this->_context,
       $this->_priority
-    );
+     );
   }
 
   /**
@@ -95,35 +98,35 @@ class LT3_Custom_Field_Meta_Box
   public function show_custom_meta_field_box()
   {
     global $post;
-    echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'.
-      wp_create_nonce(basename(__FILE__)).'" />';
-    echo '<ul class="lt3-form-container '. $this->_context . '">';
+    echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'
+      . wp_create_nonce( basename( __FILE__ ) ) . '" />';
+    echo '<ul class="lt3-form-container ' . $this->_context . '">';
 
-    foreach ($this->_fields as $field)
+    foreach ( $this->_fields as $field )
     {
       /* Get the field ID */
-      $field_id = $this->get_field_id($this->_id, $field['id']);
+      $field_id = $this->get_field_id( $this->_id, $field['id'] );
 
       /* Get the saved value, if there is one */
-      $value = get_post_meta($post->ID, $field_id, true);
-      $value = ($value) ? $value : '';
+      $value = get_post_meta( $post->ID, $field_id, true );
+      $value = ( $value ) ? $value : '';
 
       /* Get the label */
-      $field_label = (isset($field['label']))
-        ? $field['label'] : $this->prettify_words($field['id']);
+      $field_label = ( isset( $field['label'] ) )
+        ? $field['label'] : $this->prettify_words( $field['id'] );
 
       echo '<li class="custom-field-container">';
 
       echo '<p class="label-container">';
-      echo '  <label for="'.$field_id.'"><strong>'. $field_label .'</strong></label>';
+      echo '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
       echo '</p>';
 
       echo '<p class="input-container">';
 
       /* Render required field */
-      $field['type'] = (isset($field['type'])) ? $field['type'] : '';
+      $field['type'] = ( isset( $field['type'] ) ) ? $field['type'] : '';
 
-      switch($field['type'])
+      switch( $field['type'] )
       {
 
         /**
@@ -135,7 +138,7 @@ class LT3_Custom_Field_Meta_Box
          * @param description | text   | optional
          * ------------------------------------------------------------------------ */
         case 'textarea':
-          echo '<textarea name="'.$field_id.'" id="'.$field_id.'">'.$value.'</textarea>';
+          echo '<textarea name="' . $field_id . '" id="' . $field_id . '">' . $value . '</textarea>';
           break;
 
         /**
@@ -149,13 +152,13 @@ class LT3_Custom_Field_Meta_Box
          * ------------------------------------------------------------------------ */
         case 'checkbox':
           echo '<ul>';
-          foreach($field['options'] as $option => $label):
+          foreach( $field['options'] as $option => $label ):
             echo '<li>';
-            echo '  <label for="'.$field_id.'['.$option.']">';
-            echo '  <input type="checkbox" name="'.$field_id.'['.$option.']" id="'.
-              $field_id.'['.$option.']" value="'.$option.'" ', isset($value[$option])
-                ? ' checked' : '',' />';
-            echo '  &nbsp;'.$label.'</label>';
+            echo '  <label for="' . $field_id . '[' . $option . ']">';
+            echo '  <input type="checkbox" name="' . $field_id . '[' . $option . ']" id="'
+              . $field_id . '[' . $option . ']" value="' . $option . '" ', isset( $value[$option] )
+                ? ' checked' : '', ' />';
+            echo '  &nbsp;' . $label . '</label>';
             echo '</li>';
           endforeach;
           echo '</ul>';
@@ -172,13 +175,13 @@ class LT3_Custom_Field_Meta_Box
          * @param description  | text   | optional
          * ------------------------------------------------------------------------ */
         case 'select':
-          $field_null_label = (isset($field['null_option']))
+          $field_null_label = ( isset( $field['null_option'] ) )
             ? $field['null_option'] : 'Select';
-          echo '<select name="'.$field_id.'" id="'.$field_id.'">';
-          echo '  <option value="">'. $field_null_label .'&hellip;</option>';
-          foreach($field['options'] as $option => $label):
-          echo '  <option value="'.$option.'" ', $value == $option
-            ? ' selected' : '','>'. $label .'</option>';
+          echo '<select name="' . $field_id . '" id="' . $field_id . '">';
+          echo '  <option value="">' . $field_null_label . '&hellip;</option>';
+          foreach( $field['options'] as $option => $label ):
+          echo '  <option value="' . $option . '" ', $value == $option
+            ? ' selected' : '', '>' . $label . '</option>';
           endforeach;
           echo '</select>';
           break;
@@ -194,29 +197,29 @@ class LT3_Custom_Field_Meta_Box
          * @param description  | text   | optional
          * ------------------------------------------------------------------------ */
         case 'post_select':
-          $items = get_posts(array(
-            'post_type' => $field['post_type'],
-            'posts_per_page' => -1)
-          );
+          $items = get_posts( array(
+            'post_type'      => $field['post_type'],
+            'posts_per_page' => -1 )
+           );
 
-          if($items)
+          if ( $items )
           {
-            $field_null_label = (isset($field['null_option']))
+            $field_null_label = ( isset( $field['null_option'] ) )
               ? $field['null_option'] : 'Select';
-            echo '<select name="'.$field_id.'" id="'.$field_id.'">';
-            echo '  <option value="">'. $field_null_label .'&hellip;</option>';
-            foreach($items as $item):
-              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? ' <small>('.$item->post_type.')</small>' : '';
-              echo '  <option value="'.$item->ID.'" ', $value == $item->ID
-                ? ' selected' : '','>'. $item->post_title . $post_type_label.'</option>';
+            echo '<select name="' . $field_id . '" id="' . $field_id . '">';
+            echo '  <option value="">' . $field_null_label . '&hellip;</option>';
+            foreach( $items as $item ):
+              $is_select = ( in_array( $item->ID, $value ) ) ? ' checked' : '';
+              $post_type_label = ( isset( $field['post_type'][1] ) && is_array( $field['post_type'] ) )
+                ? ' <small>( ' . $item->post_type . ' )</small>' : '';
+              echo '  <option value="' . $item->ID . '" ', $value == $item->ID
+                ? ' selected' : '','>' . $item->post_title . $post_type_label . '</option>';
             endforeach;
             echo '</select>';
           }
           else
           {
-            echo 'Sorry, there are currently no '. $field['post_type'] .' items to choose from.';
+            echo 'Sorry, there are currently no ' . $field['post_type'] . ' items to choose from.';
           }
           break;
 
@@ -233,7 +236,8 @@ class LT3_Custom_Field_Meta_Box
          * ------------------------------------------------------------------------ */
         case 'term_select':
 
-          $field['args'] = (isset($field['args']) && is_array($field['args'])) ? $field['args'] : array();
+          $field['args'] = ( isset( $field['args'] ) && is_array( $field['args'] ) )
+            ? $field['args'] : array();
 
           $args = array_merge(
             array(
@@ -255,27 +259,29 @@ class LT3_Custom_Field_Meta_Box
               'offset'        => '',
               'search'        => '',
               'cache_domain'  => 'core'
-            ), $field['args']
-          );
+             ), $field['args']
+           );
 
-          $items = get_terms($field['taxonomy'], $args);
+          $items = get_terms( $field['taxonomy'], $args );
 
-          if($items)
+          if ( $items )
           {
-            $field_null_label = (isset($field['null_option'])) ? $field['null_option'] : 'Select';
-            echo '<select name="'.$field_id.'" id="'.$field_id.'">';
-            echo '  <option value="">'. $field_null_label .'&hellip;</option>';
-            foreach($items as $item):
-              $is_select = (in_array($item->term_id, $value)) ? ' checked' : '';
-              echo '  <option value="'.$item->term_id.'" ', $value == $item->term_id
-                ? ' selected' : '','>'. $item->name .'</option>';
+            $field_null_label = ( isset( $field['null_option'] ) )
+              ? $field['null_option'] : 'Select';
+            echo '<select name="' . $field_id . '" id="' . $field_id . '">';
+            echo '  <option value="">' . $field_null_label . '&hellip;</option>';
+            foreach( $items as $item ):
+              $is_select = ( in_array( $item->term_id, $value ) ) ? ' checked' : '';
+              echo '  <option value="' . $item->term_id . '" ', $value == $item->term_id
+                ? ' selected' : '','>' . $item->name . '</option>';
             endforeach;
             echo '</select>';
           }
           else
           {
-            echo 'Sorry, there are currently no '.lt3_prettify_words($field['post_type'])
-              .' items to choose from.';
+            echo 'Sorry, there are currently no '
+              . lt3_prettify_words( $field['post_type'] )
+              . ' items to choose from.';
           }
           break;
 
@@ -290,12 +296,12 @@ class LT3_Custom_Field_Meta_Box
          * ------------------------------------------------------------------------ */
         case 'radio':
           echo '<ul>';
-          foreach($field['options'] as $option => $label):
+          foreach( $field['options'] as $option => $label ):
             echo '<li>';
-            echo '  <label for="'.$option.'">';
-            echo '  <input type="radio" name="'.$field_id.'" id="'.$option
-              .'" value="'.$option.'" ', $value == $option ? ' checked' : '',' />';
-            echo '  &nbsp;'.$label.'</label>';
+            echo '  <label for="' . $option . '">';
+            echo '  <input type="radio" name="' . $field_id . '" id="' . $option
+              . '" value="' . $option . '" ', $value == $option ? ' checked' : '',' />';
+            echo '  &nbsp;' . $label . '</label>';
             echo '</li>';
           endforeach;
           echo '</ul>';
@@ -311,22 +317,22 @@ class LT3_Custom_Field_Meta_Box
          * @param description | string | optional
          * ------------------------------------------------------------------------ */
         case 'post_checkbox':
-          $value = ($value) ? $value : array();
-          $items = get_posts(array(
-            'post_type' => $field['post_type'],
-            'posts_per_page' => -1)
-          );
+          $value = ( $value ) ? $value : array();
+          $items = get_posts( array(
+            'post_type'      => $field['post_type'],
+            'posts_per_page' => -1 )
+           );
 
-          if($items)
+          if ( $items )
           {
             echo '<ul>';
-            foreach($items as $item):
-              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? ' <small>('.$item->post_type.')</small>' : '';
+            foreach( $items as $item ):
+              $is_select = ( in_array( $item->ID, $value ) ) ? ' checked' : '';
+              $post_type_label = ( isset( $field['post_type'][1] ) && is_array( $field['post_type'] ) )
+                ? ' <small>( ' . $item->post_type . ' )</small>' : '';
               echo '<li>';
-              echo '  <label for="'.$field_id.'['. $item->ID .']">';
-              echo '  <input type="checkbox" name="'.$field_id.'['. $item->ID
+              echo '  <label for="' . $field_id . '[' . $item->ID . ']">';
+              echo '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
                 .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
               echo '</li>';
@@ -335,7 +341,7 @@ class LT3_Custom_Field_Meta_Box
           }
           else
           {
-            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type'])
+            echo 'Sorry, there are currently no '. lt3_prettify_words( $field['post_type'] )
               .' items to choose from.';
           }
           break;
@@ -350,29 +356,29 @@ class LT3_Custom_Field_Meta_Box
          * @param placeholder | string | optional
          * ------------------------------------------------------------------------ */
         case 'file':
-          $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+          $field_placeholder = ( isset( $field['placeholder'] ) ) ? $field['placeholder'] : '';
           echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'
             .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
             <input class="custom_upload_file_button button" type="button" value="Choose File" />
             <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
           ?>
             <script>
-            jQuery(function($) {
-              $('.custom_upload_file_button').click(function() {
-                $formField = $(this).siblings('.custom_upload_file');
-                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
-                window.send_to_editor = function($html) {
-                 $fileUrl = $($html).attr('href');
-                 $formField.val($fileUrl);
+            jQuery( function( $ ) {
+              $( '.custom_upload_file_button' ).click( function() {
+                $formField = $( this ).siblings( '.custom_upload_file' );
+                tb_show( 'Select a File', 'media-upload.php?type=image&TB_iframe=true' );
+                window.send_to_editor = function( $html ) {
+                 $fileUrl = $( $html ).attr( 'href' );
+                 $formField.val( $fileUrl );
                  tb_remove();
                 };
                 return false;
-              });
-              $('.custom_clear_file_button').click(function() {
-                $(this).parent().siblings('.custom_upload_file').val('');
+              } );
+              $( '.custom_clear_file_button' ).click( function() {
+                $( this ).parent().siblings( '.custom_upload_file' ).val( '' );
                 return false;
-              });
-            });
+              } );
+            } );
             </script>
           <?php
           break;
@@ -387,7 +393,7 @@ class LT3_Custom_Field_Meta_Box
          * @param placeholder | string | optional
          * ------------------------------------------------------------------------ */
         default:
-          $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+          $field_placeholder = ( isset( $field['placeholder'] ) ) ? $field['placeholder'] : '';
           echo '<input type="text" name="'.$field_id.'" id="'
             .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
           break;
@@ -396,7 +402,7 @@ class LT3_Custom_Field_Meta_Box
       echo '</p>';
 
       /* Display the description */
-      if(isset($field['description']))
+      if ( isset( $field['description'] ) )
       {
         echo '<p class="description">'.$field['description'].'</p>';
       }
@@ -416,9 +422,9 @@ class LT3_Custom_Field_Meta_Box
    *
    * Get the field id to use throughout class
    * ------------------------------------------------------------------------ */
-  public function get_field_id($box_id, $field_id)
+  public function get_field_id( $box_id, $field_id )
   {
-    return $this->uglify_words($box_id . '_' . $field_id);
+    return $this->uglify_words( $box_id . '_' . $field_id );
   }
 
   /**
@@ -431,9 +437,9 @@ class LT3_Custom_Field_Meta_Box
    * Creates a pretty version of a string, like
    * a pug version of a dog.
    * ------------------------------------------------------------------------ */
-  public function prettify_words($words)
+  public function prettify_words( $words )
   {
-    return ucwords(str_replace('_', ' ', $words));
+    return ucwords( str_replace( '_', ' ', $words ) );
   }
 
   /**
@@ -445,9 +451,9 @@ class LT3_Custom_Field_Meta_Box
    *
    * creates a url firendly version of the given string.
    * ------------------------------------------------------------------------ */
-  public function uglify_words($words)
+  public function uglify_words( $words )
   {
-    return strToLower(str_replace(' ', '_', $words));
+    return strToLower( str_replace( ' ', '_', $words ) );
   }
 
   /**
@@ -457,45 +463,45 @@ class LT3_Custom_Field_Meta_Box
    * @param $post_id | integer
    * @return null
    * ------------------------------------------------------------------------ */
-  public function save_data($post_id)
+  public function save_data( $post_id )
   {
-    if(isset($_POST['custom_meta_fields_box_nonce']))
+    if (  isset(  $_POST['custom_meta_fields_box_nonce']  )  )
     {
-      if(!wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
+      if (  !wp_verify_nonce(  $_POST['custom_meta_fields_box_nonce'], basename( __FILE__ )  )  )
       {
         return $post_id;
       }
-      if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+      if (  defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE  )
       {
         return $post_id;
       }
-      if(isset($_POST['post_type']))
+      if (  isset( $_POST['post_type']  )  )
       {
-        if('page' == $_POST['post_type']) {
-          if(!current_user_can('edit_page', $post_id))
+        if ( 'page' == $_POST['post_type'] ) {
+          if ( !current_user_can( 'edit_page', $post_id ) )
           {
             return $post_id;
           }
         }
       }
-      elseif(!current_user_can('edit_post', $post_id))
+      elseif ( !current_user_can( 'edit_post', $post_id ) )
       {
         return $post_id;
       }
-      foreach ($this->_fields as $field)
+      foreach ( $this->_fields as $field )
       {
-        $field_id = $this->get_field_id($this->_id, $field['id']);
-        if($field_id && isset($_POST[$field_id]))
+        $field_id = $this->get_field_id(  $this->_id, $field['id']  );
+        if (  $field_id && isset( $_POST[$field_id] ) )
         {
-          $old = get_post_meta($post_id, $field_id, true);
+          $old = get_post_meta( $post_id, $field_id, true );
           $new = $_POST[$field_id];
-          if($new && $new != $old)
+          if ( $new && $new != $old )
           {
-            update_post_meta($post_id, $field_id, $new);
+            update_post_meta( $post_id, $field_id, $new );
           }
-          elseif('' == $new && $old)
+          elseif ( '' == $new && $old )
           {
-            delete_post_meta($post_id, $field_id, $old);
+            delete_post_meta( $post_id, $field_id, $old );
           }
         }
       }

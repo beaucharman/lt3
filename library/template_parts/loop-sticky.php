@@ -9,20 +9,20 @@
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
  * ------------------------------------------------------------------------ */ ?>
-<?php $sticky_loop = new WP_Query(array(
+<?php $sticky_loop = new WP_Query( array(
     'posts_per_page' => LT3_NUMBER_OF_STICKY_POSTS,
-    'post__in'  => get_option('sticky_posts'),
-    'ignore_sticky_posts' => 1)); ?>
+    'post__in'  => get_option( 'sticky_posts' ),
+    'ignore_sticky_posts' => 1 ) ); ?>
 
-<?php if($sticky_loop->have_posts()) : ?>
+<?php if ( $sticky_loop->have_posts() ) : ?>
 
 <section class="featured">
 
-<?php while($sticky_loop->have_posts()) : $sticky_loop->the_post(); ?>
+<?php while( $sticky_loop->have_posts() ) : $sticky_loop->the_post(); ?>
 
-<?php if(!is_sticky()) continue; ?>
+<?php if ( !is_sticky() ) continue; ?>
 
-  <article <?php post_class('sticky entry excerpt post-'. get_the_ID()); ?>>
+  <article <?php post_class( 'sticky entry excerpt post-'. get_the_ID() ); ?>>
 
     <h2 class="sticky-article-title">
       <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
@@ -30,9 +30,9 @@
       </a>
     </h2>
 
-    <?php if(has_post_thumbnail()) : ?>
+    <?php if ( has_post_thumbnail() ) : ?>
     <figure class="post-thumbnail">
-      <?php the_post_thumbnail('thumbnail'); ?>
+      <?php the_post_thumbnail( 'thumbnail' ); ?>
     </figure>
     <?php endif; ?>
 

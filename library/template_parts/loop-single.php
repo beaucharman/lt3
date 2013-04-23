@@ -9,17 +9,17 @@
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
  * ------------------------------------------------------------------------ */ ?>
-<?php while(have_posts()) : the_post(); ?>
+<?php while( have_posts() ) : the_post(); ?>
 
-<article <?php post_class('single entry content post-'. get_the_ID()); ?>>
+<article <?php post_class( 'single entry content post-'. get_the_ID() ); ?>>
 
   <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php lt3_include_post_meta(); ?>
 
-  <?php if(has_post_thumbnail()) : ?>
+  <?php if ( has_post_thumbnail() ) : ?>
   <figure class="post-thumbnail">
-    <?php the_post_thumbnail('medium'); ?>
+    <?php the_post_thumbnail( 'medium' ); ?>
   </figure>
   <?php endif; ?>
 

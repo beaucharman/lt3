@@ -11,9 +11,9 @@
  * ------------------------------------------------------------------------ */ ?>
 <aside class="primary-sidebar">
 <?php
-  if(is_active_sidebar('primary-sidebar-widgets'))
+  if ( is_active_sidebar( 'primary-sidebar-widgets' ) )
   {
-    dynamic_sidebar('primary-sidebar-widgets');
+    dynamic_sidebar( 'primary-sidebar-widgets' );
   }
 ?>
 </aside>
