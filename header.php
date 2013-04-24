@@ -42,7 +42,7 @@
 
       <header role="banner" class="page-header">
         <?php if ( is_home() || is_front_page() ) echo '<h1>'; ?>
-        <a href="<?php echo home_url( '/' ); ?>" title="<?php echo the_title_attribute(); ?>" class="site-title" >
+        <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title" >
           <?php bloginfo( 'name' ); ?>
         </a>
         <?php if ( is_home() || is_front_page() ) echo '</h1>'; ?>
