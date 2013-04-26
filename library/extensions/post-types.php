@@ -110,6 +110,12 @@ class LT3_Custom_Post_Type
       ? $this->_labels['label_plural'] : $this->plurafy_words( $label_singular );
     $menu_name = ( isset( $this->_labels['menu_label'] ) )
       ? $this->_labels['menu_label'] : $label_plural;
+
+    /* TODO: Clean this up */
+    $this->_labels['label_singular'] = $label_singular;
+    $this->_labels['label_plural'] = $label_plural;
+    $this->_labels['menu_label'] = $menu_name;
+
     $labels = array(
       'name'               => __( $label_plural ),
       'singular_name'      => __( $label_singular ),
@@ -178,6 +184,18 @@ class LT3_Custom_Post_Type
       return $items[0];
     }
     return get_posts( $args );
+  }
+
+  /**
+   * Archive Link
+   * ------------------------------------------------------------------------
+   * archive_link()
+   * @param  none
+   * @return string
+   * ------------------------------------------------------------------------ */
+  public function archive_link()
+  {
+    return home_url('/'.$this->_name);
   }
 
   /**

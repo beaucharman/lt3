@@ -75,7 +75,8 @@ function lt3_is_child_of_category( $parent_category )
   }
 }
 
-/** lt3 is Post Tyoe
+/**
+ * lt3 is Post Type
  * ------------------------------------------------------------------------
  * lt3_is_post_type()
  * @param  $type | string
@@ -214,6 +215,21 @@ if ( LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE )
       }
     }
   }
+}
+
+/**
+ * lt3 get time
+ * ------------------------------------------------------------------------
+ * lt3_get_time()
+ * @param  $date | WordPress date object
+ * @return string
+ *
+ * WordPress spits out post time with '/'s, php's date function require '-'s
+ * ------------------------------------------------------------------------ */
+function lt3_get_time( $date, $format = 'Y-m-d' )
+{
+  $date = str_replace( '/', '-', $date );
+  return date( $format, strtotime( $date ) );
 }
 
 /**
