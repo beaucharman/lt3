@@ -17,21 +17,21 @@
  */
 
 /*
-  $args = array(
-    'id'              => '',
-    'title'           => '',
-    'post_type'       => '', // 'post', 'page', 'link', 'attachment' a custom post type slug, or array
-    'context'         => '', // 'normal', 'advanced', or 'side'
-    'priority'        => '', // 'high', 'core', 'default' or 'low'
-    'fields'          => array(
-      array(
-        'type'        => '',
-        'id'          => '',
-        'label'       => ''
-       )
+$args = array(
+  'id'              => '',
+  'title'           => '',
+  'post_type'       => '', // 'post', 'page', 'link', 'attachment' a custom post type slug, or array
+  'context'         => '', // 'normal', 'advanced', or 'side'
+  'priority'        => '', // 'high', 'core', 'default' or 'low'
+  'fields'          => array(
+    array(
+      'type'        => '',
+      'id'          => '',
+      'label'       => ''
      )
-   );
-  new LT3_Custom_Field_Meta_Box( $args );
+   )
+ );
+new LT3_Custom_Field_Meta_Box( $args );
 */
 
 /* ------------------------------------------------------------------------
@@ -39,13 +39,13 @@
    ------------------------------------------------------------------------ */
 class LT3_Custom_Field_Meta_Box
 {
-  protected $_cmfb;
-  protected $_id;
-  protected $_title;
-  protected $_post_type;
-  protected $_context;
-  protected $_priority;
-  protected $_fields;
+  protected $cmfb;
+  protected $id;
+  protected $title;
+  protected $post_type;
+  protected $context;
+  protected $priority;
+  protected $fields;
 
   /**
    * Class constructor
@@ -57,17 +57,17 @@ class LT3_Custom_Field_Meta_Box
   {
 
     /* Set class values */
-    $this->_cmfb      = $cmfb;
-    $this->_id        = $this->uglify_words( '_cmfb_'. $this->_cmfb['id'] );
-    $this->_title     = ( isset( $this->_cmfb['title'] ) )
-      ? $this->_cmfb['title'] : $this->prettify_words( $this->_cmfb['id'] );
-    $this->_post_type = ( isset( $this->_cmfb['post_type'] ) )
-      ? $this->_cmfb['post_type'] : 'post';
-    $this->_context   = ( isset( $this->_cmfb['context'] ) )
-      ? $this->_cmfb['context']   : 'advanced';
-    $this->_priority  = ( isset( $this->_cmfb['priority'] ) )
-      ? $this->_cmfb['priority']  : 'default';
-    $this->_fields    = $this->_cmfb['fields'];
+    $this->cmfb      = $cmfb;
+    $this->id        = $this->uglify_words( '_cmfb_'. $this->cmfb['id'] );
+    $this->title     = ( isset( $this->cmfb['title'] ) )
+      ? $this->cmfb['title'] : $this->prettify_words( $this->cmfb['id'] );
+    $this->post_type = ( isset( $this->cmfb['post_type'] ) )
+      ? $this->cmfb['post_type'] : 'post';
+    $this->context   = ( isset( $this->cmfb['context'] ) )
+      ? $this->cmfb['context']   : 'advanced';
+    $this->priority  = ( isset( $this->cmfb['priority'] ) )
+      ? $this->cmfb['priority']  : 'default';
+    $this->fields    = $this->cmfb['fields'];
 
     /* Magic */
     add_action( 'add_meta_boxes', array(  &$this, 'add_custom_meta_field_box' ) );
@@ -82,12 +82,12 @@ class LT3_Custom_Field_Meta_Box
   public function add_custom_meta_field_box()
   {
     add_meta_box(
-      $this->_id,
-      $this->_title,
+      $this->id,
+      $this->title,
       array(  &$this, 'show_custom_meta_field_box' ),
-      $this->_post_type,
-      $this->_context,
-      $this->_priority
+      $this->post_type,
+      $this->context,
+      $this->priority
      );
   }
 
@@ -101,12 +101,12 @@ class LT3_Custom_Field_Meta_Box
     global $post;
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'
       . wp_create_nonce( basename( __FILE__ ) ) . '" />';
-    echo '<ul class="lt3-form-container ' . $this->_context . '">';
+    echo '<ul class="lt3-form-container ' . $this->context . '">';
 
-    foreach ( $this->_fields as $field )
+    foreach ( $this->fields as $field )
     {
       /* Get the field ID */
-      $field_id = $this->get_field_id( $this->_id, $field['id'] );
+      $field_id = $this->get_field_id( $this->id, $field['id'] );
 
       /* Get the saved value, if there is one */
       $value = get_post_meta( $post->ID, $field_id, true );
@@ -489,9 +489,9 @@ class LT3_Custom_Field_Meta_Box
       {
         return $post_id;
       }
-      foreach ( $this->_fields as $field )
+      foreach ( $this->fields as $field )
       {
-        $field_id = $this->get_field_id(  $this->_id, $field['id']  );
+        $field_id = $this->get_field_id(  $this->id, $field['id']  );
         if (  $field_id && isset( $_POST[$field_id] ) )
         {
           $old = get_post_meta( $post_id, $field_id, true );

@@ -18,6 +18,7 @@
  * To unregister a sidebar to clean up the widgets area, as an example use:
  *	 add_action( 'widgets_init', 'name_of_sidebar_init_function' );
  */
+
 /*
 	For more widget areas, use:
 		register_sidebar(

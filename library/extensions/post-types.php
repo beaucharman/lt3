@@ -9,53 +9,64 @@
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
  *
+ * Properties
+ *  $PostType->name | sring
+ *  $PostType->lables | array
+ *
+ * Methods
+ *  $PostType->get()
+ *  $PostType->archive_link()
+ *
  * For more information on registering post types:
  * http://codex.wordpress.org/Function_Reference/register_post_type
  *
- * To declare a custom post type, simply add a new LT3_Custom_Post_Type class
- * with the following arguments:
+ * To declare a custom post type, simply create a new instance of the
+ * LT3_Custom_Post_Type class.
  */
 
 /*
-  // Required
-  $name = '';
-  // Optional
-  $labels = array(
-    'label_singular' => '',
-    'label_plural'   => '',
-    'menu_label'     => ''
-   );
-  $options = array(
-    'description'    => '',
-    'public'         => true,
-    'menu_position'  => 20,
-    'menu_icon'      => null,
-    'hierarchical'   => false,
-    'supports'       => array( '' ),
-    'taxonomies'     => array( '' ),
-    'has_archive'    => true,
-    'rewrite'        => true
-   );
-  $help = array(
-    array(
-      'message'      => ''
-     ),
-    array(
-      'context'      => 'edit',
-      'message'      => ''
-     )
-   );
-  $PostType = new LT3_Custom_Post_Type( $name, $labels, $options, $help );
+// Required
+$name = '';
+// Optional
+$labels = array(
+  'label_singular' => '',
+  'label_plural'   => '',
+  'menu_label'     => ''
+);
+// Optional
+$options = array(
+  'description'    => '',
+  'public'         => true,
+  'menu_position'  => 20,
+  'menu_icon'      => null,
+  'hierarchical'   => false,
+  'supports'       => array( '' ),
+  'taxonomies'     => array( '' ),
+  'has_archive'    => true,
+  'rewrite'        => true
+);
+// Optional
+$help = array(
+  array(
+    'message'      => ''
+   ),
+  array(
+    'context'      => 'edit',
+    'message'      => ''
+   )
+);
+
+$PostType = new LT3_Custom_Post_Type( $name, $labels, $options, $help );
 */
 
 /*
-  // Flush permalink rewrites after creating custom post types and taxonomies
-  add_action( 'init', 'lt3_post_type_and_taxonomy_flush_rewrites' );
-  function lt3_post_type_and_taxonomy_flush_rewrites()
-  {
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-  }
+// Flush permalink rewrites after creating custom post types and taxonomies
+add_action( 'init', 'lt3_post_type_and_taxonomy_flush_rewrites' );
+function lt3_post_type_and_taxonomy_flush_rewrites()
+{
+  global $wp_rewrite;
+  $wp_rewrite->flush_rules();
+}
 */
 
 /* ------------------------------------------------------------------------
@@ -63,10 +74,10 @@
    ------------------------------------------------------------------------ */
 class LT3_Custom_Post_Type
 {
-  public $_name;
-  public $_labels;
-  public $_options;
-  public $_help;
+  public $name;
+  public $labels;
+  public $options;
+  public $help;
 
   /**
    * Class constructor
@@ -79,15 +90,15 @@ class LT3_Custom_Post_Type
    *  ------------------------------------------------------------------------ */
   public function __construct( $name, $labels = array(), $options = array(), $help = null )
   {
-    $this->_name    = $this->uglify_words( $name );
-    $this->_labels  = $labels;
-    $this->_options = $options;
-    $this->_help    = $help;
+    $this->name    = $this->uglify_words( $name );
+    $this->labels  = $labels;
+    $this->options = $options;
+    $this->help    = $help;
 
-    if ( !post_type_exists( $this->_name ) )
+    if ( !post_type_exists( $this->name ) )
     {
       add_action( 'init', array( &$this, 'register_custom_post_type' ) );
-      if ( $this->_help )
+      if ( $this->help )
       {
         add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
       }
@@ -104,30 +115,25 @@ class LT3_Custom_Post_Type
   public function register_custom_post_type()
   {
     /* Create the labels */
-    $label_singular = ( isset( $this->_labels['label_singular'] ) )
-      ? $this->_labels['label_singular'] : $this->prettify_words( $this->_name );
-    $label_plural = ( isset( $this->_labels['label_plural'] ) )
-      ? $this->_labels['label_plural'] : $this->plurafy_words( $label_singular );
-    $menu_name = ( isset( $this->_labels['menu_label'] ) )
-      ? $this->_labels['menu_label'] : $label_plural;
-
-    /* TODO: Clean this up */
-    $this->_labels['label_singular'] = $label_singular;
-    $this->_labels['label_plural'] = $label_plural;
-    $this->_labels['menu_label'] = $menu_name;
+    $this->labels['label_singular'] = ( isset( $this->labels['label_singular'] ) )
+      ? $this->labels['label_singular'] : $this->prettify_words( $this->name );
+    $this->labels['label_plural'] = ( isset( $this->labels['label_plural'] ) )
+      ? $this->labels['label_plural'] : $this->plurafy_words( $this->labels['label_singular'] );
+    $this->labels['menu_label'] = ( isset( $this->labels['menu_label'] ) )
+      ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     $labels = array(
-      'name'               => __( $label_plural ),
-      'singular_name'      => __( $label_singular ),
-      'menu_name'          => __( $menu_name ),
-      'add_new_item'       => __( 'Add New ' . $label_singular ),
-      'edit_item'          => __( 'Edit ' . $label_singular ),
-      'new_item'           => __( 'New ' . $label_singular ),
-      'all_items'          => __( 'All ' . $label_plural ),
-      'view_item'          => __( 'View ' . $label_singular ),
-      'search_items'       => __( 'Search ' . $label_plural ),
-      'not_found'          => __( 'No ' . $label_plural . ' found' ),
-      'not_found_in_trash' => __( 'No ' . $label_plural . ' found in Trash' )
+      'name'               => __( $this->labels['label_plural'] ),
+      'singular_name'      => __( $this->labels['label_singular'] ),
+      'menu_name'          => __( $this->labels['menu_label'] ),
+      'add_new_item'       => __( 'Add New ' . $this->labels['label_singular'] ),
+      'edit_item'          => __( 'Edit ' . $this->labels['label_singular'] ),
+      'new_item'           => __( 'New ' . $this->labels['label_singular'] ),
+      'all_items'          => __( 'All ' . $this->labels['label_plural'] ),
+      'view_item'          => __( 'View ' . $this->labels['label_singular'] ),
+      'search_items'       => __( 'Search ' . $this->labels['label_plural'] ),
+      'not_found'          => __( 'No ' . $this->labels['label_plural'] . ' found' ),
+      'not_found_in_trash' => __( 'No ' . $this->labels['label_plural'] . ' found in Trash' )
      );
 
     /* Configure the options */
@@ -144,11 +150,41 @@ class LT3_Custom_Post_Type
         'has_archive'      => true,
         'rewrite'          => true
        ),
-      $this->_options
+      $this->options
      );
 
     /* Register the new post type */
-    register_post_type( $this->_name, $options );
+    register_post_type( $this->name, $options );
+  }
+
+  /**
+   * Add Custom Contextual Help
+   * ------------------------------------------------------------------------
+   * add_custom_contextual_help()
+   * @param  $contextual_help
+   * @param  $screen_id | integer
+   * @param  $screen
+   * @return $contextual_help
+   * ------------------------------------------------------------------------ */
+  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
+  {
+    foreach( $this->help as $help )
+    {
+      if ( !$help['context'] )
+      {
+        $context = $this->name;
+      }
+      else
+      {
+        $context = $help['context'] . '-' . $this->name;
+      }
+
+      if ( $context == $screen->id )
+      {
+        $contextual_help = $help['message'];
+      }
+    }
+    return $contextual_help;
   }
 
   /**
@@ -157,6 +193,8 @@ class LT3_Custom_Post_Type
    * get()
    * @param  $user_args | array
    * @return post type data
+   *
+   * Get all entries assigned to this post type.
    * ------------------------------------------------------------------------ */
   public function get( $user_args = array(), $single = false )
   {
@@ -170,7 +208,7 @@ class LT3_Custom_Post_Type
       'exclude'         => '',
       'meta_key'        => '',
       'meta_value'      => '',
-      'post_type'       => $this->_name,
+      'post_type'       => $this->name,
       'post_mime_type'  => '',
       'post_parent'     => '',
       'post_status'     => 'publish',
@@ -195,37 +233,7 @@ class LT3_Custom_Post_Type
    * ------------------------------------------------------------------------ */
   public function archive_link()
   {
-    return home_url('/'.$this->_name);
-  }
-
-  /**
-   * Add Custom Contextual Help
-   * ------------------------------------------------------------------------
-   * add_custom_contextual_help()
-   * @param  $contextual_help
-   * @param  $screen_id | integer
-   * @param  $screen
-   * @return $contextual_help
-   * ------------------------------------------------------------------------ */
-  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
-  {
-    foreach( $this->_help as $help )
-    {
-      if ( !$help['context'] )
-      {
-        $context = $this->_name;
-      }
-      else
-      {
-        $context = $help['context'] . '-' . $this->_name;
-      }
-
-      if ( $context == $screen->id )
-      {
-        $contextual_help = $help['message'];
-      }
-    }
-    return $contextual_help;
+    return home_url('/'.$this->name);
   }
 
   /**

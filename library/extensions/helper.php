@@ -224,7 +224,7 @@ if ( LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE )
  * @param  $date | WordPress date object
  * @return string
  *
- * WordPress spits out post time with '/'s, php's date function require '-'s
+ * WordPress spits out post time with '/'s, php's date function requires '-'s
  * ------------------------------------------------------------------------ */
 function lt3_get_time( $date, $format = 'Y-m-d' )
 {
@@ -292,35 +292,29 @@ function lt3_plurafy_words( $words )
  * Debug Tool
  * ------------------------------------------------------------------------
  * debug_tool()
- * @param  $args | array
- * @return mixed
+ * @param   $variable | string
+ * @param   $exit     | boolean
+ * @param   $label    | string
+ * @param   $echo     | boolean
+ * @return  mixed
  *
  * var_dump with style
- * https://gist.github.com/beaucharman/9f2706c267161c218321
+ * Leave the $variable argument empty to print out a counter
+ * https://gist.github.com/beaucharman/5451428
  * ------------------------------------------------------------------------ */
 if ( !function_exists( 'debug_tool' ) )
 {
-  function debug_tool( $args = null )
+  function debug_tool( $variable = '', $exit = false, $label = 'Debug', $echo = true )
   {
-    $options = array(
-      'variable' => 'breakpoint',
-      'label'    => 'Debug',
-      'echo'     => true,
-      'exit'     => false
-     );
-    foreach( $options as $key => $value )
-    {
-      $options[$key] = ( isset( $args[$key] ) ) ? $args[$key] : $value;
-    }
     global $debug_counter;
     $breakpoint = false;
-    if ( $options['variable'] == 'breakpoint' )
+    if ( $variable === '' )
     {
       $breakpoint = true;
     }
-    $background_color = ( $breakpoint ) ? 'd9edf7' : 'eee';
-    $text_color       = ( $breakpoint ) ? '3a87ad' : '444';
-    $border_color     = ( $breakpoint ) ? 'bce8f1' : 'ddd';
+    $background_color  = ( $breakpoint ) ? 'd9edf7' : 'eee';
+    $text_color        = ( $breakpoint ) ? '3a87ad' : '444';
+    $border_color      = ( $breakpoint ) ? 'bce8f1' : 'ddd';
     $opening_tag_array = array(
       '<pre style="',
       'line-height:1.4; ',
@@ -329,9 +323,10 @@ if ( !function_exists( 'debug_tool' ) )
       'border: 1px solid #' . $border_color . '; ',
       'padding: 10px; ',
       'margin: 10px 0; ',
-      'text-align: left;">' );
-    $opening_tag = implode( $opening_tag_array );
-    $closing_tag = '</pre>';
+      'text-align: left;">'
+    );
+    $opening_tag  = implode( $opening_tag_array );
+    $closing_tag  = '</pre>';
     $exit_message = $opening_tag . 'exit();' . $closing_tag;
 
     if ( $breakpoint )
@@ -340,34 +335,32 @@ if ( !function_exists( 'debug_tool' ) )
       {
         $debug_counter = 1;
       }
-      $output = $opening_tag . $options['label'] . ' Breakpoint => ' . $debug_counter . $closing_tag;
+      $output = $opening_tag . $label . ' Breakpoint => ' . $debug_counter . $closing_tag;
       $debug_counter++;
     }
     else
     {
       /* Store the result of a var dump */
       ob_start();
-      var_dump( $options['variable'] );
+      var_dump( $variable );
       $output = ob_get_clean();
 
       /* Add to the result */
-      $output = preg_replace( "/\]\=\>\n( \s+ )/m", "] => ", $output );
-      $output = $opening_tag . $options['label'] . ' => ' . $output . $closing_tag;
+      $output = preg_replace( "/\]\=\>\n(\s+)/m", "] => ", $output );
+      $output = $opening_tag . $label . ' => ' . $output . $closing_tag;
     }
 
-    if ( $options['exit'] )
+    if ( $exit )
     {
       echo $output;
       exit( $exit_message );
     }
 
-    if ( $options['echo'] )
+    if ( $echo )
     {
       echo $output;
+      return;
     }
-    else
-    {
-      return $output;
-    }
+    return $output;
   }
 }

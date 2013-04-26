@@ -9,6 +9,14 @@
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
  *
+ * Properties
+ *  $Taxonomy->name | sring
+ *  $Taxonomy->lables | array
+ *
+ * Methods
+ *  $Taxonomy->get()
+ *  $Taxonomy->achive_link()
+ *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
  *
@@ -20,29 +28,29 @@
  */
 
 /*
-  // Required
-  $name = '';
-  // Optional
-  $post_type = ''; // string or array
-  $labels = array(
-    'label_singular'        => '',
-    'label_plural'          => '',
-    'menu_label'            => ''
-   );
-  $options = array(
-    'public'                => true,
-    'show_ui'               => true,
-    'show_in_nav_menus'     => true,
-    'show_tagcloud'         => true,
-    'hierarchical'          => false,
-    'update_count_callback' => null,
-    'query_var'             => true,
-    'rewrite'               => true,
-    'capabilities'          => array(),
-    'sort'                  => null
-   );
-  $help = '';
-  $Taxonomy = new LT3_Custom_Taxonomy( $name, $post_type, $labels, $options, $help );
+// Required
+$name = '';
+// Optional
+$post_type = ''; // string or array
+$labels = array(
+  'label_singular'        => '',
+  'label_plural'          => '',
+  'menu_label'            => ''
+ );
+$options = array(
+  'public'                => true,
+  'show_ui'               => true,
+  'show_in_nav_menus'     => true,
+  'show_tagcloud'         => true,
+  'hierarchical'          => false,
+  'update_count_callback' => null,
+  'query_var'             => true,
+  'rewrite'               => true,
+  'capabilities'          => array(),
+  'sort'                  => null
+ );
+$help = '';
+$Taxonomy = new LT3_Custom_Taxonomy( $name, $post_type, $labels, $options, $help );
  */
 
 /* ------------------------------------------------------------------------
@@ -50,25 +58,25 @@
    ------------------------------------------------------------------------ */
 class LT3_Custom_Taxonomy
 {
-  public $_name;
-  public $_post_type;
-  public $_labels;
-  public $_options;
-  public $_help;
+  public $name;
+  public $post_type;
+  public $labels;
+  public $options;
+  public $help;
 
   /* Class constructor */
   public function __construct( $name, $post_type = array(), $labels = array(), $options = array(), $help = null )
   {
-    $this->_name      = $this->uglify_words( $name );
-    $this->_post_type = $post_type;
-    $this->_labels    = $labels;
-    $this->_options   = $options;
-    $this->_help      = $help;
+    $this->name      = $this->uglify_words( $name );
+    $this->post_type = $post_type;
+    $this->labels    = $labels;
+    $this->options   = $options;
+    $this->help      = $help;
 
-    if ( !taxonomy_exists( $this->_name ) )
+    if ( !taxonomy_exists( $this->name ) )
     {
       add_action( 'init', array( &$this, 'register_custom_taxonomies' ), 0 );
-      if ( $this->_help ) add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
+      if ( $this->help ) add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
     }
   }
 
@@ -82,30 +90,25 @@ class LT3_Custom_Taxonomy
   public function register_custom_taxonomies()
   {
     /* Create the labels */
-    $label_singular = ( isset( $this->_labels['label_singular'] ) )
-      ? $this->_labels['label_singular'] : $this->prettify_words( $this->_name );
-    $label_plural   = ( isset( $this->_labels['label_plural'] ) )
-      ? $this->_labels['label_plural'] : $this->plurafy_words( $label_singular );
-    $menu_name      = ( isset( $this->_labels['menu_label'] ) )
-      ? $this->_labels['menu_label'] : $label_plural;
-
-    /* TODO: Clean this up */
-    $this->_labels['label_singular'] = $label_singular;
-    $this->_labels['label_plural'] = $label_plural;
-    $this->_labels['menu_label'] = $menu_name;
+    $this->labels['label_singular'] = ( isset( $this->labels['label_singular'] ) )
+      ? $this->labels['label_singular'] : $this->prettify_words( $this->name );
+    $this->labels['label_plural'] = ( isset( $this->labels['label_plural'] ) )
+      ? $this->labels['label_plural'] : $this->plurafy_words( $this->labels['label_singular'] );
+    $this->labels['menu_label'] = ( isset( $this->labels['menu_label'] ) )
+      ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     $labels = array(
-      'name'                  => __( $label_plural, $label_plural . ' general name' ),
-      'singular_name'         => __( $label_singular, $label_singular . ' singular name' ),
-      'menu_name'             => __( $menu_name ),
-      'search_items'          => __( 'Search ' . $label_plural ),
-      'all_items'             => __( 'All ' . $label_plural ),
-      'parent_item'           => __( 'Parent ' . $label_singular ),
-      'parent_item_colon'     => __( 'Parent '. $label_singular . ':' ),
-      'edit_item'             => __( 'Edit ' . $label_singular ),
-      'update_item'           => __( 'Update ' . $label_singular ),
-      'add_new_item'          => __( 'Add New ' . $label_singular ),
-      'new_item_name'         => __( 'New ' . $label_singular ),
+      'name'                  => __( $this->labels['label_plural'], $this->labels['label_plural'] . ' general name' ),
+      'singular_name'         => __( $this->labels['label_singular'], $this->labels['label_singular'] . ' singular name' ),
+      'menu_name'             => __( $this->labels['menu_label'] ),
+      'search_items'          => __( 'Search ' . $this->labels['label_plural'] ),
+      'all_items'             => __( 'All ' . $this->labels['label_plural'] ),
+      'parent_item'           => __( 'Parent ' . $this->labels['label_singular'] ),
+      'parent_item_colon'     => __( 'Parent '. $this->labels['label_singular'] . ':' ),
+      'edit_item'             => __( 'Edit ' . $this->labels['label_singular'] ),
+      'update_item'           => __( 'Update ' . $this->labels['label_singular'] ),
+      'add_new_item'          => __( 'Add New ' . $this->labels['label_singular'] ),
+      'new_item_name'         => __( 'New ' . $this->labels['label_singular'] ),
 
      );
 
@@ -120,16 +123,31 @@ class LT3_Custom_Taxonomy
         'show_admin_column'     => false,
         'hierarchical'          => false,
         'update_count_callback' => null,
-        'query_var'             => $this->_name,
+        'query_var'             => $this->name,
         'rewrite'               => true,
         'capabilities'          => array(),
         'sort'                  => null
        ),
-      $this->_options
+      $this->options
      );
 
     /* Register the new taxonomy */
-    register_taxonomy( $this->_name, $this->_post_type, $options );
+    register_taxonomy( $this->name, $this->post_type, $options );
+  }
+
+  /**
+   * Add custom contextual help
+   * ------------------------------------------------------------------------
+   * add_custom_contextual_help()
+   * ------------------------------------------------------------------------ */
+  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
+  {
+    $context = 'edit-' . $this->name;
+    if ( $context == $screen->id )
+    {
+      $contextual_help = $this->help;
+    }
+    return $contextual_help;
   }
 
   /**
@@ -139,7 +157,7 @@ class LT3_Custom_Taxonomy
    * @param  $user_args | array
    * @return term data
    * ------------------------------------------------------------------------ */
-  public function get( $user_args = array() )
+  public function get( $user_args = array(), $single = false )
   {
     $args = array_merge(
       array(
@@ -161,24 +179,26 @@ class LT3_Custom_Taxonomy
         'offset'        => '',
         'search'        => '',
         'cache_domain'  => 'core'
-       ), $user_args
-     );
-    return get_terms( $this->_name, $args );
+      ), $user_args
+    );
+    if ( $single )
+    {
+      $items = get_terms( $this->name, $args );
+      return $items[0];
+    }
+    return get_terms( $this->name, $args );
   }
 
   /**
-   * Add custom contextual help
+   * Archive Link
    * ------------------------------------------------------------------------
-   * add_custom_contextual_help()
+   * archive_link()
+   * @param  none
+   * @return string
    * ------------------------------------------------------------------------ */
-  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
+  public function archive_link()
   {
-    $context = 'edit-' . $this->_name;
-    if ( $context == $screen->id )
-    {
-      $contextual_help = $this->_help;
-    }
-    return $contextual_help;
+    return home_url('/'.$this->name);
   }
 
   /**
