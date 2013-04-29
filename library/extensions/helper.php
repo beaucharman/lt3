@@ -207,7 +207,7 @@ if ( LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE )
         global $last_template_snoop;
         if ( $last_template_snoop )
         {
-          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} -->";
+          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} [turn this debug mode off in library/project/config.php] -->";
         }
         $tpl = rtrim( join( '-',  array_slice( $args,1 ) ),'-' ) . '.php';
         echo "\n<!-- debug: Template Part: {$tpl} -->\n\n";
