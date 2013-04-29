@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * Properties
  *  $Taxonomy->name | sring
@@ -19,9 +19,6 @@
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
- *
- * You can also turn the custom post types declarations into a plugin.
- * For more information: http://codex.wordpress.org/Writing_a_Plugin
  *
  * To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
  * with the following arguments:
@@ -116,17 +113,9 @@ class LT3_Custom_Taxonomy
     $options = array_merge(
       array(
         'labels'                => $labels,
-        'public'                => true,
-        'show_ui'               => true,
-        'show_in_nav_menus'     => true,
-        'show_tagcloud'         => true,
-        'show_admin_column'     => false,
-        'hierarchical'          => false,
-        'update_count_callback' => null,
+        'hierarchical'          => true,
         'query_var'             => $this->name,
-        'rewrite'               => true,
-        'capabilities'          => array(),
-        'sort'                  => null
+        'rewrite'               => true
        ),
       $this->options
      );
@@ -163,22 +152,7 @@ class LT3_Custom_Taxonomy
       array(
         'orderby'       => 'name',
         'order'         => 'ASC',
-        'hide_empty'    => false,
-        'exclude'       => array(),
-        'exclude_tree'  => array(),
-        'include'       => array(),
-        'number'        => '',
-        'fields'        => 'all',
-        'slug'          => '',
-        'parent'        => '',
-        'hierarchical'  => true,
-        'child_of'      => 0,
-        'get'           => '',
-        'name__like'    => '',
-        'pad_counts'    => false,
-        'offset'        => '',
-        'search'        => '',
-        'cache_domain'  => 'core'
+        'hide_empty'    => false
       ), $user_args
     );
     if ( $single )
