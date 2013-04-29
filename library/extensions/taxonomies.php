@@ -15,39 +15,16 @@
  *
  * Methods
  *  $Taxonomy->get()
- *  $Taxonomy->achive_link()
+ *  $Taxonomy->archive_link()
+ *
+ * To declare a custom taxonomy, simply create a new instance of the
+ * LT3_Custom_Taxonomy class.
+ *
+ * Configuration:
+ * https://github.com/beaucharman/WordPress-Custom-Taxonomies
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
- *
- * To declare a taxonomy, simply add a new LT3_Custom_Taxonomy class
- * with the following arguments:
- */
-
-/*
-// Required
-$name = '';
-// Optional
-$post_type = ''; // string or array
-$labels = array(
-  'label_singular'        => '',
-  'label_plural'          => '',
-  'menu_label'            => ''
- );
-$options = array(
-  'public'                => true,
-  'show_ui'               => true,
-  'show_in_nav_menus'     => true,
-  'show_tagcloud'         => true,
-  'hierarchical'          => false,
-  'update_count_callback' => null,
-  'query_var'             => true,
-  'rewrite'               => true,
-  'capabilities'          => array(),
-  'sort'                  => null
- );
-$help = '';
-$Taxonomy = new LT3_Custom_Taxonomy( $name, $post_type, $labels, $options, $help );
  */
 
 /* ------------------------------------------------------------------------

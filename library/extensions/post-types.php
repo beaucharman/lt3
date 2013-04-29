@@ -17,57 +17,15 @@
  *  $PostType->get()
  *  $PostType->archive_link()
  *
- * For more information on registering post types:
- * http://codex.wordpress.org/Function_Reference/register_post_type
- *
  * To declare a custom post type, simply create a new instance of the
  * LT3_Custom_Post_Type class.
+ *
+ * Configuration:
+ * https://github.com/beaucharman/WordPress-Custom-Post-Types
+ *
+ * For more information on registering post types:
+ * http://codex.wordpress.org/Function_Reference/register_post_type
  */
-
-/*
-// Required
-$name = '';
-// Optional
-$labels = array(
-  'label_singular' => '',
-  'label_plural'   => '',
-  'menu_label'     => ''
-);
-// Optional
-$options = array(
-  'description'    => '',
-  'public'         => true,
-  'menu_position'  => 20,
-  'menu_icon'      => null,
-  'hierarchical'   => false,
-  'supports'       => array( '' ),
-  'taxonomies'     => array( '' ),
-  'has_archive'    => true,
-  'rewrite'        => true
-);
-// Optional
-$help = array(
-  array(
-    'message'      => ''
-   ),
-  array(
-    'context'      => 'edit',
-    'message'      => ''
-   )
-);
-
-$PostType = new LT3_Custom_Post_Type( $name, $labels, $options, $help );
-*/
-
-/*
-// Flush permalink rewrites after creating custom post types and taxonomies
-add_action( 'init', 'lt3_post_type_and_taxonomy_flush_rewrites' );
-function lt3_post_type_and_taxonomy_flush_rewrites()
-{
-  global $wp_rewrite;
-  $wp_rewrite->flush_rules();
-}
-*/
 
 /* ------------------------------------------------------------------------
    Custom post type class
