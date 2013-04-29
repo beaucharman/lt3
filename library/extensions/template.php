@@ -412,27 +412,6 @@ function lt3_img_caption_shortcode_filter( $val, $attr, $content = null )
    Custom Theme Functions
    ------------------------------------------------------------------------ */
 
-/**
- * lt3 Show Google Analytics
- * ------------------------------------------------------------------------
- * lt3_show_google_analytics
- * @param $analytics_key | string
- * @return analytics code | string
- *
- * Add google analytics
- * ------------------------------------------------------------------------ */
-function lt3_google_analytics( $analytics_key = '' )
-{
-	if ( $analytics_key ) : ?>
-		<script>
-      var _gaq=[['_setAccount','<?php echo $analytics_key; ?>'],['_trackPageview']];
-      ( function( d,t ){var g=d.createElement( t ),s=d.getElementsByTagName( t )[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore( g,s )}( document,'script' ) );
-		</script>
-	<?php endif;
-}
-
 /* Function create a custom comment list
    ------------------------------------------------------------------------ */
 function lt3_advanced_comment( $comment, $args, $depth )

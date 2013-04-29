@@ -33,9 +33,14 @@
     <![endif]-->
 
     <?php /* Google Webmaster Tools and Analytics */
-      global $lt3_site_settings;
-      lt3_google_analytics( $lt3_site_settings['google_analytics'] ); ?>
-    <!--<meta name="google-site-verification" content="">-->
+    global $lt3_site_settings; ?>
+    <meta name="google-site-verification" content="">
+    <script>
+      var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
+      ( function( d,t ){var g=d.createElement( t ),s=d.getElementsByTagName( t )[0];
+      g.src='//www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore( g,s )}( document,'script' ) );
+    </script>
 
     <?php wp_head(); ?>
 
