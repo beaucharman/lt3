@@ -421,7 +421,7 @@ function lt3_img_caption_shortcode_filter( $val, $attr, $content = null )
  *
  * Add google analytics
  * ------------------------------------------------------------------------ */
-function lt3_show_google_analytics( $analytics_key = '' )
+function lt3_google_analytics( $analytics_key = '' )
 {
 	if ( $analytics_key ) : ?>
 		<script>

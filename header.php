@@ -8,8 +8,6 @@
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
  * @license GNU http://www.gnu.org/licenses/lgpl.txt
- *
- * Page template.
  * ------------------------------------------------------------------------ */ ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -17,11 +15,12 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title><?php lt3_title(); ?></title>
+    <title>
+      <?php lt3_title(); ?>
+    </title>
 
     <meta name="description" content="<?php lt3_meta_tag_description(); ?>">
     <meta name="viewport" content="width=device-width">
@@ -32,6 +31,11 @@
     <!--[if IE]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <?php /* Google Webmaster Tools and Analytics */
+      global $lt3_site_settings;
+      lt3_google_analytics( $lt3_site_settings['google_analytics'] ); ?>
+    <!--<meta name="google-site-verification" content="">-->
 
     <?php wp_head(); ?>
 

@@ -12,7 +12,6 @@
       </section>
 
       <footer class="page-footer">
-
         <?php if ( is_active_sidebar( 'footer-sidebar-widgets' ) )
         {
           dynamic_sidebar( 'footer-sidebar-widgets' );
@@ -27,10 +26,6 @@
       </footer>
 
     </div>
-
-    <?php /* Google Analytics */
-      global $lt3_site_settings;
-      lt3_show_google_analytics( $lt3_site_settings['google_analytics'] ); ?>
 
     <?php wp_footer(); ?>
 
