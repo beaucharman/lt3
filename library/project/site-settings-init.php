@@ -39,3 +39,7 @@ if ( !is_admin() )
 {
   $lt3_site_settings = get_option( $name );
 }
+
+$PostType = new LT3_Custom_Post_Type( 'article' );
+
+$Taxonomy = new LT3_Custom_Taxonomy( 'genre', 'article', array(), array('show_admin_column' => true) );
