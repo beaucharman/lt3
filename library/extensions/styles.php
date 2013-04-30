@@ -56,6 +56,7 @@ if ( LT3_USE_CUSTOM_LOGIN_STYLES )
   add_action( 'login_head', 'lt3_custom_login_styles' );
   function lt3_custom_login_styles()
   {
-    echo '<link rel="stylesheet" type="text/css" href="' . LT3_FULL_STYLES_PATH . '/custom-login-style.css">';
+    echo '<link rel="stylesheet" type="text/css" href="'
+      . LT3_FULL_STYLES_PATH . '/custom-login-style.css">';
   }
 }

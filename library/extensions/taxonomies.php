@@ -50,7 +50,10 @@ class LT3_Custom_Taxonomy
     if ( !taxonomy_exists( $this->name ) )
     {
       add_action( 'init', array( &$this, 'register_custom_taxonomies' ), 0 );
-      if ( $this->help ) add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
+      if ( $this->help )
+      {
+        add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
+      }
     }
   }
 

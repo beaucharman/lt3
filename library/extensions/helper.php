@@ -200,17 +200,20 @@ if ( LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE )
     {
       if ( $args[0] == 'template_include' )
       {
-        echo "<!-- debug: Base Template: {$args[1]} [turn this debug mode off in library/project/config.php] -->\n";
+        echo "<!-- debug: Base Template: {$args[1]} [turn this debug mode off in '
+          . 'library/project/config.php] -->\n";
       }
       elseif ( strpos( $args[0], 'get_template_part_' ) === 0 )
       {
         global $last_template_snoop;
         if ( $last_template_snoop )
         {
-          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} [turn this debug mode off in library/project/config.php] -->";
+          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} '
+          . '[turn this debug mode off in library/project/config.php] -->";
         }
         $tpl = rtrim( join( '-', array_slice( $args, 1 ) ), '-' ) . '.php';
-        echo "\n<!-- debug: Template Part: {$tpl} [turn this debug mode off in library/project/config.php] -->\n\n";
+        echo "\n<!-- debug: Template Part: {$tpl} [turn this debug mode off in '
+          . 'library/project/config.php] -->\n\n";
         $last_template_snoop = $tpl;
       }
     }

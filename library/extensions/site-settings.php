@@ -34,8 +34,10 @@ class LT3_Site_Settings_Page
     $this->fields_group  = $this->uglify_words( $group );
     $this->fields_name   = $this->uglify_words( $name );
     $this->fields        = $fields;
-    $this->menu_name     = ( $menu_name ) ? $menu_name : $this->prettify_words( $this->fields_name );
-    $this->title         = ( $title ) ? $title : get_bloginfo( 'name' ) . ' ' . $this->prettify_words( $this->fields_name );
+    $this->menu_name     = ( $menu_name )
+      ? $menu_name : $this->prettify_words( $this->fields_name );
+    $this->title         = ( $title )
+      ? $title : get_bloginfo( 'name' ) . ' ' . $this->prettify_words( $this->fields_name );
     $this->site_settings = get_option( $this->fields_name );
 
     /**
@@ -54,7 +56,11 @@ class LT3_Site_Settings_Page
    * ------------------------------------------------------------------------ */
   public function site_settings_init()
   {
-    register_setting( $this->fields_group, $this->fields_name, array( &$this, 'site_settings_validate' ) );
+    register_setting(
+      $this->fields_group,
+      $this->fields_name,
+      array( &$this, 'site_settings_validate' )
+    );
   }
 
   /**
@@ -65,7 +71,13 @@ class LT3_Site_Settings_Page
    * ------------------------------------------------------------------------ */
   public function site_settings_add_page()
   {
-    add_theme_page( $this->title, $this->menu_name, 'manage_options', $this->fields_group, array( &$this, 'site_settings_render_page' ) );
+    add_theme_page(
+      $this->title,
+      $this->menu_name,
+      'manage_options',
+      $this->fields_group,
+      array( &$this, 'site_settings_render_page' )
+    );
   }
 
   /**
