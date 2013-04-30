@@ -18,6 +18,7 @@
 - Better columns engine for posts types and taxonomies
 - Add a custom user role extension
 - Fix the taxonomy column in post types where there are all empty terms
+- Debug the is_post_type function
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
