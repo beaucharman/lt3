@@ -244,22 +244,7 @@ class LT3_Custom_Field_Meta_Box
             array(
               'orderby'       => 'name',
               'order'         => 'ASC',
-              'hide_empty'    => false,
-              'exclude'       => array(),
-              'exclude_tree'  => array(),
-              'include'       => array(),
-              'number'        => '',
-              'fields'        => 'all',
-              'slug'          => '',
-              'parent'        => '',
-              'hierarchical'  => true,
-              'child_of'      => 0,
-              'get'           => '',
-              'name__like'    => '',
-              'pad_counts'    => false,
-              'offset'        => '',
-              'search'        => '',
-              'cache_domain'  => 'core'
+              'hide_empty'    => false
              ), $field['args']
            );
 
