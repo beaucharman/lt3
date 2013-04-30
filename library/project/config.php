@@ -148,4 +148,8 @@ define( 'LT3_USE_CUSTOM_LOGIN_STYLES', false );
    ------------------------------------------------------------------------ */
 define( 'LT3_ENABLE_TUTORIAL_SECTION', false );
 
+/* Disallow editing of theme and plugin files
+   ------------------------------------------------------------------------ */
+define( 'DISALLOW_FILE_EDIT', true );
+
 // End project configuration
