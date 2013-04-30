@@ -178,7 +178,7 @@ class LT3_Custom_Post_Type
    * ------------------------------------------------------------------------ */
   public function archive_link()
   {
-    return home_url( '/' . $this->name) ;
+    return home_url( '/' . $this->name ) ;
   }
 
   /**
