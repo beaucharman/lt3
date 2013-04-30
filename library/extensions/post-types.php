@@ -20,7 +20,7 @@
  * To declare a custom post type, simply create a new instance of the
  * LT3_Custom_Post_Type class.
  *
- * Configuration Guide:
+ * Configuration guide:
  * https://github.com/beaucharman/WordPress-Custom-Post-Types
  *
  * For more information on registering post types:
@@ -97,19 +97,14 @@ class LT3_Custom_Post_Type
     /* Configure the options */
     $options = array_merge(
       array(
-        'labels'           => $labels,
-        'description'      => '',
-        'public'           => true,
-        'menu_position'    => 20,
-        'menu_icon'        => null,
-        'hierarchical'     => false,
-        'supports'         => array( 'title', 'editor' ),
-        'taxonomies'       => array(),
-        'has_archive'      => true,
-        'rewrite'          => true
-       ),
+        'labels'        => $labels,
+        'public'        => true,
+        'menu_position' => 20,
+        'has_archive'   => true,
+        'rewrite'       => true
+      ),
       $this->options
-     );
+    );
 
     /* Register the new post type */
     register_post_type( $this->name, $options );
@@ -158,19 +153,11 @@ class LT3_Custom_Post_Type
   {
     $args = array_merge(
       array(
-      'posts_per_page'  => -1,
-      'offset'          => 0,
-      'orderby'         => 'post_date',
-      'order'           => 'DESC',
-      'include'         => '',
-      'exclude'         => '',
-      'meta_key'        => '',
-      'meta_value'      => '',
-      'post_type'       => $this->name,
-      'post_mime_type'  => '',
-      'post_parent'     => '',
-      'post_status'     => 'publish',
-      'suppress_filters' => true
+      'posts_per_page' => -1,
+      'orderby'        => 'title',
+      'order'          => 'ASC',
+      'post_type'      => $this->name,
+      'post_status'    => 'publish'
        ),
       $user_args
      );
