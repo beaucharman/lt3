@@ -17,8 +17,7 @@
 - Replace most / relavent functions with hooks
 - Better columns engine for posts types and taxonomies
 - Add a custom user role extension
-- Fix the taxonomy column in post types where there are all empty terms
-- Debug the is_post_type function
+- Fix the taxonomy column in post types where they're are all empty terms
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
@@ -31,9 +30,9 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
 
 - **Complex Database Prefix**
 
-- **.htaccess file for install root**
+- **Place the .htaccess file currently in this directory, in the root directory**
 
-- **.htaccess with Options -Indexes for wp-content**
+- **.htaccess with Options -Indexes for wp-content folder**
 
 ```
   Order deny,allow
@@ -42,7 +41,7 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
   Allow from all
   </Files>
 ```
-- **Disallow Theme and Plug-in Editor Access**
+- **Disallow Theme and Plug-in Editor Access [If used, remove reference from library/project/config]**
 
 Within the wp-config.php file, place the following code:
 
@@ -50,7 +49,7 @@ Within the wp-config.php file, place the following code:
   define( 'DISALLOW_FILE_EDIT', true );
 ```
 
-- **Enforce SSL Usage
+- **Enforce SSL Usage**
 
 Within the wp-config.php file, place the following code:
 
