@@ -21,7 +21,7 @@
  * LT3_Custom_Taxonomy class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/WordPress-Custom-Taxonomies
+ * https://github.com/beaucharman/wordpress-custom-taxonomies
  *
  * For more information about registering Taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy

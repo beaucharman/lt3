@@ -21,7 +21,7 @@
  * LT3_Custom_Post_Type class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/WordPress-Custom-Post-Types
+ * https://github.com/beaucharman/wordpress-custom-post-types
  *
  * For more information on registering post types:
  * http://codex.wordpress.org/Function_Reference/register_post_type
