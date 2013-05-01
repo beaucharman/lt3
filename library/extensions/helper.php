@@ -57,7 +57,7 @@ function lt3_is_child_of_page( $post_id )
 }
 
 /**
- * lt3 is Cild of Category
+ * lt3 is Child of Category
  * ------------------------------------------------------------------------
  * lt3_is_child_of_category()
  * @param  $parent_category | integer
