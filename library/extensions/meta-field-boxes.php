@@ -1,43 +1,28 @@
 <?php
 /**
- * Post Types
+ * Custom Meta Field Boxes
  * ------------------------------------------------------------------------
- * post-types.php
+ * custom-meta-field-boxes.php
  * @version 2.0 | April 1st 2013
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
- * This file is for the custom meta fields for posts, pages, and custom post types.
- * Currently supports text, textarea, checkbox, radio, select, post_checkbox and file
+ * To declare a custom meta field box, simply create a new instance of the
+ * LT3_Custom_Meta_Field_Box class.
  *
- * To declare a custom field meta box, simply add a new LT3_Custom_Field_Meta_Box class
- * with the following arguments:
+ * Configuration guide:
+ * https://github.com/beaucharman/wordpress-custom-meta-field-boxes
+ *
+ * For more information about registering meta field boxes:
+ * http://codex.wordpress.org/Function_Reference/add_meta_box
  */
 
-/*
-$args = array(
-  'id'              => '',
-  'title'           => '',
-  'post_type'       => '', // 'post', 'page', 'link', 'attachment' a custom post type slug, or array
-  'context'         => '', // 'normal', 'advanced', or 'side'
-  'priority'        => '', // 'high', 'core', 'default' or 'low'
-  'fields'          => array(
-    array(
-      'type'        => '',
-      'id'          => '',
-      'label'       => ''
-     )
-   )
- );
-new LT3_Custom_Field_Meta_Box( $args );
-*/
-
 /* ------------------------------------------------------------------------
-   Custom custom meta field box class
+   Custom Meta Field Box class
    ------------------------------------------------------------------------ */
-class LT3_Custom_Field_Meta_Box
+class LT3_Custom_Meta_Field_Box
 {
   protected $cmfb;
   protected $id;
@@ -55,7 +40,6 @@ class LT3_Custom_Field_Meta_Box
    * ------------------------------------------------------------------------ */
   function __construct( $cmfb )
   {
-
     /* Set class values */
     $this->cmfb      = $cmfb;
     $this->id        = $this->uglify_words( '_cmfb_'. $this->cmfb['id'] );
@@ -84,7 +68,7 @@ class LT3_Custom_Field_Meta_Box
     add_meta_box(
       $this->id,
       $this->title,
-      array(  &$this, 'show_custom_meta_field_box' ),
+      array( &$this, 'show_custom_meta_field_box' ),
       $this->post_type,
       $this->context,
       $this->priority
@@ -129,6 +113,20 @@ class LT3_Custom_Field_Meta_Box
 
       switch( $field['type'] )
       {
+        /**
+         * text
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param label       | string | optional
+         * @param description | string | optional
+         * @param placeholder | string | optional
+         * ------------------------------------------------------------------------ */
+        case 'text':
+          $field_placeholder = ( isset( $field['placeholder'] ) ) ? $field['placeholder'] : '';
+          echo '<input type="text" name="'.$field_id.'" id="'
+            .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
+          break;
 
         /**
          * textarea
@@ -349,39 +347,30 @@ class LT3_Custom_Field_Meta_Box
             <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
           ?>
             <script>
-            jQuery( function( $ ) {
-              $( '.custom_upload_file_button' ).click( function() {
-                $formField = $( this ).siblings( '.custom_upload_file' );
-                tb_show( 'Select a File', 'media-upload.php?type=image&TB_iframe=true' );
-                window.send_to_editor = function( $html ) {
-                 $fileUrl = $( $html ).attr( 'href' );
-                 $formField.val( $fileUrl );
+            jQuery(function($) {
+              $('.custom_upload_file_button').click(function() {
+                $formField = $(this).siblings('.custom_upload_file');
+                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
+                window.send_to_editor = function($html) {
+                 $fileUrl = $($html).attr('href');
+                 $formField.val($fileUrl);
                  tb_remove();
                 };
                 return false;
               } );
-              $( '.custom_clear_file_button' ).click( function() {
-                $( this ).parent().siblings( '.custom_upload_file' ).val( '' );
+              $('.custom_clear_file_button').click(function() {
+                $(this).parent().siblings('.custom_upload_file').val('');
                 return false;
-              } );
-            } );
+              });
+            });
             </script>
           <?php
           break;
 
-        /**
-         * text | default
-         * ------------------------------------------------------------------------
-         * @param id          | string
-         * @param type        | string | optional
-         * @param label       | string | optional
-         * @param description | string | optional
-         * @param placeholder | string | optional
-         * ------------------------------------------------------------------------ */
+        /* default */
         default:
-          $field_placeholder = ( isset( $field['placeholder'] ) ) ? $field['placeholder'] : '';
-          echo '<input type="text" name="'.$field_id.'" id="'
-            .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
+          echo '<p><span style="color: red;">Sorry, '
+            . 'the type allocated for this input is not valid.</span></p>';
           break;
       }
 

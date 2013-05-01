@@ -10,7 +10,7 @@
  * @license MIT license
  *
  * Properties
- *  $PostType->name | sring
+ *  $PostType->name   | sring
  *  $PostType->lables | array
  *
  * Methods

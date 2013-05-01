@@ -10,7 +10,7 @@
  * @license MIT license
  *
  * Properties
- *  $Taxonomy->name | sring
+ *  $Taxonomy->name   | sring
  *  $Taxonomy->lables | array
  *
  * Methods
@@ -75,7 +75,7 @@ class LT3_Custom_Taxonomy
       ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     $labels = array(
-      'name'              => __( $this->labels['label_plural'], $this->labels['label_plural'] . ' general name' ),
+      'name'              => __( $this->labels['label_plural'], $this->labels['label_plural'] ` . ' general name' ),
       'singular_name'     => __( $this->labels['label_singular'], $this->labels['label_singular'] . ' singular name' ),
       'menu_name'         => __( $this->labels['menu_label'] ),
       'search_items'      => __( 'Search ' . $this->labels['label_plural'] ),
