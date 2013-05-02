@@ -212,8 +212,7 @@ class LT3_Site_Settings_Page
 
           /* default */
           default:
-            echo '<tr><td colspan="2"><span style="color: red;">Sorry, '
-              . 'the type allocated for this input is not valid.</span></td></tr>';
+            echo '<span style="color: red;">Sorry, the type allocated for this input is not valid.</span>';
             break;
 
         } // end switch
