@@ -13,7 +13,7 @@
  * LT3_Custom_Meta_Field_Box class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-meta-field-box
+ * https://github.com/beaucharman/wordpress-custom-meta-field-boxes
  *
  * For more information about registering custom meta field boxes:
  * http://codex.wordpress.org/Function_Reference/add_meta_box

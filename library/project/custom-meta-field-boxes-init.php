@@ -14,5 +14,5 @@
  * LT3_Custom_Meta_Field_Box class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-meta-field-box
+ * https://github.com/beaucharman/wordpress-custom-meta-field-boxes
  * ------------------------------------------------------------------------ */

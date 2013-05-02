@@ -14,5 +14,5 @@
  * LT3_Custom_Taxonomy class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-taxonomy
+ * https://github.com/beaucharman/wordpress-custom-taxonomies
  * ------------------------------------------------------------------------ */

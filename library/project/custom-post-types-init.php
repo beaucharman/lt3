@@ -14,5 +14,5 @@
  * LT3_Custom_Post_Type class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-post-type
+ * https://github.com/beaucharman/wordpress-custom-post-types
  * ------------------------------------------------------------------------ */
