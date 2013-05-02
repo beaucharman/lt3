@@ -1,9 +1,9 @@
 <?php
 /**
- * Custom Meta Field Boxes
+ * Custom Meta Field Box
  * ------------------------------------------------------------------------
- * custom-meta-field-boxes.php
- * @version 2.0 | April 1st 2013
+ * custom-meta-field-box.php
+ * @version 2.1 | April 1st 2013
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
@@ -13,9 +13,9 @@
  * LT3_Custom_Meta_Field_Box class.
  *
  * Configuration guide:
- * https://github.com/beaucharman/wordpress-custom-meta-field-boxes
+ * https://github.com/beaucharman/wordpress-custom-meta-field-box
  *
- * For more information about registering meta field boxes:
+ * For more information about registering custom meta field boxes:
  * http://codex.wordpress.org/Function_Reference/add_meta_box
  */
 

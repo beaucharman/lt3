@@ -50,7 +50,7 @@ require_once( LT3_FULL_PROJECT_PATH . '/initial-theme-setup.php' );
 
 /* Helper Functions
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/helper.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/helpers.php' );
 
 /* Site Settings
    ------------------------------------------------------------------------ */
@@ -70,15 +70,15 @@ require_once( LT3_FULL_EXTENSIONS_PATH . '/template.php' );
 
 /* Custom Post Types
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/post-types.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/post-type.php' );
 
 /* Custom Taxonomies
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/taxonomies.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/taxonomy.php' );
 
 /* Custom Meta Field Boxes
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/meta-field-boxes.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/meta-field-box.php' );
 
 /* Loop Functions
    ------------------------------------------------------------------------ */
@@ -115,3 +115,15 @@ require_once( LT3_FULL_EXTENSIONS_PATH . '/styles.php' );
 /* Site Settings Init
    ------------------------------------------------------------------------ */
 require_once( LT3_FULL_PROJECT_PATH . '/site-settings-init.php' );
+
+/* Custom Post Types Init
+   ------------------------------------------------------------------------ */
+require_once( LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php' );
+
+/* Custom Taxonomies Init
+   ------------------------------------------------------------------------ */
+require_once( LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php' );
+
+/* Custom Meta Field Boxes Init
+   ------------------------------------------------------------------------ */
+require_once( LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php' );
