@@ -39,6 +39,7 @@ class LT3_Custom_Post_Type
 
   /**
    * Class constructor
+   *  ------------------------------------------------------------------------
    * __construct()
    * @param  $name     | string
    * @param  $labels   | array

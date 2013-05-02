@@ -38,7 +38,16 @@ class LT3_Custom_Taxonomy
   public $options;
   public $help;
 
-  /* Class constructor */
+  /**
+   * Class constructor
+   *  ------------------------------------------------------------------------
+   * __construct()
+   * @param  $name      | string
+   * @param  $post_type | array || string
+   * @param  $labels    | array
+   * @param  $options   | array
+   * @param  $help      | array
+   *  ------------------------------------------------------------------------ */
   public function __construct( $name, $post_type = array(), $labels = array(), $options = array(), $help = null )
   {
     $this->name      = $this->uglify_words( $name );
