@@ -36,7 +36,7 @@ class LT3_Custom_Meta_Field_Box
    * Class Constructor
    * ------------------------------------------------------------------------
    * __construct()
-   * @param  {array} $cmfb
+   * @param {array} $cmfb
    * ------------------------------------------------------------------------ */
   function __construct( $cmfb )
   {
