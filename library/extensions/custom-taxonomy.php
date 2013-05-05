@@ -28,7 +28,7 @@
  */
 
 /* ------------------------------------------------------------------------
-   Custom taxonomy class
+   Custom Taxonomy class
    ------------------------------------------------------------------------ */
 class LT3_Custom_Taxonomy
 {
@@ -39,14 +39,15 @@ class LT3_Custom_Taxonomy
   public $help;
 
   /**
-   * Class constructor
+   * Class Constructor
    *  ------------------------------------------------------------------------
    * __construct()
-   * @param  $name      | string
-   * @param  $post_type | array || string
-   * @param  $labels    | array
-   * @param  $options   | array
-   * @param  $help      | array
+   * @param  {string}          $name
+   * @param  {array || string} $post_type
+   * @param  {string}          $labels
+   * @param  {array}           $options
+   * @param  {string}          $help
+   * @return {instance}        taxonomy
    *  ------------------------------------------------------------------------ */
   public function __construct( $name, $post_type = array(), $labels = array(), $options = array(), $help = null )
   {
@@ -61,17 +62,18 @@ class LT3_Custom_Taxonomy
       add_action( 'init', array( &$this, 'register_custom_taxonomy' ), 0 );
       if ( $this->help )
       {
-        add_action( 'contextual_help', array( &$this, 'add_custom_contextual_help' ), 10, 3 );
+        add_action( 'contextual_help'
+          , array( &$this, 'add_custom_contextual_help' ), 10, 3 );
       }
     }
   }
 
   /**
-   * Register Taxonomy
+   * Register Custom Taxonomy
    * ------------------------------------------------------------------------
    * register_custom_taxonomy()
-   * @param  null
-   * @return taxonomy
+   * @param  {null}
+   * @return {object} | taxonomy
    * ------------------------------------------------------------------------ */
   public function register_custom_taxonomy()
   {
@@ -115,7 +117,7 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Add custom contextual help
+   * Add Custom Contextual Help
    * ------------------------------------------------------------------------
    * add_custom_contextual_help()
    * ------------------------------------------------------------------------ */
@@ -133,8 +135,8 @@ class LT3_Custom_Taxonomy
    * Get
    * ------------------------------------------------------------------------
    * get()
-   * @param  $user_args | array
-   * @return term data
+   * @param  {array}  $user_args
+   * @return {object} | term data
    * ------------------------------------------------------------------------ */
   public function get( $user_args = array(), $single = false )
   {
@@ -145,6 +147,7 @@ class LT3_Custom_Taxonomy
         'hide_empty' => false
       ), $user_args
     );
+
     if ( $single )
     {
       $items = get_terms( $this->name, $args );
@@ -157,8 +160,7 @@ class LT3_Custom_Taxonomy
    * Archive Link
    * ------------------------------------------------------------------------
    * archive_link()
-   * @param  none
-   * @return string
+   * @return {string}
    * ------------------------------------------------------------------------ */
   public function archive_link()
   {
@@ -166,11 +168,11 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Prettify words
+   * Prettify Words
    * ------------------------------------------------------------------------
    * prettify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $words
+   * @return {string}
    *
    * Creates a pretty version of a string, like
    * a pug version of a dog.
@@ -181,11 +183,11 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Uglify words
+   * Uglify Words
    * ------------------------------------------------------------------------
    * uglify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $word
+   * @return {string}
    *
    * creates a url firendly version of the given string.
    * ------------------------------------------------------------------------ */
@@ -195,11 +197,11 @@ class LT3_Custom_Taxonomy
   }
 
   /**
-   * Plurify words
+   * Plurify Words
    * ------------------------------------------------------------------------
    * plurafy_words()
-   * @param  $words | string
-   * @return $words | string
+   * @param  {string} $words
+   * @return {string}
    *
    * Plurifies most common words. Not currently working
    * proper nouns, or more complex words, for example

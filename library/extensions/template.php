@@ -298,6 +298,14 @@ function lt3_search_excerpt_more( $more )
 	}
 }
 
+/* Add excerpt field to pages
+   ------------------------------------------------------------------------ */
+add_action( 'init', 'lt3_add_page_excerpts' );
+function lt3_add_page_excerpts()
+{
+  add_post_type_support( 'page', 'excerpt' );
+}
+
 /* Use Shortcodes in Widgets
    ------------------------------------------------------------------------ */
 add_filter( 'widget_text', 'do_shortcode' );

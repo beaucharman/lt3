@@ -8,7 +8,7 @@
  * @subpackage lt3/library/extensions/site-settings.php
  * @author     Beau Charman | @beaucharman | http://beaucharman.me
  * @link       https://github.com/beaucharman/lt3
- * @license    GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license    MIT license
  * ------------------------------------------------------------------------ */
 
 /* Declare the Site Settings options

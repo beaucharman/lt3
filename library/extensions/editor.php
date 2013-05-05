@@ -12,14 +12,6 @@
  * All extra functionality that effects the admin and post editor.
  * ------------------------------------------------------------------------ */
 
-/* Add excerpt field to pages
-   ------------------------------------------------------------------------ */
-add_action( 'init', 'lt3_add_page_excerpts' );
-function lt3_add_page_excerpts()
-{
-	add_post_type_support( 'page', 'excerpt' );
-}
-
 /* Add PDFs to the media type filter for posts
    ------------------------------------------------------------------------ */
 add_filter( 'post_mime_types', 'lt3_modify_post_mime_types' );

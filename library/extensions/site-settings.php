@@ -26,8 +26,7 @@ class LT3_Site_Settings_Page
    * Class Constructor
    * ------------------------------------------------------------------------
    * __construct()
-   * @param  $_site_settings | array
-   * @return void
+   * @param  {array} $_site_settings
   * ------------------------------------------------------------------------ */
   public function __construct( $group, $name, $fields = array(), $menu_name = '', $title = '' )
   {
@@ -131,7 +130,7 @@ class LT3_Site_Settings_Page
         /**
          * divider
          * ------------------------------------------------------------------------
-         * @param $label | string
+         * @param {string} $label
          * ------------------------------------------------------------------------ */
         echo '<td class="divider" colspan="2">' . $field['label'] . '</td>';
       }
@@ -149,9 +148,9 @@ class LT3_Site_Settings_Page
           /**
            * text
            * ------------------------------------------------------------------------
-           * @param id          | string
-           * @param label       | string
-           * @param description | string
+           * @param {string} 'id'
+           * @param {string} 'label'
+           * @param {string} 'description'
            * ------------------------------------------------------------------------ */
           case 'text':
             echo '<input id="' . $fields_name . '[' . $id . ']" name="' . $fields_name
@@ -163,9 +162,9 @@ class LT3_Site_Settings_Page
           /**
            * textarea
            * ------------------------------------------------------------------------
-           * @param id          | string
-           * @param label       | string
-           * @param description | string
+           * @param {string} 'id'
+           * @param {string} 'label'
+           * @param {string} 'description'
            * ------------------------------------------------------------------------ */
           case 'textarea':
             echo '<textarea id="' . $fields_name . '[' . $id . ']" name="' . $fields_name
@@ -175,9 +174,9 @@ class LT3_Site_Settings_Page
           /**
            * checkbox
            * ------------------------------------------------------------------------
-           * @param id          | string
-           * @param label       | string
-           * @param description | string
+           * @param {string} 'id'
+           * @param {string} 'label'
+           * @param {string} 'description'
            * ------------------------------------------------------------------------ */
           case 'checkbox':
             echo '<input type="checkbox" value="' . $id . '" id="' . $fields_name
@@ -188,14 +187,25 @@ class LT3_Site_Settings_Page
           /**
            * post_type_select
            * ------------------------------------------------------------------------
-           * @param id          | string
-           * @param label       | string
-           * @param post_type   | string || array
-           * @param description | string
+           * @param {string}          'id'
+           * @param {string}          'label'
+           * @param {string || array} 'post_type'
+           * @param {string}          'description'
+           * @param {array}           'args'
            * ------------------------------------------------------------------------ */
           case 'post_type_select':
 
-            $items = get_posts(  array ( 'post_type' => $field['post_type']
+            $field['args'] = ( isset( $field['args'] ) ) ? $field['args'] : array();
+            $args = merge_array(
+              array(
+                'post_type'      => $field['post_type'],
+                'posts_per_page' => -1
+              ), $field['args']
+            );
+            $items = get_posts( $args );
+
+            $items = get_posts( array (
+              'post_type' => $field['post_type']
               , 'posts_per_page' => -1 )  );
             echo '<select name="' . $fields_name . '[' . $id . ']" id="'
               . $fields_name . '[' . $id . ']">';
@@ -240,8 +250,8 @@ class LT3_Site_Settings_Page
    * Site Settings Validate
    * ------------------------------------------------------------------------
    * site_settings_validate()
-   * @param  $input | array
-   * @return $input | array
+   * @param  {array} $input
+   * @return {array} $input
    *
    * Sanitize and validate input. Accepts an array, return a sanitized array.
    * ------------------------------------------------------------------------ */
@@ -262,8 +272,8 @@ class LT3_Site_Settings_Page
    * Prettify words
    * ------------------------------------------------------------------------
    * prettify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $words
+   * @return {string}
    *
    * Creates a pretty version of a string, like
    * a pug version of a dog.
@@ -277,8 +287,8 @@ class LT3_Site_Settings_Page
    * Uglify words
    * ------------------------------------------------------------------------
    * uglify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $words
+   * @return {string}
    *
    * creates a url firendly version of the given string .
    * ------------------------------------------------------------------------ */
