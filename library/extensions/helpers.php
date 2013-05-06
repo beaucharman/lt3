@@ -311,7 +311,7 @@ if ( !function_exists( 'debug_tool' ) )
   {
     global $debug_counter;
     $breakpoint = false;
-    if ( $variable === 'breakpoint' )
+    if ( $variable == 'breakpoint' )
     {
       $breakpoint = true;
     }
