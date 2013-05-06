@@ -14,10 +14,11 @@
 ## Roadmap [Todo list]
 - WordPress editor styles + instructions in Sass
 - Work on default comment styles
-- Replace most / relavent functions with hooks
+- Replace most relavent functions with hooks
 - Better columns engine for posts types and taxonomies
 - Add a custom user role extension
-- Fix the taxonomy column in post types where they're are all empty terms
+- Test helpers.php functions
+- Fix comments in the template.php file
 
 ## Testing
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly : )
