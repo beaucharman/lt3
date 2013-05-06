@@ -16,3 +16,4 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-post-types
  * ------------------------------------------------------------------------ */
+$Article = new LT3_Custom_Post_Type('article');

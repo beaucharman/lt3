@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  * ------------------------------------------------------------------------ */ ?>
 <?php $sticky_loop = new WP_Query( array(
     'posts_per_page' => LT3_NUMBER_OF_STICKY_POSTS,

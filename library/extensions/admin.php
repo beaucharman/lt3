@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * This files contains the functions and file references
  * that are used to alter and enhance the general administration area.
@@ -19,8 +19,12 @@
 	 Dashboard and login functions
    ------------------------------------------------------------------------ */
 
-/* Customise footer
-   ------------------------------------------------------------------------ */
+/**
+ * Replace Admin Footer
+ * ------------------------------------------------------------------------
+ * lt3_replace_admin_footer()
+ * admin_footer_text filter
+ * ------------------------------------------------------------------------ */
 add_filter( 'admin_footer_text', 'lt3_replace_admin_footer' );
 function lt3_replace_admin_footer()
 {
@@ -31,8 +35,12 @@ function lt3_replace_admin_footer()
 	return $admin_footer;
 }
 
-/* Add custom widgets to admin dashboard
-   ------------------------------------------------------------------------ */
+/**
+ * Replace Admin Footer
+ * ------------------------------------------------------------------------
+ * lt3_custom_dashboard_widgets()
+ * wp_dashboard_setup action to add custom widgets to admin dashboard
+ * ------------------------------------------------------------------------ */
 add_action( 'wp_dashboard_setup', 'lt3_custom_dashboard_widgets' );
 function lt3_custom_dashboard_widgets()
 {
@@ -43,7 +51,6 @@ function lt3_custom_dashboard_widgets()
     'lt3_create_website_support_widget_function'
    );
 }
-
 function lt3_create_website_support_widget_function()
 {
 	if ( function_exists( 'lt3_get_data_with_curl' ) )
@@ -53,8 +60,12 @@ function lt3_create_website_support_widget_function()
 	echo $admin_widget;
 }
 
-/* Create Tutorial Pages
-   ------------------------------------------------------------------------ */
+/**
+ * Create Tutorial Menu
+ * ------------------------------------------------------------------------
+ * lt3_create_tutorial_menu()
+ * admin_menu action to create tutorial pages
+ * ------------------------------------------------------------------------ */
 if ( LT3_ENABLE_TUTORIAL_SECTION )
 {
   add_action( 'admin_menu', 'lt3_create_tutorial_menu' );
@@ -71,8 +82,11 @@ if ( LT3_ENABLE_TUTORIAL_SECTION )
 	}
 }
 
-/* Remove comments functionality globally
-   ------------------------------------------------------------------------ */
+/**
+ * Disable Global Comments
+ * ------------------------------------------------------------------------
+ * Various actions to remove comments functionality globally
+ * ------------------------------------------------------------------------ */
 if ( !LT3_ENABLE_GLOBAL_COMMENTS )
 {
   /* Remove the comments admin menu item */
@@ -108,8 +122,13 @@ if ( !LT3_ENABLE_GLOBAL_COMMENTS )
   }
 }
 
-/* Remove Widgets from Admin
-   ------------------------------------------------------------------------ */
+/**
+ * Remove Dashboard Widgets
+ * ------------------------------------------------------------------------
+ * lt3_remove_dashboard_widgets()
+ * wp_dashboard_setup action to remove unwanted widgets
+ * ------------------------------------------------------------------------ */
+add_action( 'wp_dashboard_setup', 'lt3_remove_dashboard_widgets' );
 function lt3_remove_dashboard_widgets()
 {
 	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
@@ -122,10 +141,13 @@ function lt3_remove_dashboard_widgets()
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'side' );
 }
-add_action( 'wp_dashboard_setup', 'lt3_remove_dashboard_widgets' );
 
-/* Add Custom Post Types to right now
-   ------------------------------------------------------------------------ */
+/**
+ * Add Custom Post Types To Right Now
+ * ------------------------------------------------------------------------
+ * lt3_add_custom_post_type_to_right_now()
+ * right_now_content_table_end action to add custom post types
+ * ------------------------------------------------------------------------ */
 add_action( 'right_now_content_table_end', 'lt3_add_custom_post_type_to_right_now' );
 function lt3_add_custom_post_type_to_right_now()
 {
@@ -174,10 +196,15 @@ function lt3_add_custom_post_type_to_right_now()
    Content management and display
    ------------------------------------------------------------------------ */
 
-/* Create Taxonomy drop downs for all post types
-   ------------------------------------------------------------------------ */
-add_action( 'restrict_manage_posts', 'lt3_custom_restrict_manage_posts' );
-function lt3_custom_restrict_manage_posts()
+/**
+ * Create Taxonomy Dropdown Filters
+ * ------------------------------------------------------------------------
+ * lt3_restrict_by_taxonomy()
+ * restrict_manage_posts action to create custom taxonomy dropdowns
+ * for all post types
+ * ------------------------------------------------------------------------ */
+add_action( 'restrict_manage_posts', 'lt3_restrict_by_taxonomy' );
+function lt3_restrict_by_taxonomy()
 {
   global $typenow;
   $args=array( 'public' => true, '_builtin' => false );
@@ -189,22 +216,24 @@ function lt3_custom_restrict_manage_posts()
     {
       $tax_obj = get_taxonomy( $tax_slug );
       $selected = ( isset( $_GET[$tax_obj->query_var] ) ) ? $_GET[$tax_obj->query_var] : '';
-      wp_dropdown_categories( array(
-        'show_option_all' => __( 'Show All ' . $tax_obj->label ),
-        'taxonomy'        => $tax_slug,
-        'name'            => $tax_obj->name,
-        'orderby'         => 'term_order',
-        'selected'        => $selected,
-        'hierarchical'    => $tax_obj->hierarchical,
-        'show_count'      => false,
-        'hide_empty'      => true
-       ) );
+      wp_dropdown_categories(
+        array(
+          'show_option_all' => __( 'Show All ' . $tax_obj->label ),
+          'taxonomy'        => $tax_slug,
+          'name'            => $tax_obj->name,
+          'orderby'         => 'term_order',
+          'selected'        => $selected,
+          'hierarchical'    => $tax_obj->hierarchical,
+          'depth'           => 3,
+          'show_count'      => false,
+          'hide_empty'      => true
+        )
+      );
     }
   }
 }
-
-add_filter( 'parse_query','lt3_todo_convert_restrict' );
-function lt3_todo_convert_restrict( $query )
+add_filter( 'parse_query','lt3_restriction_taxonomy_dropdown' );
+function lt3_restriction_taxonomy_dropdown( $query )
 {
   global $pagenow,  $typenow;
   if ( $pagenow=='edit.php' )
@@ -226,10 +255,14 @@ function lt3_todo_convert_restrict( $query )
 	 Theme customisation settings
    ------------------------------------------------------------------------ */
 
-/* Enable custom backgrounds
-   ------------------------------------------------------------------------ */
+/**
+ * Enable Custom Background
+ * ------------------------------------------------------------------------
+ * add_theme_support for custom-background
+ * ------------------------------------------------------------------------ */
 if ( LT3_ENABLE_CUSTOM_BACKGROUND )
 {
+  add_theme_support( 'custom-background', $defaults );
 	$defaults = array(
 		'default-color'          => LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR,
 		'default-image'          => get_template_directory_uri() . '/library/images/background.jpg',
@@ -237,11 +270,13 @@ if ( LT3_ENABLE_CUSTOM_BACKGROUND )
 		'admin-head-callback'    => '',
 		'admin-preview-callback' => ''
 	 );
-	add_theme_support( 'custom-background', $defaults );
 }
 
-/* Enable custom headers
-   ------------------------------------------------------------------------ */
+/**
+ * Enable Custom Heaer
+ * ------------------------------------------------------------------------
+ * add_custom_image_header functions
+ * ------------------------------------------------------------------------ */
 if ( LT3_ENABLE_CUSTOM_HEADER )
 {
 	/* Include the header image in the admin preview. */
@@ -286,8 +321,13 @@ if ( LT3_ENABLE_CUSTOM_HEADER )
 	 User related functions
    ------------------------------------------------------------------------ */
 
-/* Add custom user fields
-   ------------------------------------------------------------------------ */
+/**
+ * Custom Userfields
+ * ------------------------------------------------------------------------
+ * lt3_custom_userfields()
+ * user_contactmethods filter to add custom userfields
+ * ------------------------------------------------------------------------ */
+add_filter( 'user_contactmethods', 'lt3_custom_userfields', 10, 1 );
 function lt3_custom_userfields( $contactmethods )
 {
 	/* Set user info fields */
@@ -301,16 +341,19 @@ function lt3_custom_userfields( $contactmethods )
 	unset( $contactmethods['yim'] );
 	return $contactmethods;
 }
-add_filter( 'user_contactmethods', 'lt3_custom_userfields', 10, 1 );
 
 /* ------------------------------------------------------------------------
 	 Security measures
    ------------------------------------------------------------------------ */
 
-/* Add no follow meta tag to admin
-   ------------------------------------------------------------------------ */
-add_action( 'admin_head', 'lt3_add_admin_meta_tags' );
-function lt3_add_admin_meta_tags()
+/**
+ * Add Admin Nofollow Meta
+ * ------------------------------------------------------------------------
+ * lt3_add_admin_nofollow_meta()
+ * admin_head action to add no follow meta tag to admin
+ * ------------------------------------------------------------------------ */
+add_action( 'admin_head', 'lt3_add_admin_nofollow_meta' );
+function lt3_add_admin_nofollow_meta()
 {
 	if ( is_admin() )
   {
@@ -318,12 +361,19 @@ function lt3_add_admin_meta_tags()
 	}
 }
 
-/* Remove WP Version
-   ------------------------------------------------------------------------ */
+/**
+ * Remove WP Version
+ * ------------------------------------------------------------------------
+ * Remove wp_generator from wp_head
+ * ------------------------------------------------------------------------ */
 remove_action( 'wp_head', 'wp_generator' );
 
-/* Obscure login screen error messages
-   ------------------------------------------------------------------------ */
+/**
+ * Alternate Login Error Message
+ * ------------------------------------------------------------------------
+ * lt3_alternate_login_error_message()
+ * login_errors action to obscure login screen error messages
+ * ------------------------------------------------------------------------ */
 add_filter( 'login_errors', 'lt3_alternate_login_error_message' );
 function lt3_alternate_login_error_message()
 {

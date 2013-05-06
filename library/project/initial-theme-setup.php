@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * For more information:
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme

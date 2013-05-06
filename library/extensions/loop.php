@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * Control specific loop outputs.
  * Loops altered from these functions are executed when the requested is made,

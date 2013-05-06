@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * To include styles correctly, use the wp_register_style, and wp_enqueue_style functions:
  * http://codex.wordpress.org/Function_Reference/wp_register_style

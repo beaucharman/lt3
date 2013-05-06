@@ -7,7 +7,7 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  * ------------------------------------------------------------------------ */
 
 /* ------------------------------------------------------------------------
@@ -35,7 +35,7 @@ function lt3_is_child_of_page( $post_id )
     ( $parent ) ||
     ( $grandparent ) ||
     ( $greatgrandparent )
-   ) )
+  ) )
   {
     return true;
   }
@@ -46,7 +46,7 @@ function lt3_is_child_of_page( $post_id )
     ( $grandparent == $post_id ) ||
     ( get_the_title( $greatgrandparent ) == $post_id ) ||
     ( $greatgrandparent == $post_id )
-   ) )
+  ) )
   {
     return true;
   }
@@ -311,7 +311,7 @@ if ( !function_exists( 'debug_tool' ) )
   {
     global $debug_counter;
     $breakpoint = false;
-    if ( $variable === '' )
+    if ( $variable === 'breakpoint' )
     {
       $breakpoint = true;
     }

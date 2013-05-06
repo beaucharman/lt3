@@ -7,13 +7,17 @@
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
- * @license GNU http://www.gnu.org/licenses/lgpl.txt
+ * @license MIT license
  *
  * All extra functionality that effects the admin and post editor.
  * ------------------------------------------------------------------------ */
 
-/* Add PDFs to the media type filter for posts
-   ------------------------------------------------------------------------ */
+/**
+ * Modify Post Mine Types
+ * ------------------------------------------------------------------------
+ * lt3_modify_post_mime_types()
+ * post_mime_types filter to add PDFs to the media type filter for posts
+ * ------------------------------------------------------------------------ */
 add_filter( 'post_mime_types', 'lt3_modify_post_mime_types' );
 function lt3_modify_post_mime_types( $post_mime_types )
 {
@@ -21,15 +25,19 @@ function lt3_modify_post_mime_types( $post_mime_types )
   	__( 'PDFs' ),
   	__( 'Manage PDFs' ),
   	_n_noop( 'PDF <span class="count">( %s )</span>', 'PDFs <span class="count">( %s )</span>' )
-	 );
+	);
   return $post_mime_types;
 }
 
-/* Add more buttons to the TinyMCE editor
-   ------------------------------------------------------------------------ */
+/**
+ * Enable Extra TinyMCE Buttons and Style Select
+ * ------------------------------------------------------------------------
+ * various filters to add more buttons to the TinyMCE editor
+ * and a select style drop down
+ * ------------------------------------------------------------------------ */
 if ( LT3_ENABLE_EXTRA_TINYMCE_BUTTONS ){
 
-  /* Level 3 buttons
+  /* Level 1 buttons
      ------------------------------------------------------------------------ */
   add_filter( 'mce_buttons','edit_buttons_for_tinymce_editor_1' );
 	function edit_buttons_for_tinymce_editor_1( $mce_buttons )
@@ -133,7 +141,7 @@ if ( LT3_ENABLE_EXTRA_TINYMCE_BUTTONS ){
       __( 'Warning' )    => 'warning',
       __( 'Notice' )     => 'notice',
       __( 'Muted' )      => 'muted'
-     );
+    );
 
     $class_settings = '';
     foreach (  $classes as $name => $value  )
