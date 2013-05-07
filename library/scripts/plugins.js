@@ -11,7 +11,10 @@
  * Basically any modular, stand alone script or plugin lives here
  * ------------------------------------------------------------------------ */
 
-/* Remove the .js class from the html tag is javascript is enabled */
+/** 
+ * Remove the .no-js class from the html tag 
+ * to flag that is javascript is enabled 
+ */
 var documentClassName = document.documentElement.className;
 documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
 
