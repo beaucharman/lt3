@@ -9,7 +9,7 @@
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
  * ------------------------------------------------------------------------ */ ?>
-      </section>
+      </section> <!-- /.content -->
 
       <footer class="page-footer">
         <?php if ( is_active_sidebar( 'footer-sidebar-widgets' ) )
@@ -25,7 +25,7 @@
 
       </footer>
 
-    </div>
+    </div> <!-- /.page-wrap -->
 
     <?php wp_footer(); ?>
 
