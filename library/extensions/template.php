@@ -646,7 +646,7 @@ function lt3_include_post_meta()
 
 /* Limit the number of words in a given output
    ------------------------------------------------------------------------ */
-function lt3_excerpt( $text_raw = '', $text_limit = 20, $text_echo = TRUE ){
+function lt3_excerpt( $text_raw = '', $text_limit = LT3_EXCERPT_LENGTH, $text_echo = TRUE ){
 	$text = explode( ' ', $text_raw );
 	$ellipses = false;
 	if ( sizeof( $text ) > $text_limit ){
