@@ -44,7 +44,9 @@ add_action( 'wp_enqueue_scripts', 'lt3_load_scripts' );
 function lt3_load_scripts()
 {
 
-	/* Register scripts here */
+	/**
+	 * Register scripts here
+	 */
 	wp_register_script( 'lt3_modernizr',
 		LT3_FULL_SCRIPTS_PATH . '/vendors/modernizr.' . LT3_MODERNIZR_LIBRARY_VERSION . '.js',
 		false,
@@ -54,7 +56,9 @@ function lt3_load_scripts()
 	wp_register_script( 'lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), '1.0', true );
 	wp_register_script( 'lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), '1.0', true );
 
-	/* Enqueue scripts here */
+	/**
+	 * Enqueue frontend scripts here
+	 */
 	if ( !is_admin() )
 	{
 		if ( is_singular() && get_option( 'thread_comments' ) && LT3_ENABLE_GLOBAL_COMMENTS )
