@@ -644,34 +644,42 @@ function lt3_include_post_meta()
 	}
 }
 
-/* Limit the number of words in a given output
-   ------------------------------------------------------------------------ */
-function lt3_excerpt( $text_raw = '', $text_limit = LT3_EXCERPT_LENGTH, $text_echo = TRUE ){
-	$text = explode( ' ', $text_raw );
+/**
+ * Excerpt 
+ * ------------------------------------------------------------------------ 
+ * lt3_excerpt()
+ * @param {string}  $raw_text
+ * @param {integer} $output_limit
+ * @param {boolean} $echo_result
+ * 
+ * Limit the number of words in a given output
+ * ------------------------------------------------------------------------ */
+function lt3_excerpt( $raw_text = '', $echo_result = true, $output_limit = LT3_EXCERPT_LENGTH )
+{
+	$text = explode( ' ', $raw_text );
 	$ellipses = false;
-	if ( sizeof( $text ) > $text_limit ){
-		 for( $counter = sizeof( $text ); $counter > $text_limit; $counter-- ){
-			array_pop( $text );
-		 }
-		 $output_text = implode( ' ', $text );
-		 $ellipses = true;
+	if ( sizeof( $text ) > $output_limit )
+  {
+    for( $counter = sizeof( $text ); $counter > $output_limit; $counter-- )
+    {
+      array_pop( $text );
+		}
+		$output_text = implode( ' ', $text );
+		$ellipses = true;
 	}
 	else
 	{
-		 $output_text = implode( ' ', $text );
+		$output_text = implode( ' ', $text );
 	}
 	if ( $ellipses )
 	{
 		$output_text .= '&hellip;';
 	}
-	if ( $text_echo )
+	if ( ! $echo_result )
 	{
-		echo $output_text;
+		return $output_text;
 	}
-	else
-	{
-		return	$output_text;
-	}
+	echo	$output_text;
 }
 
 /* Remove empty paragraph tags from the_content
