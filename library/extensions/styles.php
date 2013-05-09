@@ -24,7 +24,8 @@ function lt3_load_styles()
 {
 
   /* Register styles here: */
-  wp_register_style( 'lt3_custom_admin_styles', LT3_FULL_STYLES_PATH . '/custom-admin-styles.css' );
+  wp_register_style( 'lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
+    . '/admin/custom-admin-styles.css' );
 
   /* Enqueue styles here: */
   if ( !is_admin() )
@@ -44,7 +45,7 @@ function lt3_load_styles()
  */
 if ( LT3_USE_CUSTOM_EDITOR_STYLES )
 {
-  add_editor_style( LT3_STYLES_PATH . '/custom-editor-style.css' );
+  add_editor_style( LT3_STYLES_PATH . '/admin/custom-editor-style.css' );
 }
 
 /**
@@ -57,6 +58,6 @@ if ( LT3_USE_CUSTOM_LOGIN_STYLES )
   function lt3_custom_login_styles()
   {
     echo '<link rel="stylesheet" type="text/css" href="'
-      . LT3_FULL_STYLES_PATH . '/custom-login-style.css">';
+      . LT3_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
   }
 }

@@ -70,15 +70,15 @@ require_once( LT3_FULL_EXTENSIONS_PATH . '/template.php' );
 
 /* Custom Post Types
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/post-type.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php' );
 
 /* Custom Taxonomies
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/taxonomy.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php' );
 
 /* Custom Meta Field Boxes
    ------------------------------------------------------------------------ */
-require_once( LT3_FULL_EXTENSIONS_PATH . '/meta-field-box.php' );
+require_once( LT3_FULL_EXTENSIONS_PATH . '/custom-meta-field-box.php' );
 
 /* Loop Functions
    ------------------------------------------------------------------------ */
@@ -126,4 +126,4 @@ require_once( LT3_FULL_PROJECT_PATH . '/site-settings-init.php' );
 
 /* Custom Meta Field Boxes Init
    ------------------------------------------------------------------------ */
-//require_once( LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php' );
+require_once( LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php' );

@@ -353,31 +353,16 @@ class LT3_Custom_Meta_Field_Box
          * @param {string} placeholder | optional
          * ------------------------------------------------------------------------ */
         case 'file':
+          wp_enqueue_style( 'thickbox' );
+          wp_enqueue_script( 'thickbox' );
+          wp_enqueue_script( 'media-upload' );
+          wp_enqueue_script( 'cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-file-upload.js'
+            , array( 'thickbox', 'media-upload' ) );
           $field_placeholder = ( isset( $field['placeholder'] ) ) ? $field['placeholder'] : '';
           echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'
             .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
             <input class="custom_upload_file_button button" type="button" value="Choose File" />
             <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
-          ?>
-            <script>
-            jQuery(function($) {
-              $('.custom_upload_file_button').click(function() {
-                $formField = $(this).siblings('.custom_upload_file');
-                tb_show('Select a File', 'media-upload.php?type=image&TB_iframe=true');
-                window.send_to_editor = function($html) {
-                 $fileUrl = $($html).attr('href');
-                 $formField.val($fileUrl);
-                 tb_remove();
-                };
-                return false;
-              } );
-              $('.custom_clear_file_button').click(function() {
-                $(this).parent().siblings('.custom_upload_file').val('');
-                return false;
-              });
-            });
-            </script>
-          <?php
           break;
 
         /* default */
