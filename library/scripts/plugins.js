@@ -1,6 +1,6 @@
 /**
  * Plugins
- * ------------------------------------------------------------------------
+ * ========================================================================
  * plugins.js
  * @version 2.0 | April 1st 2013
  * @package lt3
@@ -9,11 +9,11 @@
  * @license MIT license
  *
  * Basically any modular, stand alone script or plugin lives here
- * ------------------------------------------------------------------------ */
+ * ======================================================================== */
 
-/** 
- * Remove the .no-js class from the html tag 
- * to flag that is javascript is enabled 
+/**
+ * Remove the .no-js class from the html tag
+ * to flag that is javascript is enabled
  */
 var documentClassName = document.documentElement.className;
 documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
@@ -32,9 +32,9 @@ documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
   var length = methods.length;
   var console = (window.console = window.console || {});
   while (length--) {
-    method = methods[length];
+    method = methods[ length ];
     if (!console[method]) {
-      console[method] = noop;
+      console[ method ] = noop;
     }
   }
 }());

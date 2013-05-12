@@ -1,17 +1,17 @@
 <?php
 /**
  * Loop Archive
- * ------------------------------------------------------------------------
+ * ========================================================================
  * loop-archive.php
  * @version 2.0 | April 1st 2013
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
- * ------------------------------------------------------------------------ */ ?>
-<?php while( have_posts() ) : the_post(); ?>
+ * ======================================================================== */ ?>
+<?php while(have_posts()) : the_post(); ?>
 
-<article <?php post_class( 'archive entry excerpt post-'. get_the_ID() ); ?>>
+<article <?php post_class('archive entry excerpt post-'. get_the_ID()); ?>>
 
   <h2 class="article-title">
     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
@@ -21,9 +21,9 @@
 
   <?php lt3_include_post_meta(); ?>
 
-  <?php if ( has_post_thumbnail() ) : ?>
+  <?php if (has_post_thumbnail()) : ?>
   <figure class="post-thumbnail">
-    <?php the_post_thumbnail( 'thumbnail' ); ?>
+    <?php the_post_thumbnail('thumbnail'); ?>
   </figure>
   <?php endif; ?>
 

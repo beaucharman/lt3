@@ -1,14 +1,14 @@
 <?php
 /**
  * Dashboard Widget
- * ------------------------------------------------------------------------
+ * ========================================================================
  * dashboard.widget.php
  * @version 2.0 | April 1st 2013
  * @package lt3
  * @author  Beau Charman | @beaucharman | http://beaucharman.me
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
- * ------------------------------------------------------------------------ */ ?>
+ * ======================================================================== */ ?>
 
 <h2>Welcome to your website's administration area</h2>
 <p>For some online lessons on using WordPress, the software powering this site, visit:

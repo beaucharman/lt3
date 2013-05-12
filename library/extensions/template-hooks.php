@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Hooks
- * ------------------------------------------------------------------------
+ * ========================================================================
  * template-hooks.php
  * @version 2.0 | April 1st 2013
  * @package lt3
@@ -14,16 +14,16 @@
  * to the init hook, for example:
  */
 /*
-  add_action( 'init', 'remove_parent_actions' );
+  add_action('init', 'remove_parent_actions');
   function remove_parent_actions(){
     // remove_action functions
   }
 */
 
-/* ------------------------------------------------------------------------
+/* ========================================================================
    Template Hook Declaration
-   ------------------------------------------------------------------------ */
-function lt3_hook( $hook_name )
+   ======================================================================== */
+function lt3_hook($hook_name)
 {
-	do_action( $hook_name );
+	do_action($hook_name);
 }

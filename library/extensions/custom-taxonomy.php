@@ -1,7 +1,7 @@
 <?php
 /**
  * Custom Taxonomy
- * ------------------------------------------------------------------------
+ * ========================================================================
  * custom-taxonomy.php
  * @version 2.0 | April 1st 2013
  * @package lt3
@@ -27,9 +27,9 @@
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
-/* ------------------------------------------------------------------------
+/* ========================================================================
    Custom Taxonomy class
-   ------------------------------------------------------------------------ */
+   ======================================================================== */
 class LT3_Custom_Taxonomy
 {
   public $name;
@@ -40,7 +40,7 @@ class LT3_Custom_Taxonomy
 
   /**
    * Class Constructor
-   *  ------------------------------------------------------------------------
+   *  ========================================================================
    * __construct()
    * @param  {string}          $name
    * @param  {array || string} $post_type
@@ -48,57 +48,57 @@ class LT3_Custom_Taxonomy
    * @param  {array}           $options
    * @param  {string}          $help
    * @return {instance}        taxonomy
-   *  ------------------------------------------------------------------------ */
-  public function __construct( $name, $post_type = array(), $labels = array(), $options = array(), $help = null )
+   *  ======================================================================== */
+  public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
-    $this->name      = $this->uglify_words( $name );
+    $this->name      = $this->uglify_words($name);
     $this->post_type = $post_type;
     $this->labels    = $labels;
     $this->options   = $options;
     $this->help      = $help;
 
-    if ( !taxonomy_exists( $this->name ) )
+    if (!taxonomy_exists($this->name))
     {
-      add_action( 'init', array( &$this, 'register_custom_taxonomy' ), 0 );
-      if ( $this->help )
+      add_action('init', array(&$this, 'register_custom_taxonomy'), 0);
+      if ($this->help)
       {
-        add_action( 'contextual_help'
-          , array( &$this, 'add_custom_contextual_help' ), 10, 3 );
+        add_action('contextual_help'
+          , array(&$this, 'add_custom_contextual_help'), 10, 3);
       }
     }
   }
 
   /**
    * Register Custom Taxonomy
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * register_custom_taxonomy()
    * @param  {null}
    * @return {object} | taxonomy
-   * ------------------------------------------------------------------------ */
+   * ======================================================================== */
   public function register_custom_taxonomy()
   {
     /* Create the labels */
-    $this->labels['label_singular'] = ( isset( $this->labels['label_singular'] ) )
-      ? $this->labels['label_singular'] : $this->prettify_words( $this->name );
-    $this->labels['label_plural'] = ( isset( $this->labels['label_plural'] ) )
-      ? $this->labels['label_plural'] : $this->plurafy_words( $this->labels['label_singular'] );
-    $this->labels['menu_label'] = ( isset( $this->labels['menu_label'] ) )
+    $this->labels['label_singular'] = (isset($this->labels['label_singular']))
+      ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $this->labels['label_plural'] = (isset($this->labels['label_plural']))
+      ? $this->labels['label_plural'] : $this->plurafy_words($this->labels['label_singular']);
+    $this->labels['menu_label'] = (isset($this->labels['menu_label']))
       ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     $labels = array(
-      'name'              => __( $this->labels['label_plural'], $this->labels['label_plural'] . ' general name' ),
-      'singular_name'     => __( $this->labels['label_singular'], $this->labels['label_singular'] . ' singular name' ),
-      'menu_name'         => __( $this->labels['menu_label'] ),
-      'search_items'      => __( 'Search ' . $this->labels['label_plural'] ),
-      'all_items'         => __( 'All ' . $this->labels['label_plural'] ),
-      'parent_item'       => __( 'Parent ' . $this->labels['label_singular'] ),
-      'parent_item_colon' => __( 'Parent '. $this->labels['label_singular'] . ':' ),
-      'edit_item'         => __( 'Edit ' . $this->labels['label_singular'] ),
-      'update_item'       => __( 'Update ' . $this->labels['label_singular'] ),
-      'add_new_item'      => __( 'Add New ' . $this->labels['label_singular'] ),
-      'new_item_name'     => __( 'New ' . $this->labels['label_singular'] ),
+      'name'              => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
+      'singular_name'     => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
+      'menu_name'         => __($this->labels['menu_label']),
+      'search_items'      => __('Search ' . $this->labels['label_plural']),
+      'all_items'         => __('All ' . $this->labels['label_plural']),
+      'parent_item'       => __('Parent ' . $this->labels['label_singular']),
+      'parent_item_colon' => __('Parent '. $this->labels['label_singular'] . ':'),
+      'edit_item'         => __('Edit ' . $this->labels['label_singular']),
+      'update_item'       => __('Update ' . $this->labels['label_singular']),
+      'add_new_item'      => __('Add New ' . $this->labels['label_singular']),
+      'new_item_name'     => __('New ' . $this->labels['label_singular']),
 
-    );
+   );
 
     /* Configure the options */
     $options = array_merge(
@@ -108,23 +108,23 @@ class LT3_Custom_Taxonomy
         'query_var'         => $this->name,
         'rewrite'           => true,
         'show_admin_column' => true
-      ),
+     ),
       $this->options
-    );
+   );
 
     /* Register the new taxonomy */
-    register_taxonomy( $this->name, $this->post_type, $options );
+    register_taxonomy($this->name, $this->post_type, $options);
   }
 
   /**
    * Add Custom Contextual Help
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * add_custom_contextual_help()
-   * ------------------------------------------------------------------------ */
-  public function add_custom_contextual_help( $contextual_help, $screen_id, $screen )
+   * ======================================================================== */
+  public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
     $context = 'edit-' . $this->name;
-    if ( $context == $screen->id )
+    if ($context == $screen->id)
     {
       $contextual_help = $this->help;
     }
@@ -133,72 +133,72 @@ class LT3_Custom_Taxonomy
 
   /**
    * Get
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * get()
    * @param  {array}  $user_args
    * @return {object} | term data
-   * ------------------------------------------------------------------------ */
-  public function get( $user_args = array(), $single = false )
+   * ======================================================================== */
+  public function get($user_args = array(), $single = false)
   {
     $args = array_merge(
       array(
         'orderby'    => 'name',
         'order'      => 'ASC',
         'hide_empty' => false
-      ), $user_args
-    );
+     ), $user_args
+   );
 
-    if ( $single )
+    if ($single)
     {
-      $items = get_terms( $this->name, $args );
+      $items = get_terms($this->name, $args);
       return $items[0];
     }
-    return get_terms( $this->name, $args );
+    return get_terms($this->name, $args);
   }
 
   /**
    * Archive Link
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * archive_link()
    * @return {string}
-   * ------------------------------------------------------------------------ */
+   * ======================================================================== */
   public function archive_link()
   {
-    return home_url( '/' . $this->name );
+    return home_url('/' . $this->name);
   }
 
   /**
    * Prettify Words
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * prettify_words()
    * @param  {string} $words
    * @return {string}
    *
    * Creates a pretty version of a string, like
    * a pug version of a dog.
-   * ------------------------------------------------------------------------ */
-  public function prettify_words( $words )
+   * ======================================================================== */
+  public function prettify_words($words)
   {
-    return ucwords( str_replace( '_', ' ', $words ) );
+    return ucwords(str_replace('_', ' ', $words));
   }
 
   /**
    * Uglify Words
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * uglify_words()
    * @param  {string} $word
    * @return {string}
    *
    * creates a url firendly version of the given string.
-   * ------------------------------------------------------------------------ */
-  public function uglify_words( $words )
+   * ======================================================================== */
+  public function uglify_words($words)
   {
-    return strToLower( str_replace( ' ', '_', $words ) );
+    return strToLower(str_replace(' ', '_', $words));
   }
 
   /**
    * Plurify Words
-   * ------------------------------------------------------------------------
+   * ========================================================================
    * plurafy_words()
    * @param  {string} $words
    * @return {string}
@@ -206,14 +206,14 @@ class LT3_Custom_Taxonomy
    * Plurifies most common words. Not currently working
    * proper nouns, or more complex words, for example
    * knife -> knives, leaf -> leaves.
-   * ------------------------------------------------------------------------ */
-  public function plurafy_words( $words )
+   * ======================================================================== */
+  public function plurafy_words($words)
   {
-    if ( strToLower( substr( $words, -1 ) ) == 'y' )
+    if (strToLower(substr($words, -1)) == 'y')
     {
-      return substr_replace( $words, 'ies', -1 );
+      return substr_replace($words, 'ies', -1);
     }
-    if ( strToLower( substr( $words, -1 ) ) == 's' )
+    if (strToLower(substr($words, -1)) == 's')
     {
       return $words . 'es';
     }
