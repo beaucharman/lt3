@@ -19,7 +19,7 @@ var documentClassName = document.documentElement.className;
 documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
 
 /* Avoid `console` errors in browsers that lack a console. [from boilerplate] */
-(function() {
+(function () {
   'use strict';
   var method;
   var noop = function () {};
