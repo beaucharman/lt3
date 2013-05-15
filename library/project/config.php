@@ -128,11 +128,10 @@ define('HEADER_IMAGE',
   . '/library/images/header-banner.jpg'
 );
 
-/* Set to hide the text title from the front end
-   ======================================================================== */
 /**
- * Also set HEADER_TEXTCOLOR to ''
- * and * the h1 a span to 'display:none'
+ * Set to hide the text title from the front end
+ * ========================================================================
+ * Also set HEADER_TEXTCOLOR to '' * and * the h1 a span to 'display:none'
  */
 define('NO_HEADER_TEXT', false);
 
