@@ -1,4 +1,7 @@
 ![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/screenshot.png "A slightly powerfull, intelligent and simple WordPress theme.")
+
+> A slightly powerfull, intelligent and simple WordPress theme.
+
 ## Change Log
 1.0
 - Changing the elegant theme over to a more modulated theme, now lt3
