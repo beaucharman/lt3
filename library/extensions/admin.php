@@ -331,16 +331,16 @@ if (LT3_ENABLE_CUSTOM_HEADER)
 add_filter('user_contactmethods', 'lt3_custom_userfields', 10, 1);
 function lt3_custom_userfields($methods)
 {
-	/* Set user info fields */
-	$methods['contact_twitter']      = 'Twitter';
-	$methods['contact_linkedin']     = 'LinkedIn';
-	$methods['contact_phone_office'] = 'Work Phone Number';
-	$methods['contact_phone_mobile']	= 'Mobile Phone Number';
-	/* Unset user info fields */
-	unset($methods['aim']);
-	unset($methods['jabber']);
-	unset($methods['yim']);
-	return $methods;
+  /* Set user info fields */
+  $methods['contact_twitter']      = 'Twitter';
+  $methods['contact_linkedin']     = 'LinkedIn';
+  $methods['contact_phone_office'] = 'Work Phone Number';
+  $methods['contact_phone_mobile']	= 'Mobile Phone Number';
+  /* Unset user info fields */
+  unset($methods['aim']);
+  unset($methods['jabber']);
+  unset($methods['yim']);
+  return $methods;
 }
 
 /* ========================================================================
@@ -356,10 +356,10 @@ function lt3_custom_userfields($methods)
 add_action('admin_head', 'lt3_add_admin_nofollow_meta');
 function lt3_add_admin_nofollow_meta()
 {
-	if (is_admin())
+  if (is_admin())
   {
-		echo '<meta name="robots" content="noindex, nofollow">';
-	}
+    echo '<meta name="robots" content="noindex, nofollow">';
+  }
 }
 
 /**
@@ -378,7 +378,7 @@ remove_action('wp_head', 'wp_generator');
 add_filter('login_errors', 'lt3_alternate_login_error_message');
 function lt3_alternate_login_error_message()
 {
-	return '<strong>Sorry</strong>, it seems that your '
+  return '<strong>Sorry</strong>, it seems that your '
     . '<strong>username</strong> and '
     . '<strong>password</strong> combination is incorrect!';
 }
