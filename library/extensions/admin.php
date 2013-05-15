@@ -274,48 +274,42 @@ if (LT3_ENABLE_CUSTOM_BACKGROUND)
 }
 
 /**
- * Enable Custom Heaer
+ * Enable Custom Header
  * ========================================================================
  * add_custom_image_header functions
  * ======================================================================== */
 if (LT3_ENABLE_CUSTOM_HEADER)
 {
-	/* Include the header image in the admin preview. */
-	add_custom_image_header('lt3_header_style', 'lt3_admin_header_style');
-	function lt3_admin_header_style()
-	{ ?>
-		<style type="text/css">
-			#headimg {
-				width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-				height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-				background: no-repeat;
-			}
-		</style>
-	<?php }
-
-	/* Include the header image in the template. */
-	function lt3_header_style()
-	{ ?>
-		<style type="text/css">
-			.page-header { background:url(<?php header_image(); ?>) no-repeat; }
-			.page-header h1 a { color:#<?php header_textcolor(); ?>; }
-			<?php if (get_header_textcolor() == 'blank')
-			{ ?>
-				.page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
-				.page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
-			<?php }
-			else
-			{ ?>
-				.page-header .site-description	{ color:#<?php header_textcolor(); ?>; }
-			<?php } ?>
-			<?php if (NO_HEADER_TEXT)
-			{ ?>
-				.page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
-				.page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
-			<?php } ?>
-
-		</style>
-	<?php }
+  /* Include the header image in the admin preview. */
+  add_custom_image_header('lt3_header_style', 'lt3_admin_header_style');
+  function lt3_admin_header_style()
+  {
+  ?><style type="text/css">
+      #headimg {
+        width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
+        height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
+        background: no-repeat;
+      }
+    </style><?php
+  }
+  /* Include the header image in the template. */
+  function lt3_header_style()
+  {
+  ?><style type="text/css">
+      .page-header { background:url(<?php header_image(); ?>) no-repeat; }
+      .page-header h1 a { color:#<?php header_textcolor(); ?>; }
+    <?php if (get_header_textcolor() == 'blank') : ?>
+      .page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
+      .page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
+    <?php else : ?>
+      .page-header .site-description	{ color:#<?php header_textcolor(); ?>; }
+    <?php endif; ?>
+    <?php if (NO_HEADER_TEXT) : ?>
+      .page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
+      .page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
+    <?php endif; ?>
+    </style><?php
+  }
 }
 
 /* ========================================================================
