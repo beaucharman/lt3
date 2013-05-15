@@ -121,7 +121,8 @@ function lt3_meta_tag_description()
 		}
 		else
 		{
-		  if (have_posts()) {
+		  if (have_posts())
+      {
   		  while (have_posts())
   		  {
   		    the_post();
@@ -478,7 +479,8 @@ function lt3_delete_comment_link($id)
  * ========================================================================
  * Need to add functionality for post type, taxonomy,
  * ======================================================================== */
-function lt3_back_to_parent_link() {
+function lt3_back_to_parent_link()
+{
 	global $post;
 	$post = get_post($post);
 	$category = get_the_category();

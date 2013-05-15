@@ -9,7 +9,8 @@
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
  *
- * function register_shortcode_shortcode_name($atts, $content = null) {
+ * function register_shortcode_shortcode_name($atts, $content = null)
+ * {
  * 	 extract(shortcode_atts(array(
  * 	   'variable_name' => 'default_value',
  *   ), $atts));
@@ -18,7 +19,8 @@
  * add_shortcode('shortcode_name', 'register_shortcode_shortcode_name');
  *
  * Example:
- * function register_shortcode_hello($atts, $content = null) {
+ * function register_shortcode_hello($atts, $content = null)
+ * {
  * 	 extract(shortcode_atts(array(
  *     'color' => 'black',
  *   ), $atts));

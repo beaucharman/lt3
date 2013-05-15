@@ -35,7 +35,8 @@ function lt3_modify_post_mime_types($post_mime_types)
  * various filters to add more buttons to the TinyMCE editor
  * and a select style drop down
  * ======================================================================== */
-if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS) {
+if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
+{
 
   /* Level 1 buttons
      ======================================================================== */
@@ -125,7 +126,8 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS) {
   /* Allocate styles for the TinyMCE Editor style select
      ======================================================================== */
   add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
-  function lt3_mce_styleselect_editor_settings($settings) {
+  function lt3_mce_styleselect_editor_settings($settings)
+  {
     if (!empty($settings['theme_advanced_styles']))
     {
       $settings['theme_advanced_styles'] .= ';';

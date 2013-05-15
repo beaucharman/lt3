@@ -46,7 +46,7 @@ require_once(LT3_FULL_PROJECT_PATH . '/config.php');
 
 /* Initial Theme Setup
    ======================================================================== */
-require_once(LT3_FULL_PROJECT_PATH . '/initial-theme-setup.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
 
 /* Helper Functions
    ======================================================================== */
