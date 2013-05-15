@@ -328,18 +328,18 @@ if (LT3_ENABLE_CUSTOM_HEADER)
  * user_contactmethods filter to add custom userfields
  * ======================================================================== */
 add_filter('user_contactmethods', 'lt3_custom_userfields', 10, 1);
-function lt3_custom_userfields($contactmethods)
+function lt3_custom_userfields($methods)
 {
 	/* Set user info fields */
-	$contactmethods['contact_twitter']      = 'Twitter';
-	$contactmethods['contact_linkedin']     = 'LinkedIn';
-	$contactmethods['contact_phone_office'] = 'Work Phone Number';
-	$contactmethods['contact_phone_mobile']	= 'Mobile Phone Number';
+	$methods['contact_twitter']      = 'Twitter';
+	$methods['contact_linkedin']     = 'LinkedIn';
+	$methods['contact_phone_office'] = 'Work Phone Number';
+	$methods['contact_phone_mobile']	= 'Mobile Phone Number';
 	/* Unset user info fields */
-	unset($contactmethods['aim']);
-	unset($contactmethods['jabber']);
-	unset($contactmethods['yim']);
-	return $contactmethods;
+	unset($methods['aim']);
+	unset($methods['jabber']);
+	unset($methods['yim']);
+	return $methods;
 }
 
 /* ========================================================================

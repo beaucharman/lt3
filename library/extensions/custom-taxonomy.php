@@ -51,11 +51,20 @@ class LT3_Custom_Taxonomy
    *  ======================================================================== */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
+    /* Set class values */
     $this->name      = $this->uglify_words($name);
     $this->post_type = $post_type;
     $this->labels    = $labels;
     $this->options   = $options;
     $this->help      = $help;
+
+    /* Create the labels */
+    $this->labels['label_singular'] = (isset($this->labels['label_singular']))
+      ? $this->labels['label_singular'] : $this->prettify_words($this->name);
+    $this->labels['label_plural'] = (isset($this->labels['label_plural']))
+      ? $this->labels['label_plural'] : $this->plurafy_words($this->labels['label_singular']);
+    $this->labels['menu_label'] = (isset($this->labels['menu_label']))
+      ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
     if (!taxonomy_exists($this->name))
     {
@@ -77,14 +86,6 @@ class LT3_Custom_Taxonomy
    * ======================================================================== */
   public function register_custom_taxonomy()
   {
-    /* Create the labels */
-    $this->labels['label_singular'] = (isset($this->labels['label_singular']))
-      ? $this->labels['label_singular'] : $this->prettify_words($this->name);
-    $this->labels['label_plural'] = (isset($this->labels['label_plural']))
-      ? $this->labels['label_plural'] : $this->plurafy_words($this->labels['label_singular']);
-    $this->labels['menu_label'] = (isset($this->labels['menu_label']))
-      ? $this->labels['menu_label'] : $this->labels['label_plural'];
-
     $labels = array(
       'name'              => __($this->labels['label_plural'], $this->labels['label_plural'] . ' general name'),
       'singular_name'     => __($this->labels['label_singular'], $this->labels['label_singular'] . ' singular name'),
@@ -97,7 +98,6 @@ class LT3_Custom_Taxonomy
       'update_item'       => __('Update ' . $this->labels['label_singular']),
       'add_new_item'      => __('Add New ' . $this->labels['label_singular']),
       'new_item_name'     => __('New ' . $this->labels['label_singular']),
-
    );
 
     /* Configure the options */
