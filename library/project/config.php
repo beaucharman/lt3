@@ -66,8 +66,12 @@ define('LT3_ENABLE_STICKY_POSTS', false);
 define('LT3_NUMBER_OF_STICKY_POSTS', 2);
 
 /* ========================================================================
-   Script and behaviour Ooptions
+   Script, style and behaviour options
    ======================================================================== */
+
+/* style.css cache refresh
+   ======================================================================== */
+define('LT3_STYLE_CACHE_REFRESH', '0.1');
 
 /* Enable Google jQuery libraries
    ======================================================================== */
