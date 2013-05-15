@@ -18,7 +18,7 @@
 
 <section class="featured">
 
-<?php while($sticky_loop->have_posts()) : $sticky_loop->the_post(); ?>
+<?php while ($sticky_loop->have_posts()) : $sticky_loop->the_post(); ?>
 
 <?php if (!is_sticky()) continue; ?>
 
@@ -46,7 +46,7 @@
 
   </article>
 
-<?php endwhile; ?>
+<?php endwhile ; ?>
 
 </section>
 

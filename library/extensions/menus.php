@@ -22,7 +22,8 @@
 
 /* Register Menu Locations
    ======================================================================== */
-if (function_exists('register_nav_menu')){
+if (function_exists('register_nav_menu'))
+{
 
 	/* Main Navigation Menu */
 	register_nav_menu('main_navigation_menu', 'Main Navigation Menu');

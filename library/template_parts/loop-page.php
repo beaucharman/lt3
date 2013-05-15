@@ -9,7 +9,7 @@
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
  * ======================================================================== */ ?>
-<?php while(have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post(); ?>
 
 <article <?php post_class('page entry content post-'. get_the_ID()); ?>>
 
@@ -29,4 +29,4 @@
 
 <?php lt3_get_comments_template(); ?>
 
-<?php endwhile; ?>
+<?php endwhile ; ?>

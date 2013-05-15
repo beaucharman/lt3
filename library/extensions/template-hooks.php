@@ -15,7 +15,7 @@
  */
 /*
   add_action('init', 'remove_parent_actions');
-  function remove_parent_actions(){
+  function remove_parent_actions() {
     // remove_action functions
   }
 */

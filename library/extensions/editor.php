@@ -35,7 +35,7 @@ function lt3_modify_post_mime_types($post_mime_types)
  * various filters to add more buttons to the TinyMCE editor
  * and a select style drop down
  * ======================================================================== */
-if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS){
+if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS) {
 
   /* Level 1 buttons
      ======================================================================== */

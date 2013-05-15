@@ -101,7 +101,8 @@ if (!LT3_ENABLE_GLOBAL_COMMENTS)
   function lt3_remove_comment_support()
   {
     $post_types = get_post_types('', 'names');
-    foreach ($post_types as $post_type) {
+    foreach ($post_types as $post_type)
+    {
       remove_post_type_support($post_type, 'comments');
     }
   }
@@ -155,7 +156,7 @@ function lt3_add_custom_post_type_to_right_now()
 	$output = 'object';
 	$operator = 'and';
 	$post_types = get_post_types($args, $output, $operator);
-	foreach($post_types as $post_type)
+	foreach ($post_types as $post_type)
 	{
 		$num_posts = wp_count_posts($post_type->name);
 		$num = number_format_i18n($num_posts->publish);
@@ -173,7 +174,7 @@ function lt3_add_custom_post_type_to_right_now()
 		echo '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
 	}
 	$taxonomies = get_taxonomies($args, $output, $operator);
-	foreach($taxonomies as $taxonomy)
+	foreach ($taxonomies as $taxonomy)
 	{
 		$num_terms	= wp_count_terms($taxonomy->name);
 		$num = number_format_i18n($num_terms);

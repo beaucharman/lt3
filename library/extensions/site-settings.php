@@ -109,7 +109,7 @@ class LT3_Site_Settings_Page
     /* Declare the settings field */
     settings_fields($this->fields_group);
 
-    foreach($this->fields as $field)
+    foreach ($this->fields as $field)
     {
       /* Set the page's field name */
       $fields_name = $this->fields_name;

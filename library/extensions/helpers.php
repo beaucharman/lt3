@@ -138,7 +138,7 @@ function lt3_has_page_pagination()
  * ======================================================================== */
 function lt3_post_is_in_descendant_category($cats, $_post = null)
 {
-  foreach((array) $cats as $cat)
+  foreach ((array) $cats as $cat)
   {
     $descendants = get_term_children((int) $cat, 'category');
     if ($descendants && in_category($descendants, $_post))

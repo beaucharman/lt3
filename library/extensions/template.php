@@ -92,8 +92,11 @@ function lt3_title()
 	{
 		echo 'Nothing Found Here &#040;404&#041; &#045; ';
 	}
-	bloginfo('name'); if (get_bloginfo('description')){ echo ' &#045; ';
-  bloginfo('description'); } /* Always include */
+	bloginfo('name'); if (get_bloginfo('description'))
+  {
+    echo ' &#045; ';
+    bloginfo('description');
+  }
 }
 
 /**
@@ -118,8 +121,8 @@ function lt3_meta_tag_description()
 		}
 		else
 		{
-		  if (have_posts()){
-  		  while(have_posts())
+		  if (have_posts()) {
+  		  while (have_posts())
   		  {
   		    the_post();
   		    $excerpt = esc_attr(strip_tags(get_the_excerpt()));
@@ -475,7 +478,7 @@ function lt3_delete_comment_link($id)
  * ========================================================================
  * Need to add functionality for post type, taxonomy,
  * ======================================================================== */
-function lt3_back_to_parent_link(){
+function lt3_back_to_parent_link() {
 	global $post;
 	$post = get_post($post);
 	$category = get_the_category();
@@ -521,13 +524,13 @@ function lt3_get_taxonomies_terms_links()
 	$post = &get_post($post->ID); // get post by post id
 	$post_type = $post->post_type; // get post type by post
 	$taxonomies = get_object_taxonomies($post_type); // get post type taxonomies
-	foreach($taxonomies as $taxonomy)
+	foreach ($taxonomies as $taxonomy)
 	{
 		$terms = get_the_terms($post->ID, $taxonomy); // get the terms related to post
 		if (!empty($terms))
 		{
 			$out = array();
-			foreach($terms as $term)
+			foreach ($terms as $term)
 				$out[] = '<a href="' . get_term_link($term->slug, $taxonomy) . '">' . $term->name . '</a>';
 			$return = join(', ', $out);
 		}

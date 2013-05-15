@@ -151,7 +151,7 @@ class LT3_Custom_Meta_Field_Box
          * ======================================================================== */
         case 'checkbox':
           echo '<ul>';
-          foreach($field['options'] as $option => $label):
+          foreach ($field['options'] as $option => $label):
             echo '<li>';
             echo '  <label for="' . $field_id . '[' . $option . ']">';
             echo '  <input type="checkbox" name="' . $field_id . '[' . $option . ']" id="'
@@ -159,7 +159,7 @@ class LT3_Custom_Meta_Field_Box
                 ? ' checked' : '', ' />';
             echo '  &nbsp;' . $label . '</label>';
             echo '</li>';
-          endforeach;
+          endforeach ;
           echo '</ul>';
           break;
 
@@ -178,10 +178,10 @@ class LT3_Custom_Meta_Field_Box
             ? $field['null_option'] : 'Select';
           echo '<select name="' . $field_id . '" id="' . $field_id . '">';
           echo '  <option value="">' . $field_null_label . '&hellip;</option>';
-          foreach($field['options'] as $option => $label):
+          foreach ($field['options'] as $option => $label):
           echo '  <option value="' . $option . '" ', $value == $option
             ? ' selected' : '', '>' . $label . '</option>';
-          endforeach;
+          endforeach ;
           echo '</select>';
           break;
 
@@ -214,13 +214,13 @@ class LT3_Custom_Meta_Field_Box
               ? $field['null_option'] : 'Select';
             echo '<select name="' . $field_id . '" id="' . $field_id . '">';
             echo '  <option value="">' . $field_null_label . '&hellip;</option>';
-            foreach($items as $item):
+            foreach ($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
                 ? ' <small>(' . $item->post_type . ')</small>' : '';
               echo '  <option value="' . $item->ID . '" ', $value == $item->ID
                 ? ' selected' : '','>' . $item->post_title . $post_type_label . '</option>';
-            endforeach;
+            endforeach ;
             echo '</select>';
           }
           else
@@ -259,11 +259,11 @@ class LT3_Custom_Meta_Field_Box
               ? $field['null_option'] : 'Select';
             echo '<select name="' . $field_id . '" id="' . $field_id . '">';
             echo '  <option value="">' . $field_null_label . '&hellip;</option>';
-            foreach($items as $item):
+            foreach ($items as $item):
               $is_select = (in_array($item->term_id, $value)) ? ' checked' : '';
               echo '  <option value="' . $item->term_id . '" ', $value == $item->term_id
                 ? ' selected' : '','>' . $item->name . '</option>';
-            endforeach;
+            endforeach ;
             echo '</select>';
           }
           else
@@ -285,14 +285,14 @@ class LT3_Custom_Meta_Field_Box
          * ======================================================================== */
         case 'radio':
           echo '<ul>';
-          foreach($field['options'] as $option => $label):
+          foreach ($field['options'] as $option => $label):
             echo '<li>';
             echo '  <label for="' . $option . '">';
             echo '  <input type="radio" name="' . $field_id . '" id="' . $option
               . '" value="' . $option . '" ', $value == $option ? ' checked' : '',' />';
             echo '  &nbsp;' . $label . '</label>';
             echo '</li>';
-          endforeach;
+          endforeach ;
           echo '</ul>';
           break;
 
@@ -323,7 +323,7 @@ class LT3_Custom_Meta_Field_Box
           if ($items)
           {
             echo '<ul>';
-            foreach($items as $item):
+            foreach ($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
                 ? ' <small>(' . $item->post_type . ')</small>' : '';
@@ -333,7 +333,7 @@ class LT3_Custom_Meta_Field_Box
                 .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
               echo '</li>';
-            endforeach;
+            endforeach ;
             echo '</ul>';
           }
           else
@@ -450,7 +450,8 @@ class LT3_Custom_Meta_Field_Box
       }
       if ( isset($_POST['post_type'] ) )
       {
-        if ('page' == $_POST['post_type']) {
+        if ('page' == $_POST['post_type'])
+        {
           if (!current_user_can('edit_page', $post_id))
           {
             return $post_id;
