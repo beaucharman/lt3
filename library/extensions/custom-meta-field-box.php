@@ -106,7 +106,7 @@ class LT3_Custom_Meta_Field_Box
       echo '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
       echo '</p>';
 
-      echo '<p class="input-container">';
+      echo '<div class="input-container">';
 
       /* Render required field */
       $field['type'] = (isset($field['type'])) ? $field['type'] : '';
@@ -164,6 +164,54 @@ class LT3_Custom_Meta_Field_Box
           break;
 
         /**
+         * post_checkbox
+         * ========================================================================
+         * @param {string}          type
+         * @param {string}          id
+         * @param {string || array} post_type
+         * @param {array}           args
+         * @param {string}          label       | optional
+         * @param {string}          description | optional
+         * ======================================================================== */
+        case 'post_checkbox':
+
+          $value = ($value) ? $value : array();
+
+          $field['args'] = (isset($field['args']) && is_array($field['args']))
+            ? $field['args'] : array();
+          $args = array_merge(
+            array(
+            'post_type'      => $field['post_type'],
+            'posts_per_page' => -1
+            ), $field['args']
+         );
+          $items = get_posts($args);
+
+          if ($items)
+          {
+            echo '<ul>';
+            foreach ($items as $item):
+              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
+              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
+                ? ' <small>(' . $item->post_type . ')</small>' : '';
+              echo '<li>';
+              echo '  <label for="' . $field_id . '[' . $item->ID . ']">';
+              echo '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
+                .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+              echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
+              echo '</li>';
+            endforeach ;
+            echo '</ul>';
+            echo '<p><small>Manage ' . $this->get_edit_links($field['post_type']) . '</p></small>';
+          }
+          else
+          {
+            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type'])
+              .' items to choose from.';
+          }
+          break;
+
+        /**
          * select
          * ========================================================================
          * @param {string} type
@@ -214,14 +262,15 @@ class LT3_Custom_Meta_Field_Box
               ? $field['null_option'] : 'Select';
             echo '<select name="' . $field_id . '" id="' . $field_id . '">';
             echo '  <option value="">' . $field_null_label . '&hellip;</option>';
-            foreach ($items as $item):
+            foreach ($items as $item) :
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
                 ? ' <small>(' . $item->post_type . ')</small>' : '';
               echo '  <option value="' . $item->ID . '" ', $value == $item->ID
                 ? ' selected' : '','>' . $item->post_title . $post_type_label . '</option>';
-            endforeach ;
+            endforeach;
             echo '</select>';
+            echo '<p><small>Manage ' . $this->get_edit_links($field['post_type']) . '</p></small>';
           }
           else
           {
@@ -265,6 +314,8 @@ class LT3_Custom_Meta_Field_Box
                 ? ' selected' : '','>' . $item->name . '</option>';
             endforeach ;
             echo '</select>';
+            echo '<p><small>Manage '
+              . $this->get_edit_links($field['taxonomy'], 'edit-tags', 'taxonomy') . '</p></small>';
           }
           else
           {
@@ -297,53 +348,6 @@ class LT3_Custom_Meta_Field_Box
           break;
 
         /**
-         * post_checkbox
-         * ========================================================================
-         * @param {string}          type
-         * @param {string}          id
-         * @param {string || array} post_type
-         * @param {array}           args
-         * @param {string}          label       | optional
-         * @param {string}          description | optional
-         * ======================================================================== */
-        case 'post_checkbox':
-
-          $value = ($value) ? $value : array();
-
-          $field['args'] = (isset($field['args']) && is_array($field['args']))
-            ? $field['args'] : array();
-          $args = array_merge(
-            array(
-            'post_type'      => $field['post_type'],
-            'posts_per_page' => -1
-            ), $field['args']
-         );
-          $items = get_posts($args);
-
-          if ($items)
-          {
-            echo '<ul>';
-            foreach ($items as $item):
-              $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
-              $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? ' <small>(' . $item->post_type . ')</small>' : '';
-              echo '<li>';
-              echo '  <label for="' . $field_id . '[' . $item->ID . ']">';
-              echo '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
-                .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-              echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
-              echo '</li>';
-            endforeach ;
-            echo '</ul>';
-          }
-          else
-          {
-            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type'])
-              .' items to choose from.';
-          }
-          break;
-
-        /**
          * file
          * ========================================================================
          * @param {string} type
@@ -372,7 +376,7 @@ class LT3_Custom_Meta_Field_Box
           break;
       }
 
-      echo '</p>';
+      echo '</div>';
 
       /* Display the description */
       if (isset($field['description']))
@@ -427,6 +431,60 @@ class LT3_Custom_Meta_Field_Box
   public function uglify_words($words)
   {
     return strToLower(str_replace(' ', '_', $words));
+  }
+
+  /**
+   * Plurify Words
+   * ========================================================================
+   * plurafy_words()
+   * @param  $words | string
+   * @return $words | string
+   *
+   * Plurifies most common words. Not currently working proper nouns,
+   * or more complex words, for example knife => knives, leaf => leaves.
+   * ======================================================================== */
+  public function plurafy_words($words)
+  {
+    if (strToLower(substr($words, -1)) == 'y')
+    {
+      return substr_replace($words, 'ies', -1);
+    }
+    if (strToLower(substr($words, -1)) == 's')
+    {
+      return $words . 'es';
+    }
+    else
+    {
+      return $words . 's';
+    }
+  }
+
+  /**
+   * Get Edit Links
+   * ========================================================================
+   * get_edit_links()
+   * @param  {string} $names
+   * @param  {string} $type
+   * @param  {string} $page
+   * @return {string}
+   * ======================================================================== */
+  public function get_edit_links($names = null, $type = 'post_type', $page = 'edit')
+  {
+    $links = '';
+    if(is_array($names))
+    {
+      foreach ($names as $item)
+      {
+        $links .= '<a href="./' . $page . '.php?' . $type . '=' . $item . '" title="edit '
+          . $this->plurafy_words($item) . '">' . $this->plurafy_words($item) . '</a>, ';
+      }
+    }
+    else
+    {
+      $links = '<a href="./' . $page . '.php?' . $type . '=' . $names . '" title="edit '
+        . $this->plurafy_words($names) . '">' . $this->plurafy_words($names) . '</a>';
+    }
+   return rtrim($links, ", \t\n");
   }
 
   /**

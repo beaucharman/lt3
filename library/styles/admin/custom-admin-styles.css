@@ -34,7 +34,11 @@
 }
 
 .custom-field-container {
-  margin-bottom: 30px;
+  margin: 2em 0;
+}
+
+.input-container {
+  margin: 1em 0;
 }
 
 .lt3-form-container .description, .lt3-form-container small {
@@ -67,7 +71,8 @@
 .lt3-form-container textarea {
   border-radius: 4px;
   border: 1px solid #bbb;
-  padding: 5px;
+  padding: 4px;
+  font-size: 1em;
 }
 
 .lt3-form-container input:focus,

@@ -217,6 +217,7 @@ class LT3_Custom_Post_Type
    * plurafy_words()
    * @param  $words | string
    * @return $words | string
+   *
    * Plurifies most common words. Not currently working proper nouns,
    * or more complex words, for example knife => knives, leaf => leaves.
    * ======================================================================== */

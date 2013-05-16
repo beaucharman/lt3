@@ -26,10 +26,22 @@ add_theme_support('post-thumbnails');
    ======================================================================== */
 set_post_thumbnail_size(LT3_PAGE_CONTENT_WIDTH / 4, 9999);
 
-/* Add Custom Image Styles
+/* Add custom image sizes
    ======================================================================== */
-add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
-add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2, 300, true);
+add_action('init', 'lt3_add_image_sizes');
+function lt3_add_image_sizes()
+{
+  add_image_size('large-hero-image', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true);
+  add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2, 300, true);
+}
+
+add_filter('image_size_names_choose', 'lt3_show_image_sizes');
+function lt3_show_image_sizes($sizes)
+{
+  $sizes['large-hero-image'] = __('Large Hero Image');
+  $sizes['small-feature-image'] = __('Small Feature Image');
+  return $sizes;
+}
 
 /**
  * lt3 Title
