@@ -126,4 +126,4 @@ require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 
 /* Custom Meta Field Boxes Init
    ======================================================================== */
-require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
+//require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
