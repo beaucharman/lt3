@@ -471,7 +471,7 @@ class LT3_Custom_Meta_Field_Box
   public function get_edit_links($names = null, $type = 'post_type', $page = 'edit')
   {
     $links = '';
-    if(is_array($names))
+    if (is_array($names))
     {
       foreach ($names as $item)
       {
