@@ -118,12 +118,12 @@ require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 
 /* Custom Post Types Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
 
 /* Custom Taxonomies Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
 
 /* Custom Meta Field Boxes Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');

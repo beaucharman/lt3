@@ -16,3 +16,5 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-taxonomies
  * ======================================================================== */
+
+new LT3_Custom_Taxonomy('genre', 'movie');

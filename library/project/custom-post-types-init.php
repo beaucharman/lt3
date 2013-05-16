@@ -16,3 +16,5 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-post-types
  * ======================================================================== */
+
+new LT3_Custom_Post_Type('movie');
