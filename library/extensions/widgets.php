@@ -19,17 +19,6 @@
  *	 add_action('widgets_init', 'name_of_sidebar_init_function');
  */
 
-/*
-	For more widget areas, use:
-		register_sidebar(
-			array(
-				'name'        => 'Sidebar Widget Name',
-				'id'          => 'sidebar-widget-name',
-				'description' => __('These are widgets for the sidebar.')
-			)
-		);
-*/
-
 /* ========================================================================
 	 Widget Areas
    ======================================================================== */

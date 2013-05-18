@@ -103,7 +103,7 @@ class LT3_Site_Settings_Page
     /* Show the page settings title */
     screen_icon('themes'); echo '<h2>' . $this->title  . '</h2>';
 
-    echo '<form method="post" action="options . php">';
+    echo '<form method="post" action="options.php">';
     echo '<table class="form-table lt3-form-container">';
 
     /* Declare the settings field */
@@ -132,7 +132,7 @@ class LT3_Site_Settings_Page
          * ========================================================================
          * @param {string} $label
          * ======================================================================== */
-        echo '<td class="divider" colspan="2">' . $field['label'] . '</td>';
+        echo '<td class="divider" colspan="2">' . $field['content'] . '</td>';
       }
       else
       {
@@ -185,7 +185,29 @@ class LT3_Site_Settings_Page
             break;
 
           /**
-           * post_type_select
+           * select
+           * ========================================================================
+           * @param {string} 'id'
+           * @param {string} 'label'
+           * @param {string} 'description'
+           * @param {array}  'options'
+           * ======================================================================== */
+          case 'select':
+            echo '<select name="' . $fields_name . '[' . $id . ']" id="'
+              . $fields_name . '[' . $id . ']">';
+            echo '<option value="">Select&hellip;</option>';
+            foreach ($field['options'] as $option)
+            {
+              $is_select = ($option == $value) ? ' selected' : '';
+              echo '  <option id="' . $fields_name . '[' . $id . ']" name="'
+                . $fields_name . '[' . $id . ']" value="' . $this->uglify_words($option) . '"'
+                .  $is_select . '>' . $this->prettify_words($option) . '</option>';
+            }
+            echo '</select>';
+            break;
+
+          /**
+           * post_select
            * ========================================================================
            * @param {string}          'id'
            * @param {string}          'label'
@@ -193,20 +215,16 @@ class LT3_Site_Settings_Page
            * @param {string}          'description'
            * @param {array}           'args'
            * ======================================================================== */
-          case 'post_type_select':
+          case 'post_select':
 
             $field['args'] = (isset($field['args'])) ? $field['args'] : array();
-            $args = merge_array(
+            $args = array_merge(
               array(
                 'post_type'      => $field['post_type'],
                 'posts_per_page' => -1
-             ), $field['args']
-           );
+              ), $field['args']
+            );
             $items = get_posts($args);
-
-            $items = get_posts(array (
-              'post_type' => $field['post_type']
-              , 'posts_per_page' => -1) );
             echo '<select name="' . $fields_name . '[' . $id . ']" id="'
               . $fields_name . '[' . $id . ']">';
             echo '<option value="">Select&hellip;</option>';
@@ -219,6 +237,28 @@ class LT3_Site_Settings_Page
             }
             echo '</select>';
             break;
+
+            /**
+             * file
+             * ========================================================================
+             * @param {string} type
+             * @param {string} id
+             * @param {string} label       | optional
+             * @param {string} description | optional
+             * @param {string} placeholder | optional
+             * ======================================================================== */
+            case 'file':
+              wp_enqueue_style('thickbox');
+              wp_enqueue_script('thickbox');
+              wp_enqueue_script('media-upload');
+              wp_enqueue_script('cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-file-upload.js'
+                , array('thickbox', 'media-upload'));
+              $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+              echo '<input name="' . $fields_name . '[' . $id . ']" type="text" placeholder="'
+                .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
+                <input class="custom_upload_file_button button" type="button" value="Choose File" />
+                <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
+              break;
 
           /* default */
           default:

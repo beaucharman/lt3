@@ -40,48 +40,6 @@
  * More information http://codex.wordpress.org/Shortcode_API.
  * ======================================================================== */
 
-/* [lt3_home_url]
-   ======================================================================== */
-add_shortcode('lt3_home_url', 'lt3_register_shortcode_home_url');
-function lt3_register_shortcode_home_url($atts, $content = null)
-{
-	return home_url();
-}
-
-/* [lt3_base_media_url]
-   ======================================================================== */
-add_shortcode('lt3_base_media_url', 'lt3_register_shortcode_base_media_url');
-function lt3_register_shortcode_base_media_url($atts, $content = null)
-{
-	$uploads = wp_upload_dir();
-	return $uploads['baseurl'];
-}
-
-/* [lt3_full_media_url]
-   ======================================================================== */
-add_shortcode('lt3_full_media_url', 'lt3_register_shortcode_full_media_url');
-function lt3_register_shortcode_full_media_url($atts, $content = null)
-{
-	$uploads = wp_upload_dir();
-	return $uploads['url'];
-}
-
-/* [lt3_parent_theme_url]
-   ======================================================================== */
-add_shortcode('lt3_parent_theme_url', 'lt3_register_shortcode_parent_theme_url');
-function lt3_register_shortcode_parent_theme_url($atts, $content = null)
-{
-	return get_template_directory_uri();
-}
-
-/* [lt3_child_theme_url]
-   ======================================================================== */
-add_shortcode('lt3_child_theme_url', 'lt3_register_shortcode_child_theme_url');
-function lt3_register_shortcode_child_theme_url($atts, $content = null)
-{
-	return get_stylesheet_directory_uri();
-}
-
 /* [lt3_replace_with_content]
    ======================================================================== */
 add_shortcode('lt3_replace_with_content', 'lt3_register_shortcode_replace_with_content');
