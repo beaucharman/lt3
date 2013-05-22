@@ -59,7 +59,7 @@ class LT3_Custom_Post_Type
     $this->labels['label_singular'] = (isset($this->labels['label_singular']))
       ? $this->labels['label_singular'] : $this->prettify_words($this->name);
     $this->labels['label_plural'] = (isset($this->labels['label_plural']))
-      ? $this->labels['label_plural'] : $this->plurafy_words($this->labels['label_singular']);
+      ? $this->labels['label_plural'] : $this->plurify_words($this->labels['label_singular']);
     $this->labels['menu_label'] = (isset($this->labels['menu_label']))
       ? $this->labels['menu_label'] : $this->labels['label_plural'];
 
@@ -214,14 +214,14 @@ class LT3_Custom_Post_Type
   /**
    * Plurify Words
    * ========================================================================
-   * plurafy_words()
+   * plurify_words()
    * @param  $words | string
    * @return $words | string
    *
    * Plurifies most common words. Not currently working proper nouns,
    * or more complex words, for example knife => knives, leaf => leaves.
    * ======================================================================== */
-  public function plurafy_words($words)
+  public function plurify_words($words)
   {
     if (strToLower(substr($words, -1)) == 'y')
     {

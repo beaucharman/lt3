@@ -149,7 +149,6 @@ function lt3_register_shortcode_dynamic_sidebar($atts, $content = null)
 	extract(shortcode_atts(array(
 		'sidebar_id' => ''
  	), $atts));
-
 	return lt3_get_dynamic_sidebar($sidebar_id);
 }
 
@@ -172,7 +171,6 @@ function lt3_register_shortcode_get_template_part_content($atts, $content = null
 		  'primary_part'   => 'loop',
 		  'secondary_part' => 'sticky'
  		), $atts));
-
  		return lt3_get_template_part_content($primary_part, $secondary_part);
 }
 

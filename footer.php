@@ -13,9 +13,7 @@
 
       <footer class="page-footer">
         <?php if (is_active_sidebar('footer-sidebar-widgets'))
-        {
-          dynamic_sidebar('footer-sidebar-widgets');
-        } ?>
+              { dynamic_sidebar('footer-sidebar-widgets'); } ?>
 
         <?php lt3_page_footer_menu(); ?>
 

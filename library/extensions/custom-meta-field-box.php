@@ -436,14 +436,14 @@ class LT3_Custom_Meta_Field_Box
   /**
    * Plurify Words
    * ========================================================================
-   * plurafy_words()
+   * plurify_words()
    * @param  $words | string
    * @return $words | string
    *
    * Plurifies most common words. Not currently working proper nouns,
    * or more complex words, for example knife => knives, leaf => leaves.
    * ======================================================================== */
-  public function plurafy_words($words)
+  public function plurify_words($words)
   {
     if (strToLower(substr($words, -1)) == 'y')
     {
@@ -476,13 +476,13 @@ class LT3_Custom_Meta_Field_Box
       foreach ($names as $item)
       {
         $links .= '<a href="./' . $page . '.php?' . $type . '=' . $item . '" title="edit '
-          . $this->plurafy_words($item) . '">' . $this->plurafy_words($item) . '</a>, ';
+          . $this->plurify_words($item) . '">' . $this->plurify_words($item) . '</a>, ';
       }
     }
     else
     {
       $links = '<a href="./' . $page . '.php?' . $type . '=' . $names . '" title="edit '
-        . $this->plurafy_words($names) . '">' . $this->plurafy_words($names) . '</a>';
+        . $this->plurify_words($names) . '">' . $this->plurify_words($names) . '</a>';
     }
    return rtrim($links, ", \t\n");
   }

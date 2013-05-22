@@ -267,7 +267,7 @@ function lt3_uglify_words($words)
 /**
  * Plurify Words
  * ========================================================================
- * lt3_plurafy_words()
+ * lt3_plurify_words()
  * @param  $words | string
  * @return string
  *
@@ -275,7 +275,7 @@ function lt3_uglify_words($words)
  * proper nouns, or more complex words, for example
  * knife -> knives, leaf -> leaves.
  * ======================================================================== */
-function lt3_plurafy_words($words)
+function lt3_plurify_words($words)
 {
   if (strToLower(substr($words, -1)) == 'y')
   {
