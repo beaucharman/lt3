@@ -26,5 +26,5 @@
    ======================================================================== */
 function lt3_hook($hook_name)
 {
-	do_action($hook_name);
+  do_action($hook_name);
 }

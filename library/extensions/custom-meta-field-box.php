@@ -54,8 +54,8 @@ class LT3_Custom_Meta_Field_Box
     $this->fields    = $this->cmfb['fields'];
 
     /* Magic */
-    add_action('add_meta_boxes', array( &$this, 'add_custom_meta_field_box'));
-    add_action('save_post', array( &$this, 'save_data'));
+    add_action('add_meta_boxes', array(&$this, 'add_custom_meta_field_box'));
+    add_action('save_post', array(&$this, 'save_data'));
   }
 
   /**
@@ -111,7 +111,7 @@ class LT3_Custom_Meta_Field_Box
       /* Render required field */
       $field['type'] = (isset($field['type'])) ? $field['type'] : '';
 
-      switch($field['type'])
+      switch ($field['type'])
       {
         /**
          * text
@@ -245,15 +245,14 @@ class LT3_Custom_Meta_Field_Box
          * @param {string}          description | optional
          * ======================================================================== */
         case 'post_select':
-
           $field['args'] = (isset($field['args']) && is_array($field['args']))
             ? $field['args'] : array();
           $args = array_merge(
             array(
-            'post_type'      => $field['post_type'],
-            'posts_per_page' => -1
+              'post_type'      => $field['post_type'],
+              'posts_per_page' => -1
             ), $field['args']
-         );
+          );
           $items = get_posts($args);
 
           if ($items)
@@ -363,10 +362,10 @@ class LT3_Custom_Meta_Field_Box
           wp_enqueue_script('cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-file-upload.js'
             , array('thickbox', 'media-upload'));
           $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-          echo '<input name="'.$field_id.'" id="'.$field_id.'" type="text" placeholder="'
-            .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
-            <input class="custom_upload_file_button button" type="button" value="Choose File" />
-            <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
+          echo '<input name="' . $field_id . '" id="' . $field_id . '" type="text" placeholder="'
+            . $field_placeholder . '" class="custom_upload_file" value="' . $value . '" size="100" />'
+            . '<input class="custom_upload_file_button button" type="button" value="Choose File" />'
+            . '<br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
           break;
 
         /* default */
@@ -375,15 +374,12 @@ class LT3_Custom_Meta_Field_Box
             . 'the type allocated for this input is not valid.</span></p>';
           break;
       }
-
       echo '</div>';
-
       /* Display the description */
       if (isset($field['description']))
       {
-        echo '<p class="description">'.$field['description'].'</p>';
+        echo '<p class="description">' . $field['description'] . '</p>';
       }
-
       echo '</li>';
     }
     echo '</ul>';
@@ -496,17 +492,17 @@ class LT3_Custom_Meta_Field_Box
    * ======================================================================== */
   public function save_data($post_id)
   {
-    if ( isset( $_POST['custom_meta_fields_box_nonce'] ) )
+    if (isset($_POST['custom_meta_fields_box_nonce']))
     {
-      if ( !wp_verify_nonce( $_POST['custom_meta_fields_box_nonce'], basename(__FILE__) ) )
+      if (! wp_verify_nonce($_POST['custom_meta_fields_box_nonce'], basename(__FILE__)))
       {
         return $post_id;
       }
-      if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE )
+      if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
       {
         return $post_id;
       }
-      if ( isset($_POST['post_type'] ) )
+      if (isset($_POST['post_type']))
       {
         if ('page' == $_POST['post_type'])
         {
@@ -522,8 +518,8 @@ class LT3_Custom_Meta_Field_Box
       }
       foreach ($this->fields as $field)
       {
-        $field_id = $this->get_field_id( $this->id, $field['id'] );
-        if ( $field_id && isset($_POST[$field_id]))
+        $field_id = $this->get_field_id($this->id, $field['id']);
+        if ($field_id && isset($_POST[$field_id]))
         {
           $old = get_post_meta($post_id, $field_id, true);
           $new = $_POST[$field_id];

@@ -16,7 +16,7 @@
  * ======================================================================== */
 
 /* ========================================================================
-	 Dashboard and login functions
+   Dashboard and login functions
    ======================================================================== */
 
 /**
@@ -28,11 +28,11 @@
 add_filter('admin_footer_text', 'lt3_replace_admin_footer');
 function lt3_replace_admin_footer()
 {
-	if (function_exists('lt3_get_data_with_curl'))
+  if (function_exists('lt3_get_data_with_curl'))
   {
     $admin_footer = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.footer.php');
   }
-	return $admin_footer;
+  return $admin_footer;
 }
 
 /**
@@ -44,8 +44,8 @@ function lt3_replace_admin_footer()
 add_action('wp_dashboard_setup', 'lt3_custom_dashboard_widgets');
 function lt3_custom_dashboard_widgets()
 {
-	global $wp_meta_boxes;
-	wp_add_dashboard_widget(
+  global $wp_meta_boxes;
+  wp_add_dashboard_widget(
     'custom_admin_widget',
     'Website Information',
     'lt3_create_website_support_widget_function'
@@ -53,11 +53,11 @@ function lt3_custom_dashboard_widgets()
 }
 function lt3_create_website_support_widget_function()
 {
-	if (function_exists('lt3_get_data_with_curl'))
+  if (function_exists('lt3_get_data_with_curl'))
   {
     $admin_widget = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.widget.php');
   }
-	echo $admin_widget;
+  echo $admin_widget;
 }
 
 /**
@@ -69,17 +69,17 @@ function lt3_create_website_support_widget_function()
 if (LT3_ENABLE_TUTORIAL_SECTION)
 {
   add_action('admin_menu', 'lt3_create_tutorial_menu');
-	function lt3_create_tutorial_menu()
-	{
-		add_menu_page('User Guide', 'User Guide', 'manage_options', 'user-guide', 'lt3_user_guide');
-		function lt3_user_guide()
-		{
-			$admin_file = (function_exists('lt3_get_data_with_curl'))
+  function lt3_create_tutorial_menu()
+  {
+    add_menu_page('User Guide', 'User Guide', 'manage_options', 'user-guide', 'lt3_user_guide');
+    function lt3_user_guide()
+    {
+      $admin_file = (function_exists('lt3_get_data_with_curl'))
         ? lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.user-guide.php')
         : 'Sorry, could not find the file.';
-			echo $admin_file;
-		}
-	}
+      echo $admin_file;
+    }
+  }
 }
 
 /**
@@ -90,7 +90,7 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
 if (!LT3_ENABLE_GLOBAL_COMMENTS)
 {
   /* Remove the comments admin menu item */
-  add_action( 'admin_menu', 'lt3_remove_admin_menus' );
+  add_action('admin_menu', 'lt3_remove_admin_menus');
   function lt3_remove_admin_menus()
   {
     remove_menu_page('edit-comments.php');
@@ -108,7 +108,7 @@ if (!LT3_ENABLE_GLOBAL_COMMENTS)
   }
 
   /* Remove comments notifications from the adminbar */
-  add_action( 'wp_before_admin_bar_render', 'lt3_admin_bar_render' );
+  add_action('wp_before_admin_bar_render', 'lt3_admin_bar_render');
   function lt3_admin_bar_render()
   {
     global $wp_admin_bar;
@@ -132,15 +132,15 @@ if (!LT3_ENABLE_GLOBAL_COMMENTS)
 add_action('wp_dashboard_setup', 'lt3_remove_dashboard_widgets');
 function lt3_remove_dashboard_widgets()
 {
-	remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
-	remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');
-	remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
-	remove_meta_box('yoast_db_widget', 'dashboard', 'side');
-	remove_meta_box('dashboardb_xavisys', 'dashboard', 'normal');
-	remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
-	remove_meta_box('bbp-dashboard-right-now', 'dashboard', 'normal');
-	remove_meta_box('dashboard_primary', 'dashboard', 'side');
-	remove_meta_box('dashboard_secondary', 'dashboard', 'side');
+  remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+  remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');
+  remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
+  remove_meta_box('yoast_db_widget', 'dashboard', 'side');
+  remove_meta_box('dashboardb_xavisys', 'dashboard', 'normal');
+  remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
+  remove_meta_box('bbp-dashboard-right-now', 'dashboard', 'normal');
+  remove_meta_box('dashboard_primary', 'dashboard', 'side');
+  remove_meta_box('dashboard_secondary', 'dashboard', 'side');
 }
 
 /**
@@ -152,45 +152,45 @@ function lt3_remove_dashboard_widgets()
 add_action('right_now_content_table_end', 'lt3_add_custom_post_type_to_right_now');
 function lt3_add_custom_post_type_to_right_now()
 {
-	$args = array('public' => true, '_builtin' => false);
-	$output = 'object';
-	$operator = 'and';
-	$post_types = get_post_types($args, $output, $operator);
-	foreach ($post_types as $post_type)
-	{
-		$num_posts = wp_count_posts($post_type->name);
-		$num = number_format_i18n($num_posts->publish);
-		$text = _n(
+  $args = array('public' => true, '_builtin' => false);
+  $output = 'object';
+  $operator = 'and';
+  $post_types = get_post_types($args, $output, $operator);
+  foreach ($post_types as $post_type)
+  {
+    $num_posts = wp_count_posts($post_type->name);
+    $num = number_format_i18n($num_posts->publish);
+    $text = _n(
       $post_type->labels->singular_name,
       $post_type->labels->name,
       intval($num_posts->publish)
     );
-		if (current_user_can('edit_posts'))
-		{
-			$num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
-			$text = "<a href='edit.php?post_type=$post_type->name'>$text</a>";
-		}
-		echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>';
-		echo '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
-	}
-	$taxonomies = get_taxonomies($args, $output, $operator);
-	foreach ($taxonomies as $taxonomy)
-	{
-		$num_terms	= wp_count_terms($taxonomy->name);
-		$num = number_format_i18n($num_terms);
-		$text = _n(
+    if (current_user_can('edit_posts'))
+    {
+      $num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
+      $text = "<a href='edit.php?post_type=$post_type->name'>$text</a>";
+    }
+    echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>';
+    echo '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
+  }
+  $taxonomies = get_taxonomies($args, $output, $operator);
+  foreach ($taxonomies as $taxonomy)
+  {
+    $num_terms  = wp_count_terms($taxonomy->name);
+    $num = number_format_i18n($num_terms);
+    $text = _n(
       $taxonomy->labels->singular_name,
       $taxonomy->labels->name,
       intval($num_terms)
     );
-		if (current_user_can('manage_categories'))
-		{
-			$num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
-			$text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
-		}
-		echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>';
-		echo '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
-	}
+    if (current_user_can('manage_categories'))
+    {
+      $num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
+      $text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
+    }
+    echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>';
+    echo '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
+  }
 }
 
 /* ========================================================================
@@ -253,7 +253,7 @@ function lt3_restriction_taxonomy_dropdown($query)
 }
 
 /* ========================================================================
-	 Theme customisation settings
+   Theme customisation settings
    ======================================================================== */
 
 /**
@@ -264,13 +264,13 @@ function lt3_restriction_taxonomy_dropdown($query)
 if (LT3_ENABLE_CUSTOM_BACKGROUND)
 {
   add_theme_support('custom-background', $defaults);
-	$defaults = array(
-		'default-color'          => LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR,
-		'default-image'          => get_template_directory_uri() . '/library/images/background.jpg',
-		'wp-head-callback'       => '_custom_background_cb',
-		'admin-head-callback'    => '',
-		'admin-preview-callback' => ''
-	);
+  $defaults = array(
+    'default-color'          => LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR,
+    'default-image'          => get_template_directory_uri() . '/library/images/background.jpg',
+    'wp-head-callback'       => '_custom_background_cb',
+    'admin-head-callback'    => '',
+    'admin-preview-callback' => ''
+  );
 }
 
 /**
@@ -300,20 +300,20 @@ if (LT3_ENABLE_CUSTOM_HEADER)
       .page-header h1 a { color:#<?php header_textcolor(); ?>; }
     <?php if (get_header_textcolor() == 'blank') : ?>
       .page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
-      .page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
+      .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
     <?php else : ?>
-      .page-header .site-description	{ color:#<?php header_textcolor(); ?>; }
+      .page-header .site-description  { color:#<?php header_textcolor(); ?>; }
     <?php endif; ?>
     <?php if (NO_HEADER_TEXT) : ?>
       .page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
-      .page-header .site-description	{ text-indent:-9999px; white-space: nowrap; }
+      .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
     <?php endif; ?>
     </style><?php
   }
 }
 
 /* ========================================================================
-	 User related functions
+   User related functions
    ======================================================================== */
 
 /**
@@ -329,7 +329,7 @@ function lt3_custom_userfields($methods)
   $methods['contact_twitter']      = 'Twitter';
   $methods['contact_linkedin']     = 'LinkedIn';
   $methods['contact_phone_office'] = 'Work Phone Number';
-  $methods['contact_phone_mobile']	= 'Mobile Phone Number';
+  $methods['contact_phone_mobile']  = 'Mobile Phone Number';
   /* Unset user info fields */
   unset($methods['aim']);
   unset($methods['jabber']);
@@ -338,7 +338,7 @@ function lt3_custom_userfields($methods)
 }
 
 /* ========================================================================
-	 Security measures
+   Security measures
    ======================================================================== */
 
 /**

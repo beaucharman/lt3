@@ -123,7 +123,7 @@ class LT3_Custom_Post_Type
    * ======================================================================== */
   public function add_custom_contextual_help($contextual_help, $screen_id, $screen)
   {
-    foreach  ($this->help as $help)
+    foreach ($this->help as $help)
     {
       if (!$help['context'])
       {

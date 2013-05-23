@@ -25,6 +25,11 @@
  *
  * For more information about registering custom taxonomies:
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
+ *
+ * #Protip
+ * If referencing a custom taxonomy and you receive an 'invalid taxonomy'
+ * error (mostly likely outside of template files), run your code *after* the
+ * init function with an action hook.
  */
 
 /* ========================================================================

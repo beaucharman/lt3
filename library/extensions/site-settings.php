@@ -228,7 +228,7 @@ class LT3_Site_Settings_Page
             echo '<select name="' . $fields_name . '[' . $id . ']" id="'
               . $fields_name . '[' . $id . ']">';
             echo '<option value="">Select&hellip;</option>';
-            foreach ( $items as $item )
+            foreach ($items as $item)
             {
               $is_select = ($item->ID == $value) ? ' selected' : '';
               echo '  <option id="' . $fields_name . '[' . $id . ']" name="'
