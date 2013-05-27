@@ -20,7 +20,10 @@
     return false;
   });
   $('.custom_clear_file_button').click(function () {
-    $(this).parent().siblings('.custom_upload_file').val('');
+    $(this)
+      .parent()
+      .siblings('.custom_upload_file')
+      .val('');
     return false;
   });
 }(jQuery));

@@ -104,6 +104,11 @@ class LT3_Custom_Meta_Field_Box
 
       echo '<p class="label-container">';
       echo '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
+      if (LT3_DEVELOPMENT_MODE)
+      {
+        /* Disply the field id for faster development referencing */
+        echo ' <span class="description">Field ID: ' . $field_id . '</span>';
+      }
       echo '</p>';
 
       echo '<div class="input-container">';
@@ -344,6 +349,29 @@ class LT3_Custom_Meta_Field_Box
             echo '</li>';
           endforeach ;
           echo '</ul>';
+          break;
+
+        /**
+         * image
+         * ------------------------------------------------------------------------
+         * @param type        | string
+         * @param id          | string
+         * @param label       | string | optional
+         * @param description | string | optional
+         * ------------------------------------------------------------------------ */
+        case 'image':
+          wp_enqueue_script('custom-js', LT3_FULL_SCRIPTS_PATH . '/admin/image-upload.js');
+          $image = LT3_FULL_IMAGES_PATH . '/admin/placeholder-image.png';
+          echo '<input type="hidden" class="custom_default_image" value="' . $image . '">';
+          if ($value)
+          {
+            $image = wp_get_attachment_image_src($value, 'medium');
+            $image = $image[0];
+          }
+          echo '<input name="' . $field_id . '" type="hidden" class="custom_upload_image" value="' . $value . '" />'
+          . '<img src="' . $image . '" class="custom_preview_image" alt="no image currently selected" /><br />'
+          . '<input class="custom_upload_image_button button" type="button" value="Choose Image" />'
+          . '<small> <a href="#" class="custom_clear_image_button">Remove Image</a></small>';
           break;
 
         /**
