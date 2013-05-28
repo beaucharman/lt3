@@ -360,7 +360,7 @@ class LT3_Custom_Meta_Field_Box
          * @param description | string | optional
          * ------------------------------------------------------------------------ */
         case 'image':
-          wp_enqueue_script('custom-js', LT3_FULL_SCRIPTS_PATH . '/admin/image-upload.js');
+          wp_enqueue_script('custom-js', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-image-upload.js');
           $image = LT3_FULL_IMAGES_PATH . '/admin/placeholder-image.png';
           echo '<input type="hidden" class="custom_default_image" value="' . $image . '">';
           if ($value)
