@@ -16,3 +16,12 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-meta-field-boxes
  * ======================================================================== */
+add_action('admin_init', 'lt3_custom_meta_field_boxes_init');
+function lt3_custom_meta_field_boxes_init()
+{
+  global $pagenow, $typenow;
+  if ($pagenow == 'post.php')
+  {
+    // declare custom meta field box intances here.
+  }
+}
