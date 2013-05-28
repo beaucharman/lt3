@@ -370,9 +370,12 @@ remove_action('wp_head', 'wp_generator');
  * login_errors action to obscure login screen error messages
  * ======================================================================== */
 add_filter('login_errors', 'lt3_alternate_login_error_message');
-function lt3_alternate_login_error_message()
+function lt3_alternate_login_error_message($message)
 {
-  return '<strong>Sorry</strong>, it seems that your '
-    . '<strong>username</strong> and '
-    . '<strong>password</strong> combination is incorrect!';
+  if (isset($_GET['action']) && $_GET['action'] === 'lostpassword')
+  {
+    return $message;
+  }
+  return '<strong>Sorry</strong>, that <strong>Username</strong> and '
+  . '<strong>Password</strong> combination is incorrect!';
 }
