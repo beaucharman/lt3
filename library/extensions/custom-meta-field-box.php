@@ -186,6 +186,8 @@ class LT3_Custom_Meta_Field_Box
             ? $field['args'] : array();
           $args = array_merge(
             array(
+            'orderby'       => 'name',
+            'order'         => 'ASC',
             'post_type'      => $field['post_type'],
             'posts_per_page' => -1
             ), $field['args']
@@ -254,6 +256,8 @@ class LT3_Custom_Meta_Field_Box
             ? $field['args'] : array();
           $args = array_merge(
             array(
+              'orderby'       => 'name',
+              'order'         => 'ASC',
               'post_type'      => $field['post_type'],
               'posts_per_page' => -1
             ), $field['args']
