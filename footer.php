@@ -12,11 +12,15 @@
       </section> <!-- /.content -->
 
       <footer class="page-footer">
+
+        <?php /* Footer sidebar widgets */ ?>
         <?php if (is_active_sidebar('footer-sidebar-widgets'))
               { dynamic_sidebar('footer-sidebar-widgets'); } ?>
 
+        <?php /* Page footer menu */ ?>
         <?php lt3_page_footer_menu(); ?>
 
+        <?php /* Site information */ ?>
         <p class="site-information">
           &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
         </p>
@@ -26,6 +30,5 @@
     </div> <!-- /.page-wrap -->
 
     <?php wp_footer(); ?>
-
   </body>
 </html>

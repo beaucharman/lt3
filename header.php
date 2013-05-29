@@ -43,26 +43,30 @@
     </script> -->
 
     <?php wp_head(); ?>
-
   </head>
   <body <?php body_class(); ?>>
 
     <div class="page-wrap">
 
       <header role="banner" class="page-header">
+
+        <?php /* Site title */ ?>
         <?php if (is_home() || is_front_page()) echo '<h1>'; ?>
-        <a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title" >
+        <a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title">
           <?php bloginfo('name'); ?>
         </a>
         <?php if (is_home() || is_front_page()) echo '</h1>'; ?>
 
+        <?php /* Site description */ ?>
         <?php if (get_bloginfo('description')): ?>
         <p class="site-description"><?php bloginfo('description'); ?></p>
         <?php endif; ?>
 
+        <?php /* Header sibar widgets */ ?>
         <?php if (is_active_sidebar('header-sidebar-widgets'))
           dynamic_sidebar('header-sidebar-widgets'); ?>
 
+        <?php /* Display the page header menu */ ?>
         <?php lt3_page_header_menu(); ?>
       </header>
 
