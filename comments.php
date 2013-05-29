@@ -63,42 +63,45 @@ if (have_comments()) : ?>
 
   <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
-  <?php if (is_user_logged_in()) : ?>
+    <?php if (is_user_logged_in()) : ?>
 
-    <p><?php echo _e('Logged in as'); ?> <a href="<?php echo home_url(); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>.
-    <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account"><?php echo _e('Log out &rarr;'); ?></a></p>
+    <p>
+      <?php echo _e('Logged in as'); ?> <a href="<?php echo home_url(); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>.
+      <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account"><?php echo _e('Log out &rarr;'); ?></a>
+    </p>
 
     <?php else : ?>
 
-    <div>
-      <input type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?>>
-      <label for="author"><span><?php echo _e('Name'); ?></span> <?php if ($req) echo "*"; ?></label>
-    </div>
-
-    <div>
-      <input type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>>
-      <label for="email"><span><?php echo _e('Email'); ?></span> <?php if ($req) echo "*"; ?> <small class="subtle-text">
-        <?php echo _e('(will not be published)'); ?></small>
+    <p>
+      <label for="author"><?php echo _e('Name'); ?>&nbsp;<?php if ($req) echo "*"; ?><br>
+        <input type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="20" <?php if ($req) echo "aria-required='true'"; ?>>
       </label>
-    </div>
+    </p>
 
-    <div>
-      <input type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3">
-      <label for="url"><span><?php echo _e('Website'); ?></span></label>
-    </div>
+    <p>
+      <label for="email"><?php echo _e('Email'); ?>&nbsp;<?php if ($req) echo "*"; ?> <small class="subtle-text"><?php echo _e('(will not be published)'); ?></small><br>
+        <input type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="21" <?php if ($req) echo "aria-required='true'"; ?>>
+      </label>
+    </p>
+
+    <p>
+      <label for="url"><?php echo _e('Website'); ?><br>
+        <input type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="22">
+      </label>
+    </p>
 
     <?php endif; ?>
 
     <p class="subtle-text"><?php echo _e('You can use these tags: '); ?><code><?php echo allowed_tags(); ?></code></p>
 
-    <div>
-      <textarea name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="4"></textarea>
-    </div>
+    <p>
+      <textarea name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="23"></textarea>
+    </p>
 
-    <div>
-      <input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment &rarr;">
+    <p>
+      <input name="submit" type="submit" id="submit" tabindex="24" value="Submit Comment &rarr;">
       <?php comment_id_fields(); ?>
-    </div>
+    </p>
 
     <?php do_action('comment_form', $post->ID); ?>
 

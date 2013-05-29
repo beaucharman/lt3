@@ -94,7 +94,7 @@ function lt3_title()
   }
   elseif (is_search())
   {
-    echo 'Search for "'; the_search_query(); echo '" &#045; ';
+    echo 'Search results for "'; the_search_query(); echo '" &#045; ';
   }
   elseif ((!is_404()) && (get_the_title()) && (!is_front_page()) && ((is_single()) || (is_page())))
   {
@@ -443,7 +443,7 @@ function lt3_advanced_comment($comment, $args, $depth)
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
     <div class="comment-vcard">
-      <?php echo get_avatar($comment,$size='56',$default='<path_to_url>'); ?>
+      <?php echo get_avatar($comment, '56'); ?>
     </div>
     <div class="comment-body">
       <div class="comment-author">
@@ -461,7 +461,7 @@ function lt3_advanced_comment($comment, $args, $depth)
       <div class="comment-meta">
         <small>on the <?php printf(__('%1$s'), get_comment_date('l, F j, Y')); ?>
           <?php if (current_user_can('edit_post')) : ?>
-          (<?php edit_comment_link(__('Edit'), '', '') ?><?php lt3_delete_comment_link(); ?>)
+          (<?php edit_comment_link(__('Edit'), '', '') ?><?php lt3_delete_comment_link(get_comment_ID()); ?>)
           <?php endif; ?>
         </small>
       </div>
