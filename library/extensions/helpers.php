@@ -15,45 +15,101 @@
    ======================================================================== */
 
 /**
+ * lt3 Get Thumnbnail
+ * ========================================================================
+ * lt3_get_thumbnail()
+ * @param  {integer} $id
+ * @param  {string}  $size
+ * @param  {boolean} $attributes
+ * @return {string || array}
+ * ======================================================================== */
+function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
+{
+  global $post;
+  if ($id === null)
+  {
+    $id = $post->ID;
+  }
+
+  if (has_post_thumbnail($id))
+  {
+    $image_src = wp_get_attachment_image_src(get_post_thumbnail_id($id), $size);
+    if (! $attributes)
+    {
+      return $image_src[0];
+    }
+    return $image_src;
+  }
+  return false;
+}
+
+/**
+ * lt3 Get Attachment
+ * ========================================================================
+ * lt3_get_attachment()
+ * @param  {integer} $id
+ * @param  {string}  $size
+ * @param  {boolean} $attributes
+ * @return {string || array}
+ * ======================================================================== */
+function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
+{
+  $image_src = wp_get_attachment_image_src($id, $size);
+  if ($image_src)
+  {
+    if (! $attributes)
+    {
+      return $image_src[0];
+    }
+    return $image_src;
+  }
+  return false;
+}
+
+/**
+ * lt3 is Child of Page
+ * ========================================================================
+ * lt3_get_id_by_slug()
+ * @param  {string} $page_slug
+ * @return {integer}
+ * ======================================================================== */
+function lt3_get_id_by_slug($page_slug)
+{
+  if ($page_slug)
+  {
+    $page = get_page_by_path($page_slug);
+  }
+
+  if ($page)
+  {
+    return $page->ID;
+  }
+  return null;
+}
+
+/**
  * lt3 is Child of Page
  * ========================================================================
  * lt3_is_child_of_page()
- * @param  $post_id | integer
- * @return boolean
+ * @param  {integer || string} $page
+ * @return {boolean}
  *
- * Function to check if page is child of $post_id
+ * Function to check if page is child of $page
  * ======================================================================== */
-function lt3_is_child_of_page($post_id)
+function lt3_is_child_of_page($page)
 {
   global $post;
-  $parent = $post->post_parent;
-  $grandparents_get = get_post($parent);
-  $grandparent = $grandparents_get->post_parent;
-  $greatgrandparents_get = get_post($grandparent);
-  $greatgrandparent = $greatgrandparents_get->post_parent;
-  if ((!$post_id) && (
-    ($parent) ||
-    ($grandparent) ||
-    ($greatgrandparent)
- ))
+  if (is_string($page))
+  {
+    $page = lt3_get_id_by_slug($page);
+  }
+  $parent    = (isset($post->post_parent) && $post->post_parent == $page);
+  $ancestors = (isset($post->ancestors) && in_array($page, $post->ancestors));
+  if ($parent || $ancestors)
   {
     return true;
   }
-  elseif ((is_page()) && (
-    (get_the_title($parent) == $post_id) ||
-    ($parent == $post_id) ||
-    (get_the_title($grandparent) == $post_id) ||
-    ($grandparent == $post_id) ||
-    (get_the_title($greatgrandparent) == $post_id) ||
-    ($greatgrandparent == $post_id)
- ))
-  {
-    return true;
-  }
-  else
-  {
-    return false;
-  }
+  return false;
 }
 
 /**
@@ -87,16 +143,16 @@ function lt3_is_child_of_category($parent_category)
 function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
-  if($type)
+  if ($type)
   {
-    if($type == get_post_type($wp_query->post->ID))
+    if (isset($wp_query->post->ID) && $type == get_post_type($wp_query->post->ID))
     {
       return true;
     }
   }
   else
   {
-    if(get_post_type($wp_query->post->ID))
+    if ( isset($wp_query->post->ID) && get_post_type($wp_query->post->ID))
     {
       return true;
     }

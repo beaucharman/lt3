@@ -55,7 +55,7 @@ function lt3_show_image_sizes($sizes)
 function lt3_title()
 {
   global $post;
-  if ((is_archive()) && (!is_front_page()))
+  if ((is_archive()) && (! is_front_page()))
   {
     if (is_category())
     {
@@ -96,7 +96,7 @@ function lt3_title()
   {
     echo 'Search results for "'; the_search_query(); echo '" &#045; ';
   }
-  elseif ((!is_404()) && (get_the_title()) && (!is_front_page()) && ((is_single()) || (is_page())))
+  elseif ((! is_404()) && (get_the_title()) && (! is_front_page()) && ((is_single()) || (is_page())))
   {
     the_title(); echo ' &#045; ';
   }
@@ -396,7 +396,7 @@ add_filter('body_class', 'lt3_add_to_body_class');
 function lt3_add_to_body_class($classes)
 {
   global $post;
-  if (!is_front_page() && !is_search() && isset($post->post_name))
+  if (! is_front_page() && ! is_search() && isset($post->post_name))
   {
     $classes[] = 'not-front-page';
     $classes[] = 'page-' . $post->post_name;
@@ -547,15 +547,15 @@ function lt3_get_taxonomies_terms_links()
   foreach ($taxonomies as $taxonomy)
   {
     $terms = get_the_terms($post->ID, $taxonomy); // get the terms related to post
-    if (!empty($terms))
+    if (! empty($terms))
     {
       $out = array();
       foreach ($terms as $term)
         $out[] = '<a href="' . get_term_link($term->slug, $taxonomy) . '">' . $term->name . '</a>';
-      $return = join(', ', $out);
+      return join(', ', $out);
     }
-    return $return;
   }
+  return false;
 }
 
 /* Function to get Post Nav Links

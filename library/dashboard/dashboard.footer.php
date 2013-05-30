@@ -11,7 +11,6 @@
  *
  * lt3 dashboard footer include
  * ======================================================================== */ ?>
-
 <p>Powered by
   <a href="http://wordpress.org/" title="Visit WordPress.org">WordPress</a>.
   Built with love.</p>

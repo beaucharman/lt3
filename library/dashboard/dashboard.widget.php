@@ -9,7 +9,6 @@
  * @link    https://github.com/beaucharman/lt3
  * @license MIT license
  * ======================================================================== */ ?>
-
 <h2>Welcome to your website's administration area</h2>
 <p>For some online lessons on using WordPress, the software powering this site, visit:
 <a href="http://codex.wordpress.org/WordPress_Lessons" target="_blank">WordPress Lessons</a></p>

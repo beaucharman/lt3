@@ -15,7 +15,7 @@
 
   <h2 class="article-title">
     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
-      <?php the_title(); ?>
+      <?php the_title(); ?> <small>[<?php echo lt3_prettify_words(get_post_type()); ?>]</small>
     </a>
   </h2>
 

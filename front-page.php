@@ -13,7 +13,7 @@
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 
-  <?php  lt3_default_sticky_posts(); ?>
+  <?php lt3_default_sticky_posts(); ?>
 
   <?php if (have_posts()) : ?>
 
