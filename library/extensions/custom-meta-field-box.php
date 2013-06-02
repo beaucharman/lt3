@@ -213,7 +213,7 @@ class LT3_Custom_Meta_Field_Box
           }
           else
           {
-            echo 'Sorry, there are currently no '. lt3_prettify_words($field['post_type'])
+            echo 'Sorry, there are currently no '. $this->prettify_words($field['post_type'])
               .' items to choose from.';
           }
           break;
@@ -328,7 +328,7 @@ class LT3_Custom_Meta_Field_Box
           else
           {
             echo 'Sorry, there are currently no '
-              . lt3_prettify_words($field['post_type'])
+              . $this->prettify_words($field['post_type'])
               . ' items to choose from.';
           }
           break;
