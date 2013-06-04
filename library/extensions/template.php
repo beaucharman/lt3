@@ -290,16 +290,21 @@ function lt3_search_form_request_filter($query_vars)
   return $query_vars;
 }
 
-/* Search form replacement
-   ======================================================================== */
+/** 
+ * lt3 HTML5 Search Form
+ * ========================================================================
+ * lt3_html5_search_form()
+ * @param  {string} $form
+ * @return {string} $form
+ * ======================================================================== */
 add_filter('get_search_form', 'lt3_html5_search_form');
 function lt3_html5_search_form($form)
 {
-  $form = '<form role="search" method="get" id="searchform" action="' . home_url('/') . '">'
+  return ''
+    . '<form role="search" method="get" class="search-form" action="' . home_url('/') . '">'
     . '<input type="text" placeholder="' . __("Search&hellip;") . '" value="" name="s" id="s">'
     . '<input type="submit" id="searchsubmit" value="Go">'
     . '</form>';
-  return $form;
 }
 
 /* Remove more text on search page
