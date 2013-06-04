@@ -679,7 +679,7 @@ function lt3_include_post_meta()
  * ======================================================================== */
 function lt3_excerpt($raw_text = '', $echo_result = true, $output_limit = LT3_EXCERPT_LENGTH)
 {
-  $text = explode(' ', $raw_text);
+  $text = explode(' ', strip_tags(strip_shortcodes($raw_text))));
   $ellipses = false;
   if (sizeof($text) > $output_limit)
   {
