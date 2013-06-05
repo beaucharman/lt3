@@ -34,7 +34,7 @@
 
     <?php /* Google Webmaster Tools and Analytics */
       global $lt3_site_settings; ?>
-    <!-- <meta name="google-site-verification" content=""> -->
+    <!-- <meta name="google-site-verification" content="<?php echo $lt3_site_settings['google_webmaster']; ?>"> -->
     <!-- <script>
       var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
       (function(d,t) {var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

@@ -22,11 +22,21 @@ $title     = get_bloginfo('name') . ' Site Setings';
    ======================================================================== */
 $args = array(
   array(
+    'type'        => 'divider',
+    'content'     => '<h3>Utility Options</h3>'
+  ),
+  array(
     'id'          => 'google_analytics',
     'type'        => 'text',
     'description' => 'Define the Google Analytics tracking code for the site here.',
     'placeholder' => 'UA-XXXXX-X'
-  )
+  ),
+  array(
+    'id'          => 'google_webmaster',
+    'type'        => 'text',
+    'description' => 'Define the Google site verification code here.',
+    'placeholder' => ''
+  ),
 );
 
 /* Declare a new instance of the Site Settings class
