@@ -53,8 +53,8 @@ function lt3_load_scripts()
     LT3_MODERNIZR_LIBRARY_VERSION,
     false
   );
-  wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPT_CACHE_REFRESH, true);
-  wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPT_CACHE_REFRESH, true);
+  wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
+  wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
   /**
    * Enqueue frontend scripts here
