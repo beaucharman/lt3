@@ -2,12 +2,13 @@
 /**
  * Functions
  * ========================================================================
- * header.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * functions.php
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  *
  * lt3 Functions and Theme Setup
  * ======================================================================== */
@@ -21,17 +22,17 @@ define('LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensio
 
 define('LT3_FULL_DASHBOARD_PATH', get_template_directory() . '/library/dashboard');
 
-define('LT3_FULL_SCRIPTS_PATH', get_template_directory_uri() . '/library/scripts');
+define('LT3_SCRIPTS_PATH', 'library/javascripts');
 
-define('LT3_SCRIPTS_PATH', 'library/scripts');
+define('LT3_FULL_SCRIPTS_PATH', get_template_directory_uri() . '/' . LT3_SCRIPTS_PATH);
 
-define('LT3_FULL_STYLES_PATH', get_template_directory_uri() . '/library/styles');
+define('LT3_STYLES_PATH', 'library/stylesheets');
 
-define('LT3_STYLES_PATH', 'library/styles');
-
-define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/library/images');
+define('LT3_FULL_STYLES_PATH', get_template_directory_uri() . '/' . LT3_STYLES_PATH);
 
 define('LT3_IMAGES_PATH', 'library/images');
+
+define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/' . LT3_IMAGES_PATH);
 
 define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
 

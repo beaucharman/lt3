@@ -3,11 +3,12 @@
  * Config
  * ========================================================================
  * config.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  *
  * lt3 project configuration
  * ======================================================================== */
@@ -25,11 +26,11 @@ define('LT3_DEVELOPMENT_MODE', true);
    Front end layout and design options
    ======================================================================== */
 
-/* Set full page wrap width (including padding)
+/* Set full page wrap width (including padding and all columns)
    ======================================================================== */
 define('LT3_PAGE_WRAP_WIDTH', 980);
 
-/* Set full page content width (not including padding)
+/* Set full page content width (not including padding, content column only)
    ======================================================================== */
 define('LT3_PAGE_CONTENT_WIDTH', 980);
 
@@ -115,11 +116,11 @@ define('HEADER_TEXTCOLOR', '222222');
 
 /* Set the width of the header image
    ======================================================================== */
-define('HEADER_IMAGE_WIDTH',  LT3_PAGE_CONTENT_WIDTH);
+define('HEADER_IMAGE_WIDTH',  LT3_PAGE_WRAP_WIDTH);
 
 /* Set the height of the header image
    ======================================================================== */
-define('HEADER_IMAGE_HEIGHT', LT3_PAGE_CONTENT_WIDTH / 3);
+define('HEADER_IMAGE_HEIGHT', LT3_PAGE_WRAP_WIDTH / 3);
 
 /* Sets the default header image.
    ======================================================================== */

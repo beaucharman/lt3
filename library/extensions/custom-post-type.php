@@ -3,11 +3,12 @@
  * Custom Post Type
  * ========================================================================
  * custom-post-type.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  *
  * Properties
  *  $PostType->name   | sring

@@ -3,11 +3,12 @@
  * Initial Theme Setup
  * ========================================================================
  * initial-theme-setup.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  *
  * For more information:
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
@@ -27,10 +28,10 @@ function lt3_initial_theme_setup()
       'comments_per_page' => '20',
       'date_format'       => 'd/m/Y',
       'default_role'      => 'author',
-      'large_size_h'      => LT3_PAGE_CONTENT_WIDTH,
-      'large_size_w'      => LT3_PAGE_CONTENT_WIDTH * 1.25,
-      'medium_size_h'     => LT3_PAGE_CONTENT_WIDTH / 2,
-      'medium_size_w'     => LT3_PAGE_CONTENT_WIDTH,
+      'large_size_h'      => LT3_PAGE_CONTENT_WIDTH / 2,
+      'large_size_w'      => LT3_PAGE_CONTENT_WIDTH,
+      'medium_size_h'     => LT3_PAGE_CONTENT_WIDTH / 3,
+      'medium_size_w'     => LT3_PAGE_CONTENT_WIDTH / 2,
       'posts_per_page'    => '20',
       'thumbnail_crop'    => '1',
       'thumbnail_size_h'  => LT3_PAGE_CONTENT_WIDTH / 4,

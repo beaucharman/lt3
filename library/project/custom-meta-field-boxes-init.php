@@ -3,10 +3,10 @@
  * Custom Meta Field Boxes Init
  * ========================================================================
  * custom-meta-field-boxes-init.php
- * @version    1.0 | May 2nd 2013
- * @package    lt3
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
  * @subpackage lt3/library/extensions/custom-meta-field-box.php
- * @author     Beau Charman | @beaucharman | http://beaucharman.me
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link       https://github.com/beaucharman/lt3
  * @license    MIT license
  *

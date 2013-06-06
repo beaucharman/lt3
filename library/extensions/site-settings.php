@@ -3,11 +3,12 @@
  * Site Settings
  * ========================================================================
  * site-settings.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT License
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  *
  * To use and view the option:
  *   global $lt3_site_settings;

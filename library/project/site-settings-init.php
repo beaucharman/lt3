@@ -3,10 +3,10 @@
  * Site Settings Init
  * ========================================================================
  * site-settings-init.php
- * @version    2.0 | April 12th 2013
- * @package    lt3
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
  * @subpackage lt3/library/extensions/site-settings.php
- * @author     Beau Charman | @beaucharman | http://beaucharman.me
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link       https://github.com/beaucharman/lt3
  * @license    MIT license
  * ======================================================================== */

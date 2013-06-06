@@ -3,11 +3,12 @@
  * Header
  * ========================================================================
  * header.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  * ======================================================================== */ ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -33,7 +34,7 @@
     <![endif]-->
 
     <?php /* Google Webmaster Tools and Analytics */
-      global $lt3_site_settings; ?>
+    if (! LT3_DEVELOPMENT_MODE) : global $lt3_site_settings; ?>
     <!-- <meta name="google-site-verification" content=""> -->
     <!-- <script>
       var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
@@ -41,6 +42,7 @@
       g.src='//www.google-analytics.com/ga.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script> -->
+    <?php endif  ?>
 
     <?php wp_head(); ?>
   </head>

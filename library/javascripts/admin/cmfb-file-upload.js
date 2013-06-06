@@ -2,11 +2,12 @@
  * Custom Meta Field Boxes File Upload
  * ========================================================================
  * cmfb-file-upload.js
- * @version 1.0 | May 9th 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  * ======================================================================== */
 (function ($) {
 

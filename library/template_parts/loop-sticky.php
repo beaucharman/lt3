@@ -3,11 +3,12 @@
  * Loop Sticky
  * ========================================================================
  * loop-sticky.php
- * @version 2.0 | April 1st 2013
- * @package lt3
- * @author  Beau Charman | @beaucharman | http://beaucharman.me
- * @link    https://github.com/beaucharman/lt3
- * @license MIT license
+ * @version    2.1 | 6th June 2013
+ * @package    WordPress
+ * @subpackage lt3
+ * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link       https://github.com/beaucharman/lt3
+ * @license    MIT license
  * ======================================================================== */ ?>
 <?php $sticky_loop = new WP_Query(array(
     'posts_per_page' => LT3_NUMBER_OF_STICKY_POSTS,
@@ -31,7 +32,7 @@
     </h2>
 
     <?php if (has_post_thumbnail()) : ?>
-    <figure class="post-thumbnail">
+    <figure class="featured-image">
       <?php the_post_thumbnail('thumbnail'); ?>
     </figure>
     <?php endif; ?>
