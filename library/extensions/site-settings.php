@@ -14,6 +14,10 @@
  *   global $lt3_site_settings;
  *   echo $lt3_site_settings['setting_id'];
  * ======================================================================== */
+
+/* ========================================================================
+   Site Settings Page class
+   ======================================================================== */
 class LT3_Site_Settings_Page
 {
   public $group;
@@ -280,7 +284,7 @@ class LT3_Site_Settings_Page
 
     echo '</table>';
     echo '<p class="submit">';
-    echo '  <input type="submit" class="button-primary" value="Save Changes">';
+    echo '  <input type="submit" class="button-primary" value="Save Changes">&nbsp;';
     echo '  <a href="./" class="button">Cancel</a>';
     echo '</p>';
     echo '</form>';

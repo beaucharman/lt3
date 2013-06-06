@@ -70,9 +70,13 @@ define('LT3_NUMBER_OF_STICKY_POSTS', 2);
    Script, style and behaviour options
    ======================================================================== */
 
-/* style.css cache refresh
+/* style.css cache break
    ======================================================================== */
-define('LT3_STYLE_CACHE_REFRESH', '0.1');
+define('LT3_STYLE_CACHE_BREAK', '0.1');
+
+/* scripts cache break
+   ======================================================================== */
+define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
 
 /* Enable Google jQuery libraries
    ======================================================================== */

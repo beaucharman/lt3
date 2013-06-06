@@ -26,7 +26,7 @@
     <meta name="description" content="<?php lt3_meta_tag_description(); ?>">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="<?php echo get_stylesheet_uri() . '?v=' .  LT3_STYLE_CACHE_REFRESH; ?>" media="all">
+    <link rel="stylesheet" href="<?php echo get_stylesheet_uri() . '?v=' . LT3_STYLE_CACHE_BREAK; ?>" media="all">
     <link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 
     <!--[if IE]>
@@ -34,8 +34,13 @@
     <![endif]-->
 
     <?php /* Google Webmaster Tools and Analytics */
+<<<<<<< HEAD
     if (! LT3_DEVELOPMENT_MODE) : global $lt3_site_settings; ?>
     <!-- <meta name="google-site-verification" content=""> -->
+=======
+      global $lt3_site_settings; ?>
+    <!-- <meta name="google-site-verification" content="<?php echo $lt3_site_settings['google_webmaster']; ?>"> -->
+>>>>>>> 3f1e8c3c820f497b1ef53f864eba416c8caf5959
     <!-- <script>
       var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
       (function(d,t) {var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
