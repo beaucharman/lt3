@@ -55,14 +55,6 @@ function lt3_register_shortcode_replace_with_content($atts, $content = null)
   return $return_string;
 }
 
-/* [lt3_clear]
-   ======================================================================== */
-add_shortcode('lt3_clear', 'lt3_register_shortcode_clear');
-function lt3_register_shortcode_clear($atts, $content = null)
-{
-  return '<div style="clear:both;">&nbsp;</div>';
-}
-
 /* [lt3_divider class=""]
    ======================================================================== */
 add_shortcode('lt3_divider', 'lt3_register_shortcode_divider');
@@ -89,6 +81,14 @@ add_shortcode('lt3_float_left', 'lt3_register_shortcode_float_left');
 function lt3_register_shortcode_float_left($atts, $content = null)
 {
   return '<div style="float:left;">' . do_shortcode($content) . '</div>';
+}
+
+/* [lt3_clear]
+   ======================================================================== */
+add_shortcode('lt3_clear', 'lt3_register_shortcode_clear');
+function lt3_register_shortcode_clear($atts, $content = null)
+{
+  return '<div style="clear:both;">&nbsp;</div>';
 }
 
 /* [lt3_button class=""]content[/lt3_button]
