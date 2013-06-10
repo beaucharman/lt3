@@ -34,13 +34,8 @@
     <![endif]-->
 
     <?php /* Google Webmaster Tools and Analytics */
-<<<<<<< HEAD
     if (! LT3_DEVELOPMENT_MODE) : global $lt3_site_settings; ?>
     <!-- <meta name="google-site-verification" content=""> -->
-=======
-      global $lt3_site_settings; ?>
-    <!-- <meta name="google-site-verification" content="<?php echo $lt3_site_settings['google_webmaster']; ?>"> -->
->>>>>>> 3f1e8c3c820f497b1ef53f864eba416c8caf5959
     <!-- <script>
       var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
       (function(d,t) {var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
