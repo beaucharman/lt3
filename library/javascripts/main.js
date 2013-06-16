@@ -16,5 +16,5 @@
 /*
 (function ($) {
   // contain code here...
-}(jQuery));
+})(jQuery);
 */
