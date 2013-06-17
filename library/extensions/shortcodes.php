@@ -251,7 +251,7 @@ function lt3_register_shortcode_iframe($atts, $content = null)
     . '" scrolling="'. $scrolling
     . '" width="'. $width
     . '" height="'. $height
-    . '">'. $fallback
+    . '" frameborder="0">'. $fallback
     . '</iframe>';
 }
 
@@ -321,7 +321,7 @@ function lt3_register_shortcode_youtube($atts, $content = null)
      . ' width="' . $width
      . '" height="' . $height
      . '" class="youtube ' . $class
-     . '">'
+     . '" frameborder="0">'
      . $fallback
      . '</iframe>';
 }
