@@ -45,11 +45,11 @@ function lt3_page_header_menu()
 {
   wp_nav_menu(
     array(
-      'theme_location'   => 'main_navigation_menu',
+      'theme_location'  => 'main_navigation_menu',
       'container'       => 'nav',
-      'container_class'  => 'main-navigation',
+      'container_class' => 'main-navigation',
       'fallback_cb'     => false,
-      'menu_class'       => 'menu'
+      'menu_class'      => 'menu'
     )
   );
 }
@@ -63,11 +63,11 @@ function lt3_page_footer_menu()
 {
   wp_nav_menu(
     array(
-      'theme_location'   => 'footer_menu',
+      'theme_location'  => 'footer_menu',
       'container'       => 'nav',
       'container_class' => 'footer-navigation',
       'fallback_cb'     => false,
-      'menu_class'       => 'menu'
+      'menu_class'      => 'menu'
     )
   );
 }

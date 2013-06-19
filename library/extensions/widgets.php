@@ -15,9 +15,6 @@
  *
  * To use in a theme template, use:
  *   dynamic_sidebar('sidebar-id');
- *
- * To unregister a sidebar to clean up the widgets area, as an example use:
- *   add_action('widgets_init', 'name_of_sidebar_init_function');
  */
 
 /* ========================================================================

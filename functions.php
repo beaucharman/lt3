@@ -11,6 +11,9 @@
  * @license    MIT license
  *
  * lt3 Functions and Theme Setup
+ *
+ * For each theme: custom code, snippets and functions should be placed in
+ * library/project and included from this functions.php file.
  * ======================================================================== */
 
 /* ========================================================================
@@ -128,3 +131,5 @@ require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 /* Custom Meta Field Boxes Init
    ======================================================================== */
 //require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
+
+// include more modular files as need.

@@ -11,6 +11,8 @@
  * @license    MIT license
  *
  * Page template.
+ * For a different page template for a particular page,
+ * save this template page as page-{name}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

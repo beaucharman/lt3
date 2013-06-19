@@ -10,7 +10,7 @@
  * @link       https://github.com/beaucharman/lt3
  * @license    MIT license
  *
- * Archived content template page. Requires the lt3_is_post_type() function.
+ * Custom post type? Save this template page as taxonomy-{name}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

@@ -11,6 +11,8 @@
  * @license    MIT license
  *
  * Front page and home page template.
+ * If using a blogroll as your home page, rename this template page to
+ * home.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

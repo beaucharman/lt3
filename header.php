@@ -1,16 +1,4 @@
-<?php
-/**
- * Header
- * ========================================================================
- * header.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
- * ======================================================================== */ ?>
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -64,7 +52,7 @@
         <p class="site-description"><?php bloginfo('description'); ?></p>
         <?php endif; ?>
 
-        <?php /* Header sibar widgets */ ?>
+        <?php /* Header sibear widgets */ ?>
         <?php if (is_active_sidebar('header-sidebar-widgets'))
           dynamic_sidebar('header-sidebar-widgets'); ?>
 

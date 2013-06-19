@@ -10,7 +10,8 @@
  * @link       https://github.com/beaucharman/lt3
  * @license    MIT license
  *
- * Single (built in Post or other post type) template page.
+ * Single (built in Post or other custom post type) template page.
+ * Custom post type? Save this template page as single-{name}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

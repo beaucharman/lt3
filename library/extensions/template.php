@@ -50,8 +50,9 @@ function lt3_add_image_sizes()
   // Large image size, usefull for light box output, or retina ready large content image
   add_image_size('massive',  LT3_PAGE_CONTENT_WIDTH * 1.5, LT3_PAGE_CONTENT_WIDTH, false);
 }
+
 /**
- * Add image sizes for selection in the WordPress editor
+ * Add image sizes for selection in the WordPress editor.
  */
 add_filter('image_size_names_choose', 'lt3_show_image_sizes');
 function lt3_show_image_sizes($sizes)
@@ -240,6 +241,10 @@ function lt3_get_message($message_name)
 {
   switch(strtoupper($message_name))
   {
+
+    /**
+     * Page not found, suitable for a 404 message.
+     */
     case 'NOT FOUND':
       echo '<section class="error-message not-found">' . "\n";
       echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
@@ -251,6 +256,10 @@ function lt3_get_message($message_name)
       }
       echo "\n" . '</section>';
       break;
+
+    /**
+     * No posts via WordPress built in post type message.
+     */
     case 'NO POSTS':
       echo '<section class="error-message no-posts">' . "\n";
       echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
@@ -264,6 +273,10 @@ function lt3_get_message($message_name)
       }
       echo "\n" . '</section>';
       break;
+
+    /**
+     * No articles from custom post types.
+     */
     case 'NO ARTICLES':
       echo '<section class="error-message no-articles">' . "\n";
       echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
@@ -275,6 +288,10 @@ function lt3_get_message($message_name)
       }
       echo "\n" . '</section>';
       break;
+
+    /**
+     * No search results message.
+     */
     case 'NO RESULTS':
       echo '<section class="no-results">' . "\n";
       echo '<h3>' . __('Sorry! We couldn\'t find anything&hellip;') . '</h3>' . "\n";
@@ -412,8 +429,10 @@ function lt3_browser_body_class($classes)
   return $classes;
 }
 
-/* Add to the Body Class filter
-   ======================================================================== */
+/**
+ * Add to the Body Class filter
+ * Include if is front-page or not.
+ * ======================================================================== */
 add_filter('post_class', 'lt3_add_to_body_class');
 add_filter('body_class', 'lt3_add_to_body_class');
 function lt3_add_to_body_class($classes)
@@ -542,7 +561,7 @@ function lt3_back_to_parent_link()
   }
 }
 
-/* Sticky Notes
+/* Sticky Posts
    ======================================================================== */
 function lt3_default_sticky_posts()
 {

@@ -18,25 +18,31 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
  * ======================================================================== */
 
-/* Register and Enqeue local styles
+/* Register and enqeue styles
    ======================================================================== */
 add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
-  /* Register styles here: */
+  /* Register styles here */
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
     . '/admin/custom-admin-styles.css');
 
-  /* Enqueue styles here: */
+  /* Enqueue styles here */
   if (!is_admin())
   {
-    // Enqueue conditional theme template styles here
+    /**
+     * Enqueue theme styles here. Consider seperate files for development
+     * Then bundle into style.css for deloyment. Conditional styles would be
+     * appropriate to be loaded here.
+     */
+
   }
-  else if (is_admin())
+  elseif (is_admin())
   {
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
+    // Enqueue admin styles here.
   }
 }
 

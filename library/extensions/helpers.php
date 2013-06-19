@@ -68,7 +68,7 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
 }
 
 /**
- * lt3 is Child of Page
+ * lt3 Get ID by Slug
  * ========================================================================
  * lt3_get_id_by_slug()
  * @param  {string} $page_slug
