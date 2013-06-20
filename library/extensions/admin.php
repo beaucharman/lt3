@@ -37,7 +37,7 @@ function lt3_replace_admin_footer()
 }
 
 /**
- * Replace Admin Footer
+ * Custom Dashboard Widgets
  * ========================================================================
  * lt3_custom_dashboard_widgets()
  * wp_dashboard_setup action to add custom widgets to admin dashboard
@@ -86,9 +86,9 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
 /**
  * Disable Global Comments
  * ========================================================================
- * Various actions to remove comments functionality globally
+ * Various methods to remove comment functionality globally
  * ======================================================================== */
-if (!LT3_ENABLE_GLOBAL_COMMENTS)
+if (! LT3_ENABLE_GLOBAL_COMMENTS)
 {
   /* Remove the comments admin menu item */
   add_action('admin_menu', 'lt3_remove_admin_menus');
@@ -142,6 +142,9 @@ function lt3_remove_dashboard_widgets()
   remove_meta_box('bbp-dashboard-right-now', 'dashboard', 'normal');
   remove_meta_box('dashboard_primary', 'dashboard', 'side');
   remove_meta_box('dashboard_secondary', 'dashboard', 'side');
+  /**
+   * Add more Dashboard Widget handels here to remove.
+   */
 }
 
 /**
@@ -327,10 +330,10 @@ add_filter('user_contactmethods', 'lt3_custom_userfields', 10, 1);
 function lt3_custom_userfields($methods)
 {
   /* Set user info fields */
-  $methods['contact_twitter']      = 'Twitter';
-  $methods['contact_linkedin']     = 'LinkedIn';
+  $methods['contact_twitter'] = 'Twitter';
+  $methods['contact_linkedin'] = 'LinkedIn';
   $methods['contact_phone_office'] = 'Work Phone Number';
-  $methods['contact_phone_mobile']  = 'Mobile Phone Number';
+  $methods['contact_phone_mobile'] = 'Mobile Phone Number';
   /* Unset user info fields */
   unset($methods['aim']);
   unset($methods['jabber']);
@@ -378,5 +381,5 @@ function lt3_alternate_login_error_message($message)
     return $message;
   }
   return '<strong>Sorry</strong>, that <strong>Username</strong> and '
-  . '<strong>Password</strong> combination is incorrect!';
+    . '<strong>Password</strong> combination is incorrect!';
 }

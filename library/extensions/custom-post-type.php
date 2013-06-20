@@ -51,10 +51,10 @@ class LT3_Custom_Post_Type
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
     /* Set class values */
-    $this->name    = $this->uglify_words($name);
-    $this->labels  = $labels;
+    $this->name = $this->uglify_words($name);
+    $this->labels = $labels;
     $this->options = $options;
-    $this->help    = $help;
+    $this->help = $help;
 
     /* Create the labels */
     $this->labels['label_singular'] = (isset($this->labels['label_singular']))

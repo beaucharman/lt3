@@ -144,7 +144,7 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
       __('Warning')    => 'warning',
       __('Notice')     => 'notice',
       __('Muted')      => 'muted'
-   );
+    );
 
     $class_settings = '';
     foreach ($classes as $name => $value )

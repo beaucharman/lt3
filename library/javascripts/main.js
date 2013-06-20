@@ -14,7 +14,7 @@
 // To prevent thrid party plugins from conflicting with
 // your jQuery, simple use the following anonymous function:
 /*
-(function ($) {
+;(function ($) {
   // contain code here...
 })(jQuery);
 */

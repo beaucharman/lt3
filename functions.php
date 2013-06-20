@@ -72,6 +72,14 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/template.php');
 
+/* Template Filters
+   ======================================================================== */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/template-filters.php');
+
+/* Template Snippets
+   ======================================================================== */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
+
 /* Custom Post Types
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
@@ -118,7 +126,7 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /* Site Settings Init
    ======================================================================== */
-require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
+//require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 
 /* Custom Post Types Init
    ======================================================================== */
@@ -132,4 +140,6 @@ require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
    ======================================================================== */
 //require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
 
-// include more modular files as need.
+/**
+ * Include more modular files as need.
+ */

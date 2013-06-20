@@ -13,30 +13,18 @@
 
 /* Declare the Site Settings options
    ======================================================================== */
-$group     = 'lt3_site_settings';
-$name      = 'lt3_settings';
+$group = 'lt3_site_settings';
+$name = 'lt3_settings';
 $menu_name = 'Site Settings';
-$title     = get_bloginfo('name') . ' Site Setings';
+$title = get_bloginfo('name') . ' Site Setings';
 
 /* Declare the Site Settings fields
    ======================================================================== */
 $args = array(
   array(
-    'type'        => 'divider',
-    'content'     => '<h3>Utility Options</h3>'
-  ),
-  array(
-    'id'          => 'google_analytics',
-    'type'        => 'text',
-    'description' => 'Define the Google Analytics tracking code for the site here.',
-    'placeholder' => 'UA-XXXXX-X'
-  ),
-  array(
-    'id'          => 'google_webmaster',
-    'type'        => 'text',
-    'description' => 'Define the Google site verification code here.',
-    'placeholder' => ''
-  ),
+    'type'    => 'divider',
+    'content' => '<p>There are currently no site settings.</p>'
+  )
 );
 
 /* Declare a new instance of the Site Settings class
@@ -45,7 +33,7 @@ new LT3_Site_Settings_Page($group, $name, $args, $menu_name, $title);
 
 /* Create a global variable of the Site Settings
    ======================================================================== */
-if (!is_admin())
+if (! is_admin())
 {
   $lt3_site_settings = get_option($name);
 }

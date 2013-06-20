@@ -21,16 +21,9 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <?php /* Google Webmaster Tools and Analytics */
-    if (! LT3_DEVELOPMENT_MODE) : global $lt3_site_settings; ?>
-    <!-- <meta name="google-site-verification" content=""> -->
-    <!-- <script>
-      var _gaq=[['_setAccount','<?php echo $lt3_site_settings['google_analytics']; ?>'],['_trackPageview']];
-      (function(d,t) {var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script> -->
-    <?php endif  ?>
+    <?php if (! LT3_DEVELOPMENT_MODE) : ?>
+    <!-- Google Analytics Code -->
+    <?php endif; ?>
 
     <?php wp_head(); ?>
   </head>
@@ -52,12 +45,8 @@
         <p class="site-description"><?php bloginfo('description'); ?></p>
         <?php endif; ?>
 
-        <?php /* Header sibear widgets */ ?>
-        <?php if (is_active_sidebar('header-sidebar-widgets'))
-          dynamic_sidebar('header-sidebar-widgets'); ?>
-
-        <?php /* Display the page header menu */ ?>
-        <?php lt3_page_header_menu(); ?>
+        <?php /* Display the main navigation menu */ ?>
+        <?php lt3_main_navigation_menu(); ?>
       </header>
 
       <section class="page-content">

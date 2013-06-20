@@ -11,6 +11,7 @@
  * @license    MIT license
  *
  * Category template page.
+ * Particular category? Save this template page as category-{name}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

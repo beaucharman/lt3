@@ -104,7 +104,7 @@ function lt3_is_child_of_page($page)
   {
     $page = lt3_get_id_by_slug($page);
   }
-  $parent    = (isset($post->post_parent) && $post->post_parent == $page);
+  $parent = (isset($post->post_parent) && $post->post_parent == $page);
   $ancestors = (isset($post->ancestors) && in_array($page, $post->ancestors));
   if ($parent || $ancestors)
   {
@@ -153,7 +153,7 @@ function lt3_is_post_type($type = null)
   }
   else
   {
-    if ( isset($wp_query->post->ID) && get_post_type($wp_query->post->ID))
+    if (isset($wp_query->post->ID) && get_post_type($wp_query->post->ID))
     {
       return true;
     }
@@ -199,7 +199,9 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
   {
     $descendants = get_term_children((int) $cat, 'category');
     if ($descendants && in_category($descendants, $_post))
+    {
       return true;
+    }
   }
   return false;
 }
@@ -215,7 +217,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
  * ======================================================================== */
 function lt3_get_data_with_curl($url = '')
 {
-  if (!LT3_DEVELOPMENT_MODE)
+  if (! LT3_DEVELOPMENT_MODE)
   {
     if (function_exists('curl_init'))
     {
@@ -238,6 +240,46 @@ function lt3_get_data_with_curl($url = '')
 }
 
 /**
+ * Excerpt
+ * ========================================================================
+ * lt3_excerpt()
+ * @param {string}  $raw_text
+ * @param {integer} $word_limit
+ * @param {boolean} $echo_result
+ *
+ * Limit the number of words in a given output
+ * ======================================================================== */
+function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCERPT_LENGTH)
+{
+  $text = explode(' ', strip_tags(strip_shortcodes($raw_text)));
+  $ellipses = false;
+  if (sizeof($text) > $word_limit)
+  {
+    for ($counter = sizeof($text); $counter > $word_limit; $counter--)
+    {
+      array_pop($text);
+    }
+    $output_text = implode(' ', $text);
+    $ellipses = true;
+  }
+  else
+  {
+    $output_text = implode(' ', $text);
+  }
+
+  if ($ellipses)
+  {
+    $output_text .= '&hellip;';
+  }
+
+  if (! $echo_result)
+  {
+    return $output_text;
+  }
+  echo $output_text;
+}
+
+/**
  * lt3_template_debug
  * ========================================================================
  * lt3_template_debug()
@@ -253,7 +295,7 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   function lt3_template_debug()
   {
     $args = func_get_args();
-    if (!is_admin() and $args[0])
+    if (! is_admin() and $args[0])
     {
       if ($args[0] == 'template_include')
       {

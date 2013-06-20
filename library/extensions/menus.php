@@ -29,8 +29,6 @@ if (function_exists('register_nav_menu'))
   /* Main Navigation Menu */
   register_nav_menu('main_navigation_menu', 'Main Navigation Menu');
 
-  /* Footer Menu */
-  register_nav_menu('footer_menu', 'Footer Menu');
 }
 
 /* Menu Declarations
@@ -41,31 +39,13 @@ if (function_exists('register_nav_menu'))
  * ========================================================================
  * lt3_page_header_menu()
  * ======================================================================== */
-function lt3_page_header_menu()
+function lt3_main_navigation_menu()
 {
   wp_nav_menu(
     array(
       'theme_location'  => 'main_navigation_menu',
       'container'       => 'nav',
       'container_class' => 'main-navigation',
-      'fallback_cb'     => false,
-      'menu_class'      => 'menu'
-    )
-  );
-}
-
-/**
- * Page Footer Menu
- * ========================================================================
- * lt3_page_footer_menu()
- * ======================================================================== */
-function lt3_page_footer_menu()
-{
-  wp_nav_menu(
-    array(
-      'theme_location'  => 'footer_menu',
-      'container'       => 'nav',
-      'container_class' => 'footer-navigation',
       'fallback_cb'     => false,
       'menu_class'      => 'menu'
     )

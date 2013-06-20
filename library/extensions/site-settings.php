@@ -93,7 +93,7 @@ class LT3_Site_Settings_Page
   function site_settings_render_page()
   {
     /* Check that the user is allowed to update options */
-    if (!current_user_can('manage_options'))
+    if (! current_user_can('manage_options'))
     {
       wp_die('You do not have sufficient permissions to access this page . ');
     }
@@ -243,27 +243,27 @@ class LT3_Site_Settings_Page
             echo '</select>';
             break;
 
-            /**
-             * file
-             * ========================================================================
-             * @param {string} type
-             * @param {string} id
-             * @param {string} label       | optional
-             * @param {string} description | optional
-             * @param {string} placeholder | optional
-             * ======================================================================== */
-            case 'file':
-              wp_enqueue_style('thickbox');
-              wp_enqueue_script('thickbox');
-              wp_enqueue_script('media-upload');
-              wp_enqueue_script('cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-file-upload.js'
-                , array('thickbox', 'media-upload'));
-              $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-              echo '<input name="' . $fields_name . '[' . $id . ']" type="text" placeholder="'
-                .$field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />
-                <input class="custom_upload_file_button button" type="button" value="Choose File" />
-                <br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
-              break;
+          /**
+           * file
+           * ========================================================================
+           * @param {string} type
+           * @param {string} id
+           * @param {string} label       | optional
+           * @param {string} description | optional
+           * @param {string} placeholder | optional
+           * ======================================================================== */
+          case 'file':
+            wp_enqueue_style('thickbox');
+            wp_enqueue_script('thickbox');
+            wp_enqueue_script('media-upload');
+            wp_enqueue_script('cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/cmfb-file-upload.js'
+              , array('thickbox', 'media-upload'));
+            $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
+            echo '<input name="' . $fields_name . '[' . $id . ']" type="text" placeholder="'
+              . $field_placeholder.'" class="custom_upload_file" value="'.$value.'" size="100" />'
+              . '<input class="custom_upload_file_button button" type="button" value="Choose File" />'
+              . '<br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
+            break;
 
           /* default */
           default:
@@ -282,13 +282,13 @@ class LT3_Site_Settings_Page
       echo '</tr>';
     } // end foreach
 
-    echo '</table>';
-    echo '<p class="submit">';
-    echo '  <input type="submit" class="button-primary" value="Save Changes">&nbsp;';
-    echo '  <a href="./" class="button">Cancel</a>';
-    echo '</p>';
-    echo '</form>';
-    echo '</div>';
+    echo '</table>'
+      . '<p class="submit">'
+      . '  <input type="submit" class="button-primary" value="Save Changes">&nbsp;'
+      . '  <a href="./" class="button">Cancel</a>'
+      . '</p>'
+      . '</form>'
+      . '</div>';
   }
 
   /**

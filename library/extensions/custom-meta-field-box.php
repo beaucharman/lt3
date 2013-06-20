@@ -42,17 +42,17 @@ class LT3_Custom_Meta_Field_Box
   function __construct($cmfb)
   {
     /* Set class values */
-    $this->cmfb      = $cmfb;
-    $this->id        = $this->uglify_words('_cmfb_'. $this->cmfb['id']);
-    $this->title     = (isset($this->cmfb['title']))
+    $this->cmfb = $cmfb;
+    $this->id = $this->uglify_words('_cmfb_'. $this->cmfb['id']);
+    $this->title = (isset($this->cmfb['title']))
       ? $this->cmfb['title'] : $this->prettify_words($this->cmfb['id']);
     $this->post_type = (isset($this->cmfb['post_type']))
       ? $this->cmfb['post_type'] : 'post';
-    $this->context   = (isset($this->cmfb['context']))
+    $this->context = (isset($this->cmfb['context']))
       ? $this->cmfb['context']   : 'advanced';
-    $this->priority  = (isset($this->cmfb['priority']))
+    $this->priority = (isset($this->cmfb['priority']))
       ? $this->cmfb['priority']  : 'default';
-    $this->fields    = $this->cmfb['fields'];
+    $this->fields = $this->cmfb['fields'];
 
     /* Magic */
     add_action('add_meta_boxes', array(&$this, 'add_custom_meta_field_box'));
@@ -374,9 +374,9 @@ class LT3_Custom_Meta_Field_Box
             $image = $image[0];
           }
           echo '<input name="' . $field_id . '" type="hidden" class="custom_upload_image" value="' . $value . '" />'
-          . '<img src="' . $image . '" class="custom_preview_image" alt="no image currently selected" /><br />'
-          . '<input class="custom_upload_image_button button" type="button" value="Choose Image" />'
-          . '<small> <a href="#" class="custom_clear_image_button">Remove Image</a></small>';
+            . '<img src="' . $image . '" class="custom_preview_image" alt="no image currently selected" /><br />'
+            . '<input class="custom_upload_image_button button" type="button" value="Choose Image" />'
+            . '<small> <a href="#" class="custom_clear_image_button">Remove Image</a></small>';
           break;
 
         /**

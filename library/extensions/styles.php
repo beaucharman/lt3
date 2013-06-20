@@ -36,7 +36,6 @@ function lt3_load_styles()
      * Then bundle into style.css for deloyment. Conditional styles would be
      * appropriate to be loaded here.
      */
-
   }
   elseif (is_admin())
   {
