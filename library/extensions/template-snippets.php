@@ -261,28 +261,31 @@ function lt3_delete_comment_link($id)
 function lt3_back_to_parent_link()
 {
   global $post;
-  $post = get_post($post);
+  $url = '';
+  $name = '';
   $category = get_the_category();
+
   if (is_attachment())
   {
     $post_parent = get_post($post->post_parent);
-    $slug = get_permalink($post_parent->ID);
+    $url = get_permalink($post_parent->ID);
     $name = get_the_title($post_parent->ID);
   }
-  if (lt3_is_post_type())
+  elseif (lt3_is_post_type())
   {
-    $slug = get_post_type_archive_link(get_post_type($post->ID));
+    $url = get_post_type_archive_link(get_post_type($post->ID));
     $name = lt3_prettify_words(lt3_plurify_words(get_post_type(get_the_ID())));
   }
   else
   {
-    $slug = home_url();
+    $url = home_url();
     $name = get_bloginfo('name');
   }
-  if ($name && $slug)
+
+  if ($url && $name)
   {
     echo '<a class="back-to-parent-link" title="Back to ' . $name . '" href="'
-      . $slug . '">&larr; Back to ' . $name . '</a>';
+      . $url . '">&larr; Back to ' . $name . '</a>';
   }
 }
 

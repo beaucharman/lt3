@@ -18,9 +18,15 @@
 
   <?php lt3_include_post_meta(); ?>
 
-  <figure>
-    <figcaption><?php echo $post->post_content; ?></figcaption>
+  <?php if ($post->post_content) : ?>
+  <p class="attachment-description"><?php echo $post->post_content; ?><p>
+  <?php endif; ?>
+
+  <figure class="attachment-figure">
     <?php echo wp_get_attachment_image($post->ID, 'full'); ?>
+    <?php if ($post->post_excerpt) : ?>
+    <figcaption class="attachment-figcaption"><?php echo $post->post_excerpt; ?></figcaption>
+    <?php endif; ?>
   </figure>
 
   <footer class="article-footer"><?php lt3_back_to_parent_link(); ?></footer>
