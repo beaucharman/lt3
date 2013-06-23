@@ -538,13 +538,13 @@ class LT3_Custom_Meta_Field_Box
       {
         if ('page' == $_POST['post_type'])
         {
-          if (!current_user_can('edit_page', $post_id))
+          if (! current_user_can('edit_page', $post_id))
           {
             return $post_id;
           }
         }
       }
-      elseif (!current_user_can('edit_post', $post_id))
+      elseif (! current_user_can('edit_post', $post_id))
       {
         return $post_id;
       }
