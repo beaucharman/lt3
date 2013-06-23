@@ -12,7 +12,7 @@
  * ======================================================================== */ ?>
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('archive entry excerpt post-'. get_the_ID()); ?>>
+<article <?php post_class('archive entry excerpt post-' . get_the_ID()); ?>>
 
   <h2 class="article-title">
     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
@@ -38,4 +38,4 @@
 
 </article>
 
-<?php endwhile ; ?>
+<?php endwhile; ?>

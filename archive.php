@@ -43,7 +43,7 @@
   $post_type_obj = get_post_type_object(get_post_type($wp_query->post->ID));
   print $post_type_obj->labels->name; echo _e(' Archive');
 
-  /* Paged Archive */ elseif (isset($_GET['paged']) && !empty($_GET['paged'])) :
+  /* Paged Archive */ elseif (isset($_GET['paged']) && ! empty($_GET['paged'])) :
   echo _e('Article Archives');
 
   /* Archive */ else :

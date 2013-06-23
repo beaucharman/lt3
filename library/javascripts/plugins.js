@@ -34,7 +34,7 @@ documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
   var console = (window.console = window.console || {});
   while (length--) {
     method = methods[ length ];
-    if (!console[method]) {
+    if (! console[method]) {
       console[ method ] = noop;
     }
   }

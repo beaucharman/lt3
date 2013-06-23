@@ -23,7 +23,7 @@
 
 <?php if (!is_sticky()) continue; ?>
 
-  <article <?php post_class('sticky entry excerpt post-'. get_the_ID()); ?>>
+  <article <?php post_class('sticky entry excerpt post-' . get_the_ID()); ?>>
 
     <h2 class="sticky-article-title">
       <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
@@ -47,7 +47,7 @@
 
   </article>
 
-<?php endwhile ; ?>
+<?php endwhile; ?>
 
 </section>
 

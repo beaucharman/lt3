@@ -12,7 +12,7 @@
  * ======================================================================== */ ?>
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('front-page entry content post-'. get_the_ID()); ?>>
+<article <?php post_class('front-page entry content post-' . get_the_ID()); ?>>
 
   <?php $article_title = strtoupper(get_the_title());
     if (($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
@@ -35,4 +35,4 @@
 
 <?php lt3_get_comments_template(); ?>
 
-<?php endwhile ; ?>
+<?php endwhile; ?>

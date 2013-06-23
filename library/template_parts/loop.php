@@ -14,7 +14,7 @@
 
 <?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
 
-<article <?php post_class('post-'. get_the_ID() . ' entry ' . $output_type); ?>>
+<article <?php post_class('post-' . get_the_ID() . ' entry ' . $output_type); ?>>
 
   <h1 class="article-title">
     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
@@ -36,4 +36,4 @@
 
 <?php lt3_get_comments_template(); ?>
 
-<?php endwhile ; ?>
+<?php endwhile; ?>

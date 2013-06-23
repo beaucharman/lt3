@@ -34,7 +34,7 @@
       <header role="banner" class="page-header">
 
         <?php /* Site title */ ?>
-        <?php if (is_home() || is_front_page()) echo '<h1>'; ?>
+        <?php if (is_home() || is_front_page()) echo '<h1 class="site-heading">'; ?>
         <a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title">
           <?php bloginfo('name'); ?>
         </a>
