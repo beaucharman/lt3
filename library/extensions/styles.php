@@ -24,21 +24,29 @@ add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
-  /* Register styles here */
+  /**
+   * Register styles here
+   */
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
     . '/admin/custom-admin-styles.css');
 
-  /* Enqueue styles here */
+  /**
+   * Enqueue styles here
+   */
   if (!is_admin())
   {
     /**
-     * Enqueue theme styles here. Consider seperate files for development
-     * Then bundle into style.css for deloyment. Conditional styles would be
-     * appropriate to be loaded here.
+     * Enqueue theme styles here.
+     * Consider seperate files for development, then bundle into style.css
+     * for deployment. Conditional styles would be appropriate to be loaded here.
      */
   }
   elseif (is_admin())
   {
+    /**
+     * Admin area styles
+     */
+
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
     // Enqueue admin styles here.
@@ -46,6 +54,8 @@ function lt3_load_styles()
 }
 
 /**
+ * Custom Editor Styles
+ * ========================================================================
  * Styles the visual editor with custom-editor-style.css
  * to match the theme style.
  */
@@ -55,6 +65,8 @@ if (LT3_USE_CUSTOM_EDITOR_STYLES)
 }
 
 /**
+ * Custom Login Styles
+ * ========================================================================
  * This function styles the admin login screen with
  * custom-login-style.css to match the theme style.
  */

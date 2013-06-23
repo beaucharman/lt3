@@ -46,7 +46,7 @@ class LT3_Custom_Taxonomy
 
   /**
    * Class Constructor
-   *  ========================================================================
+   * ========================================================================
    * __construct()
    * @param  {string}          $name
    * @param  {array || string} $post_type
@@ -54,7 +54,7 @@ class LT3_Custom_Taxonomy
    * @param  {array}           $options
    * @param  {string}          $help
    * @return {instance}        taxonomy
-   *  ======================================================================== */
+   * ======================================================================== */
   public function __construct($name, $post_type = array(), $labels = array(), $options = array(), $help = null)
   {
     /* Set class values */

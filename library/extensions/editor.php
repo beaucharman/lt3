@@ -129,7 +129,7 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
   add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
   function lt3_mce_styleselect_editor_settings($settings)
   {
-    if (!empty($settings['theme_advanced_styles']))
+    if (! empty($settings['theme_advanced_styles']))
     {
       $settings['theme_advanced_styles'] .= ';';
     }

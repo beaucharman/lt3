@@ -161,8 +161,8 @@ class LT3_Custom_Meta_Field_Box
             echo '<li>';
             echo '  <label for="' . $field_id . '[' . $option . ']">';
             echo '  <input type="checkbox" name="' . $field_id . '[' . $option . ']" id="'
-              . $field_id . '[' . $option . ']" value="' . $option . '" ', isset($value[$option])
-                ? ' checked' : '', ' />';
+              . $field_id . '[' . $option . ']" value="' . $option . '" '
+              , isset($value[$option]) ? ' checked' : '', ' />';
             echo '  &nbsp;' . $label . '</label>';
             echo '</li>';
           endforeach ;
@@ -187,10 +187,10 @@ class LT3_Custom_Meta_Field_Box
             ? $field['args'] : array();
           $args = array_merge(
             array(
-            'orderby'       => 'title',
-            'order'         => 'ASC',
-            'post_type'      => $field['post_type'],
-            'posts_per_page' => -1
+              'orderby'       => 'title',
+              'order'         => 'ASC',
+              'post_type'      => $field['post_type'],
+              'posts_per_page' => -1
             ), $field['args']
          );
           $items = get_posts($args);
@@ -205,7 +205,7 @@ class LT3_Custom_Meta_Field_Box
               echo '<li>';
               echo '  <label for="' . $field_id . '[' . $item->ID . ']">';
               echo '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
-                .']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
+                . ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
               echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
               echo '</li>';
             endforeach ;
@@ -215,7 +215,7 @@ class LT3_Custom_Meta_Field_Box
           else
           {
             echo 'Sorry, there are currently no '. $this->prettify_words($field['post_type'])
-              .' items to choose from.';
+              . ' items to choose from.';
           }
           break;
 
@@ -299,7 +299,6 @@ class LT3_Custom_Meta_Field_Box
          * @param {string} description | optional
          * ======================================================================== */
         case 'term_select':
-
           $field['args'] = (isset($field['args']) && is_array($field['args']))
             ? $field['args'] : array();
           $args = array_merge(

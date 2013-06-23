@@ -202,7 +202,7 @@ function lt3_register_shortcode_hidden_content($atts, $content = null)
     if ($private_message)
     {
       $return_string .= '<p class="success message private hidden-content">'
-      . $private_message .'</p>' . "\n";
+        . $private_message .'</p>' . "\n";
     }
       $return_string .= $content;
   }
@@ -271,14 +271,14 @@ function lt3_register_shortcode_google_map($atts, $content = null)
    ), $atts));
 
   return '<iframe width="'. $width
-  .'" height="'. $height
-  .'" class="google-map '. $class
-  .'" frameborder="0"'
-  .' scrolling="no"'
-  .' src="'. $content
-  .'&amp;output=embed">'
-  . $fallback
-  .'</iframe>';
+    . '" height="'. $height
+    . '" class="google-map '. $class
+    . '" frameborder="0"'
+    . ' scrolling="no"'
+    . ' src="'. $content
+    . '&amp;output=embed">'
+    . $fallback
+    . '</iframe>';
 }
 
 /**
@@ -287,8 +287,8 @@ function lt3_register_shortcode_google_map($atts, $content = null)
 * ========================================================================
 *  Accepts the actual YouTube clip id or the http://youtu.be/xxx link
 *  Todo:
-*  Implement   allowFullScreen="true|false"
-*              allowScriptAccess="always|never"
+*  Implement allowFullScreen="true|false"
+*            allowScriptAccess="always|never"
 * ======================================================================== */
 add_shortcode('lt3_youtube', 'lt3_register_shortcode_youtube');
 function lt3_register_shortcode_youtube($atts, $content = null)
@@ -311,17 +311,17 @@ function lt3_register_shortcode_youtube($atts, $content = null)
 
   $id = str_replace('http://youtu.be/', '', $id);
   return '<iframe src="http://www.youtube.com/embed/' . $id
-     . '?wmode=transparent'
-     . '&rel=' . $rel
+    . '?wmode=transparent'
+    . '&rel=' . $rel
     . '&HD=' . $hd
-     . '&showinfo=' . $showinfo
-     . '&controls=' . $controls
-     . '&name=' . $name
-     . '" wmode="transparent"'
-     . ' width="' . $width
-     . '" height="' . $height
-     . '" class="youtube ' . $class
-     . '" frameborder="0">'
-     . $fallback
-     . '</iframe>';
+    . '&showinfo=' . $showinfo
+    . '&controls=' . $controls
+    . '&name=' . $name
+    . '" wmode="transparent"'
+    . ' width="' . $width
+    . '" height="' . $height
+    . '" class="youtube ' . $class
+    . '" frameborder="0">'
+    . $fallback
+    . '</iframe>';
 }

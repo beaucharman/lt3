@@ -436,8 +436,8 @@ function lt3_include_post_meta()
     if (lt3_get_taxonomies_terms_links())
     {
       echo _e(' in ');
-       echo lt3_get_taxonomies_terms_links();
-       echo ', ';
+      echo lt3_get_taxonomies_terms_links();
+      echo ', ';
     }
     echo 'on the ';
     the_time('jS \o\f F, Y');

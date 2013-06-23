@@ -25,10 +25,12 @@
    ======================================================================== */
 if (function_exists('register_nav_menu'))
 {
-
   /* Main Navigation Menu */
   register_nav_menu('main_navigation_menu', 'Main Navigation Menu');
 
+  /**
+   * Register other menus here.
+   */
 }
 
 /* Menu Declarations
@@ -50,4 +52,8 @@ function lt3_main_navigation_menu()
       'menu_class'      => 'menu'
     )
   );
+
+  /**
+   * Declare other menu render functions here.
+   */
 }
