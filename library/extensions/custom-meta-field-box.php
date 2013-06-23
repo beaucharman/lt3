@@ -201,20 +201,20 @@ class LT3_Custom_Meta_Field_Box
             foreach ($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? ' <small>(' . $item->post_type . ')</small>' : '';
-              echo '<li>';
-              echo '  <label for="' . $field_id . '[' . $item->ID . ']">';
-              echo '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
-                . ']" id="'.$field_id.'['. $item->ID .']" value="'.$item->ID.'" '. $is_select .'>';
-              echo '  &nbsp;'.$item->post_title . $post_type_label.'</label>';
-              echo '</li>';
-            endforeach ;
+                ? ' <small>(' . $item->post_type . ')</small>' : ''
+                . '<li>'
+                . '  <label for="' . $field_id . '[' . $item->ID . ']">'
+                . '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
+                . ']" id="' . $field_id . '[' . $item->ID . ']" value="' . $item->ID . '" ' . $is_select . '>'
+                . '  &nbsp;' . $item->post_title . $post_type_label . '</label>'
+                . '</li>';
+            endforeach;
             echo '</ul>';
             echo '<p><small>Manage ' . $this->get_edit_links($field['post_type']) . '</p></small>';
           }
           else
           {
-            echo 'Sorry, there are currently no '. $this->prettify_words($field['post_type'])
+            echo 'Sorry, there are currently no ' . $this->prettify_words($field['post_type'])
               . ' items to choose from.';
           }
           break;
