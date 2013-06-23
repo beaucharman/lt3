@@ -30,15 +30,15 @@ if (have_comments()) : ?>
 </ol>
 
 <div class="comments-navigation">
-  <div class="comments-navigation-next-posts"><?php previous_comments_link() ?></div>
-  <div class="comments-navigation-prev-posts"><?php next_comments_link() ?></div>
+  <div class="comments-navigation--next-posts"><?php previous_comments_link() ?></div>
+  <div class="comments-navigation--prev-posts"><?php next_comments_link() ?></div>
 </div>
 
 <?php else : /* this is displayed if there are no comments so far */ ?>
 
 <?php if (comments_open()) : ?>
 
-<?php else : // comments are closed ?>
+<?php else : /* comments are closed */ ?>
 <p class="comments-closed-message"><?php echo _e('Comments are closed.'); ?></p>
 <?php endif; ?>
 
@@ -75,34 +75,36 @@ if (have_comments()) : ?>
 
     <?php else : ?>
 
-    <p class="comment-form input-field">
-      <label for="author"><?php echo _e('Name'); ?>&nbsp;<?php if ($req) echo "*"; ?><br>
-        <input type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="20" <?php if ($req) echo "aria-required='true'"; ?>>
+    <p class="comment-form input-field-container">
+      <label class="input-label" for="author"><?php echo _e('Name'); ?>&nbsp;<?php if ($req) echo "*"; ?><br>
+        <input class="input-field" type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="20" <?php if ($req) echo "aria-required='true'"; ?>>
+      </label>
+    </p>
+
+    <p class="comment-form input-field-container">
+      <label class="input-label" for="email"><?php echo _e('Email'); ?>&nbsp;<?php if ($req) echo "*"; ?> <small class="note"><?php echo _e('(will not be published)'); ?></small><br>
+        <input class="input-field" type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="21" <?php if ($req) echo "aria-required='true'"; ?>>
       </label>
     </p>
 
     <p class="comment-form input-field">
-      <label for="email"><?php echo _e('Email'); ?>&nbsp;<?php if ($req) echo "*"; ?> <small class="subtle-text"><?php echo _e('(will not be published)'); ?></small><br>
-        <input type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="21" <?php if ($req) echo "aria-required='true'"; ?>>
-      </label>
-    </p>
-
-    <p class="comment-form input-field">
-      <label for="url"><?php echo _e('Website'); ?><br>
-        <input type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="22">
+      <label class="input-label" for="url"><?php echo _e('Website'); ?><br>
+        <input class="input-field" type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="22">
       </label>
     </p>
 
     <?php endif; ?>
 
-    <p class="subtle-text"><?php echo _e('You can use these tags: '); ?><code><?php echo allowed_tags(); ?></code></p>
+    <p class="note comment-form allowed-tags"><?php echo _e('You can use these tags: '); ?><code><?php echo allowed_tags(); ?></code></p>
 
-    <p class="comment-form input-field">
-      <textarea name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="23"></textarea>
+    <p class="comment-form input-field-container">
+      <label class="input-label" for="comment"><?php echo _e('Comment'); ?><br>
+        <textarea class="input-field" name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="23"></textarea>
+      </label>
     </p>
 
-    <p class="comment-form submit-field">
-      <input name="submit" type="submit" id="submit" tabindex="24" value="Submit Comment &rarr;">
+    <p class="comment-form submit-field-container">
+      <input class="input-field" name="submit" type="submit" id="submit" tabindex="24" value="Submit Comment &rarr;">
       <?php comment_id_fields(); ?>
     </p>
 

@@ -48,7 +48,7 @@ define('LT3_EXCERPT_MORE', 'more &rarr;');
 
 /* Enable global comments
    ======================================================================== */
-define('LT3_ENABLE_GLOBAL_COMMENTS', false);
+define('LT3_ENABLE_GLOBAL_COMMENTS', true);
 
 /* Enable site search
    ======================================================================== */
