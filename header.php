@@ -29,19 +29,19 @@
   </head>
   <body <?php body_class(); ?>>
 
-    <div class="page-wrap">
+    <div class="page-wrap container">
 
       <header role="banner" class="page-header">
 
         <?php /* Site title */ ?>
-        <?php if (is_home() || is_front_page()) echo '<h1 class="site-heading">'; ?>
+        <?php if (is_home() || is_front_page()) { echo '<h1 class="site-heading">'; } ?>
         <a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title">
           <?php bloginfo('name'); ?>
         </a>
-        <?php if (is_home() || is_front_page()) echo '</h1>'; ?>
+        <?php if (is_home() || is_front_page()) { echo '</h1>'; } ?>
 
         <?php /* Site description */ ?>
-        <?php if (get_bloginfo('description')): ?>
+        <?php if (get_bloginfo('description')) : ?>
         <p class="site-description"><?php bloginfo('description'); ?></p>
         <?php endif; ?>
 
