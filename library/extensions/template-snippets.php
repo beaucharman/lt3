@@ -179,9 +179,9 @@ function lt3_get_message($message_name)
      * No posts via WordPress built in post type message.
      */
     case 'NO POSTS':
-      echo '<section class="error-message no-posts">' . "\n";
-      echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
-      echo '<p>' . __('There are currently no posts associated with the <strong>');
+      echo '<section class="error-message no-posts">' . "\n"
+        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
+        . '<p>' . __('There are currently no posts associated with the <strong>');
       single_cat_title();
       echo __('</strong> category.') . '</p>' . "\n";
       if (LT3_ENABLE_SITE_SEARCH)
@@ -196,9 +196,9 @@ function lt3_get_message($message_name)
      * No articles from custom post types.
      */
     case 'NO ARTICLES':
-      echo '<section class="error-message no-articles">' . "\n";
-      echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
-      echo '<p>' . __('There are currently no articles here.') . '</p>' . "\n";
+      echo '<section class="error-message no-articles">' . "\n"
+        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
+        . '<p>' . __('There are currently no articles here.') . '</p>' . "\n";
       if (LT3_ENABLE_SITE_SEARCH)
       {
         echo '<p>' . __('Try searching our site for what you are after.') . '</p></div>' . "\n";
@@ -211,8 +211,8 @@ function lt3_get_message($message_name)
      * No search results message.
      */
     case 'NO RESULTS':
-      echo '<section class="no-results">' . "\n";
-      echo '<h3>' . __('Sorry! We couldn\'t find anything&hellip;') . '</h3>' . "\n";
+      echo '<section class="no-results">' . "\n"
+        . '<h3>' . __('Sorry! We couldn\'t find anything&hellip;') . '</h3>' . "\n";
       if (LT3_ENABLE_SITE_SEARCH)
       {
         echo '<p>' . __('Maybe try searching with a different keyword?') . '</p>' . "\n";
@@ -229,9 +229,9 @@ function lt3_get_message($message_name)
      * Default. Page not found message, suitable for a 404 message.
      */
     default:
-      echo '<section class="error-message not-found">' . "\n";
-      echo '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n";
-      echo '<p>' . __('The page you are looking for does not exist. (404)') . '</p>' . "\n";
+      echo '<section class="error-message not-found">' . "\n"
+        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
+        . '<p>' . __('The page you are looking for does not exist. (404)') . '</p>' . "\n";
       if (LT3_ENABLE_SITE_SEARCH)
       {
         echo '<p>' . __('Try searching our site for what you are after.') . '</p></div>' . "\n";
@@ -248,8 +248,8 @@ function lt3_delete_comment_link($id)
 {
   if (current_user_can('edit_post'))
   {
-    echo ' | <a href="' . admin_url("comment.php?action=cdc&c=$id") . '">Delete</a> | ';
-    echo '<a href="' . admin_url("comment.php?action=cdc&dt=spam&c=$id") . '">Spam</a>';
+    echo ' | <a href="' . admin_url("comment.php?action=cdc&c=$id") . '">Delete</a> | '
+      . '<a href="' . admin_url("comment.php?action=cdc&dt=spam&c=$id") . '">Spam</a>';
   }
 }
 
@@ -336,8 +336,8 @@ function lt3_get_single_nav_links()
 {
   echo '<div class="next-single">';
     next_post_link('%link', 'Next Article &rarr;', TRUE);
-  echo '</div>';
-  echo '<div class="previous-single">';
+  echo '</div>'
+    . '<div class="previous-single">';
     previous_post_link('%link', '&larr; Previous Article', TRUE);
   echo '</div>';
 }
@@ -430,9 +430,9 @@ function lt3_include_post_meta()
 {
   if (LT3_ENABLE_META_DATA)
   {
-    echo '<p class="postmetadata">';
-    echo '<span class="post-categories-time">';
-    echo _e('Posted ');
+    echo '<p class="postmetadata">'
+      . '<span class="post-categories-time">'
+      . _e('Posted ');
     if (lt3_get_taxonomies_terms_links())
     {
       echo _e(' in ');

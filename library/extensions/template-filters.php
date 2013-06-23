@@ -142,8 +142,8 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
 {
   extract(shortcode_atts(array(
     'id'      => '',
-    'align'    => '',
-    'width'    => '',
+    'align'   => '',
+    'width'   => '',
     'caption' => ''
   ), $attr));
   if (1 > (int) $width || empty($caption))

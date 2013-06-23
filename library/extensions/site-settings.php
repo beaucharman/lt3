@@ -108,8 +108,8 @@ class LT3_Site_Settings_Page
     /* Show the page settings title */
     screen_icon('themes'); echo '<h2>' . $this->title  . '</h2>';
 
-    echo '<form method="post" action="options.php">';
-    echo '<table class="form-table lt3-form-container">';
+    echo '<form method="post" action="options.php">'
+      . '<table class="form-table lt3-form-container">';
 
     /* Declare the settings field */
     settings_fields($this->fields_group);
@@ -142,10 +142,10 @@ class LT3_Site_Settings_Page
       else
       {
 
-        echo '<th>';
-        echo '  <label for="' . $fields_name . '[' . $id . ']">' . $label . '</label>';
-        echo '</th>';
-        echo '<td>';
+        echo '<th>'
+          . '  <label for="' . $fields_name . '[' . $id . ']">' . $label . '</label>'
+          . '</th>'
+          . '<td>';
 
         switch ($field['type'])
         {
@@ -231,8 +231,8 @@ class LT3_Site_Settings_Page
             );
             $items = get_posts($args);
             echo '<select name="' . $fields_name . '[' . $id . ']" id="'
-              . $fields_name . '[' . $id . ']">';
-            echo '<option value="">Select&hellip;</option>';
+              . $fields_name . '[' . $id . ']">'
+              . '<option value="">Select&hellip;</option>';
             foreach ($items as $item)
             {
               $is_select = ($item->ID == $value) ? ' selected' : '';

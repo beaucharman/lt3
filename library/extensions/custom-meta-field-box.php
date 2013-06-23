@@ -103,8 +103,8 @@ class LT3_Custom_Meta_Field_Box
 
       echo '<li class="custom-field-container">';
 
-      echo '<p class="label-container">';
-      echo '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
+      echo '<p class="label-container">'
+        . '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
       if (LT3_DEVELOPMENT_MODE)
       {
         /* Disply the field id for faster development referencing */
@@ -113,7 +113,6 @@ class LT3_Custom_Meta_Field_Box
       echo '</p>';
 
       echo '<div class="input-container">';
-
       /* Render required field */
       $field['type'] = (isset($field['type'])) ? $field['type'] : '';
 
@@ -158,13 +157,13 @@ class LT3_Custom_Meta_Field_Box
         case 'checkbox':
           echo '<ul>';
           foreach ($field['options'] as $option => $label):
-            echo '<li>';
-            echo '  <label for="' . $field_id . '[' . $option . ']">';
-            echo '  <input type="checkbox" name="' . $field_id . '[' . $option . ']" id="'
+            echo '<li>'
+              . '  <label for="' . $field_id . '[' . $option . ']">'
+              . '  <input type="checkbox" name="' . $field_id . '[' . $option . ']" id="'
               . $field_id . '[' . $option . ']" value="' . $option . '" '
-              , isset($value[$option]) ? ' checked' : '', ' />';
-            echo '  &nbsp;' . $label . '</label>';
-            echo '</li>';
+              , isset($value[$option]) ? ' checked' : '' , ' />'
+              . '  &nbsp;' . $label . '</label>'
+              . '</li>';
           endforeach ;
           echo '</ul>';
           break;
@@ -201,8 +200,8 @@ class LT3_Custom_Meta_Field_Box
             foreach ($items as $item):
               $is_select = (in_array($item->ID, $value)) ? ' checked' : '';
               $post_type_label = (isset($field['post_type'][1]) && is_array($field['post_type']))
-                ? ' <small>(' . $item->post_type . ')</small>' : ''
-                . '<li>'
+                ? ' <small>(' . $item->post_type . ')</small>' : '';
+              echo '<li>'
                 . '  <label for="' . $field_id . '[' . $item->ID . ']">'
                 . '  <input type="checkbox" name="' . $field_id . '[' . $item->ID
                 . ']" id="' . $field_id . '[' . $item->ID . ']" value="' . $item->ID . '" ' . $is_select . '>'
