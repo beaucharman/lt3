@@ -53,7 +53,7 @@ function lt3_add_image_sizes()
 }
 
 /**
- * Add image sizes for selection in the WordPress editor.
+ * Filter - Add image sizes for selection in the WordPress editor.
  */
 add_filter('image_size_names_choose', 'lt3_show_image_sizes');
 function lt3_show_image_sizes($sizes)
@@ -124,8 +124,8 @@ function lt3_advanced_comment($comment, $args, $depth)
         <?php comment_reply_link(
           array_merge($args,
             array('depth' => $depth, 'max_depth' => $args['max_depth'])
-         )
-       ); ?>
+          )
+        ); ?>
       </div>
     </div>
 <?php }

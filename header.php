@@ -11,7 +11,7 @@
       <?php lt3_title(); ?>
     </title>
 
-    <meta name="description" content="<?php lt3_meta_tag_description(); ?>">
+    <meta name="description" content="<?php lt3_meta_description(); ?>">
     <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri() . '?v=' . LT3_STYLE_CACHE_BREAK; ?>" media="all">

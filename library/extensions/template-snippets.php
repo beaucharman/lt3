@@ -86,15 +86,15 @@ function lt3_title()
 }
 
 /**
- * lt3 Meta Tag Description
+ * lt3 Meta Description
  * ========================================================================
- * lt3_meta_tag_description()
+ * lt3_meta_description()
  * @param  null
  * @return string
  *
- * Default header description meta tag
+ * Default header description meta tag.
  * ======================================================================== */
-function lt3_meta_tag_description()
+function lt3_meta_description()
 {
   global $post;
   $content = '';
