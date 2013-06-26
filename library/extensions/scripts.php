@@ -27,7 +27,7 @@ if (LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
   add_action('wp_enqueue_scripts', 'lt3_load_google_jquery');
   function lt3_load_google_jquery()
   {
-    if (!is_admin())
+    if (! is_admin())
     {
       wp_deregister_script('jquery');
       wp_register_script('jquery',
@@ -56,7 +56,7 @@ function lt3_load_scripts()
   /**
    * Enqueue frontend scripts here
    */
-  if (!is_admin())
+  if (! is_admin())
   {
     if (is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)
     {
