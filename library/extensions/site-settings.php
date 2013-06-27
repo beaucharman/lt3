@@ -102,7 +102,7 @@ class LT3_Site_Settings_Page
 
     if (isset($_GET['settings-updated']))
     {
-      echo '<div id="message" class="updated fade"><p>' . $this->title . ' Updated . </p></div>';
+      echo '<div id="message" class="updated fade"><p>' . $this->title . ' Updated. </p></div>';
     }
 
     /* Show the page settings title */
