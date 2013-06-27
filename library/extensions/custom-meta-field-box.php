@@ -129,8 +129,8 @@ class LT3_Custom_Meta_Field_Box
          * ======================================================================== */
         case 'text':
           $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
-          echo '<input type="text" name="'.$field_id.'" id="'
-            .$field_id.'" placeholder="'.$field_placeholder.'" value="'.$value.'" size="50">';
+          echo '<input type="text" name="' . $field_id . '" id="'
+            . $field_id . '" placeholder="' . $field_placeholder . '" value="' . $value . '" size="50">';
           break;
 
         /**
@@ -186,8 +186,8 @@ class LT3_Custom_Meta_Field_Box
             ? $field['args'] : array();
           $args = array_merge(
             array(
-              'orderby'       => 'title',
-              'order'         => 'ASC',
+              'orderby'        => 'title',
+              'order'          => 'ASC',
               'post_type'      => $field['post_type'],
               'posts_per_page' => -1
             ), $field['args']
@@ -256,8 +256,8 @@ class LT3_Custom_Meta_Field_Box
             ? $field['args'] : array();
           $args = array_merge(
             array(
-              'orderby'       => 'title',
-              'order'         => 'ASC',
+              'orderby'        => 'title',
+              'order'          => 'ASC',
               'post_type'      => $field['post_type'],
               'posts_per_page' => -1
             ), $field['args']

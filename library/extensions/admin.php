@@ -174,8 +174,8 @@ function lt3_add_custom_post_type_to_right_now()
       $num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
       $text = "<a href='edit.php?post_type=$post_type->name'>$text</a>";
     }
-    echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>';
-    echo '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
+    echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>'
+      . '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
   }
   $taxonomies = get_taxonomies($args, $output, $operator);
   foreach ($taxonomies as $taxonomy)
@@ -192,8 +192,8 @@ function lt3_add_custom_post_type_to_right_now()
       $num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
       $text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
     }
-    echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>';
-    echo '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
+    echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>'
+      . '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
   }
 }
 
@@ -250,7 +250,10 @@ function lt3_restriction_taxonomy_dropdown($query)
       if (isset($var))
       {
         $term = get_term_by('id',$var,$tax_slug);
-        if ($term) $var = $term->slug;
+        if ($term)
+        {
+          $var = $term->slug;
+        }
       }
     }
   }
@@ -288,31 +291,35 @@ if (LT3_ENABLE_CUSTOM_HEADER)
   add_custom_image_header('lt3_header_style', 'lt3_admin_header_style');
   function lt3_admin_header_style()
   {
-  ?><style type="text/css">
-      #headimg {
-        width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-        height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-        background: no-repeat;
-      }
-    </style><?php
+  ?>
+  <style type="text/css">
+    #headimg {
+      width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
+      height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
+      background: no-repeat;
+    }
+  </style>
+  <?php
   }
   /* Include the header image in the template. */
   function lt3_header_style()
   {
-  ?><style type="text/css">
-      .page-header { background:url(<?php header_image(); ?>) no-repeat; }
-      .page-header h1 a { color:#<?php header_textcolor(); ?>; }
-    <?php if (get_header_textcolor() == 'blank') : ?>
-      .page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
-      .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
-    <?php else : ?>
-      .page-header .site-description  { color:#<?php header_textcolor(); ?>; }
-    <?php endif; ?>
-    <?php if (NO_HEADER_TEXT) : ?>
-      .page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
-      .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
-    <?php endif; ?>
-    </style><?php
+  ?>
+  <style type="text/css">
+    .page-header { background:url(<?php header_image(); ?>) no-repeat; }
+    .page-header h1 a { color:#<?php header_textcolor(); ?>; }
+  <?php if (get_header_textcolor() == 'blank') : ?>
+    .page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
+    .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
+  <?php else : ?>
+    .page-header .site-description  { color:#<?php header_textcolor(); ?>; }
+  <?php endif; ?>
+  <?php if (NO_HEADER_TEXT) : ?>
+    .page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
+    .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
+  <?php endif; ?>
+  </style>
+  <?php
   }
 }
 
