@@ -3,9 +3,9 @@
       <footer class="page-footer">
 
         <?php /* Site information */ ?>
-        <p class="site-information">
+        <div class="site-information">
           &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
-        </p>
+        </div>
 
       </footer>
 

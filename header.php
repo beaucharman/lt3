@@ -42,11 +42,12 @@
 
         <?php /* Site description */ ?>
         <?php if (get_bloginfo('description')) : ?>
-        <p class="site-description"><?php bloginfo('description'); ?></p>
+        <div class="site-description"><?php bloginfo('description'); ?></div>
         <?php endif; ?>
 
         <?php /* Display the main navigation menu */ ?>
         <?php lt3_main_navigation_menu(); ?>
+
       </header>
 
       <section class="page-content">
