@@ -19,5 +19,7 @@
 add_action('admin_init', 'lt3_custom_meta_field_boxes_init');
 function lt3_custom_meta_field_boxes_init()
 {
-  // declare custom meta field box intances here.
+  /**
+   * declare custom meta field box intances here.
+   */
 }
