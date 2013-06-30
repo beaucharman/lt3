@@ -3,12 +3,12 @@
  * Custom Meta Field Box
  * ========================================================================
  * custom-meta-field-box.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * To declare a custom meta field box, simply create a new instance of the
  * LT3_Custom_Meta_Field_Box class.
@@ -41,7 +41,9 @@ class LT3_Custom_Meta_Field_Box
    * ======================================================================== */
   function __construct($cmfb)
   {
-    /* Set class values */
+    /**
+     * Set class values
+     */
     $this->cmfb = $cmfb;
     $this->id = $this->uglify_words('_cmfb_'. $this->cmfb['id']);
     $this->title = (isset($this->cmfb['title']))
@@ -54,7 +56,9 @@ class LT3_Custom_Meta_Field_Box
       ? $this->cmfb['priority']  : 'default';
     $this->fields = $this->cmfb['fields'];
 
-    /* Magic */
+    /**
+     * Magic
+     */
     add_action('add_meta_boxes', array(&$this, 'add_custom_meta_field_box'));
     add_action('save_post', array(&$this, 'save_data'));
   }
@@ -86,18 +90,25 @@ class LT3_Custom_Meta_Field_Box
     global $post;
     echo '<input type="hidden" name="custom_meta_fields_box_nonce" value="'
       . wp_create_nonce(basename(__FILE__)) . '" />';
+
     echo '<ul class="lt3-form-container ' . $this->context . '">';
 
     foreach ($this->fields as $field)
     {
-      /* Get the field ID */
+      /**
+       * Get the field ID
+       */
       $field_id = $this->get_field_id($this->id, $field['id']);
 
-      /* Get the saved value, if there is one */
+      /**
+       * Get the saved value, if there is one
+       */
       $value = get_post_meta($post->ID, $field_id, true);
       $value = ($value) ? $value : '';
 
-      /* Get the label */
+      /**
+       * Get the label
+       */
       $field_label = (isset($field['label']))
         ? $field['label'] : $this->prettify_words($field['id']);
 
@@ -105,15 +116,22 @@ class LT3_Custom_Meta_Field_Box
 
       echo '<p class="label-container">'
         . '  <label for="' . $field_id . '"><strong>' . $field_label . '</strong></label>';
+
+      /**
+       * If within the development environment,
+       * disply the field id for faster development referencing.
+       */
       if (LT3_DEVELOPMENT_MODE)
       {
-        /* Disply the field id for faster development referencing */
         echo ' <span class="description">Field ID: ' . $field_id . '</span>';
       }
       echo '</p>';
 
       echo '<div class="input-container">';
-      /* Render required field */
+
+      /**
+       * Render required field
+       */
       $field['type'] = (isset($field['type'])) ? $field['type'] : '';
 
       switch ($field['type'])

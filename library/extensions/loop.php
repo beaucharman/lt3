@@ -3,12 +3,12 @@
  * Loop
  * ========================================================================
  * loop.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * Control specific loop outputs.
  * Loops altered from these functions are executed when the requested is made,

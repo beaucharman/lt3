@@ -3,12 +3,12 @@
  * Widgets
  * ========================================================================
  * widgets.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | 6th June 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * For more info, and variations:
  * http://codex.wordpress.org/Function_Reference/register_sidebar
@@ -33,7 +33,7 @@ function lt3_register_primary_sidebar()
     'name'          => __('Primary Sidebar Widgets'),
     'id'            => 'primary-sidebar-widgets',
     'description'   => __('These are widgets for the Primary Sidebar.'),
-    'before_widget' => '<div class="widget primary-sidebar-widget %2$s %1$s">',
+    'before_widget' => '<div class="widget widget--primary-sidebar %2$s %1$s">',
     'after_widget'  => '</div>',
     'before_title'  => '<h3 class="widget-title">',
     'after_title'   => '</h3>'

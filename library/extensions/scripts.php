@@ -3,12 +3,12 @@
  * Scripts
  * ========================================================================
  * scripts.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * To include scripts correctly, use the wp_register_script, and wp_enqueue_script functions:
  * http://codex.wordpress.org/Function_Reference/wp_register_script

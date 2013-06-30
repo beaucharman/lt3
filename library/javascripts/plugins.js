@@ -2,12 +2,12 @@
  * Plugins
  * ========================================================================
  * plugins.js
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * Basically any modular, stand alone script or plugin lives here
  * ======================================================================== */
@@ -19,7 +19,9 @@
 var documentClassName = document.documentElement.className;
 documentClassName = documentClassName.replace(/\bno-js\b/g, '') + ' js ';
 
-/* Avoid `console` errors in browsers that lack a console. [from boilerplate] */
+/**
+ * Avoid `console` errors in browsers that lack a console. [from boilerplate]
+ */
 (function () {
   'use strict';
   var method;

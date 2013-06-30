@@ -3,12 +3,12 @@
  * Site Settings
  * ========================================================================
  * site-settings.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * To use and view the option:
  *   global $lt3_site_settings;
@@ -92,7 +92,9 @@ class LT3_Site_Settings_Page
    * ======================================================================== */
   function site_settings_render_page()
   {
-    /* Check that the user is allowed to update options */
+    /**
+     * Check that the user is allowed to update options
+     */
     if (! current_user_can('manage_options'))
     {
       wp_die('You do not have sufficient permissions to access this page . ');
@@ -105,27 +107,39 @@ class LT3_Site_Settings_Page
       echo '<div id="message" class="updated fade"><p>' . $this->title . ' Updated. </p></div>';
     }
 
-    /* Show the page settings title */
+    /**
+     * Show the page settings title
+     */
     screen_icon('themes'); echo '<h2>' . $this->title  . '</h2>';
 
     echo '<form method="post" action="options.php">'
       . '<table class="form-table lt3-form-container">';
 
-    /* Declare the settings field */
+    /**
+     * Declare the settings field
+     */
     settings_fields($this->fields_group);
 
     foreach ($this->fields as $field)
     {
-      /* Set the page's field name */
+      /**
+       * Set the page's field name
+       */
       $fields_name = $this->fields_name;
 
-      /* Get the id */
+      /**
+       * Get the id
+       */
       $id = (isset($field['id'])) ? $field['id'] : '';
 
-      /* Get the label for the current setting */
+      /**
+       * Get the label for the current setting
+       */
       $label = (isset($field['label'])) ? $field['label'] : $this->prettify_words($id);
 
-      /* Get the value for the current setting */
+      /**
+       * Get the value for the current setting
+       */
       $value = (isset($this->site_settings[$id])) ? $this->site_settings[$id ] : '';
 
       echo '<tr>';
@@ -265,14 +279,18 @@ class LT3_Site_Settings_Page
               . '<br><small><a href="#" class="custom_clear_file_button">Remove File</a></small>';
             break;
 
-          /* default */
+          /**
+           * default
+           */
           default:
             echo '<span style="color: red;">Sorry, the type allocated for this input is not valid.</span>';
             break;
 
         } // end switch
 
-        /* Render the setting description if possible */
+        /**
+         * Render the setting description if possible
+         */
         if (isset($field['description']))
         {
           echo '<p><span class="description">' . $field['description'] . '</span></p>';
@@ -302,7 +320,9 @@ class LT3_Site_Settings_Page
    * ======================================================================== */
   public function site_settings_validate($input)
   {
-    /* List the settings to be saved here: */
+    /**
+     * List the settings to be saved here:
+     */
     foreach ($this->fields as $field)
     {
       if (isset($field['id']) && $field['type'] != 'divider')

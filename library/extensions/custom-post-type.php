@@ -3,12 +3,12 @@
  * Custom Post Type
  * ========================================================================
  * custom-post-type.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * Properties
  *  $PostType->name   | sring
@@ -50,13 +50,17 @@ class LT3_Custom_Post_Type
    *  ======================================================================== */
   public function __construct($name, $labels = array(), $options = array(), $help = null)
   {
-    /* Set class values */
+    /**
+     * Set class values
+     */
     $this->name = $this->uglify_words($name);
     $this->labels = $labels;
     $this->options = $options;
     $this->help = $help;
 
-    /* Create the labels */
+    /**
+     * Create the labels
+     */
     $this->labels['label_singular'] = (isset($this->labels['label_singular']))
       ? $this->labels['label_singular'] : $this->prettify_words($this->name);
     $this->labels['label_plural'] = (isset($this->labels['label_plural']))
@@ -97,7 +101,9 @@ class LT3_Custom_Post_Type
       'not_found_in_trash' => __('No ' . $this->labels['label_plural'] . ' found in Trash')
     );
 
-    /* Configure the options */
+    /**
+     * Configure the options
+     */
     $options = array_merge(
       array(
         'labels'        => $labels,
@@ -109,7 +115,9 @@ class LT3_Custom_Post_Type
       $this->options
    );
 
-    /* Register the new post type */
+    /**
+     * Register the new post type
+     */
     register_post_type($this->name, $options);
   }
 

@@ -3,12 +3,12 @@
  * Initial Theme Setup
  * ========================================================================
  * initial-theme-setup.php
- * @version    2.1 | 6th June 2013
- * @package    WordPress
- * @subpackage lt3
- * @author     Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link       https://github.com/beaucharman/lt3
- * @license    MIT license
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
  *
  * For more information:
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
@@ -16,10 +16,14 @@
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
 function lt3_initial_theme_setup()
 {
-  /* Only need to run this once */
+  /**
+   * Only need to run this once
+   */
   if (get_option('theme_setup_status') !== '1')
   {
-    /* Set the WordPress options the way you like */
+    /**
+     * Set the WordPress options the way you like
+     */
     $core_settings = array(
       'avatar_default'    => 'mystery',
       'avatar_rating'     => 'G',
@@ -46,7 +50,9 @@ function lt3_initial_theme_setup()
       update_option($key, $value);
     }
 
-    /* Add RSS links to <head> section */
+    /**
+     * Add RSS links to <head> section
+     */
     add_theme_support('automatic-feed-links');
 
     /**
@@ -71,10 +77,14 @@ function lt3_initial_theme_setup()
       delete_plugins(array('hello.php'));
     }
 
-    /* Update the status so this dosn't run again */
+    /**
+     * Update the status so this dosn't run again
+     */
     update_option('theme_setup_status', '1');
 
-    /* Lets let the admin know whats going on with a status message */
+    /**
+     * Lets let the admin know whats going on with a status message
+     */
     $msg = '<div class="updated">'
       . '<p>The ' . get_option('current_theme') . ' theme has changed your WordPress default'
       . '<a href="' . admin_url('options-general.php') . '" title="See Settings">settings</a>,'
