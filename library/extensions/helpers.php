@@ -107,7 +107,7 @@ function lt3_get_id_by_slug($page_slug)
  * @param  {integer || string} $page
  * @return {boolean}
  *
- * Function to check if page is child of $page
+ * Function to check if page is child of $page.
  * ======================================================================== */
 function lt3_is_child_of_page($page)
 {
@@ -133,7 +133,7 @@ function lt3_is_child_of_page($page)
  * @return boolean
  *
  * Function to check if current category is a child
- * of $parent_category category
+ * of $parent_category category.
  * ======================================================================== */
 function lt3_is_child_of_category($parent_category)
 {
@@ -151,7 +151,7 @@ function lt3_is_child_of_category($parent_category)
  * @param  $type | string
  * @return boolean
  *
- * Function to check if Custom Post Type
+ * Function to check if Custom Post Type.
  * ======================================================================== */
 function lt3_is_post_type($type = null)
 {
@@ -225,7 +225,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
  * @param  $url | string
  * @return file output
  *
- * gets the data from a URL
+ * Gets the data from a URL.
  * ======================================================================== */
 function lt3_get_data_with_curl($url = '')
 {
@@ -259,7 +259,7 @@ function lt3_get_data_with_curl($url = '')
  * @param {integer} $word_limit
  * @param {boolean} $echo_result
  *
- * Limit the number of words in a given output
+ * Limit the number of words in a given output.
  * ======================================================================== */
 function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCERPT_LENGTH)
 {
@@ -298,7 +298,7 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
  * @param null
  * @return debug output string
  *
- * Debug the template files and display which ones are being used
+ * Debug the template files and display which ones are being used.
  * ======================================================================== */
 if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
@@ -338,7 +338,7 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
  * @param  $date | WordPress date object
  * @return string
  *
- * WordPress spits out post time with '/'s, php's date function requires '-'s
+ * WordPress spits out post time with '/'s, php's date function requires '-'s.
  * ======================================================================== */
 function lt3_get_time($date, $format = 'Y-m-d')
 {
@@ -368,7 +368,7 @@ function lt3_prettify_words($words)
  * @param  $words | string
  * @return string
  *
- * creates a url firendly version of the given string.
+ * Creates a url firendly version of the given string.
  * ======================================================================== */
 function lt3_uglify_words($words)
 {
@@ -412,9 +412,9 @@ function lt3_plurify_words($words)
  * @param   $echo     | boolean
  * @return  mixed
  *
- * var_dump with style
- * Leave the $variable argument empty to print out a counter
- * https://gist.github.com/beaucharman/5451428
+ * "var_dump with style" - nobody, ever.
+ * Pass a $variable argument of 'breakpoint' to create numeric counters.
+ * https://gist.github.com/beaucharman/5451428.
  * ======================================================================== */
 if (! function_exists('debug_tool'))
 {
