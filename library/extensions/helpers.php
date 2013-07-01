@@ -19,6 +19,7 @@
  * lt3 URI
  * ========================================================================
  * lt3_uri()
+ * @param  {string} $path
  * @return {string}
  * ======================================================================== */
 function lt3_uri($path = '')
@@ -27,7 +28,7 @@ function lt3_uri($path = '')
 }
 
 /**
- * lt3 Get Thumnbnail
+ * Get Thumnbnail
  * ========================================================================
  * lt3_get_thumbnail()
  * @param  {integer} $id
@@ -56,7 +57,7 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
 }
 
 /**
- * lt3 Get Attachment
+ * Get Attachment
  * ========================================================================
  * lt3_get_attachment()
  * @param  {integer} $id
@@ -79,7 +80,7 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
 }
 
 /**
- * lt3 Get ID by Slug
+ * Get ID by Slug
  * ========================================================================
  * lt3_get_id_by_slug()
  * @param  {string} $page_slug
@@ -100,7 +101,7 @@ function lt3_get_id_by_slug($page_slug)
 }
 
 /**
- * lt3 is Child of Page
+ * Is Child of Page
  * ========================================================================
  * lt3_is_child_of_page()
  * @param  {integer || string} $page
@@ -125,7 +126,7 @@ function lt3_is_child_of_page($page)
 }
 
 /**
- * lt3 is Child of Category
+ * Is Child of Category
  * ========================================================================
  * lt3_is_child_of_category()
  * @param  $parent_category | integer
@@ -144,7 +145,7 @@ function lt3_is_child_of_category($parent_category)
 }
 
 /**
- * lt3 is Post Type
+ * Is Post Type
  * ========================================================================
  * lt3_is_post_type()
  * @param  $type | string
@@ -173,7 +174,7 @@ function lt3_is_post_type($type = null)
 }
 
 /**
- * lt3 Has Page Pagination
+ * Has Page Pagination
  * ========================================================================
  * lt3_has_page_pagination()
  * @param null
@@ -194,7 +195,7 @@ function lt3_has_page_pagination()
 }
 
 /**
- * lt3 Post is in Descendant Category
+ * Post is in Descendant Category
  * ========================================================================
  * lt3_post_is_in_descendant_category()
  * @param  $cat | array
@@ -218,7 +219,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
 }
 
 /**
- * lt3 Get Data with cURL
+ * Get Data with cURL
  * ========================================================================
  * lt3_get_data_with_curl()
  * @param  $url | string
@@ -291,7 +292,7 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
 }
 
 /**
- * lt3_template_debug
+ * Template Debug
  * ========================================================================
  * lt3_template_debug()
  * @param null
@@ -331,7 +332,7 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 }
 
 /**
- * lt3 get time
+ * Get Time
  * ========================================================================
  * lt3_get_time()
  * @param  $date | WordPress date object
@@ -415,7 +416,7 @@ function lt3_plurify_words($words)
  * Leave the $variable argument empty to print out a counter
  * https://gist.github.com/beaucharman/5451428
  * ======================================================================== */
-if (!function_exists('debug_tool'))
+if (! function_exists('debug_tool'))
 {
   function debug_tool($variable = '', $exit = false, $label = 'Debug', $echo = true)
   {
@@ -444,7 +445,7 @@ if (!function_exists('debug_tool'))
 
     if ($breakpoint)
     {
-      if (!isset($debug_counter))
+      if (! isset($debug_counter))
       {
         $debug_counter = 1;
       }
@@ -453,12 +454,16 @@ if (!function_exists('debug_tool'))
     }
     else
     {
-      /* Store the result of a var dump */
+      /**
+       * Store the result of a var dump 
+       */
       ob_start();
       var_dump($variable);
       $output = ob_get_clean();
 
-      /* Add to the result */
+      /** 
+       * Add to the result 
+       */
       $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
       $output = $opening_tag . $label . ' => ' . $output . $closing_tag;
     }
