@@ -87,7 +87,7 @@ function lt3_initial_theme_setup()
      */
     $msg = '<div class="updated">'
       . '<p>The ' . get_option('current_theme') . ' theme has changed your WordPress default'
-      . '<a href="' . admin_url('options-general.php') . '" title="See Settings">settings</a>,'
+      . ' <a href="' . admin_url('options-general.php') . '" title="See Settings">settings</a>, '
       . 'discouraged search engines and deleted default posts & comments.</p></div>';
     add_action('admin_notices', $c = create_function('', 'echo "'. addcslashes($msg, '"') . '";'));
   }
