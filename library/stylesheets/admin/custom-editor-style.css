@@ -13,38 +13,37 @@
 /* Global styles
    ======================================================================== */
 html {
-  background: #F8F8F8;
-}
-
-html .mceContentBody {
-  max-width: 960px;
-  border-right: 1px solid #ccc;
-  padding: 10px;
+  background-color: #f8f8f8;
+  font-size: 100%;
 }
 
 body {
+  font-size: 16px;
   font-weight: 400;
+  line-height: 1.4;
   color: #000;
-  background: #fff;
+  background-color: #fff;
   margin: 0;
+}
+
+html .mceContentBody {
+  max-width: 960px; /* set this the same as the general copy width */
+  border-right: 1px solid #ccc;
+  padding: 20px;
 }
 
 /* Paragraph and Block level elements typography
    ======================================================================== */
-p, blockquote {
-  margin: 1em 0;
+p, blockquote, ul, ol, dl, address {
+  margin: 1.5em 0;
 }
 
 blockquote {
-  font-size: 1.2em;
+  margin-left: 1.5em;
 }
 
 p, ul, ol, dl, address, td, tr, textarea, input {
   font-size: 1em;
-}
-
-p, blockquote, ul, ol, dl, address, td, tr, textarea, input {
-  line-height: 1.5;
 }
 
 /* Tables */
@@ -58,79 +57,53 @@ td, th {
   text-align: left;
 }
 
-/* Entry Container styles
-   ======================================================================== */
-.entry:before,
-.entry:after {
-  content: " ";
-  display: table;
-}
-
-.entry:after {
-  clear: both;
-}
-
-.entry {
-  *zoom: 1;
-}
-
 /* Alignment styles
    ======================================================================== */
-.alignleft, img.alignleft {
+.alignleft {
   margin-right: 1.5em;
-  display: inline;
   float: left;
 }
 
-.alignright, img.alignright {
+.alignright {
   margin-left: 1.5em;
-  display: inline;
   float: right;
 }
 
-.aligncenter, img.aligncenter {
+.aligncenter {
   margin-right: auto;
   margin-left: auto;
   display: block;
   clear: both;
 }
 
-.alignnone, img.alignnone { }
-
-blockquote.left {
-  margin-right: 20px;
-  text-align: right;
-  margin-left: 0;
-  width: 33%;
-  float: left;
-}
-
-blockquote.right {
-  margin-left: 20px;
-  text-align: left;
-  margin-right: 0;
-  width: 33%;
-  float: right;
-}
-
+/**
+ * Style list selectors
+ */
 .lead {
   font-size: 1.5em;
 }
 
 .disclaimer {
-  font-size: 0.9em;
+  font-size: 0.85em;
   color: #555;
 }
 
-.warning { }
+.warning {
+  color: red;
+  border-bottom: 1px dotted red;
+}
 
-.notice { }
+.notice {
+  font-style: italic;
+}
 
-.muted { }
+.muted {
+  color: #aaa;
+}
 
 /* Image and Gallery tyles
    ======================================================================== */
-.hentry img {
+.entry img {
   max-width: 100%;
   height: auto;
 }
@@ -147,7 +120,7 @@ blockquote.right {
   margin: 0;
 }
 
-.wp-caption p.wp-caption-text {
+.wp-caption-text {
   line-height: 1.5;
   font-size: 10px;
   margin: 0;
