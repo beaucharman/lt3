@@ -59,6 +59,11 @@ td, th {
 
 /* Alignment styles
    ======================================================================== */
+.alignleft,
+.alignright {
+  margin-bottom: 1.5em;
+}
+
 .alignleft {
   margin-right: 1.5em;
   float: left;
@@ -77,7 +82,7 @@ td, th {
 }
 
 /**
- * Style list selectors
+ * Styles added through the style select editor filter
  */
 .lead {
   font-size: 1.5em;
