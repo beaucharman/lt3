@@ -209,7 +209,7 @@ function lt3_register_shortcode_hidden_content($atts, $content = null)
   return do_shortcode($return_string);
 }
 
-/* [lt3_raw]content[/lt3_raw] Remove formatting from around Shorcodes in the editor
+/* [lt3_raw]content[/lt3_raw] Remove formatting from around Shortcodes in the editor
    ======================================================================== */
 add_shortcode('lt3_raw', 'lt3_register_shortcode_shortcode_raw');
 function lt3_register_shortcode_shortcode_raw($atts, $content = null)

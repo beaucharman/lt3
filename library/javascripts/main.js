@@ -11,8 +11,8 @@
  * ======================================================================== */
 
 // jQuery No Conflict
-// To prevent thrid party plugins from conflicting with
-// your jQuery, simple use the following anonymous function:
+// To prevent third party plugins from conflicting with
+// your jQuery, simply use the following anonymous function:
 /*
 ;(function ($) {
   // contain code here...

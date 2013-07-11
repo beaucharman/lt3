@@ -101,7 +101,7 @@ function lt3_remove_head_links()
    Custom Theme Functions
    ======================================================================== */
 
-/* Function create a custom comment list
+/* Function to create a custom comment list
    ======================================================================== */
 function lt3_advanced_comment($comment, $args, $depth)
 {

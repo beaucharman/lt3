@@ -26,7 +26,7 @@
   /* Daily Archive */ elseif (is_day()) :
   echo _e('Archive for '); the_time('F jS, Y');
 
-  /* Monthly archive */ elseif (is_month()) :
+  /* Monthly Archive */ elseif (is_month()) :
   echo _e('Archive for '); the_time('F, Y');
 
   /* Yearly Archive */ elseif (is_year()) :

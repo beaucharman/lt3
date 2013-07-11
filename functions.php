@@ -141,5 +141,5 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 //require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
 
 /**
- * Include more modular files as need.
+ * Include more modular files as needed.
  */
