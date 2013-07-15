@@ -14,7 +14,7 @@
  * ======================================================================== */
 
 /**
- * Modify Post Mine Types
+ * Modify Post Mime Types
  * ========================================================================
  * lt3_modify_post_mime_types()
  * post_mime_types filter to add PDFs to the media type filter for posts

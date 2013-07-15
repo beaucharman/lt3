@@ -59,7 +59,7 @@ function lt3_initial_theme_setup()
      * Delete the example post, page and comment
      * ========================================================================
      * Set the booleans to false if this is not a fresh
-     * install, true will delete the post and pages for realz
+     * install, true will delete the post and pages for real realz
      */
     wp_delete_post(1, true);
     wp_delete_post(2, true);
@@ -83,7 +83,7 @@ function lt3_initial_theme_setup()
     update_option('theme_setup_status', '1');
 
     /**
-     * Lets let the admin know whats going on with a status message
+     * Lets the admin know whats going on with a status message
      */
     $msg = '<div class="updated">'
       . '<p>The ' . get_option('current_theme') . ' theme has changed your WordPress default'
