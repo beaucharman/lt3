@@ -134,17 +134,16 @@ function lt3_register_shortcode_section($atts, $content = null)
 /* [lt3_dynamic_sidebar sidebar_id="id"]
    ======================================================================== */
 add_shortcode('lt3_dynamic_sidebar', 'lt3_register_shortcode_dynamic_sidebar');
-if (!function_exists('lt3_get_dynamic_sidebar'))
+
+function lt3_get_dynamic_sidebar($index = 1)
 {
-  function lt3_get_dynamic_sidebar($index = 1)
-  {
-    $sidebar_contents = "";
-    ob_start();
-    dynamic_sidebar($index);
-    $sidebar_contents = ob_get_clean();
-    return $sidebar_contents;
-  }
+  $sidebar_contents = "";
+  ob_start();
+  dynamic_sidebar($index);
+  $sidebar_contents = ob_get_clean();
+  return $sidebar_contents;
 }
+
 function lt3_register_shortcode_dynamic_sidebar($atts, $content = null)
 {
   extract(shortcode_atts(array(
@@ -168,11 +167,11 @@ function lt3_get_template_part_content($template_part_primary, $template_part_se
 
 function lt3_register_shortcode_get_template_part_content($atts, $content = null)
 {
-     extract(shortcode_atts(array(
-      'primary_part'   => 'loop',
-      'secondary_part' => 'sticky'
-     ), $atts));
-     return lt3_get_template_part_content($primary_part, $secondary_part);
+  extract(shortcode_atts(array(
+    'primary_part'   => 'loop',
+    'secondary_part' => 'sticky'
+  ), $atts));
+  return lt3_get_template_part_content($primary_part, $secondary_part);
 }
 
 /* [lt3_hidden_content private_message="" public_message=""]content[/lt3_hidden_content]
