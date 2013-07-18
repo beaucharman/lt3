@@ -19,7 +19,7 @@
  * ======================================================================== */
 
 /**
- * Enqeue jQuery from Google, rather than included WordPress version.
+ * Enqeue jQuery from Google, rather than the included WordPress version.
  * Consider bundling jQuery with your build scripts for deployment.
  */
 if (LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
