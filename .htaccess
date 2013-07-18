@@ -3,45 +3,80 @@
 
 # END WordPress
 
-# Protect wpconfig.php
+
+# BEGIN Apache Configuration File
+
+# ##############################################################################
+# # WordPress Security                                                         #
+# ##############################################################################
+
+# ------------------------------------------------------------------------------
+# | Protect the .htaccess file                                                 |
+# ------------------------------------------------------------------------------
+
+<Files .htaccess>
+  Order Allow,Deny
+  Deny From All
+</Files>
+  
+# ------------------------------------------------------------------------------
+# | Protect wpconfig.php                                                       |
+# ------------------------------------------------------------------------------
+
 <Files wp-config.php>
-order allow,deny
-deny from all
+  Order Allow,Deny
+  Deny From All
 </Files>
 
-# Better login URL (Replace url)
-#RewriteRule ^login$ http://example.com/wp-login.php [NC,L]
+# ------------------------------------------------------------------------------
+# | Prevent directory browsing                                                 |
+# ------------------------------------------------------------------------------
 
-# Prevent directory browsing
 Options All -Indexes
 
-# Protect against script injections
+# ------------------------------------------------------------------------------
+# | Enable the following of symlinks                                           |
+# ------------------------------------------------------------------------------
+
 Options +FollowSymLinks
+
+# ------------------------------------------------------------------------------
+# | Protect against script injections                                          |
+# ------------------------------------------------------------------------------
+
 RewriteEngine On
 RewriteCond %{QUERY_STRING} (\&lt;|%3C).*script.*(\&gt;|%3E) [NC,OR]
 RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
 RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
 RewriteRule ^(.*)$ index.php [F,L]
 
-# Protect the .htaccess file
-<Files .htaccess>
-Order Allow,Deny
-Deny from all
-</Files>
+# ------------------------------------------------------------------------------
+# | Protect php files within wp-content (place in /wp-content/.htaccess)       |
+# ------------------------------------------------------------------------------
 
-# Protect php files within wp-content (place in /wp-content/.htaccess)
-#Order deny,allow
-#Deny from all
-#<Files ~ ".(xml|css|jpe?g|png|gif|js)$">
-#Allow from all
+#Order Deny,Allow
+#Allow From All
+#<Files ~ ".(php)$">
+#  Deny From All
 #</Files>
 
-# Access from your IP only (replace IP)
-#order deny,allow
-#allow from 202.090.21.1
-#deny from all
+# ------------------------------------------------------------------------------
+# | Better login URL (Replace url)                                             |
+# ------------------------------------------------------------------------------
 
-# Apache Configuration File
+#RewriteRule ^login$ http://example.com/wp-login.php [NC,L]
+
+# ------------------------------------------------------------------------------
+# | Access from your IP only (replace IP)                                      |
+# ------------------------------------------------------------------------------
+
+#Order Deny,Allow
+#Allow From 202.090.21.1
+#Deny From All
+
+
+
+# Awesome stuff from https://github.com/h5bp/html5-boilerplate
 
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have access
 # to the main server config file (usually called `httpd.conf`), you should add
@@ -129,10 +164,9 @@ ErrorDocument 404 /404.html
 
 # Force IE to render pages in the highest available mode in the various
 # cases when it may not: http://hsivonen.iki.fi/doctype/ie-mode.pdf.
-# Use, if installed, Google Chrome Frame.
 
 <IfModule mod_headers.c>
-    Header set X-UA-Compatible "IE=edge,chrome=1"
+    Header set X-UA-Compatible "IE=edge"
     # `mod_headers` can't match based on the content-type, however, we only
     # want to send this header for HTML pages and not for the other resources
     <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
@@ -585,3 +619,5 @@ FileETag None
 # <IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
 # </IfModule>
+
+# END Apache Configuration File
