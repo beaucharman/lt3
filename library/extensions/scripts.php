@@ -36,7 +36,6 @@ if (LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
         '1',
         true
       );
-      wp_enqueue_script('jquery');
     }
   }
 }
@@ -58,6 +57,12 @@ function lt3_load_scripts()
    */
   if (! is_admin())
   {
+
+    /**
+     * jQuery
+     */
+    wp_dequeue_script('jquery');
+
     if (is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)
     {
       wp_enqueue_script('comment-reply');
@@ -69,6 +74,7 @@ function lt3_load_scripts()
      */
     if (LT3_DEVELOPMENT_MODE)
     {
+      //wp_enqueue_script('jquery');
       wp_enqueue_script('lt3_plugins');
       // Enqueue other theme template scripts here
     }

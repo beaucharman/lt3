@@ -10,7 +10,7 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  *
- * All action and filter hook declarations and functions for the theme.
+ * All custom action and filter hook declarations and functions for the theme.
  */
 
 /* ========================================================================

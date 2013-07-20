@@ -21,7 +21,7 @@
 
 <?php while ($sticky_loop->have_posts()) : $sticky_loop->the_post(); ?>
 
-<?php if (!is_sticky()) continue; ?>
+<?php if (! is_sticky()) continue; ?>
 
   <article <?php post_class('sticky entry excerpt post-' . get_the_ID()); ?>>
 

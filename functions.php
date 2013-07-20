@@ -68,9 +68,13 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
 
-/* Template Functions
+/* Media
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/media.php');
+
+/* Template Options
+   ======================================================================== */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/template-options.php');
 
 /* Template Filters
    ======================================================================== */

@@ -10,7 +10,7 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  *
- * Custom post type? Save this template page as archive-{name}.php
+ * Custom post type? Save this template page as archive-{{slug}}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

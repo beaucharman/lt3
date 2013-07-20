@@ -289,23 +289,6 @@ function lt3_back_to_parent_link()
   }
 }
 
-/* Sticky Posts
-   ======================================================================== */
-function lt3_default_sticky_posts()
-{
-  if (LT3_ENABLE_STICKY_POSTS)
-  {
-    get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'sticky');
-  }
-}
-
-/* Get the Comments Template
-   ======================================================================== */
-function lt3_get_comments_template()
-{
-  if (LT3_ENABLE_GLOBAL_COMMENTS) comments_template();
-}
-
 /* Function to get categories and taxonomies for a post
    ======================================================================== */
 function lt3_get_taxonomies_terms_links()
@@ -473,3 +456,42 @@ function lt3_read_more_text()
     echo 'Read More &rarr;';
   }
 }
+
+/* Function to create a custom comment list
+   ======================================================================== */
+function lt3_advanced_comment($comment, $args, $depth)
+{
+  $GLOBALS['comment'] = $comment; ?>
+  <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+    <div class="comment-vcard">
+      <?php echo get_avatar($comment, '56'); ?>
+    </div>
+    <div class="comment-body">
+      <div class="comment-author">
+        <a href="<?php the_author_meta('user_url'); ?>">
+          <?php printf(__('%s'), get_comment_author_link()); ?>
+        </a> said:
+      </div>
+      <?php if ($comment->comment_approved == '0') : ?>
+      <div>
+        <em><?php _e('Your comment is awaiting moderation.'); ?></em>
+        <br>
+      </div>
+      <?php endif; ?>
+      <div class="comment-text"><?php comment_text() ?></div>
+      <div class="comment-meta">
+        <small>on the <?php printf(__('%1$s'), get_comment_date('l, F j, Y')); ?>
+          <?php if (current_user_can('edit_post')) : ?>
+          (<?php edit_comment_link(__('Edit'), '', '') ?><?php lt3_delete_comment_link(get_comment_ID()); ?>)
+          <?php endif; ?>
+        </small>
+      </div>
+      <div class="reply">
+        <?php comment_reply_link(
+          array_merge($args,
+            array('depth' => $depth, 'max_depth' => $args['max_depth'])
+          )
+        ); ?>
+      </div>
+    </div>
+<?php }

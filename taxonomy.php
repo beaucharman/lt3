@@ -11,7 +11,7 @@
  * @license      MIT license
  *
  * Taxonomy template page.
- * Custom taxonomy? Save this template page as taxonomy-{name}.php
+ * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

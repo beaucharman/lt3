@@ -11,7 +11,7 @@
  * @license      MIT license
  *
  * Single (built in Post or other custom post type) template page.
- * Custom post type? Save this template page as single-{name}.php
+ * Custom post type? Save this template page as single-{{slug}}.php
  * ======================================================================== */ ?>
 <?php get_header(); ?>
 

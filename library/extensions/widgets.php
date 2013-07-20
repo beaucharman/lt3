@@ -13,7 +13,7 @@
  * For more info, and variations:
  * http://codex.wordpress.org/Function_Reference/register_sidebar
  *
- * To use in a theme template, use:
+ * To use in a theme template:
  *   dynamic_sidebar('sidebar-id');
  */
 
