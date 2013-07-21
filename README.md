@@ -4,25 +4,25 @@
 
 
 
-## Documentation
+### Documentation
 
 https://github.com/beaucharman/lt3/wiki/_pages
 
 
 
-## Todo, and issues
+### Todo, and issues
 
 https://github.com/beaucharman/lt3/issues
 
 
 
-## Testing
+### Testing
 
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 
 
 
-## Notes for Production
+### Notes for Production
 
 - **Limit login attempts - plugin**
 
