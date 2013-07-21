@@ -2,29 +2,25 @@
 
 > A slightly powerful, intelligent and simple WordPress theme.
 
-## Change Log
-1.0
-- Changing the elegant theme over to a more modulated theme, now lt3
 
-2.0
-- Initial theme setup functionality, found in library/extensions/initial-theme-setup.php
-- Conditional h1
-- Split the theme-functions.php file up into modules
-- Convert custom taxonomy and post type functions into classes
-- Add get method to post type class
-- Easy get terms, get term and get the terms methods for custom taxonomies
 
-## Roadmap [Todo list]
-- WordPress editor styles + instructions in Sass
-- Work on default comment styles
-- Replace most relavent functions with hooks
-- Better columns engine for posts types and taxonomies
-- Add a custom user role extension
-- Test helpers.php functions
-- Fix comments in the template.php file
+## Documentation
+
+https://github.com/beaucharman/lt3/wiki/_pages
+
+
+
+## Todo, and issues
+
+https://github.com/beaucharman/lt3/issues
+
+
 
 ## Testing
+
 Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
+
+
 
 ## Notes for Production
 
