@@ -83,21 +83,22 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
  * Get ID by Slug
  * ========================================================================
  * lt3_get_id_by_slug()
- * @param  {string} $page_slug
+ * @param  {string} $slug
+ * @param  {string} $post_type
  * @return {integer}
  * ======================================================================== */
-function lt3_get_id_by_slug($page_slug)
+function lt3_get_id_by_slug($slug, $post_type = 'post')
 {
-  if ($page_slug)
-  {
-    $page = get_page_by_path($page_slug);
-  }
+  $query = new WP_Query(
+    array(
+      'name' => $slug,
+      'post_type' => $post_type
+    )
+  );
 
-  if ($page)
-  {
-    return $page->ID;
-  }
-  return null;
+  $query->the_post();
+
+  return get_the_ID();
 }
 
 /**
@@ -455,14 +456,14 @@ if (! function_exists('debug_tool'))
     else
     {
       /**
-       * Store the result of a var dump 
+       * Store the result of a var dump
        */
       ob_start();
       var_dump($variable);
       $output = ob_get_clean();
 
-      /** 
-       * Add to the result 
+      /**
+       * Add to the result
        */
       $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
       $output = $opening_tag . $label . ' => ' . $output . $closing_tag;

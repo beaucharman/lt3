@@ -58,9 +58,7 @@ function lt3_load_scripts()
   if (! is_admin())
   {
 
-    /**
-     * jQuery
-     */
+    /* jQuery */
     wp_dequeue_script('jquery');
 
     if (is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)

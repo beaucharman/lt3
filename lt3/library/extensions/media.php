@@ -35,11 +35,6 @@ function lt3_add_image_sizes()
   /**
    * Small feature image, useful for a smaller feature image alternate
    */
-  add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH / 2, 300, true);
-
-  /**
-   * Small feature image, useful for a smaller feature image alternate
-   */
   add_image_size('small-feature-image',  LT3_PAGE_CONTENT_WIDTH, 300, true);
 
   /**

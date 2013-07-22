@@ -345,6 +345,7 @@ function lt3_custom_userfields($methods)
   unset($methods['aim']);
   unset($methods['jabber']);
   unset($methods['yim']);
+
   return $methods;
 }
 
@@ -372,7 +373,11 @@ function lt3_add_admin_nofollow_meta()
  * ========================================================================
  * Remove wp_generator from wp_head
  * ======================================================================== */
-remove_action('wp_head', 'wp_generator');
+add_action('init', 'lt3_remove_wp_generator');
+function lt3_remove_wp_generator()
+{
+  remove_action('wp_head', 'wp_generator');
+}
 
 /**
  * Alternate Login Error Message
@@ -387,6 +392,6 @@ function lt3_alternate_login_error_message($message)
   {
     return $message;
   }
-  return '<strong>Sorry</strong>, that <strong>Username</strong> and '
+  return 'Sorry, that <strong>Username</strong> and '
     . '<strong>Password</strong> combination is incorrect!';
 }
