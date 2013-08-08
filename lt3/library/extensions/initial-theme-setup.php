@@ -70,7 +70,7 @@ function lt3_initial_theme_setup()
      * ========================================================================
      * feel free to add Akismet to this block of code
      */
-    if (file_exists(WP_PLUGIN_DIR.'/hello.php'))
+    if (file_exists(WP_PLUGIN_DIR . '/hello.php'))
     {
       require_once(ABSPATH . 'wp-admin/includes/plugin.php');
       require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -89,6 +89,6 @@ function lt3_initial_theme_setup()
       . '<p>The ' . get_option('current_theme') . ' theme has changed your WordPress default'
       . ' <a href="' . admin_url('options-general.php') . '" title="See Settings">settings</a>, '
       . 'discouraged search engines and deleted default posts & comments.</p></div>';
-    add_action('admin_notices', $c = create_function('', 'echo "'. addcslashes($msg, '"') . '";'));
+    add_action('admin_notices', $c = create_function('', 'echo "' . addcslashes($msg, '"') . '";'));
   }
 }
