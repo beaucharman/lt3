@@ -10,6 +10,7 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  * ======================================================================== */ ?>
+
 <aside class="primary-sidebar">
 <?php
   if (is_active_sidebar('primary-sidebar-widgets'))

@@ -13,8 +13,9 @@
  * Page template.
  * For a different page template for a particular page,
  * save this template page as page-{{slug}}.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
+
+get_header(); ?>
 
   <?php if (have_posts()) : ?>
 

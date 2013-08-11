@@ -53,7 +53,6 @@ function lt3_main_navigation_menu()
       'menu_class'      => 'main-navigation-menu-list',
       'items_wrap'      => '<ul class="%2$s" role="navigation">%3$s</ul>',
       'fallback_cb'     => false
-
     )
   );
 

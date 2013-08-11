@@ -12,8 +12,9 @@
  *
  * Taxonomy template page.
  * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
+
+get_header(); ?>
 
   <?php $taxonomy_term = $wp_query->get_queried_object(); ?>
   <h1 class="content-title"><?php

@@ -56,6 +56,11 @@ function lt3_initial_theme_setup()
     add_theme_support('automatic-feed-links');
 
     /**
+     * Add HTML5 markup support for various components
+     */
+    add_theme_support('html5', array('search-form', 'comment-form', 'comment-list'));
+
+    /**
      * Delete the example post, page and comment
      * ========================================================================
      * Set the booleans to false if this is not a fresh

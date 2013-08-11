@@ -1,8 +1,22 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
+<?php
+/**
+ * Header
+ * ========================================================================
+ * header.php
+ * @version      2.1 | June 6th 2013
+ * @package      WordPress
+ * @subpackage   lt3
+ * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link         https://github.com/beaucharman/lt3
+ * @license      MIT license
+ * ======================================================================== */
+?><!doctype html>
+<!--[if IE 7]>
+<html class="no-js ie7 lt-ie8 lt-ie9"><![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8 lt-ie9"> <![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

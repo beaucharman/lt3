@@ -13,8 +13,9 @@
  * Front page and home page template.
  * If using a blogroll as your home page, rename this template page to
  * home.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
+
+get_header(); ?>
 
   <?php lt3_show_sticky_posts(); ?>
 

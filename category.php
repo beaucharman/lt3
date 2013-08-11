@@ -12,8 +12,9 @@
  *
  * Category template page.
  * Particular category? Save this template page as category-{{slug}}.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */ \
+
+get_header(); ?>
 
   <h1 class="content-title"><?php single_cat_title(); ?></h1>
 

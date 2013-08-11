@@ -12,8 +12,9 @@
  *
  * Single (built in Post or other custom post type) template page.
  * Custom post type? Save this template page as single-{{slug}}.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
+
+get_header(); ?>
 
   <?php if (have_posts()) : ?>
 

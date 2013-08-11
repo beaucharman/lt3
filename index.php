@@ -9,8 +9,9 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
+
+get_header(); ?>
 
   <?php if (have_posts()) : ?>
 

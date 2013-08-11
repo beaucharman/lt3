@@ -11,10 +11,11 @@
  * @license      MIT license
  *
  * Custom post type? Save this template page as archive-{{slug}}.php
- * ======================================================================== */ ?>
-<?php get_header(); ?>
+ * ======================================================================== */
 
-<?php global $post; global $wp_query; $post = $posts[0]; ?>
+get_header(); ?>
+
+  <?php global $post; global $wp_query; $post = $posts[0]; ?>
 
   <h1 class="content-title"><?php
   /* Category Archive */ if (is_category()) :

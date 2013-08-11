@@ -10,6 +10,7 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  * ======================================================================== */ ?>
+
 <?php while (have_posts()) : the_post(); global $post; ?>
 
 <article <?php post_class('attachment post-' . get_the_ID()); ?>>

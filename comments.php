@@ -10,6 +10,7 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  * ======================================================================== */ ?>
+
 <?php if (!defined('ABSPATH')) exit;
 
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
