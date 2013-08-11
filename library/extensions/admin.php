@@ -148,7 +148,7 @@ function lt3_remove_dashboard_widgets()
 }
 
 /**
- * Add Custom Post Types To Right Now
+ * Add Custom Post Types to 'Right Now'
  * ========================================================================
  * lt3_add_custom_post_type_to_right_now()
  * right_now_content_table_end action to add custom post types
@@ -169,6 +169,7 @@ function lt3_add_custom_post_type_to_right_now()
       $post_type->labels->name,
       intval($num_posts->publish)
     );
+
     if (current_user_can('edit_posts'))
     {
       $num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
@@ -237,6 +238,7 @@ function lt3_restrict_by_taxonomy()
     }
   }
 }
+
 add_filter('parse_query','lt3_restriction_taxonomy_dropdown');
 function lt3_restriction_taxonomy_dropdown($query)
 {

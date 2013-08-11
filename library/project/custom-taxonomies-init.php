@@ -16,3 +16,7 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-taxonomies
  * ======================================================================== */
+
+$Genre = new LT3_Custom_Taxonomy('genre', 'movie');
+
+$Budget = new LT3_Custom_Taxonomy('budget', 'movie');

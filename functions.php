@@ -134,11 +134,11 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /* Custom Post Types Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
 
 /* Custom Taxonomies Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
 
 /* Custom Meta Field Boxes Init
    ======================================================================== */

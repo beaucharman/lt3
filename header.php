@@ -31,7 +31,7 @@
 
     <div class="page-wrap container">
 
-      <header role="banner" class="page-header">
+      <header class="page-header" role="banner">
 
         <?php /* Site title */ ?>
         <?php if (is_home() || is_front_page()) { echo '<h1 class="site-heading">'; } ?>

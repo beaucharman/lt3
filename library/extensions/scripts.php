@@ -72,7 +72,7 @@ function lt3_load_scripts()
      */
     if (LT3_DEVELOPMENT_MODE)
     {
-      //wp_enqueue_script('jquery');
+      // wp_enqueue_script('jquery');
       wp_enqueue_script('lt3_plugins');
       // Enqueue other theme template scripts here
     }

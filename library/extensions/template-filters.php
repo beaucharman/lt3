@@ -45,7 +45,7 @@ add_filter('get_search_form', 'lt3_html5_search_form');
 function lt3_html5_search_form($form)
 {
   return ''
-    . '<form role="search" method="get" class="search-form" action="' . home_url('/') . '">'
+    . '<form class="search-form" role="search" method="get" action="' . home_url('/') . '">'
     . '<input type="text" placeholder="' . __("Search&hellip;") . '" value="" name="s" id="s">'
     . '<input type="submit" id="searchsubmit" value="Go">'
     . '</form>';
@@ -116,23 +116,42 @@ function lt3_browser_body_class($classes)
 
 /**
  * Add to the Body Class filter
- * Include if is front-page or not.
  * ======================================================================== */
-add_filter('post_class', 'lt3_add_to_body_class');
-add_filter('body_class', 'lt3_add_to_body_class');
-function lt3_add_to_body_class($classes)
+if(! is_admin())
 {
-  global $post;
-  if (! is_front_page() && ! is_search() && isset($post->post_name))
+  add_filter('post_class', 'lt3_add_to_body_class');
+  add_filter('body_class', 'lt3_add_to_body_class');
+  function lt3_add_to_body_class($classes)
   {
-    $classes[] = 'not-front-page';
-    $classes[] = 'page-' . $post->post_name;
+    global $post;
+    /**
+     * Flag if is the front page or not
+     */
+    if (! is_front_page() && ! is_search() && isset($post->post_name))
+    {
+      $classes[] = 'not-front-page';
+      $classes[] = 'page-' . $post->post_name;
+    }
+    elseif (is_front_page())
+    {
+      $classes[] = 'front-page';
+    }
+
+    /**
+     * Get terms allocated to the current post type
+     * and display as taxonomy--term pairs.
+     */
+    $taxonomies = get_taxonomies('', 'names');
+    foreach ($taxonomies as $taxonomy) {
+      $post_type_terms = get_the_terms($post->ID, $taxonomy);
+      if ($post_type_terms && !is_wp_error($post_type_terms)) {
+        foreach ($post_type_terms as $term) {
+          $classes[] = 'taxonomy-' . $taxonomy . ' term-' . $term->slug;
+        }
+      }
+    }
+    return $classes;
   }
-  elseif (is_front_page())
-  {
-    $classes[] = 'front-page';
-  }
-  return $classes;
 }
 
 /* HTML5 friendly figure tags instead of captions
