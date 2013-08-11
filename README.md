@@ -1,4 +1,4 @@
-![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/lt3/screenshot.png "A slightly powerful, intelligent and simple WordPress theme.")
+![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/screenshot.png "A slightly powerful, intelligent and simple WordPress theme.")
 
 > A slightly powerful, intelligent and simple WordPress theme.
 
