@@ -3,16 +3,14 @@
  * Custom Post Type
  * ========================================================================
  * custom-post-type.php
- * @version      2.1 | June 6th 2013
- * @package      WordPress
- * @subpackage   lt3
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
- * @license      MIT license
+ * @version   2.0 | June 30th 2013
+ * @author    Beau Charman | @beaucharman | http://www.beaucharman.me
+ * @link      https://github.com/beaucharman/wordpress-custom-post-types
+ * @license   MIT license
  *
  * Properties
- *  $PostType->name   | sring
- *  $PostType->lables | array
+ *  $PostType->name   {string}
+ *  $PostType->lables {array}
  *
  * Methods
  *  $PostType->get()
@@ -59,15 +57,29 @@ class LT3_Custom_Post_Type
     $this->help = $help;
 
     /**
-     * Create the labels
+     * Create the labels where needed
      */
-    $this->labels['label_singular'] = (isset($this->labels['label_singular']))
-      ? $this->labels['label_singular'] : $this->prettify_words($this->name);
-    $this->labels['label_plural'] = (isset($this->labels['label_plural']))
-      ? $this->labels['label_plural'] : $this->plurify_words($this->labels['label_singular']);
-    $this->labels['menu_label'] = (isset($this->labels['menu_label']))
-      ? $this->labels['menu_label'] : $this->labels['label_plural'];
+    /* Post type singluar label */
+    if (! isset($this->labels['label_singular']))
+    {
+      $this->labels['label_singular'] = $this->prettify_words($this->name);
+    }
 
+    /* Post type plural label */
+    if (! isset($this->labels['label_plural']))
+    {
+      $this->labels['label_plural'] = $this->plurify_words($this->labels['label_singular']);
+    }
+
+    /* Post type menu label */
+    if (! isset($this->labels['menu_label']))
+    {
+      $this->labels['menu_label'] = $this->labels['label_plural'];
+    }
+
+    /**
+     * If the post type doesn't already exist, create it!
+     */
     if (! post_type_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
@@ -87,6 +99,9 @@ class LT3_Custom_Post_Type
    * ======================================================================== */
   public function register_custom_post_type()
   {
+    /**
+     * Set up the post type labels
+     */
     $labels = array(
       'name'               => __($this->labels['label_plural']),
       'singular_name'      => __($this->labels['label_singular']),
@@ -102,18 +117,18 @@ class LT3_Custom_Post_Type
     );
 
     /**
-     * Configure the options
+     * Configure the post type options
      */
     $options = array_merge(
       array(
-        'labels'        => $labels,
-        'public'        => true,
-        'menu_position' => 20,
         'has_archive'   => true,
-        'rewrite'       => true
-     ),
+        'labels'        => $labels,
+        'menu_position' => 20,
+        'public'        => true,
+        'rewrite'       => array('slug' => $this->get_slug())
+      ),
       $this->options
-   );
+    );
 
     /**
      * Register the new post type
@@ -182,15 +197,34 @@ class LT3_Custom_Post_Type
   }
 
   /**
-   * Archive Link
+   * Archive URI
    * ========================================================================
-   * archive_link()
+   * archive_uri()
    * @param  none
    * @return string
    * ======================================================================== */
-  public function archive_link()
+  public function archive_uri($path = '')
   {
-    return home_url('/' . $this->name) ;
+    return home_url('/' . $this->get_slug() . '/' . $path);
+  }
+
+  /**
+   * Get Slug
+   * ========================================================================
+   * get_slug()
+   * @param  $name {string}
+   * @return string
+   * ======================================================================== */
+  public function get_slug($name = null)
+  {
+    if (! $name)
+    {
+      $name = $this->name;
+    }
+
+    return strtolower(
+      str_replace(' ', '-', str_replace('_', '-', $name))
+    );
   }
 
   /**
@@ -241,9 +275,6 @@ class LT3_Custom_Post_Type
     {
       return $words . 'es';
     }
-    else
-    {
-      return $words . 's';
-    }
+    return $words . 's';
   }
 }

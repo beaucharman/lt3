@@ -95,9 +95,7 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
       'post_type' => $post_type
     )
   );
-
   $query->the_post();
-
   return get_the_ID();
 }
 
@@ -187,12 +185,9 @@ function lt3_has_page_pagination()
 {
   if (wp_link_pages('echo=0'))
   {
-    return TRUE;
+    return true;
   }
-  else
-  {
-    return FALSE;
-  }
+  return false;
 }
 
 /**
@@ -293,46 +288,6 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
 }
 
 /**
- * Template Debug
- * ========================================================================
- * lt3_template_debug()
- * @param null
- * @return debug output string
- *
- * Debug the template files and display which ones are being used.
- * ======================================================================== */
-if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
-{
-
-  add_action('all','lt3_template_debug');
-  function lt3_template_debug()
-  {
-    $args = func_get_args();
-    if (! is_admin() and $args[0])
-    {
-      if ($args[0] == 'template_include')
-      {
-        echo "<!-- debug: Base Template: {$args[1]} [turn this debug mode off in '
-          . 'library/project/config.php] -->\n";
-      }
-      elseif (strpos($args[0], 'get_template_part_') === 0)
-      {
-        global $last_template_snoop;
-        if ($last_template_snoop)
-        {
-          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} '
-          . '[turn this debug mode off in library/project/config.php] -->";
-        }
-        $tpl = rtrim(join('-', array_slice($args, 1)), '-') . '.php';
-        echo "\n<!-- debug: Template Part: {$tpl} [turn this debug mode off in '
-          . 'library/project/config.php] -->\n\n";
-        $last_template_snoop = $tpl;
-      }
-    }
-  }
-}
-
-/**
  * Get Time
  * ========================================================================
  * lt3_get_time()
@@ -397,89 +352,45 @@ function lt3_plurify_words($words)
   {
     return $words . 'es';
   }
-  else
-  {
-    return $words . 's';
-  }
+  return $words . 's';
 }
 
 /**
- * Debug Tool
+ * Template Debug
  * ========================================================================
- * debug_tool()
- * @param   $variable | string
- * @param   $exit     | boolean
- * @param   $label    | string
- * @param   $echo     | boolean
- * @return  mixed
+ * lt3_template_debug()
+ * @param null
+ * @return debug output string
  *
- * "var_dump with style" - nobody, ever.
- * Pass a $variable argument of 'breakpoint' to create numeric counters.
- * https://gist.github.com/beaucharman/5451428.
+ * Debug the template files and display which ones are being used.
  * ======================================================================== */
-if (! function_exists('debug_tool'))
+if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
-  function debug_tool($variable = '', $exit = false, $label = 'Debug', $echo = true)
+
+  add_action('all','lt3_template_debug');
+  function lt3_template_debug()
   {
-    global $debug_counter;
-    $breakpoint = false;
-    if ($variable == 'breakpoint')
+    $args = func_get_args();
+    if (! is_admin() and $args[0])
     {
-      $breakpoint = true;
-    }
-    $background_color  = ($breakpoint) ? 'd9edf7' : 'eee';
-    $text_color        = ($breakpoint) ? '3a87ad' : '444';
-    $border_color      = ($breakpoint) ? 'bce8f1' : 'ddd';
-    $opening_tag_array = array(
-      '<pre style="',
-      'line-height:1.4; ',
-      'background-color: #' . $background_color . '; ',
-      'color: #' . $text_color . '; ',
-      'border: 1px solid #' . $border_color . '; ',
-      'padding: 10px; ',
-      'margin: 10px 0; ',
-      'text-align: left;">'
-   );
-    $opening_tag  = implode($opening_tag_array);
-    $closing_tag  = '</pre>';
-    $exit_message = $opening_tag . 'exit();' . $closing_tag;
-
-    if ($breakpoint)
-    {
-      if (! isset($debug_counter))
+      if ($args[0] == 'template_include')
       {
-        $debug_counter = 1;
+        echo "<!-- debug: Base Template: {$args[1]} [turn this debug mode off in "
+          . "library/project/config.php] -->\n";
       }
-      $output = $opening_tag . $label . ' Breakpoint => ' . $debug_counter . $closing_tag;
-      $debug_counter++;
+      elseif (strpos($args[0], 'get_template_part_') === 0)
+      {
+        global $last_template_snoop;
+        if ($last_template_snoop)
+        {
+          echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} "
+          . "[turn this debug mode off in library/project/config.php] -->";
+        }
+        $tpl = rtrim(join('-', array_slice($args, 1)), '-') . '.php';
+        echo "\n<!-- debug: Template Part: {$tpl} [turn this debug mode off in "
+          . "library/project/config.php] -->\n\n";
+        $last_template_snoop = $tpl;
+      }
     }
-    else
-    {
-      /**
-       * Store the result of a var dump
-       */
-      ob_start();
-      var_dump($variable);
-      $output = ob_get_clean();
-
-      /**
-       * Add to the result
-       */
-      $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-      $output = $opening_tag . $label . ' => ' . $output . $closing_tag;
-    }
-
-    if ($exit)
-    {
-      echo $output;
-      exit($exit_message);
-    }
-
-    if ($echo)
-    {
-      echo $output;
-      return;
-    }
-    return $output;
   }
 }
