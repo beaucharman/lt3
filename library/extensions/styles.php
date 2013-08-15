@@ -18,38 +18,50 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
  * ======================================================================== */
 
-/* Register and enqeue styles
+/* Register and enqeue stylesheets
    ======================================================================== */
 add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
   /**
-   * Register styles here
+   * Register stylesheets here
    */
+  wp_register_style('lt3_main_styles', LT3_FULL_STYLES_PATH . '/main.css'
+    , array(), LT3_STYLE_CACHE_BREAK, 'all');
+    
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
     . '/admin/custom-admin-styles.css');
 
   /**
-   * Enqueue styles here
+   * Enqueue stylesheets here
    */
   if (!is_admin())
   {
     /**
-     * Enqueue theme styles here.
-     * Consider seperate files for development, then bundle into style.css
+     * Enqueue theme stylesheets here.
+     * Consider seperate files for development, then bundle into main.css
      * for deployment. Conditional styles would be appropriate to be loaded here.
      */
+     
+     if (LT3_DEVELOPMENT_MODE)
+     {
+       // Enqueue theme template stylesheets here
+     }
+     
+     /* Enqueue the main stylesheet*/
+     wp_enqueue_style('lt3_main_styles');
   }
   elseif (is_admin())
   {
     /**
-     * Admin area styles
+     * Admin area stylesheets
      */
 
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
-    // Enqueue admin styles here.
+    
+    // Enqueue other admin stylesheets here.
   }
 }
 
