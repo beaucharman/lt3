@@ -26,6 +26,8 @@
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
 
+
+
 /* ========================================================================
    Custom Post Type class
    ======================================================================== */
@@ -35,6 +37,8 @@ class LT3_Custom_Post_Type
   public $labels;
   public $options;
   public $help;
+
+
 
   /**
    * Class Constructor
@@ -90,6 +94,8 @@ class LT3_Custom_Post_Type
     }
   }
 
+
+
   /**
    * Register Custom Post Type
    * ========================================================================
@@ -136,6 +142,8 @@ class LT3_Custom_Post_Type
     register_post_type($this->name, $options);
   }
 
+
+
   /**
    * Add Custom Contextual Help
    * ========================================================================
@@ -165,6 +173,8 @@ class LT3_Custom_Post_Type
     }
     return $contextual_help;
   }
+
+
 
   /**
    * Get
@@ -196,6 +206,8 @@ class LT3_Custom_Post_Type
     return get_posts($args);
   }
 
+
+
   /**
    * Archive URI
    * ========================================================================
@@ -207,6 +219,8 @@ class LT3_Custom_Post_Type
   {
     return home_url('/' . $this->get_slug() . '/' . $path);
   }
+
+
 
   /**
    * Get Slug
@@ -227,6 +241,8 @@ class LT3_Custom_Post_Type
     );
   }
 
+
+
   /**
    * Prettify Words
    * ========================================================================
@@ -241,6 +257,8 @@ class LT3_Custom_Post_Type
     return ucwords(str_replace('_', ' ', $words));
   }
 
+
+
   /**
    * Uglify Words
    * ========================================================================
@@ -254,6 +272,8 @@ class LT3_Custom_Post_Type
   {
     return strToLower(str_replace(' ', '_', $words));
   }
+
+
 
   /**
    * Plurify Words

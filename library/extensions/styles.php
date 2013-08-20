@@ -29,7 +29,7 @@ function lt3_load_styles()
    */
   wp_register_style('lt3_main_styles', LT3_FULL_STYLES_PATH . '/main.css'
     , array(), LT3_STYLE_CACHE_BREAK, 'all');
-    
+
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
     . '/admin/custom-admin-styles.css');
 
@@ -43,12 +43,12 @@ function lt3_load_styles()
      * Consider seperate files for development, then bundle into main.css
      * for deployment. Conditional styles would be appropriate to be loaded here.
      */
-     
+
      if (LT3_DEVELOPMENT_MODE)
      {
        // Enqueue theme template stylesheets here
      }
-     
+
      /* Enqueue the main stylesheet*/
      wp_enqueue_style('lt3_main_styles');
   }
@@ -60,7 +60,7 @@ function lt3_load_styles()
 
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
-    
+
     // Enqueue other admin stylesheets here.
   }
 }

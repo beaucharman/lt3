@@ -58,14 +58,6 @@ define('LT3_ENABLE_SITE_SEARCH', true);
    ======================================================================== */
 define('LT3_ENABLE_META_DATA', false);
 
-/* Enabled sticky posts to be displayed on the front-page
-   ======================================================================== */
-define('LT3_ENABLE_STICKY_POSTS', false);
-
-/* Number of sticky posts to show on the front-page
-   ======================================================================== */
-define('LT3_NUMBER_OF_STICKY_POSTS', 2);
-
 /* ========================================================================
    Script, style and behaviour options
    ======================================================================== */

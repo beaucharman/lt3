@@ -39,16 +39,6 @@ function lt3_remove_head_links()
   remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
 
-/* Show Sticky Posts
-   ======================================================================== */
-function lt3_show_sticky_posts()
-{
-  if (LT3_ENABLE_STICKY_POSTS)
-  {
-    get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'sticky');
-  }
-}
-
 /* Get the Comments Template
    ======================================================================== */
 function lt3_get_comments_template()

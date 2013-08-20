@@ -17,8 +17,6 @@
 
 get_header(); ?>
 
-  <?php lt3_show_sticky_posts(); ?>
-
   <?php if (have_posts()) : ?>
 
     <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'front-page'); ?>
