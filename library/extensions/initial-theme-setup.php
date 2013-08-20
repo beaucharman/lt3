@@ -23,6 +23,9 @@ function lt3_initial_theme_setup()
   {
     /**
      * Set the WordPress options the way you like
+     *
+     * Initial images sizes increased by 25% for looking pretty damn good
+     * natively on retina.
      */
     $core_settings = array(
       'avatar_default'    => 'mystery',
@@ -32,14 +35,14 @@ function lt3_initial_theme_setup()
       'comments_per_page' => '20',
       'date_format'       => 'd/m/Y',
       'default_role'      => 'author',
-      'large_size_h'      => LT3_PAGE_CONTENT_WIDTH / 2,
-      'large_size_w'      => LT3_PAGE_CONTENT_WIDTH,
-      'medium_size_h'     => LT3_PAGE_CONTENT_WIDTH / 3,
-      'medium_size_w'     => LT3_PAGE_CONTENT_WIDTH / 2,
+      'large_size_h'      => (LT3_PAGE_CONTENT_WIDTH / 2) * 1.25,
+      'large_size_w'      => LT3_PAGE_CONTENT_WIDTH * 1.25,
+      'medium_size_h'     => (LT3_PAGE_CONTENT_WIDTH / 3) * 1.25,
+      'medium_size_w'     => (LT3_PAGE_CONTENT_WIDTH / 2) * 1.25,
       'posts_per_page'    => '20',
       'thumbnail_crop'    => '1',
-      'thumbnail_size_h'  => LT3_PAGE_CONTENT_WIDTH / 4,
-      'thumbnail_size_w'  => LT3_PAGE_CONTENT_WIDTH / 4,
+      'thumbnail_size_h'  => (LT3_PAGE_CONTENT_WIDTH / 4) * 1.25,
+      'thumbnail_size_w'  => (LT3_PAGE_CONTENT_WIDTH / 4) * 1.25,
       'time_format'       => 'g:i a',
       'timezone_string'   => 'Australia/Sydney',
       'use_smilies'       => '0'

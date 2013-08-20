@@ -15,6 +15,6 @@
 
 get_header(); ?>
 
-  <?php lt3_get_message('Not Found'); ?>
+  <?php lt3_get_message('not-found'); ?>
 
 <?php get_footer(); ?>

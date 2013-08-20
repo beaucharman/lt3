@@ -56,10 +56,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/helpers.php');
 
-/* Site Settings
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
-
 /* Admin Functions
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
@@ -91,10 +87,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
 /* Custom Taxonomies
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
-
-/* Custom Meta Field Boxes
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-meta-field-box.php');
 
 /* Loop Functions
    ======================================================================== */

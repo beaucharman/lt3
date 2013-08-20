@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * Page
  * ========================================================================
@@ -23,7 +23,7 @@ get_header(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('Not Found'); ?>
+    <?php lt3_get_message('not-found'); ?>
 
   <?php endif; ?>
 

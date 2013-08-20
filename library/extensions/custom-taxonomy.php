@@ -31,6 +31,8 @@
  * init function with an action hook.
  */
 
+
+
 /* ========================================================================
    Custom Taxonomy class
    ======================================================================== */
@@ -41,6 +43,8 @@ class LT3_Custom_Taxonomy
   public $labels;
   public $options;
   public $help;
+
+
 
   /**
    * Class Constructor
@@ -99,6 +103,8 @@ class LT3_Custom_Taxonomy
     }
   }
 
+
+
   /**
    * Register Custom Taxonomy
    * ========================================================================
@@ -144,6 +150,8 @@ class LT3_Custom_Taxonomy
     register_taxonomy($this->name, $this->post_type, $options);
   }
 
+
+
   /**
    * Add Custom Contextual Help
    * ========================================================================
@@ -158,6 +166,8 @@ class LT3_Custom_Taxonomy
     }
     return $contextual_help;
   }
+
+
 
   /**
    * Get
@@ -184,6 +194,8 @@ class LT3_Custom_Taxonomy
     return get_terms($this->name, $args);
   }
 
+
+
   /**
    * Archive URI
    * ========================================================================
@@ -195,6 +207,8 @@ class LT3_Custom_Taxonomy
   {
     return home_url('/' . $this->get_slug() . '/' . $path);
   }
+
+
 
   /**
    * Get Slug
@@ -215,6 +229,8 @@ class LT3_Custom_Taxonomy
     );
   }
 
+
+
   /**
    * Prettify Words
    * ========================================================================
@@ -230,6 +246,8 @@ class LT3_Custom_Taxonomy
     return ucwords(str_replace('_', ' ', $words));
   }
 
+
+
   /**
    * Uglify Words
    * ========================================================================
@@ -243,6 +261,8 @@ class LT3_Custom_Taxonomy
   {
     return strToLower(str_replace(' ', '_', $words));
   }
+
+
 
   /**
    * Plurify Words

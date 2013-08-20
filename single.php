@@ -18,11 +18,11 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'single'); ?>
+    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop-single', get_post_type($post->ID)); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('Not Found'); ?>
+    <?php lt3_get_message('not-found'); ?>
 
   <?php endif; ?>
 

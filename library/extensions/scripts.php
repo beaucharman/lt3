@@ -22,7 +22,7 @@
  * Enqeue jQuery from Google, rather than the included WordPress version.
  * Consider bundling jQuery with your build scripts for deployment.
  */
-if (LT3_LOAD_GOOGLE_JQUERY_LIBRARY)
+if (LT3_USE_GOOGLE_JQUERY_LIBRARY)
 {
   add_action('wp_enqueue_scripts', 'lt3_load_google_jquery');
   function lt3_load_google_jquery()

@@ -18,50 +18,47 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
  * ======================================================================== */
 
-/* Register and enqeue stylesheets
+/* Register and enqeue styles
    ======================================================================== */
 add_action('init', 'lt3_load_styles');
 function lt3_load_styles()
 {
 
   /**
-   * Register stylesheets here
+   * Register styles here
    */
-  wp_register_style('lt3_main_styles', LT3_FULL_STYLES_PATH . '/main.css'
-    , array(), LT3_STYLE_CACHE_BREAK, 'all');
-
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
-    . '/admin/custom-admin-styles.css');
+    . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
+
+
+  wp_enqueue_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
+    . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
   /**
-   * Enqueue stylesheets here
+   * Enqueue styles here
    */
   if (!is_admin())
   {
     /**
-     * Enqueue theme stylesheets here.
-     * Consider seperate files for development, then bundle into main.css
+     * Main main stylesheet
+     */
+    wp_enqueue_style('lt3_main_stylesheet');
+
+    /**
+     * Enqueue theme styles here.
+     * Consider seperate files for development, then bundle into style.css
      * for deployment. Conditional styles would be appropriate to be loaded here.
      */
-
-     if (LT3_DEVELOPMENT_MODE)
-     {
-       // Enqueue theme template stylesheets here
-     }
-
-     /* Enqueue the main stylesheet*/
-     wp_enqueue_style('lt3_main_styles');
   }
   elseif (is_admin())
   {
     /**
-     * Admin area stylesheets
+     * Admin area styles
      */
 
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
-
-    // Enqueue other admin stylesheets here.
+    // Enqueue admin styles here.
   }
 }
 

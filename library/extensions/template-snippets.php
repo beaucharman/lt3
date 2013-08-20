@@ -171,75 +171,9 @@ function lt3_meta_description()
  *
  * Function to get defined feedback and notification messages.
  * ======================================================================== */
-function lt3_get_message($message_name)
+function lt3_get_message($message_handle)
 {
-  switch(strtoupper($message_name))
-  {
-    /**
-     * No posts via WordPress built in post type message.
-     */
-    case 'NO POSTS':
-      echo '<section class="error-message no-posts">' . "\n"
-        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
-        . '<p>' . __('There are currently no posts associated with the <strong>');
-      single_cat_title();
-      echo __('</strong> category.') . '</p>' . "\n";
-      if (LT3_ENABLE_SITE_SEARCH)
-      {
-        echo '<p>' . __('Try searching our site for what you are after.') . '</p></div>' . "\n";
-        get_search_form();
-      }
-      echo "\n" . '</section>';
-      break;
-
-    /**
-     * No articles from custom post types.
-     */
-    case 'NO ARTICLES':
-      echo '<section class="error-message no-articles">' . "\n"
-        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
-        . '<p>' . __('There are currently no articles here.') . '</p>' . "\n";
-      if (LT3_ENABLE_SITE_SEARCH)
-      {
-        echo '<p>' . __('Try searching our site for what you are after.') . '</p></div>' . "\n";
-        get_search_form();
-      }
-      echo "\n" . '</section>';
-      break;
-
-    /**
-     * No search results message.
-     */
-    case 'NO RESULTS':
-      echo '<section class="no-results">' . "\n"
-        . '<h3>' . __('Sorry! We couldn\'t find anything&hellip;') . '</h3>' . "\n";
-      if (LT3_ENABLE_SITE_SEARCH)
-      {
-        echo '<p>' . __('Maybe try searching with a different keyword?') . '</p>' . "\n";
-        get_search_form();
-      }
-      echo "\n" . '</section>';
-      break;
-
-    /**
-     * Declare more messages here.
-     */
-
-    /**
-     * Default. Page not found message, suitable for a 404 message.
-     */
-    default:
-      echo '<section class="error-message not-found">' . "\n"
-        . '<h3>' . __('Oops! Nothing Found Here :(') . '</h3><div>' . "\n"
-        . '<p>' . __('The page you are looking for does not exist. (404)') . '</p>' . "\n";
-      if (LT3_ENABLE_SITE_SEARCH)
-      {
-        echo '<p>' . __('Try searching our site for what you are after.') . '</p></div>' . "\n";
-        get_search_form();
-      }
-      echo "\n" . '</section>';
-      break;
-  }
+  get_template_part(LT3_TEMPLATE_PARTS_PATH . '/message', lt3_urify_words($message_handle));
 }
 
 /* Function to add more edit buttons to comments

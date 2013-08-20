@@ -58,13 +58,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'archive'); ?>
+    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop-archive', get_post_type($post->ID)); ?>
 
     <?php lt3_include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('No Posts'); ?>
+    <?php lt3_get_message('no-posts'); ?>
 
   <?php endif; ?>
 

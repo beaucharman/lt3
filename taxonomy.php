@@ -34,7 +34,7 @@ get_header(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('No Posts'); ?>
+    <?php lt3_get_message('not-found'); ?>
 
   <?php endif; ?>
 

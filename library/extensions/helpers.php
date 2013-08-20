@@ -11,9 +11,13 @@
  * @license      MIT license
  * ======================================================================== */
 
+
+
 /* ========================================================================
    Logic and conditional functions
    ======================================================================== */
+
+
 
 /**
  * lt3 URI
@@ -26,6 +30,8 @@ function lt3_uri($path = '')
 {
   return get_stylesheet_directory_uri() . $path;
 }
+
+
 
 /**
  * Get Thumnbnail
@@ -56,6 +62,8 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
   return false;
 }
 
+
+
 /**
  * Get Attachment
  * ========================================================================
@@ -79,6 +87,8 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
   return false;
 }
 
+
+
 /**
  * Get ID by Slug
  * ========================================================================
@@ -98,6 +108,8 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
   $query->the_post();
   return get_the_ID();
 }
+
+
 
 /**
  * Is Child of Page
@@ -124,6 +136,8 @@ function lt3_is_child_of_page($page)
   return false;
 }
 
+
+
 /**
  * Is Child of Category
  * ========================================================================
@@ -142,6 +156,8 @@ function lt3_is_child_of_category($parent_category)
     return ($categories[0]->category_parent == $parent_category) ? true : false;
   }
 }
+
+
 
 /**
  * Is Post Type
@@ -172,6 +188,8 @@ function lt3_is_post_type($type = null)
   return false;
 }
 
+
+
 /**
  * Has Page Pagination
  * ========================================================================
@@ -189,6 +207,8 @@ function lt3_has_page_pagination()
   }
   return false;
 }
+
+
 
 /**
  * Post is in Descendant Category
@@ -213,6 +233,8 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
   }
   return false;
 }
+
+
 
 /**
  * Get Data with cURL
@@ -246,6 +268,8 @@ function lt3_get_data_with_curl($url = '')
   }
   return file_get_contents($url);
 }
+
+
 
 /**
  * Excerpt
@@ -287,6 +311,8 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
   echo $output_text;
 }
 
+
+
 /**
  * Get Time
  * ========================================================================
@@ -301,6 +327,8 @@ function lt3_get_time($date, $format = 'Y-m-d')
   $date = str_replace('/', '-', $date);
   return date($format, strtotime($date));
 }
+
+
 
 /**
  * Prettify Words
@@ -317,6 +345,8 @@ function lt3_prettify_words($words)
   return ucwords(str_replace('_', ' ', $words));
 }
 
+
+
 /**
  * Uglify Words
  * ========================================================================
@@ -324,12 +354,30 @@ function lt3_prettify_words($words)
  * @param  $words | string
  * @return string
  *
- * Creates a url firendly version of the given string.
+ * Creates a variable firendly version of the given string.
  * ======================================================================== */
 function lt3_uglify_words($words)
 {
   return strToLower(str_replace(' ', '_', $words));
 }
+
+
+
+/**
+ * URIfy Words
+ * ========================================================================
+ * lt3_urify_words()
+ * @param  $words | string
+ * @return string
+ *
+ * Creates a uri firendly version of the given string.
+ * ======================================================================== */
+function lt3_urify_words($words)
+{
+  return strToLower(str_replace(' ', '-', $words));
+}
+
+
 
 /**
  * Plurify Words
@@ -354,6 +402,8 @@ function lt3_plurify_words($words)
   }
   return $words . 's';
 }
+
+
 
 /**
  * Template Debug

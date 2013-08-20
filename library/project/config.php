@@ -13,6 +13,8 @@
  * lt3 project configuration
  * ======================================================================== */
 
+
+
 /* ========================================================================
    Development mode
    ======================================================================== */
@@ -22,6 +24,8 @@
  */
 define('LT3_DEVELOPMENT_MODE', true);
 
+
+
 /* ========================================================================
    Front end layout and design options
    ======================================================================== */
@@ -30,9 +34,11 @@ define('LT3_DEVELOPMENT_MODE', true);
    ======================================================================== */
 define('LT3_PAGE_WRAP_WIDTH', 980);
 
-/* Set full page content width (not including padding, content column only)
+/* Set full page content width (editor content only)
    ======================================================================== */
 define('LT3_PAGE_CONTENT_WIDTH', 980);
+
+
 
 /* ========================================================================
    Front end functionality and logic options
@@ -58,21 +64,25 @@ define('LT3_ENABLE_SITE_SEARCH', true);
    ======================================================================== */
 define('LT3_ENABLE_META_DATA', false);
 
+
+
 /* ========================================================================
    Script, style and behaviour options
    ======================================================================== */
 
 /* style.css cache break
    ======================================================================== */
-define('LT3_STYLE_CACHE_BREAK', '0.1');
+define('LT3_STYLES_CACHE_BREAK', '0.1');
 
 /* scripts cache break
    ======================================================================== */
 define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
 
-/* Enable Google jQuery libraries
+/* Use the Google hosted jQuery library
    ======================================================================== */
-define('LT3_LOAD_GOOGLE_JQUERY_LIBRARY', false);
+define('LT3_USE_GOOGLE_JQUERY_LIBRARY', false);
+
+
 
 /* ========================================================================
    Theme and editor options
@@ -86,43 +96,7 @@ define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', false);
    ======================================================================== */
 define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
 
-/* Enable admin option to change site background
-   ======================================================================== */
-define('LT3_ENABLE_CUSTOM_BACKGROUND', false);
 
-/* Set custom background default color.
-   ======================================================================== */
-define('LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR', 'f8f8f8');
-
-/* Enable admin option to change site header image
-   ======================================================================== */
-define('LT3_ENABLE_CUSTOM_HEADER', false);
-
-/* Set the text title colour | 222222
-   ======================================================================== */
-define('HEADER_TEXTCOLOR', '222222');
-
-/* Set the width of the header image
-   ======================================================================== */
-define('HEADER_IMAGE_WIDTH',  LT3_PAGE_WRAP_WIDTH);
-
-/* Set the height of the header image
-   ======================================================================== */
-define('HEADER_IMAGE_HEIGHT', LT3_PAGE_WRAP_WIDTH / 3);
-
-/* Sets the default header image.
-   ======================================================================== */
-define('HEADER_IMAGE',
-  trailingslashit(get_stylesheet_directory_uri())
-  . '/library/images/header-banner.jpg'
-);
-
-/**
- * Set to hide the text title from the front end
- * ========================================================================
- * Also set HEADER_TEXTCOLOR to '' * and * the h1 a span to 'display:none'
- */
-define('NO_HEADER_TEXT', false);
 
 /* ========================================================================
    Utility options
@@ -139,9 +113,5 @@ define('LT3_USE_CUSTOM_LOGIN_STYLES', false);
 /* Enable admin tutorial section. true/ false
    ======================================================================== */
 define('LT3_ENABLE_TUTORIAL_SECTION', false);
-
-/* Disallow editing of theme and plugin files
-   ======================================================================== */
-define('DISALLOW_FILE_EDIT', true);
 
 // End project configuration

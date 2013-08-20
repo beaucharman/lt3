@@ -13,6 +13,8 @@
  * All extra functionality that effects the admin and post editor.
  * ======================================================================== */
 
+
+
 /**
  * Modify Post Mime Types
  * ========================================================================
@@ -29,6 +31,8 @@ function lt3_modify_post_mime_types($post_mime_types)
   );
   return $post_mime_types;
 }
+
+
 
 /**
  * Enable Extra TinyMCE Buttons and Style Select
@@ -124,35 +128,48 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
     return $buttons;
   }
 
-  /* Allocate styles for the TinyMCE Editor style select
-     ======================================================================== */
+  /**
+   * Allocate styles for the TinyMCE Editor style select
+   * ========================================================================
+   * Add every custom style format's css selector and it's associated
+   * style rules to the custom-editor-style.css (can be easily added via the config.php file)
+   * For more information: http://codex.wordpress.org/TinyMCE_Custom_Styles
+   * ======================================================================== */
   add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
   function lt3_mce_styleselect_editor_settings($settings)
   {
-    if (! empty($settings['theme_advanced_styles']))
-    {
-      $settings['theme_advanced_styles'] .= ';';
-    }
-    else
-    {
-      $settings['theme_advanced_styles'] = '';
-    }
-
-    $classes = array(
-      __('Lead')       => 'lead',
-      __('Disclaimer') => 'disclaimer',
-      __('Warning')    => 'warning',
-      __('Notice')     => 'notice',
-      __('Muted')      => 'muted'
+    /**
+     * Add style formats here.
+     */
+    $style_formats = array(
+      array(
+        'title' => 'Lead',
+        'inline' => 'span',
+        'classes' => 'lead'
+      ),
+      array(
+        'title' => 'Disclaimer',
+        'inline' => 'span',
+        'classes' => 'disclaimer'
+      ),
+      array(
+        'title' => 'Notice',
+        'inline' => 'span',
+        'classes' => 'notice'
+      ),
+      array(
+        'title' => 'Warning',
+        'inline' => 'span',
+        'classes' => 'warning'
+      ),
+      array(
+        'title' => 'Muted',
+        'inline' => 'span',
+        'classes' => 'muted'
+      )
     );
 
-    $class_settings = '';
-    foreach ($classes as $name => $value )
-    {
-      $class_settings .= "{$name}={$value};";
-    }
-
-    $settings['theme_advanced_styles'] .= trim($class_settings, '; ');
+    $settings['style_formats'] = json_encode($style_formats);
     return $settings;
   }
 }

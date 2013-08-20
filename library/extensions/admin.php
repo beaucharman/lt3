@@ -16,6 +16,8 @@
  * to can be found in the library/dashboard/ directory.
  * ======================================================================== */
 
+
+
 /* ========================================================================
    Dashboard and login functions
    ======================================================================== */
@@ -35,6 +37,8 @@ function lt3_replace_admin_footer()
   }
   return $admin_footer;
 }
+
+
 
 /**
  * Custom Dashboard Widgets
@@ -61,6 +65,8 @@ function lt3_create_website_support_widget_function()
   echo $admin_widget;
 }
 
+
+
 /**
  * Create Tutorial Menu
  * ========================================================================
@@ -82,6 +88,8 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
     }
   }
 }
+
+
 
 /**
  * Disable Global Comments
@@ -124,6 +132,8 @@ if (! LT3_ENABLE_GLOBAL_COMMENTS)
   }
 }
 
+
+
 /**
  * Remove Dashboard Widgets
  * ========================================================================
@@ -143,9 +153,11 @@ function lt3_remove_dashboard_widgets()
   remove_meta_box('dashboard_primary', 'dashboard', 'side');
   remove_meta_box('dashboard_secondary', 'dashboard', 'side');
   /**
-   * Add more Dashboard Widget handels here to remove.
+   * Add more Dashboard Widget handles here to remove.
    */
 }
+
+
 
 /**
  * Add Custom Post Types to 'Right Now'
@@ -197,6 +209,8 @@ function lt3_add_custom_post_type_to_right_now()
       . '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
   }
 }
+
+
 
 /* ========================================================================
    Content management and display
@@ -261,69 +275,7 @@ function lt3_restriction_taxonomy_dropdown($query)
   }
 }
 
-/* ========================================================================
-   Theme customisation settings
-   ======================================================================== */
 
-/**
- * Enable Custom Background
- * ========================================================================
- * add_theme_support for custom-background
- * ======================================================================== */
-if (LT3_ENABLE_CUSTOM_BACKGROUND)
-{
-  add_theme_support('custom-background', $defaults);
-  $defaults = array(
-    'default-color'          => LT3_CUSTOM_BACKGROUND_DEFAULT_COLOR,
-    'default-image'          => get_template_directory_uri() . '/library/images/background.jpg',
-    'wp-head-callback'       => '_custom_background_cb',
-    'admin-head-callback'    => '',
-    'admin-preview-callback' => ''
-  );
-}
-
-/**
- * Enable Custom Header
- * ========================================================================
- * add_custom_image_header functions
- * ======================================================================== */
-if (LT3_ENABLE_CUSTOM_HEADER)
-{
-  /* Include the header image in the admin preview. */
-  add_custom_image_header('lt3_header_style', 'lt3_admin_header_style');
-  function lt3_admin_header_style()
-  {
-  ?>
-  <style type="text/css">
-    #headimg {
-      width: <?php echo HEADER_IMAGE_WIDTH; ?>px;
-      height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
-      background: no-repeat;
-    }
-  </style>
-  <?php
-  }
-  /* Include the header image in the template. */
-  function lt3_header_style()
-  {
-  ?>
-  <style type="text/css">
-    .page-header { background:url(<?php header_image(); ?>) no-repeat; }
-    .page-header h1 a { color:#<?php header_textcolor(); ?>; }
-  <?php if (get_header_textcolor() == 'blank') : ?>
-    .page-header h1 a span { text-indent:-9999px; white-space: nowrap; }
-    .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
-  <?php else : ?>
-    .page-header .site-description  { color:#<?php header_textcolor(); ?>; }
-  <?php endif; ?>
-  <?php if (NO_HEADER_TEXT) : ?>
-    .page-header h1 a span { text-indent:-9999px; white-space: nowrap; display:none; }
-    .page-header .site-description  { text-indent:-9999px; white-space: nowrap; }
-  <?php endif; ?>
-  </style>
-  <?php
-  }
-}
 
 /* ========================================================================
    User related functions
@@ -351,6 +303,8 @@ function lt3_custom_userfields($methods)
   return $methods;
 }
 
+
+
 /* ========================================================================
    Security measures
    ======================================================================== */
@@ -370,6 +324,8 @@ function lt3_add_admin_nofollow_meta()
   }
 }
 
+
+
 /**
  * Remove WP Version
  * ========================================================================
@@ -380,6 +336,8 @@ function lt3_remove_wp_generator()
 {
   remove_action('wp_head', 'wp_generator');
 }
+
+
 
 /**
  * Alternate Login Error Message

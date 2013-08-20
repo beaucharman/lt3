@@ -11,8 +11,9 @@
  * @license      MIT license
  * ======================================================================== */
 ?><!doctype html>
-<!--[if IE 7]><html class="no-js ie7"><![endif]-->
-<!--[if IE 8]><html class="no-js ie8"><![endif]-->
+<!--[if IE 7]><html class="no-js ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]><html class="no-js ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]><html class="no-js ie9 lt-ie10"><![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
