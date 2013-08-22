@@ -13,8 +13,6 @@
  * lt3 project configuration
  * ======================================================================== */
 
-
-
 /* ========================================================================
    Development mode
    ======================================================================== */
@@ -23,8 +21,6 @@
  * true for development, false for deployment mode.
  */
 define('LT3_DEVELOPMENT_MODE', true);
-
-
 
 /* ========================================================================
    Front end layout and design options
@@ -37,8 +33,6 @@ define('LT3_PAGE_WRAP_WIDTH', 980);
 /* Set full page content width (editor content only)
    ======================================================================== */
 define('LT3_PAGE_CONTENT_WIDTH', 980);
-
-
 
 /* ========================================================================
    Front end functionality and logic options
@@ -64,8 +58,6 @@ define('LT3_ENABLE_SITE_SEARCH', true);
    ======================================================================== */
 define('LT3_ENABLE_META_DATA', false);
 
-
-
 /* ========================================================================
    Script, style and behaviour options
    ======================================================================== */
@@ -82,8 +74,6 @@ define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
    ======================================================================== */
 define('LT3_USE_GOOGLE_JQUERY_LIBRARY', false);
 
-
-
 /* ========================================================================
    Theme and editor options
    ======================================================================== */
@@ -95,8 +85,6 @@ define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', false);
 /* Use the custom-editor-style.css file for the TinyMCE
    ======================================================================== */
 define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
-
-
 
 /* ========================================================================
    Utility options

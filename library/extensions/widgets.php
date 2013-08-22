@@ -32,7 +32,7 @@ function lt3_register_primary_sidebar()
   register_sidebar(array(
     'name'          => __('Primary Sidebar Widgets'),
     'id'            => 'primary-sidebar-widgets',
-    'description'   => __('These are widgets for the Primary Sidebar.'),
+    'description'   => __('These are widgets for the site\'s Primary Sidebar.'),
     'before_widget' => '<div class="widget widget--primary-sidebar %2$s %1$s">',
     'after_widget'  => '</div>',
     'before_title'  => '<h3 class="widget-title">',

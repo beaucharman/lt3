@@ -78,19 +78,19 @@ if (have_comments()) : ?>
 
     <p class="comment-form input-field-container">
       <label class="input-label" for="author"><?php echo _e('Name'); ?>&nbsp;<?php if ($req) echo "*"; ?><br>
-        <input class="input-field" type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="20" <?php if ($req) echo "aria-required='true'"; ?>>
+        <input class="input-text input-field" type="text" placeholder="Name&hellip;" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="20" <?php if ($req) echo "aria-required='true'"; ?>>
       </label>
     </p>
 
     <p class="comment-form input-field-container">
       <label class="input-label" for="email"><?php echo _e('Email'); ?>&nbsp;<?php if ($req) echo "*"; ?> <small class="note"><?php echo _e('(will not be published)'); ?></small><br>
-        <input class="input-field" type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="21" <?php if ($req) echo "aria-required='true'"; ?>>
+        <input class="input-text input-field" type="email" placeholder="Email&hellip;" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="21" <?php if ($req) echo "aria-required='true'"; ?>>
       </label>
     </p>
 
     <p class="comment-form input-field">
       <label class="input-label" for="url"><?php echo _e('Website'); ?><br>
-        <input class="input-field" type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="22">
+        <input class="input-text input-field" type="url" placeholder="Website&hellip;" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="22">
       </label>
     </p>
 
@@ -100,12 +100,12 @@ if (have_comments()) : ?>
 
     <p class="comment-form input-field-container">
       <label class="input-label" for="comment"><?php echo _e('Comment'); ?><br>
-        <textarea class="input-field" name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="23"></textarea>
+        <textarea class="input-textarea input-field" name="comment" placeholder="Your comment&hellip;" id="comment" cols="58" rows="10" tabindex="23"></textarea>
       </label>
     </p>
 
     <p class="comment-form submit-field-container">
-      <input class="input-field" name="submit" type="submit" id="submit" tabindex="24" value="Submit Comment &rarr;">
+      <input class="input-submit input-field" name="submit" type="submit" id="submit" tabindex="24" value="Submit Comment &rarr;">
       <?php comment_id_fields(); ?>
     </p>
 

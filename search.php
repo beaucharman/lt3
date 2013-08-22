@@ -32,7 +32,10 @@ get_header(); ?>
 
     <?php lt3_include_archive_pagination(); ?>
 
-    <p><?php echo _e('Still not what you are looking for?'); ?></p>
+    <p>
+      <?php echo _e('Still not what you are looking for?'); ?>
+    </p>
+
     <?php get_search_form(); ?>
 
   <?php else : ?>

@@ -53,7 +53,9 @@ get_header(); ?>
   endif; ?></h1>
 
   <?php if (term_description()) : ?>
-  <p class="term-description"><?php echo term_description(); ?></p >
+  <p class="term-description">
+    <?php echo term_description(); ?>
+  </p >
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>

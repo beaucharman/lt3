@@ -19,7 +19,9 @@ get_header(); ?>
   <h1 class="content-title"><?php single_cat_title(); ?></h1>
 
   <?php if (term_description()) : ?>
-  <p class="category-description"><?php echo term_description(); ?></p>
+  <p class="category-description">
+    <?php echo term_description(); ?>
+  </p>
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>

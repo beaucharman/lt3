@@ -16,8 +16,6 @@
  * to can be found in the library/dashboard/ directory.
  * ======================================================================== */
 
-
-
 /* ========================================================================
    Dashboard and login functions
    ======================================================================== */
@@ -37,8 +35,6 @@ function lt3_replace_admin_footer()
   }
   return $admin_footer;
 }
-
-
 
 /**
  * Custom Dashboard Widgets
@@ -65,8 +61,6 @@ function lt3_create_website_support_widget_function()
   echo $admin_widget;
 }
 
-
-
 /**
  * Create Tutorial Menu
  * ========================================================================
@@ -88,8 +82,6 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
     }
   }
 }
-
-
 
 /**
  * Disable Global Comments
@@ -132,8 +124,6 @@ if (! LT3_ENABLE_GLOBAL_COMMENTS)
   }
 }
 
-
-
 /**
  * Remove Dashboard Widgets
  * ========================================================================
@@ -156,8 +146,6 @@ function lt3_remove_dashboard_widgets()
    * Add more Dashboard Widget handles here to remove.
    */
 }
-
-
 
 /**
  * Add Custom Post Types to 'Right Now'
@@ -209,8 +197,6 @@ function lt3_add_custom_post_type_to_right_now()
       . '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
   }
 }
-
-
 
 /* ========================================================================
    Content management and display
@@ -275,8 +261,6 @@ function lt3_restriction_taxonomy_dropdown($query)
   }
 }
 
-
-
 /* ========================================================================
    User related functions
    ======================================================================== */
@@ -303,8 +287,6 @@ function lt3_custom_userfields($methods)
   return $methods;
 }
 
-
-
 /* ========================================================================
    Security measures
    ======================================================================== */
@@ -324,8 +306,6 @@ function lt3_add_admin_nofollow_meta()
   }
 }
 
-
-
 /**
  * Remove WP Version
  * ========================================================================
@@ -336,8 +316,6 @@ function lt3_remove_wp_generator()
 {
   remove_action('wp_head', 'wp_generator');
 }
-
-
 
 /**
  * Alternate Login Error Message

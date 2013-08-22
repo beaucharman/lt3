@@ -13,8 +13,6 @@
  * All extra functionality that effects the admin and post editor.
  * ======================================================================== */
 
-
-
 /**
  * Modify Post Mime Types
  * ========================================================================
@@ -31,8 +29,6 @@ function lt3_modify_post_mime_types($post_mime_types)
   );
   return $post_mime_types;
 }
-
-
 
 /**
  * Enable Extra TinyMCE Buttons and Style Select

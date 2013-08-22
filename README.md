@@ -10,7 +10,7 @@ https://github.com/beaucharman/lt3/wiki/_pages
 
 
 
-### Todo, and issues
+### Todo and issues
 
 https://github.com/beaucharman/lt3/issues
 
@@ -24,13 +24,15 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
 
 ### Notes for Production
 
-- **Limit login attempts - plugin**
+- **Please don't use 'admin' as a user**
 
-- **Strong Passwords**
+- **Strong passwords, people.**
 
-- **Complex Database Prefix**
+- **Complex database prefix, none of this wp_ stuff**
 
-- **Place the .htaccess file currently in this directory, in the root directory**
+- **Place the `.htaccess` file currently in this directory, in the root directory**
+
+- **Use elements from the `wp-config-sample.php` in this directory as needed... or just the whole thing**
 
 - **.htaccess with Options -Indexes for wp-content folder**
 
@@ -40,13 +42,6 @@ Run http://codex.wordpress.org/Theme_Unit_Test thoroughly :)
   <Files ~ ".(xml|css|jpe?g|png|gif|js)$">
   Allow from all
   </Files>
-```
-- **Disallow Theme and Plug-in Editor Access [If used, remove reference from library/project/config]**
-
-Within the wp-config.php file, place the following code:
-
-```
-  define('DISALLOW_FILE_EDIT', true);
 ```
 
 - **Enforce SSL Usage**

@@ -23,7 +23,9 @@ get_header(); ?>
   ?></h1>
 
   <?php if (term_description()) : ?>
-    <p class="taxonomy-description"><?php echo term_description(); ?></p>
+    <p class="taxonomy-description">
+      <?php echo term_description(); ?>
+    </p>
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>

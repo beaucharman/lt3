@@ -15,8 +15,6 @@
    ======================================================================== */
 add_theme_support('post-thumbnails');
 
-
-
 /**
  * Add custom image sizes
  *
@@ -32,8 +30,6 @@ function lt3_add_image_sizes()
   /* Add custom sizes here */
   // add_image_size('handle', $width, $height, $crop);
 }
-
-
 
 /**
  * Filter - Add image sizes for selection in the WordPress editor.
