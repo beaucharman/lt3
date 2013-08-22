@@ -24,7 +24,7 @@ if (post_password_required())
 
 if (have_comments()) : ?>
 
-<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
+<h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
 
 <ol class="commentlist">
 <?php wp_list_comments('type=comment&callback=lt3_advanced_comment'); ?>

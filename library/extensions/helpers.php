@@ -60,9 +60,9 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
  * Get Attachment
  * ========================================================================
  * lt3_get_attachment()
- * @param  {integer} $id
- * @param  {string}  $size
- * @param  {boolean} $attributes
+ * @param {integer} $id
+ * @param {string}  $size
+ * @param {boolean} $attributes
  * @return {string || array}
  * ======================================================================== */
 function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
@@ -83,8 +83,8 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
  * Get ID by Slug
  * ========================================================================
  * lt3_get_id_by_slug()
- * @param  {string} $slug
- * @param  {string} $post_type
+ * @param {string} $slug
+ * @param {string} $post_type
  * @return {integer}
  * ======================================================================== */
 function lt3_get_id_by_slug($slug, $post_type = 'post')
@@ -103,7 +103,7 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
  * Is Child of Page
  * ========================================================================
  * lt3_is_child_of_page()
- * @param  {integer || string} $page
+ * @param {integer || string} $page
  * @return {boolean}
  *
  * Function to check if page is child of $page.
@@ -128,8 +128,8 @@ function lt3_is_child_of_page($page)
  * Is Child of Category
  * ========================================================================
  * lt3_is_child_of_category()
- * @param  $parent_category | integer
- * @return boolean
+ * @param {integer} $parent_category
+ * @return {boolean}
  *
  * Function to check if current category is a child
  * of $parent_category category.
@@ -147,8 +147,8 @@ function lt3_is_child_of_category($parent_category)
  * Is Post Type
  * ========================================================================
  * lt3_is_post_type()
- * @param  $type | string
- * @return boolean
+ * @param {string} $type
+ * @return {boolean}
  *
  * Function to check if Custom Post Type.
  * ======================================================================== */
@@ -177,7 +177,7 @@ function lt3_is_post_type($type = null)
  * ========================================================================
  * lt3_has_page_pagination()
  * @param null
- * @return boolean
+ * @return {boolean}
  *
  * Return true if has pagination.
  * ======================================================================== */
@@ -194,9 +194,9 @@ function lt3_has_page_pagination()
  * Post is in Descendant Category
  * ========================================================================
  * lt3_post_is_in_descendant_category()
- * @param  $cat | array
- * @param  $_post
- * @return boolean
+ * @param {array} $cat
+ * @param $_post
+ * @return {boolean}
  *
  * Tests if any of a post's assigned categories are
  * descendants of target categories
@@ -218,8 +218,8 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
  * Get Data with cURL
  * ========================================================================
  * lt3_get_data_with_curl()
- * @param  $url | string
- * @return file output
+ * @param {string} $url
+ * @return {string}
  *
  * Gets the data from a URL.
  * ======================================================================== */
@@ -251,7 +251,7 @@ function lt3_get_data_with_curl($url = '')
  * Excerpt
  * ========================================================================
  * lt3_excerpt()
- * @param {string}  $raw_text
+ * @param {string} $raw_text
  * @param {integer} $word_limit
  * @param {boolean} $echo_result
  *
@@ -291,7 +291,7 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
  * Get Time
  * ========================================================================
  * lt3_get_time()
- * @param  $date | WordPress date object
+ * @param $date [WordPress date object]
  * @return string
  *
  * WordPress spits out post time with '/'s, php's date function requires '-'s.
@@ -306,8 +306,8 @@ function lt3_get_time($date, $format = 'Y-m-d')
  * Prettify Words
  * ========================================================================
  * lt3_prettify_words()
- * @param  $words | string
- * @return string
+ * @param {string} $words
+ * @return {string}
  *
  * Creates a pretty version of a string, like
  * a pug version of a dog.
@@ -321,8 +321,8 @@ function lt3_prettify_words($words)
  * Uglify Words
  * ========================================================================
  * lt3_uglify_words()
- * @param  $words | string
- * @return string
+ * @param {string} $words
+ * @return {string}
  *
  * Creates a variable firendly version of the given string.
  * ======================================================================== */
@@ -335,8 +335,8 @@ function lt3_uglify_words($words)
  * URIfy Words
  * ========================================================================
  * lt3_urify_words()
- * @param  $words | string
- * @return string
+ * @param {string} $words
+ * @return {string}
  *
  * Creates a uri firendly version of the given string.
  * ======================================================================== */
@@ -349,8 +349,8 @@ function lt3_urify_words($words)
  * Plurify Words
  * ========================================================================
  * lt3_plurify_words()
- * @param  $words | string
- * @return string
+ * @param {string} $words
+ * @return {string}
  *
  * Plurifies most common words. Not currently working
  * proper nouns, or more complex words, for example
@@ -374,7 +374,7 @@ function lt3_plurify_words($words)
  * ========================================================================
  * lt3_template_debug()
  * @param null
- * @return debug output string
+ * @return {string}
  *
  * Debug the template files and display which ones are being used.
  * ======================================================================== */

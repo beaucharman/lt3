@@ -57,8 +57,9 @@ td, th {
   text-align: left;
 }
 
-/* Alignment styles
-   ======================================================================== */
+/**
+ *  Alignment styles
+ */
 .alignleft,
 .alignright {
   margin-bottom: 1.5em;
@@ -106,7 +107,7 @@ td, th {
   color: #aaa;
 }
 
-/* Image and Gallery tyles
+/* Image and Gallery styles
    ======================================================================== */
 .entry img {
   max-width: 100%;

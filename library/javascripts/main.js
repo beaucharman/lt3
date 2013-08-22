@@ -10,11 +10,10 @@
  * @license      MIT license
  * ======================================================================== */
 
-// jQuery No Conflict
-// To prevent third party plugins from conflicting with
+// jQuery No Conflict. To prevent third party plugins from conflicting with
 // your jQuery, simply use the following anonymous function:
 /*
 ;(function ($) {
-  // contain code here...
+  // contain code in here...
 })(jQuery);
 */

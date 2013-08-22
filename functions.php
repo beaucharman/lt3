@@ -82,19 +82,15 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
 
 /* Custom Post Types
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
 
 /* Custom Taxonomies
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 
 /* Loop Functions
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
-
-/* Template Hooks
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
 
 /* Theme Widgets
    ======================================================================== */
@@ -104,10 +100,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
 
-/* Shortcodes
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
-
 /* Theme Scripts
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
@@ -116,13 +108,17 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
+/* Template Hooks
+   ======================================================================== */
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
+
+/* Shortcodes
+   ======================================================================== */
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
+
 /* ========================================================================
    Project Extensions
    ======================================================================== */
-
-/* Site Settings Init
-   ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 
 /* Custom Post Types Init
    ======================================================================== */
@@ -132,10 +128,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
    ======================================================================== */
 //require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
 
-/* Custom Meta Field Boxes Init
-   ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-meta-field-boxes-init.php');
-
 /**
- * Include more modular files as needed.
+ * Include more files as needed.
  */

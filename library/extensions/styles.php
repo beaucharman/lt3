@@ -53,7 +53,7 @@ function lt3_load_styles()
   elseif (is_admin())
   {
     /**
-     * Admin area styles
+     * Admin area stylesheets
      */
 
     /* Add consistency to site settings and meta field inputs */
