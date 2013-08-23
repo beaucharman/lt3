@@ -31,7 +31,7 @@ function lt3_load_styles()
     . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
 
 
-  wp_enqueue_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
+  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
     . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
   /**
