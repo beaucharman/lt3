@@ -49,6 +49,7 @@ function lt3_load_scripts()
   /**
    * Register scripts here
    */
+  wp_register_script('lt3_respond', LT3_FULL_SCRIPTS_PATH . '/vendor/respond.min.js', array(), '', false);
   wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
   wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
@@ -58,25 +59,37 @@ function lt3_load_scripts()
   if (! is_admin())
   {
 
-    /* jQuery */
+    /* Dequeue the WordPress version of jQuery */
     wp_dequeue_script('jquery');
 
+    /* Comments */
     if (is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)
     {
       wp_enqueue_script('comment-reply');
     }
-
+    
+    /* Respond.js */
+    wp_enqueue_script('lt3_respond');
+ 
     /**
      * Load in separate scripts for development, change this to a concatenated
      * file for deployment. See library/project/config.php
      */
     if (LT3_DEVELOPMENT_MODE)
     {
+      /* jQuery */
       // wp_enqueue_script('jquery');
+      
+      /* Plugins */
       wp_enqueue_script('lt3_plugins');
-      // Enqueue other theme template scripts here
+      
+      /** 
+       * Enqueue other theme template scripts for developement,
+       * or contitional production scripts here.
+       */
     }
 
+   /* Main project JavaScript */
     wp_enqueue_script('lt3_main');
   }
 }
