@@ -11,9 +11,10 @@
  * @license      MIT license
  *
  * Page not found message, suitable for a 404 message.
- * ======================================================================== */ ?>
+ */ ?>
 
 <section class="message message--not-found">
+
   <h3>Oops! Nothing Found Here :(</h3>
   <p>
     The page you are looking for does not exist. (404)
@@ -24,4 +25,5 @@
   </p>
     <?php get_search_form(); ?>
   <?php endif; ?>
+
 </section>

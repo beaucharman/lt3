@@ -11,9 +11,10 @@
  * @license      MIT license
  *
  * No search results message.
- * ======================================================================== */ ?>
+ */ ?>
 
 <section class="message message--no-results">
+
   <h3>Sorry! We couldn't find anything&hellip;</h3>
   <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
   <p>
@@ -21,5 +22,6 @@
   </p>
   <?php get_search_form(); ?>
   <?php endif; ?>
+
 </section>
 

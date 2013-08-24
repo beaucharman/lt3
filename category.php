@@ -12,7 +12,7 @@
  *
  * Category template page.
  * Particular category? Save this template page as category-{{slug}}.php
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

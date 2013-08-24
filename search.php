@@ -11,7 +11,7 @@
  * @license      MIT license
  *
  * Search results template.
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

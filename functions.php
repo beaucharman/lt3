@@ -14,7 +14,7 @@
  *
  * For each theme: custom code, snippets and functions should be placed in
  * library/project and included from this functions.php file.
- * ======================================================================== */
+ */
 
 /* ========================================================================
    Required Constants

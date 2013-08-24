@@ -9,7 +9,7 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- * ======================================================================== */
+ */
 
 /* Add Theme Support
    ======================================================================== */
@@ -20,7 +20,7 @@ add_theme_support('post-thumbnails');
  *
  * Thumbnail, Medium and large sizes are set in the initial-theme-setup.php file.
  * If these are changed, resample images with wordpress.org/plugins/regenerate-thumbnails/
- * ======================================================================== */
+ */
 add_action('init', 'lt3_add_image_sizes');
 /**
  * Declare various image sizes for WordPress image size sampling

@@ -10,7 +10,7 @@
  * @license      MIT license
  *
  * Basically any modular, stand alone script or plugin lives here
- * ======================================================================== */
+ */
 
 /**
  * Remove the .no-js class from the html tag

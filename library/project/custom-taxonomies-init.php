@@ -15,4 +15,4 @@
  *
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-taxonomies
- * ======================================================================== */
+ */

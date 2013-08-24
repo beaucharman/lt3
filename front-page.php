@@ -13,7 +13,7 @@
  * Front page and home page template.
  * If using a blogroll as your home page, rename this template page to
  * home.php
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

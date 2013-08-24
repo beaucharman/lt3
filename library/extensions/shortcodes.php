@@ -39,7 +39,7 @@
  *   <div style="color:red;">World</div>
  *
  * More information http://codex.wordpress.org/Shortcode_API.
- * ======================================================================== */
+ */
 
 /* [lt3_replace_with_content]
    ======================================================================== */
@@ -288,7 +288,7 @@ function lt3_register_shortcode_google_map($atts, $content = null)
 *  Todo:
 *  Implement allowFullScreen="true|false"
 *            allowScriptAccess="always|never"
-* ======================================================================== */
+*/
 add_shortcode('lt3_youtube', 'lt3_register_shortcode_youtube');
 function lt3_register_shortcode_youtube($atts, $content = null)
 {

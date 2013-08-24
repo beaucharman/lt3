@@ -13,7 +13,7 @@
  *
  * Taxonomy template page.
  * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

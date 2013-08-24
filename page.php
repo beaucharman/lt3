@@ -13,7 +13,7 @@
  * Page template.
  * For a different page template for a particular page,
  * save this template page as page-{{slug}}.php
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

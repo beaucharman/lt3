@@ -9,7 +9,7 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- * ======================================================================== */ ?>
+ */ ?>
 
 <?php while (have_posts()) : the_post(); ?>
 

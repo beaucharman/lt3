@@ -11,7 +11,7 @@
  * @license      MIT license
  *
  * Attachment template page for article related media.
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

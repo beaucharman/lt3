@@ -16,7 +16,7 @@
  *
  * Use wp_deregister_style to unregister an unneeded or troublesome style.
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
- * ======================================================================== */
+ */
 
 /* Register and enqeue styles
    ======================================================================== */
@@ -31,7 +31,7 @@ function lt3_load_styles()
     . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
 
 
-  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
+  wp_enqueue_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
     . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
   /**

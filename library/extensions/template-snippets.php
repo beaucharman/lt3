@@ -25,7 +25,7 @@
  * @return string
  *
  * Render Title Function. Assign title names and attributes conditionally.
- * ======================================================================== */
+ */
 function lt3_title()
 {
   global $post;
@@ -93,7 +93,7 @@ function lt3_title()
  * @return string
  *
  * Default header description meta tag.
- * ======================================================================== */
+ */
 function lt3_meta_description()
 {
   global $post;
@@ -170,7 +170,7 @@ function lt3_meta_description()
  * @return string
  *
  * Function to get defined feedback and notification messages.
- * ======================================================================== */
+ */
 function lt3_get_message($message_handle)
 {
   get_template_part(LT3_TEMPLATE_PARTS_PATH . '/message', lt3_urify_words($message_handle));
@@ -191,7 +191,7 @@ function lt3_delete_comment_link($id)
  * Adds a back to parent category, page, etc link
  * ========================================================================
  * Need to add functionality for post type, taxonomy,
- * ======================================================================== */
+ */
 function lt3_back_to_parent_link()
 {
   global $post;
@@ -378,7 +378,7 @@ function lt3_include_post_meta()
  * @return string
  *
  * Function to change the read more text on Archive pages
- * ======================================================================== */
+ */
 function lt3_read_more_text()
 {
   if (is_attachment())

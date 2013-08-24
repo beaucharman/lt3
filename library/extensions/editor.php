@@ -11,14 +11,14 @@
  * @license      MIT license
  *
  * All extra functionality that effects the admin and post editor.
- * ======================================================================== */
+ */
 
 /**
  * Modify Post Mime Types
  * ========================================================================
  * lt3_modify_post_mime_types()
  * post_mime_types filter to add PDFs to the media type filter for posts
- * ======================================================================== */
+ */
 add_filter('post_mime_types', 'lt3_modify_post_mime_types');
 function lt3_modify_post_mime_types($post_mime_types)
 {
@@ -35,7 +35,7 @@ function lt3_modify_post_mime_types($post_mime_types)
  * ========================================================================
  * various filters to add more buttons to the TinyMCE editor
  * and a select style drop down
- * ======================================================================== */
+ */
 if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
 {
 
@@ -130,7 +130,7 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
    * Add every custom style format's css selector and it's associated
    * style rules to the custom-editor-style.css (can be easily added via the config.php file)
    * For more information: http://codex.wordpress.org/TinyMCE_Custom_Styles
-   * ======================================================================== */
+   */
   add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
   function lt3_mce_styleselect_editor_settings($settings)
   {

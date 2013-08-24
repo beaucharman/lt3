@@ -34,7 +34,7 @@
  *   http://codex.wordpress.org/Class_Reference/WP_Query
  *   http://codex.wordpress.org/Function_Reference/query_posts
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
- * ======================================================================== */
+ */
 
 /* Set all posts to be sorted alphabetically
    ======================================================================== */

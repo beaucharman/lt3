@@ -11,7 +11,7 @@
  * @license      MIT license
  *
  * Custom post type? Save this template page as archive-{{slug}}.php
- * ======================================================================== */
+ */
 
 get_header(); ?>
 

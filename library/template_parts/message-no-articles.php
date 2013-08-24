@@ -11,9 +11,10 @@
  * @license      MIT license
  *
  * No articles from custom post types.
- * ======================================================================== */ ?>
+ */ ?>
 
 <section class="message message--no-articles">
+
   <h3>Oops! Nothing Found Here :(</h3>
   <p>
     There are currently no articles here.
@@ -24,4 +25,5 @@
   </p>
   <?php get_search_form(); ?>
   <?php endif; ?>
+
 </section>

@@ -14,7 +14,7 @@
  * that are used to alter and enhance the general administration area.
  * The dashboard files which the admin function file refers
  * to can be found in the library/dashboard/ directory.
- * ======================================================================== */
+ */
 
 /* ========================================================================
    Dashboard and login functions
@@ -25,7 +25,7 @@
  * ========================================================================
  * lt3_replace_admin_footer()
  * admin_footer_text filter
- * ======================================================================== */
+ */
 add_filter('admin_footer_text', 'lt3_replace_admin_footer');
 function lt3_replace_admin_footer()
 {
@@ -41,7 +41,7 @@ function lt3_replace_admin_footer()
  * ========================================================================
  * lt3_custom_dashboard_widgets()
  * wp_dashboard_setup action to add custom widgets to admin dashboard
- * ======================================================================== */
+ */
 add_action('wp_dashboard_setup', 'lt3_custom_dashboard_widgets');
 function lt3_custom_dashboard_widgets()
 {
@@ -66,7 +66,7 @@ function lt3_create_website_support_widget_function()
  * ========================================================================
  * lt3_create_tutorial_menu()
  * admin_menu action to create tutorial pages
- * ======================================================================== */
+ */
 if (LT3_ENABLE_TUTORIAL_SECTION)
 {
   add_action('admin_menu', 'lt3_create_tutorial_menu');
@@ -87,7 +87,7 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
  * Disable Global Comments
  * ========================================================================
  * Various methods to remove comment functionality globally
- * ======================================================================== */
+ */
 if (! LT3_ENABLE_GLOBAL_COMMENTS)
 {
   /* Remove the comments admin menu item */
@@ -129,7 +129,7 @@ if (! LT3_ENABLE_GLOBAL_COMMENTS)
  * ========================================================================
  * lt3_remove_dashboard_widgets()
  * wp_dashboard_setup action to remove unwanted widgets
- * ======================================================================== */
+ */
 add_action('wp_dashboard_setup', 'lt3_remove_dashboard_widgets');
 function lt3_remove_dashboard_widgets()
 {
@@ -152,7 +152,7 @@ function lt3_remove_dashboard_widgets()
  * ========================================================================
  * lt3_add_custom_post_type_to_right_now()
  * right_now_content_table_end action to add custom post types
- * ======================================================================== */
+ */
 add_action('right_now_content_table_end', 'lt3_add_custom_post_type_to_right_now');
 function lt3_add_custom_post_type_to_right_now()
 {
@@ -208,7 +208,7 @@ function lt3_add_custom_post_type_to_right_now()
  * lt3_restrict_by_taxonomy()
  * restrict_manage_posts action to create custom taxonomy dropdowns
  * for all post types
- * ======================================================================== */
+ */
 add_action('restrict_manage_posts', 'lt3_restrict_by_taxonomy');
 function lt3_restrict_by_taxonomy()
 {
@@ -270,7 +270,7 @@ function lt3_restriction_taxonomy_dropdown($query)
  * ========================================================================
  * lt3_custom_userfields()
  * user_contactmethods filter to add custom userfields
- * ======================================================================== */
+ */
 add_filter('user_contactmethods', 'lt3_custom_userfields', 10, 1);
 function lt3_custom_userfields($methods)
 {
@@ -296,7 +296,7 @@ function lt3_custom_userfields($methods)
  * ========================================================================
  * lt3_add_admin_nofollow_meta()
  * admin_head action to add no follow meta tag to admin
- * ======================================================================== */
+ */
 add_action('admin_head', 'lt3_add_admin_nofollow_meta');
 function lt3_add_admin_nofollow_meta()
 {
@@ -310,7 +310,7 @@ function lt3_add_admin_nofollow_meta()
  * Remove WP Version
  * ========================================================================
  * Remove wp_generator from wp_head
- * ======================================================================== */
+ */
 add_action('init', 'lt3_remove_wp_generator');
 function lt3_remove_wp_generator()
 {
@@ -322,7 +322,7 @@ function lt3_remove_wp_generator()
  * ========================================================================
  * lt3_alternate_login_error_message()
  * login_errors action to obscure login screen error messages
- * ======================================================================== */
+ */
 add_filter('login_errors', 'lt3_alternate_login_error_message');
 function lt3_alternate_login_error_message($message)
 {

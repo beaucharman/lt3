@@ -25,7 +25,7 @@
  * Register Primary Sidebar
  * ========================================================================
  * lt3_register_primary_sidebar()
- * ======================================================================== */
+ */
 add_action('widgets_init', 'lt3_register_primary_sidebar');
 function lt3_register_primary_sidebar()
 {

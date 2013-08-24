@@ -16,7 +16,7 @@
  *
  * Use wp_deregister_script to unregister an unneeded or troublesome script:
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
- * ======================================================================== */
+ */
 
 /**
  * Enqeue jQuery from Google, rather than the included WordPress version.
@@ -67,10 +67,10 @@ function lt3_load_scripts()
     {
       wp_enqueue_script('comment-reply');
     }
-    
+
     /* Respond.js */
     wp_enqueue_script('lt3_respond');
- 
+
     /**
      * Load in separate scripts for development, change this to a concatenated
      * file for deployment. See library/project/config.php
@@ -79,11 +79,11 @@ function lt3_load_scripts()
     {
       /* jQuery */
       // wp_enqueue_script('jquery');
-      
+
       /* Plugins */
       wp_enqueue_script('lt3_plugins');
-      
-      /** 
+
+      /**
        * Enqueue other theme template scripts for developement,
        * or contitional production scripts here.
        */

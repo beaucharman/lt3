@@ -12,7 +12,7 @@
  *
  * Filters that alter and enhance defined WordPress features and functions
  * are managed in this file.
- * ======================================================================== */
+ */
 
 /**
  * lt3 Search Form Request Filter
@@ -23,7 +23,7 @@
  *
  * Callback for the WordPress 'request' filter. A fix for some errors that
  * occur for an empty search query.
- * ======================================================================== */
+ */
 add_filter('request', 'lt3_search_form_request_filter');
 function lt3_search_form_request_filter($query_vars)
 {
@@ -40,7 +40,7 @@ function lt3_search_form_request_filter($query_vars)
  * lt3_html5_search_form()
  * @param  {string} $form
  * @return {string} $form
- * ======================================================================== */
+ */
 add_filter('get_search_form', 'lt3_html5_search_form');
 function lt3_html5_search_form($form)
 {
@@ -116,7 +116,7 @@ function lt3_browser_body_class($classes)
 
 /**
  * Add to the Body Class filter
- * ======================================================================== */
+ */
 if(! is_admin())
 {
   add_filter('post_class', 'lt3_add_to_body_class');

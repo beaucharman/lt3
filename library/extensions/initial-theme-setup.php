@@ -12,7 +12,7 @@
  *
  * For more information:
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
- * ======================================================================== */
+ */
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
 function lt3_initial_theme_setup()
 {

@@ -9,7 +9,7 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- * ======================================================================== */
+ */
 
 /* ========================================================================
    Logic and conditional functions
@@ -21,7 +21,7 @@
  * lt3_uri()
  * @param  {string} $path
  * @return {string}
- * ======================================================================== */
+ */
 function lt3_uri($path = '')
 {
   return get_stylesheet_directory_uri() . $path;
@@ -35,7 +35,7 @@ function lt3_uri($path = '')
  * @param  {string}  $size
  * @param  {boolean} $attributes
  * @return {string || array}
- * ======================================================================== */
+ */
 function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
 {
   global $post;
@@ -64,7 +64,7 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
  * @param {string}  $size
  * @param {boolean} $attributes
  * @return {string || array}
- * ======================================================================== */
+ */
 function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
 {
   $image_src = wp_get_attachment_image_src($id, $size);
@@ -86,7 +86,7 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
  * @param {string} $slug
  * @param {string} $post_type
  * @return {integer}
- * ======================================================================== */
+ */
 function lt3_get_id_by_slug($slug, $post_type = 'post')
 {
   $query = new WP_Query(
@@ -107,7 +107,7 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
  * @return {boolean}
  *
  * Function to check if page is child of $page.
- * ======================================================================== */
+ */
 function lt3_is_child_of_page($page)
 {
   global $post;
@@ -133,7 +133,7 @@ function lt3_is_child_of_page($page)
  *
  * Function to check if current category is a child
  * of $parent_category category.
- * ======================================================================== */
+ */
 function lt3_is_child_of_category($parent_category)
 {
   if (is_category())
@@ -151,7 +151,7 @@ function lt3_is_child_of_category($parent_category)
  * @return {boolean}
  *
  * Function to check if Custom Post Type.
- * ======================================================================== */
+ */
 function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
@@ -180,7 +180,7 @@ function lt3_is_post_type($type = null)
  * @return {boolean}
  *
  * Return true if has pagination.
- * ======================================================================== */
+ */
 function lt3_has_page_pagination()
 {
   if (wp_link_pages('echo=0'))
@@ -200,7 +200,7 @@ function lt3_has_page_pagination()
  *
  * Tests if any of a post's assigned categories are
  * descendants of target categories
- * ======================================================================== */
+ */
 function lt3_post_is_in_descendant_category($cats, $_post = null)
 {
   foreach ((array) $cats as $cat)
@@ -222,7 +222,7 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
  * @return {string}
  *
  * Gets the data from a URL.
- * ======================================================================== */
+ */
 function lt3_get_data_with_curl($url = '')
 {
   if (! LT3_DEVELOPMENT_MODE)
@@ -256,7 +256,7 @@ function lt3_get_data_with_curl($url = '')
  * @param {boolean} $echo_result
  *
  * Limit the number of words in a given output.
- * ======================================================================== */
+ */
 function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCERPT_LENGTH)
 {
   $text = explode(' ', strip_tags(strip_shortcodes($raw_text)));
@@ -295,7 +295,7 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
  * @return string
  *
  * WordPress spits out post time with '/'s, php's date function requires '-'s.
- * ======================================================================== */
+ */
 function lt3_get_time($date, $format = 'Y-m-d')
 {
   $date = str_replace('/', '-', $date);
@@ -311,7 +311,7 @@ function lt3_get_time($date, $format = 'Y-m-d')
  *
  * Creates a pretty version of a string, like
  * a pug version of a dog.
- * ======================================================================== */
+ */
 function lt3_prettify_words($words)
 {
   return ucwords(str_replace('_', ' ', $words));
@@ -325,7 +325,7 @@ function lt3_prettify_words($words)
  * @return {string}
  *
  * Creates a variable firendly version of the given string.
- * ======================================================================== */
+ */
 function lt3_uglify_words($words)
 {
   return strToLower(str_replace(' ', '_', $words));
@@ -339,7 +339,7 @@ function lt3_uglify_words($words)
  * @return {string}
  *
  * Creates a uri firendly version of the given string.
- * ======================================================================== */
+ */
 function lt3_urify_words($words)
 {
   return strToLower(str_replace(' ', '-', $words));
@@ -355,7 +355,7 @@ function lt3_urify_words($words)
  * Plurifies most common words. Not currently working
  * proper nouns, or more complex words, for example
  * knife -> knives, leaf -> leaves.
- * ======================================================================== */
+ */
 function lt3_plurify_words($words)
 {
   if (strToLower(substr($words, -1)) == 'y')
@@ -377,7 +377,7 @@ function lt3_plurify_words($words)
  * @return {string}
  *
  * Debug the template files and display which ones are being used.
- * ======================================================================== */
+ */
 if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
 {
 
