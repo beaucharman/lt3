@@ -16,8 +16,7 @@
 
       <footer class="page-footer">
 
-        <?php /* Site information  */
-?>
+        <?php /* Site information  */ ?>
         <div class="site-information">
           &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
         </div>

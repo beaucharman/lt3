@@ -41,8 +41,7 @@ if (have_comments()) : ?>
 
 <?php if (comments_open()) : ?>
 
-<?php else : /* comments are closed  */
-?>
+<?php else : /* comments are closed  */ ?>
 <p class="comments-closed-message"><?php echo _e('Comments are closed.'); ?></p>
 <?php endif; ?>
 
@@ -50,8 +49,7 @@ if (have_comments()) : ?>
 
 <?php if (comments_open()) : ?>
 
-<?php /* use comment_form(); for the generic comment form  */
-?>
+<?php /* use comment_form(); for the generic comment form  */ ?>
 
 <div id="respond" class="clear">
 
@@ -117,7 +115,7 @@ if (have_comments()) : ?>
 
   </form>
 
-  <?php endif; /* If registration required and not logged in */  ?>
+  <?php endif; /* If registration required and not logged in */ ?>
 
 </div>
 
