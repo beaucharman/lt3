@@ -1,19 +1,20 @@
 <?php
 /**
- * Loop Category
+ * Loop Archive
  * ========================================================================
- * loop-category.php
+ * loop-archive.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- */ ?>
+ */
+?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('category entry excerpt post-' . get_the_ID()); ?>>
+<article <?php post_class('archive entry excerpt post-' . get_the_ID()); ?>>
 
   <h2 class="article-title">
     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">

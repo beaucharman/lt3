@@ -10,20 +10,21 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  *
- * Page not found message, suitable for a 404 message.
- */ ?>
+ * No posts via WordPress built in post type message.
+ */
+?>
 
-<section class="message message--not-found">
+<section class="message message--no-posts">
 
   <h3>Oops! Nothing Found Here :(</h3>
   <p>
-    The page you are looking for does not exist. (404)
+    There are currently no posts associated with the <strong><?php single_cat_title(); ?></strong> category.
   </p>
   <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
   <p>
     Try searching our site for what you are after.
   </p>
-    <?php get_search_form(); ?>
+  <?php get_search_form(); ?>
   <?php endif; ?>
 
 </section>

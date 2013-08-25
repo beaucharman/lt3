@@ -10,20 +10,19 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  *
- * No posts via WordPress built in post type message.
- */ ?>
+ * No search results message.
+ */
+?>
 
-<section class="message message--no-posts">
+<section class="message message--no-results">
 
-  <h3>Oops! Nothing Found Here :(</h3>
-  <p>
-    There are currently no posts associated with the <strong><?php single_cat_title(); ?></strong> category.
-  </p>
+  <h3>Sorry! We couldn't find anything&hellip;</h3>
   <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
   <p>
-    Try searching our site for what you are after.
+    Maybe try searching with a different keyword?
   </p>
   <?php get_search_form(); ?>
   <?php endif; ?>
 
 </section>
+

@@ -1,27 +1,25 @@
 <?php
 /**
- * Loop
+ * Loop Front Page
  * ========================================================================
- * loop.php
+ * loop-front-page.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- */ ?>
+ */
+?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-<?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
+<article <?php post_class('front-page entry content post-' . get_the_ID()); ?>>
 
-<article <?php post_class('post-' . get_the_ID() . ' entry ' . $output_type); ?>>
-
-  <h1 class="article-title">
-    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-      <?php the_title(); ?>
-    </a>
-  </h1>
+  <?php $article_title = strtoupper(get_the_title());
+    if (($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
+    <h2 class="article-title"><?php the_title(); ?></h2>
+  <?php endif; ?>
 
   <?php lt3_include_post_meta(); ?>
 
@@ -31,9 +29,11 @@
   </figure>
   <?php endif; ?>
 
-  <?php (is_single()) ? the_excerpt() : the_content(); ?>
+  <?php the_content(); ?>
 
 </article>
+
+<?php lt3_include_page_pagination(); ?>
 
 <?php lt3_get_comments_template(); ?>
 

@@ -1,21 +1,30 @@
 <?php
 /**
- * Loop Page
+ * Loop
  * ========================================================================
- * loop-page.php
+ * loop.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- */ ?>
+ */
+?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('page entry content post-' . get_the_ID()); ?>>
+<?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
 
-  <h1 class="article-title"><?php the_title(); ?></h1>
+<article <?php post_class('post-' . get_the_ID() . ' entry ' . $output_type); ?>>
+
+  <h1 class="article-title">
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+      <?php the_title(); ?>
+    </a>
+  </h1>
+
+  <?php lt3_include_post_meta(); ?>
 
   <?php if (has_post_thumbnail()) : ?>
   <figure class="featured-image">
@@ -23,11 +32,9 @@
   </figure>
   <?php endif; ?>
 
-  <?php the_content(); ?>
+  <?php (is_single()) ? the_excerpt() : the_content(); ?>
 
 </article>
-
-<?php lt3_include_page_pagination(); ?>
 
 <?php lt3_get_comments_template(); ?>
 

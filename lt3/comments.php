@@ -9,7 +9,8 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- */ ?>
+ */
+?>
 
 <?php if (!defined('ABSPATH')) exit;
 
@@ -35,11 +36,13 @@ if (have_comments()) : ?>
   <div class="comments-navigation--prev-posts"><?php next_comments_link() ?></div>
 </div>
 
-<?php else : /* this is displayed if there are no comments so far */ ?>
+<?php else : /* this is displayed if there are no comments so far  */
+?>
 
 <?php if (comments_open()) : ?>
 
-<?php else : /* comments are closed */ ?>
+<?php else : /* comments are closed  */
+?>
 <p class="comments-closed-message"><?php echo _e('Comments are closed.'); ?></p>
 <?php endif; ?>
 
@@ -47,7 +50,8 @@ if (have_comments()) : ?>
 
 <?php if (comments_open()) : ?>
 
-<?php /* use comment_form(); for the generic comment form */ ?>
+<?php /* use comment_form(); for the generic comment form  */
+?>
 
 <div id="respond" class="clear">
 

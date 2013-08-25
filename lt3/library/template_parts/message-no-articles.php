@@ -11,7 +11,8 @@
  * @license      MIT license
  *
  * No articles from custom post types.
- */ ?>
+ */
+?>
 
 <section class="message message--no-articles">
 

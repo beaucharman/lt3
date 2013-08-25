@@ -1,8 +1,8 @@
 <?php
 /**
- * Dashboard Footer
+ * Dashboard User Guide
  * ========================================================================
- * dashboard.footer.php
+ * dashboard.user-guide.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
@@ -10,10 +10,10 @@
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
  *
- * lt3 dashboard footer include
- */ ?>
+ * lt3 dashboard user guide include
+ */
+?>
+<h2>User Guide</h2>
 <p>
-  Powered by
-  <a href="http://wordpress.org/" title="Visit WordPress.org" rel="external">WordPress</a>.
-  Built with love.
+  <a href="http://codex.wordpress.org/WordPress_Lessons" target="_blank">WordPress Lessons</a>
 </p>

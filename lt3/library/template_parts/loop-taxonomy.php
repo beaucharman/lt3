@@ -1,23 +1,24 @@
 <?php
 /**
- * Loop Search
+ * Loop Taxonomy
  * ========================================================================
- * loop-search.php
+ * loop-taxonomy.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- */ ?>
+ */
+?>
 
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('search-result entry excerpt post-' . get_the_ID()); ?>>
+<article <?php post_class('taxonomy entry excerpt post-' . get_the_ID()); ?>>
 
   <h2 class="article-title">
     <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>">
-      <?php the_title(); ?> <small>[<?php echo lt3_prettify_words(get_post_type()); ?>]</small>
+      <?php the_title(); ?>
     </a>
   </h2>
 
