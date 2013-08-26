@@ -28,7 +28,7 @@ if (have_comments()) : ?>
 <h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
 
 <ol class="commentlist">
-<?php wp_list_comments('type=comment&callback=lt3_advanced_comment'); ?>
+  <?php wp_list_comments('type=comment&callback=lt3_advanced_comment'); ?>
 </ol>
 
 <div class="comments-navigation">
@@ -36,20 +36,21 @@ if (have_comments()) : ?>
   <div class="comments-navigation--prev-posts"><?php next_comments_link() ?></div>
 </div>
 
-<?php else : /* this is displayed if there are no comments so far  */
-?>
+<?php else : /* this is displayed if there are no comments so far  */?>
 
 <?php if (comments_open()) : ?>
 
-<?php else : /* comments are closed  */ ?>
-<p class="comments-closed-message"><?php echo _e('Comments are closed.'); ?></p>
+<?php else : /* comments are closed  */?>
+<p class="comments-closed-message">
+  <?php echo _e('Comments are closed.'); ?>
+</p>
 <?php endif; ?>
 
 <?php endif; ?>
 
 <?php if (comments_open()) : ?>
 
-<?php /* use comment_form(); for the generic comment form  */ ?>
+<?php /* use comment_form(); for the generic comment form  */?>
 
 <div id="respond" class="clear">
 
@@ -61,10 +62,11 @@ if (have_comments()) : ?>
 
   <?php if (get_option('comment_registration') && !is_user_logged_in()) : ?>
   <p class="comment-notification comment-form must-be-logged-in-message">
-    <?php echo _e('You must be'); ?> <a href="<?php echo wp_login_url(get_permalink()); ?>">
-    <?php echo _e('logged in'); ?></a>
+    <?php echo _e('You must be'); ?>
+    <a href="<?php echo wp_login_url(get_permalink()); ?>"><?php echo _e('logged in'); ?></a>
     <?php echo _e('to post a comment.'); ?>
   </p>
+
   <?php else : ?>
 
   <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform" class="comment-form form">
@@ -98,7 +100,9 @@ if (have_comments()) : ?>
 
     <?php endif; ?>
 
-    <p class="note comment-form allowed-tags"><?php echo _e('You can use these tags: '); ?><code><?php echo allowed_tags(); ?></code></p>
+    <p class="note comment-form allowed-tags">
+      <?php echo _e('You can use these tags: '); ?><code><?php echo allowed_tags(); ?></code>
+    </p>
 
     <p class="comment-form input-field-container">
       <label class="input-label" for="comment"><?php echo _e('Comment'); ?><br>

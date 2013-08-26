@@ -163,6 +163,62 @@ function lt3_meta_description()
 }
 
 /**
+ * lt3 Get Archive Title
+ * ========================================================================
+ * lt3_get_archive_title()
+ * @param  null
+ * @return string
+ */
+function lt3_get_archive_title()
+{
+
+  if (is_category()) /* Category Archive */
+  {
+    $archive_title = single_cat_title('', false);
+  }
+  elseif (is_tag()) /* Tag Archive */
+  {
+    $archive_title = _e('Articles Tagged &#8216;') . single_tag_title('', false) . _e('&#8217;');
+  }
+  elseif (is_day()) /* Daily Archive */
+  {
+    $archive_title = _e('Archive for ') . get_the_time('F jS, Y');
+  }
+  elseif (is_month()) /* Monthly Archive */
+  {
+    $archive_title = _e('Archive for ') . get_the_time('F, Y');
+  }
+  elseif (is_year()) /* Yearly Archive */
+  {
+    $archive_title = _e('Archive for ') . get_the_time('Y');
+  }
+  elseif (is_author()) /* Author Archive */
+  {
+    $archive_title = _e('Author Archive');
+  }
+  elseif (is_tax()) /* Taxonomy Archive */
+  {
+    $taxonomy_term = $wp_query->get_queried_object();
+    $archive_title = $taxonomy_term->name . _e(' Archive');
+  }
+  elseif (lt3_is_post_type()) /* Post Type Archive */
+  {
+    $post_type_obj = get_post_type_object(get_post_type($wp_query->post->ID));
+    $archive_title = $post_type_obj->labels->name . _e(' Archive');
+  }
+  elseif (isset($_GET['paged']) && ! empty($_GET['paged'])) /* Paged Archive */
+  {
+    $archive_title = _e('Article Archives');
+  }
+  else /* Archive */
+  {
+    $archive_title = _e('Article Archive');
+  }
+
+  return $archive_title;
+}
+
+/**
  * lt3 Get Message
  * ========================================================================
  * lt3_get_message()

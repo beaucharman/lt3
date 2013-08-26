@@ -39,6 +39,6 @@ function lt3_show_image_sizes($sizes)
 {
   /* Add image size handles and desired labels here */
   // $sizes['handle'] = __('Label');
-  //
+
   return $sizes;
 }

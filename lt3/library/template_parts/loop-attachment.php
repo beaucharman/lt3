@@ -21,7 +21,9 @@
   <?php lt3_include_post_meta(); ?>
 
   <?php if ($post->post_content) : ?>
-  <p class="attachment-description"><?php echo $post->post_content; ?><p>
+  <p class="attachment-description">
+    <?php echo $post->post_content; ?>
+  <p>
   <?php endif; ?>
 
   <figure class="attachment-figure">

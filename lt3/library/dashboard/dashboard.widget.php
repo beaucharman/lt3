@@ -27,19 +27,6 @@
 </p>
 
 <p>
-  You can edit your
-  <a href="./themes.php?page=lt3_site_settings" title="Edit your site settings">Site Settings Here</a>,
-  which includes various pieces of information used and displayed accross you site,
-  including your
-  <a href="http://www.google.com.au/analytics/" title="Learn more about Google Analytics" rel="external" target="_blank">Google Anayltics</a>
-  information.
-<p>
-
-<p>
-  <a class="button" href="./themes.php?page=lt3_site_settings" title="Edit your site settings">Edit Site Settings</a>
-</p>
-
-<p>
   You can also change settings more related to the core functionality and administration area
   <a href="./options-general.php" title="Edit your admin settings">here</a>.
 </p>
