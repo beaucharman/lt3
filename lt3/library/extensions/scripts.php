@@ -59,7 +59,10 @@ function lt3_load_scripts()
   if (! is_admin())
   {
 
-    /* Dequeue the currently registered (WordPress or Google CDN) version of jQuery */
+    /** 
+     * Dequeue the currently registered (WordPress or Google CDN) 
+     * version of jQuery 
+     */
     wp_dequeue_script('jquery');
 
     /* Comments */
