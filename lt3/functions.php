@@ -56,6 +56,10 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/helpers.php');
 
+/* Site Settings
+   ======================================================================== */
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
+
 /* Admin Functions
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
@@ -120,13 +124,17 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
    Project Extensions
    ======================================================================== */
 
+/* Site Settings Init
+   ======================================================================== */
+// require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
+
 /* Custom Post Types Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
+// require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
 
 /* Custom Taxonomies Init
    ======================================================================== */
-//require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
+// require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
 
 /**
  * Include more files as needed.
