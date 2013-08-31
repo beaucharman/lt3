@@ -32,7 +32,7 @@ class LT3_Site_Settings_Page
    * ========================================================================
    * __construct()
    * @param  {array} $_site_settings
-  * ======================================================================== */
+   */
   public function __construct($group, $name, $fields = array(), $menu_name = '', $title = '')
   {
     /**
