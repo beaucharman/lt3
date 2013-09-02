@@ -31,7 +31,7 @@ function lt3_load_styles()
     . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
 
 
-  wp_enqueue_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
+  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
     . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
   /**
@@ -40,8 +40,10 @@ function lt3_load_styles()
   if (!is_admin())
   {
     /**
-     * Main main stylesheet
+     * Front end stylesheets
      */
+
+    /* Main stylesheet */
     wp_enqueue_style('lt3_main_stylesheet');
 
     /**
@@ -53,11 +55,12 @@ function lt3_load_styles()
   elseif (is_admin())
   {
     /**
-     * Admin area stylesheets
+     * Admin stylesheets
      */
 
     /* Add consistency to site settings and meta field inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
+
     // Enqueue admin styles here.
   }
 }

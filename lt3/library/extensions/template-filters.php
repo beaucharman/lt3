@@ -124,10 +124,15 @@ if(! is_admin())
   function lt3_add_to_body_class($classes)
   {
     global $post;
+
     /**
      * Flag if is the front page or not
      */
-    if (! is_front_page() && ! is_search() && isset($post->post_name))
+    if (is_404())
+    {
+      $classes[] = 'error-page';
+    }
+    elseif (! is_front_page() && ! is_search() && isset($post->post_name))
     {
       $classes[] = 'not-front-page';
       $classes[] = 'page-' . $post->post_name;
@@ -137,16 +142,22 @@ if(! is_admin())
       $classes[] = 'front-page';
     }
 
-    /**
-     * Get terms allocated to the current post type
-     * and display as taxonomy--term pairs.
-     */
-    $taxonomies = get_taxonomies('', 'names');
-    foreach ($taxonomies as $taxonomy) {
-      $post_type_terms = get_the_terms($post->ID, $taxonomy);
-      if ($post_type_terms && !is_wp_error($post_type_terms)) {
-        foreach ($post_type_terms as $term) {
-          $classes[] = 'taxonomy-' . $taxonomy . ' term-' . $term->slug;
+    if (! is_404() && ! is_search())
+    {
+      /**
+       * Get terms allocated to the current post type
+       * and display as taxonomy--term pairs.
+       */
+      $taxonomies = get_taxonomies('', 'names');
+      foreach ($taxonomies as $taxonomy)
+      {
+        $post_type_terms = get_the_terms($post->ID, $taxonomy);
+        if ($post_type_terms && !is_wp_error($post_type_terms))
+        {
+          foreach ($post_type_terms as $term)
+          {
+            $classes[] = 'taxonomy-' . $taxonomy . ' term-' . $term->slug;
+          }
         }
       }
     }
@@ -165,11 +176,13 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
     'width'   => '',
     'caption' => ''
   ), $attr));
+
   if (1 > (int) $width || empty($caption))
   {
     return $val;
   }
   $capid = '';
+
   if ($id)
   {
     $id = esc_attr($id);
