@@ -72,7 +72,7 @@ function lt3_title()
   }
   elseif ((! is_404()) && (get_the_title()) && (! is_front_page()) && ((is_single()) || (is_page())))
   {
-    the_title(); echo ' &#045; ';
+    the_title_attribute(); echo ' &#045; ';
   }
   elseif (is_404())
   {
