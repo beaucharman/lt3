@@ -123,49 +123,49 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
     array_unshift($buttons, 'styleselect');
     return $buttons;
   }
+}
 
+/**
+ * Allocate styles for the TinyMCE Editor style select
+ * ========================================================================
+ * Add every custom style format's css selector and it's associated
+ * style rules to the custom-editor-style.css (can be easily added via the config.php file)
+ * For more information: http://codex.wordpress.org/TinyMCE_Custom_Styles
+ */
+add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
+function lt3_mce_styleselect_editor_settings($settings)
+{
   /**
-   * Allocate styles for the TinyMCE Editor style select
-   * ========================================================================
-   * Add every custom style format's css selector and it's associated
-   * style rules to the custom-editor-style.css (can be easily added via the config.php file)
-   * For more information: http://codex.wordpress.org/TinyMCE_Custom_Styles
+   * Add style formats here.
    */
-  add_filter('tiny_mce_before_init', 'lt3_mce_styleselect_editor_settings');
-  function lt3_mce_styleselect_editor_settings($settings)
-  {
-    /**
-     * Add style formats here.
-     */
-    $style_formats = array(
-      array(
-        'title' => 'Lead',
-        'inline' => 'span',
-        'classes' => 'lead'
-      ),
-      array(
-        'title' => 'Disclaimer',
-        'inline' => 'span',
-        'classes' => 'disclaimer'
-      ),
-      array(
-        'title' => 'Notice',
-        'inline' => 'span',
-        'classes' => 'notice'
-      ),
-      array(
-        'title' => 'Warning',
-        'inline' => 'span',
-        'classes' => 'warning'
-      ),
-      array(
-        'title' => 'Muted',
-        'inline' => 'span',
-        'classes' => 'muted'
-      )
-    );
+  $style_formats = array(
+    array(
+      'title' => 'Lead',
+      'inline' => 'span',
+      'classes' => 'lead'
+    ),
+    array(
+      'title' => 'Disclaimer',
+      'inline' => 'span',
+      'classes' => 'disclaimer'
+    ),
+    array(
+      'title' => 'Notice',
+      'inline' => 'span',
+      'classes' => 'notice'
+    ),
+    array(
+      'title' => 'Warning',
+      'inline' => 'span',
+      'classes' => 'warning'
+    ),
+    array(
+      'title' => 'Muted',
+      'inline' => 'span',
+      'classes' => 'muted'
+    )
+  );
 
-    $settings['style_formats'] = json_encode($style_formats);
-    return $settings;
-  }
+  $settings['style_formats'] = json_encode($style_formats);
+  return $settings;
 }
