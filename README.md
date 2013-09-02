@@ -3,6 +3,9 @@
 > A slightly powerful, intelligent and simple WordPress theme.
 
 
+**This theme is currently in mid upgrade - Feel free to use these files, but this is merely a temporary remote repository for an idea - which will continue to be an awesome theme. Cheers.**
+
+
 
 ### Documentation
 
