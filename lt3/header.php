@@ -17,6 +17,7 @@
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -39,6 +40,7 @@
     <?php endif; ?>
 
     <?php wp_head(); ?>
+
   </head>
   <body <?php body_class(); ?>>
 
