@@ -11,10 +11,10 @@
  * @license      MIT license
  */
 ?><!doctype html>
-<!--[if IE 7]><html class="no-js ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 8]><html class="no-js ie8 lt-ie9 lt-ie10"><![endif]-->
-<!--[if IE 8]><html class="no-js ie9 lt-ie10"><![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
 <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
 
