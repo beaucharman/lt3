@@ -49,7 +49,6 @@ function lt3_load_scripts()
   /**
    * Register scripts here
    */
-  wp_register_script('lt3_respond', LT3_FULL_SCRIPTS_PATH . '/vendor/respond.min.js', array(), '', false);
   wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
   wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
@@ -59,9 +58,9 @@ function lt3_load_scripts()
   if (! is_admin())
   {
 
-    /** 
-     * Dequeue the currently registered (WordPress or Google CDN) 
-     * version of jQuery 
+    /**
+     * Dequeue the currently registered (WordPress or Google CDN)
+     * version of jQuery
      */
     wp_dequeue_script('jquery');
 
@@ -70,9 +69,6 @@ function lt3_load_scripts()
     {
       wp_enqueue_script('comment-reply');
     }
-
-    /* Respond.js */
-    wp_enqueue_script('lt3_respond');
 
     /**
      * Load in separate scripts for development, change this to a concatenated

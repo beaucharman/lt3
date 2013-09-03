@@ -29,8 +29,9 @@
 
     <link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 
-    <!--[if IE]>
+    <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="<?php echo lt3_uri('/library/javascripts/vendor/respond.min.js'); ?>">
     <![endif]-->
 
     <?php if (! LT3_DEVELOPMENT_MODE) : ?>
