@@ -16,7 +16,7 @@
  * Remove the .no-js class from the html tag
  * to flag that is javascript is enabled
  */
-document.documentElement.className = document.documentElement.className.replace("no-js", "js");
+document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 
 /**
  * Avoid `console` errors in browsers that lack a console. [from boilerplate]

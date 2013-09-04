@@ -43,5 +43,5 @@ function lt3_remove_head_links()
    ======================================================================== */
 function lt3_get_comments_template()
 {
-  if (LT3_ENABLE_GLOBAL_COMMENTS) comments_template();
+  if (LT3_ENABLE_COMMENTS) comments_template();
 }

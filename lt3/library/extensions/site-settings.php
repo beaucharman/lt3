@@ -13,7 +13,7 @@
  * To use and view the option:
  *   global $lt3_site_settings;
  *   echo $lt3_site_settings['setting_id'];
- * ======================================================================== */
+ */
 
 /* ========================================================================
    Site Settings Page class

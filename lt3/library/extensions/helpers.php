@@ -28,7 +28,7 @@ function lt3_uri($path = '')
 }
 
 /**
- * Get Thumnbnail
+ * Get Thumbnail
  * ========================================================================
  * lt3_get_thumbnail()
  * @param  {integer} $id

@@ -9,7 +9,7 @@
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link         https://github.com/beaucharman/lt3
  * @license      MIT license
- * ======================================================================== */
+ */
 
 /* Declare the Site Settings options
    ======================================================================== */
