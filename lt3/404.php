@@ -17,4 +17,4 @@ get_header(); ?>
 
   <?php lt3_get_message('not-found'); ?>
 
-<?php get_footer();
+<?php get_footer(); ?>
