@@ -45,8 +45,9 @@ function lt3_default_loop_outputs($query)
   if (($wp_the_query === $query) && (!is_admin()))
   {
 
-    /* Order all posts all by title, ascending by default
-       ======================================================================== */
+    /**
+     * Order all posts all by title, ascending by default
+     */
     $query->set('orderby', 'title');
     $query->set('order', 'ASC');
 

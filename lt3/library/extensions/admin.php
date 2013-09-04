@@ -29,11 +29,9 @@
 add_filter('admin_footer_text', 'lt3_replace_admin_footer');
 function lt3_replace_admin_footer()
 {
-  if (function_exists('lt3_get_data_with_curl'))
-  {
-    $admin_footer = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.footer.php');
-  }
-  return $admin_footer;
+  return 'Powered by '
+    . '<a href="http://wordpress.org/" title="Visit WordPress.org" rel="external">WordPress</a>. '
+    . 'Built with love.';
 }
 
 /**
@@ -88,7 +86,7 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
  * ========================================================================
  * Various methods to remove comment functionality globally
  */
-if (! LT3_ENABLE_GLOBAL_COMMENTS)
+if (! LT3_ENABLE_COMMENTS)
 {
   /* Remove the comments admin menu item */
   add_action('admin_menu', 'lt3_remove_admin_menus');
@@ -277,12 +275,6 @@ function lt3_custom_userfields($methods)
   /* Set user info fields */
   $methods['contact_twitter'] = 'Twitter';
   $methods['contact_linkedin'] = 'LinkedIn';
-  $methods['contact_phone_office'] = 'Work Phone Number';
-  $methods['contact_phone_mobile'] = 'Mobile Phone Number';
-  /* Unset user info fields */
-  unset($methods['aim']);
-  unset($methods['jabber']);
-  unset($methods['yim']);
 
   return $methods;
 }

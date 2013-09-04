@@ -43,9 +43,14 @@ define('LT3_EXCERPT_LENGTH', 40);
 define('LT3_EXCERPT_MORE', 'more &rarr;');
 
 /**
- * Enable global comments
+ * Enable comments
  */
-define('LT3_ENABLE_GLOBAL_COMMENTS', false);
+define('LT3_ENABLE_COMMENTS', false);
+
+/**
+ * Enable widgets
+ */
+define('LT3_ENABLE_WIDGETS', false);
 
 /**
  * Enable site search
@@ -69,11 +74,6 @@ define('LT3_STYLES_CACHE_BREAK', '0.1');
  * javascript cache break
  */
 define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
-
-/**
- * Use the Google hosted jQuery library
- */
-define('LT3_USE_GOOGLE_JQUERY_LIBRARY', false);
 
 /* Theme and editor options
    ======================================================================== */

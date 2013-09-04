@@ -29,7 +29,6 @@ function lt3_load_styles()
    */
   wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
     . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
-
   wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
     . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 

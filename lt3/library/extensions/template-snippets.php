@@ -113,7 +113,7 @@ function lt3_meta_description()
         {
           the_post();
           $excerpt = esc_attr(strip_tags(get_the_excerpt()));
-          if (strlen($excerpt) > 140) $excerpt = substr($excerpt, 0, 137) . '&hellip;';
+          if (strlen($excerpt) > 140) $excerpt = substr($excerpt, 0, 140);
           $content .= $excerpt;
         }
       }
@@ -415,7 +415,7 @@ function lt3_include_post_meta()
     echo 'on the ';
     the_time('jS \o\f F, Y');
     echo '.';
-    if (LT3_ENABLE_GLOBAL_COMMENTS)
+    if (LT3_ENABLE_COMMENTS)
     {
       echo ' ';
       comments_popup_link('No Comments', '1 Comment &rarr;', '% Comments &rarr;', 'comments-link', '');

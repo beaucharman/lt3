@@ -18,28 +18,6 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
  */
 
-/**
- * Register jQuery from Google, rather than the included WordPress version.
- * Consider bundling jQuery with your build scripts for deployment.
- */
-if (LT3_USE_GOOGLE_JQUERY_LIBRARY)
-{
-  add_action('wp_enqueue_scripts', 'lt3_load_google_jquery');
-  function lt3_load_google_jquery()
-  {
-    if (! is_admin())
-    {
-      wp_deregister_script('jquery');
-      wp_register_script('jquery',
-        'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
-        false,
-        '1',
-        true
-      );
-    }
-  }
-}
-
 /* Register and Enqeue local scripts
    ======================================================================== */
 add_action('wp_enqueue_scripts', 'lt3_load_scripts');
@@ -49,6 +27,8 @@ function lt3_load_scripts()
   /**
    * Register scripts here
    */
+  wp_register_script('lt3_modernizr', LT3_FULL_SCRIPTS_PATH . '/vendor/modernizr.min.js', array(), '0.1', false);
+  wp_register_script('lt3_jquery', LT3_FULL_SCRIPTS_PATH . '/vendor/jquery.min.js', array(), '0.1', true);
   wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
   wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
@@ -59,16 +39,18 @@ function lt3_load_scripts()
   {
 
     /**
-     * Dequeue the currently registered (WordPress or Google CDN)
-     * version of jQuery
+     * Dequeue the currently registered version of jQuery
      */
     wp_dequeue_script('jquery');
 
     /* Comments */
-    if (is_singular() && get_option('thread_comments') && LT3_ENABLE_GLOBAL_COMMENTS)
+    if (is_singular() && get_option('thread_comments') && LT3_ENABLE_COMMENTS)
     {
       wp_enqueue_script('comment-reply');
     }
+
+    /* Modernizr */
+    // wp_enqueue_script('lt3_modernizr');
 
     /**
      * Load in separate scripts for development, change this to a concatenated
@@ -76,8 +58,9 @@ function lt3_load_scripts()
      */
     if (LT3_DEVELOPMENT_MODE)
     {
+
       /* jQuery */
-      // wp_enqueue_script('jquery');
+      // wp_enqueue_script('lt3_jquery');
 
       /* Plugins */
       wp_enqueue_script('lt3_plugins');
@@ -88,7 +71,7 @@ function lt3_load_scripts()
        */
     }
 
-   /* Main project JavaScript */
+    /* Main project JavaScript */
     wp_enqueue_script('lt3_main');
   }
 }
