@@ -41,6 +41,9 @@ if (LT3_ENABLE_WIDGETS)
       'after_title'   => '</h3>'
     ));
   }
+
+  // Register more sidebars here...
+
 }
 else
 {

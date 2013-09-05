@@ -16,9 +16,14 @@
  * Consistent form, controls and compontent styles,
  * for site-settings and custom-meta-fields
  */
+
 .lt3-form-container th,
 .lt3-form-container td {
   vertical-align: top;
+}
+
+.lt3-form-container th {
+  width: 160px;
 }
 
 .lt3-form-container td {
@@ -54,6 +59,7 @@
 .lt3-form-container input[type="text"] {
   width: 100%;
   max-width: 300px;
+  padding: 4px 0 3px 4px;
 }
 
 .lt3-form-container select {
@@ -66,13 +72,13 @@
   width: 100%;
   min-height: 150px;
   max-width: 500px;
+  padding: 4px;
 }
 
 .lt3-form-container input[type="text"],
 .lt3-form-container textarea {
   border-radius: 4px;
   border: 1px solid #bbb;
-  padding: 4px;
   font-size: 1em;
 }
 

@@ -56,7 +56,7 @@ function lt3_load_styles()
      * Admin stylesheets
      */
 
-    /* Add consistency to site settings and meta field inputs */
+    /* Add consistency to site settings inputs */
     wp_enqueue_style('lt3_custom_admin_styles');
 
     // Enqueue admin styles here.
