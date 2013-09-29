@@ -6,9 +6,6 @@
  * @version      1.0 | July 20th 2013
  * @package      WordPress
  * @subpackage   lt3
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
- * @license      MIT license
  */
 
 /* Add Theme Support

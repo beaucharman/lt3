@@ -6,9 +6,6 @@
  * @version      1.0 | June 20th 2013
  * @package      WordPress
  * @subpackage   lt3
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
- * @license      MIT license
  *
  * This file contains any template related functions that:
  * Get: retrieve data based on an given parameter.

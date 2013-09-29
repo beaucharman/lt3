@@ -6,9 +6,6 @@
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
- * @license      MIT license
  */
 ?>
 <h2>Welcome to your website's administration area</h2>

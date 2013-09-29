@@ -6,9 +6,6 @@
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
- * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
- * @license      MIT license
  */
 ?><!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 oldie"> <![endif]-->
