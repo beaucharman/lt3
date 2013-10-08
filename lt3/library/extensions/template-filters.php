@@ -191,12 +191,16 @@ function lt3_img_caption_shortcode_filter($val, $attr, $content = null)
     . 'class="wp-caption-text">' . $caption . '</figcaption></figure>';
 }
 
-/* Remove empty paragraph tags from the_content
-   ======================================================================== */
+/**
+ * Remove empty paragraph tags from the_content
+ * Optional: add '<p>&nbsp;</p>'
+ * ========================================================================
+ */
 add_filter('the_content', 'lt3_remove_empty_paragraphs', 20, 1);
 function lt3_remove_empty_paragraphs($content)
 {
   $content = force_balance_tags($content);
+  $content = str_replace(array('<p></p>'), '', $content);
   return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
 }
 
