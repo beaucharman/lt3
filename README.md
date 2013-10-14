@@ -70,7 +70,7 @@ Which should contain:
 
 ```
 # Prevent directory browsing=
-Options -Indexes
+Options All -Indexes
 
 # Protect all sever side files
 Order deny,allow
