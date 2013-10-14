@@ -90,6 +90,16 @@ If it is necessary, within the wp-config.php file, place the following code:
   define(‘FORCE_SSL_ADMIN’, true);
 ```
 
+**Files Permissions**
+
+- wp-config.php - 400 or 440
+- .htaccess rights 644. Set yo 664 if you want WordPress to be able to edit for you
+- /wp-content/ - 777 according to WordPress Codex. It’s better to set it 755 and change to 777 temporary if some plugins require that level of access.
+- /wp-content/themes/ - 755
+- /wp-content/plugins/ - 755
+- /wp-admin/ - 755
+- /wp-includes/ - 755
+
 **Keep. WordPress. Updated**
 
 This includes keeping Plugins updated too, maintaining the database, removing spam and even having intelligent nice .gitignore file.
