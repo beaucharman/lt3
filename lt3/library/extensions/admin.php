@@ -44,10 +44,10 @@ function lt3_custom_dashboard_widgets()
   wp_add_dashboard_widget(
     'custom_admin_widget',
     'Website Information',
-    'lt3_create_website_support_widget_function'
+    'lt3_create_website_support_widget'
   );
 }
-function lt3_create_website_support_widget_function()
+function lt3_create_website_support_widget()
 {
   if (function_exists('lt3_get_data_with_curl'))
   {
@@ -285,7 +285,7 @@ function lt3_custom_userfields($methods)
  * ========================================================================
  * lt3_add_admin_nofollow_meta()
  * admin_head action to add no follow meta tag to admin
- */
+ */8
 add_action('admin_head', 'lt3_add_admin_nofollow_meta');
 function lt3_add_admin_nofollow_meta()
 {

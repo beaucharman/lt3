@@ -148,6 +148,11 @@ define('DB_CHARSET', 'utf8');
  */
 define('DB_COLLATE', '');
 
+/**
+ * Increase the WP Memory Limit is needed
+ */
+// define('WP_MEMORY_LIMIT', '64M');
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
