@@ -104,4 +104,4 @@ For more information on WordPress suggested file permissions, and other awesome 
 
 **Keep. WordPress. Updated**
 
-This includes keeping Plugins updated too, maintaining the database, removing spam and even having intelligent nice .gitignore file.
+This includes keeping Plugins updated and maintaining the database - removing spam, unneeded revisions and such. Furthermore, having an intelligent .gitignore file (assuming version control is in play, *nudge) in the repo can keep unnecessary files out of production (like the nasty readme.html).
