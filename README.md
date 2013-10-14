@@ -7,6 +7,7 @@
 
 - **Modulated file structure**
 - **Security measures**
+- Semantic HTML5 markup
 - Extendable and immediately useful wp-config-sample.php and .htaccess
 - Thoughtful, WordPress project specific helper functions
 - Clean and thought out template files, including template partials
