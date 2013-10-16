@@ -113,10 +113,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
    ======================================================================== */
 // require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
 
-/* Shortcodes
-   ======================================================================== */
-// require_once(LT3_FULL_EXTENSIONS_PATH . '/shortcodes.php');
-
 /* ========================================================================
    Project Extensions
    ======================================================================== */
