@@ -285,7 +285,7 @@ function lt3_custom_userfields($methods)
  * ========================================================================
  * lt3_add_admin_nofollow_meta()
  * admin_head action to add no follow meta tag to admin
- */8
+ */
 add_action('admin_head', 'lt3_add_admin_nofollow_meta');
 function lt3_add_admin_nofollow_meta()
 {
