@@ -59,7 +59,7 @@
 
         <?php /* Display the main navigation menu  */?>
         <nav class="main-navigation-menu__wrapper" role="navigation">
-          <?php lt3_main_navigation_menu('main-navigation-menu'); ?>
+          <?php lt3_main_navigation_menu('main-navigation-menu__list'); ?>
         </nav>
 
       </header>

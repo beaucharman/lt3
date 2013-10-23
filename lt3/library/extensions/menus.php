@@ -40,14 +40,14 @@ if (function_exists('register_nav_menu'))
  * ========================================================================
  * lt3_page_header_menu()
  */
-function lt3_main_navigation_menu($menu_class = 'main-navigation-menu')
+function lt3_main_navigation_menu()
 {
   wp_nav_menu(
     array(
       'theme_location'  => 'main_navigation_menu',
       'container'       => '',
-      'menu_class'      => 'main-navigation-menu',
-      'items_wrap'      => '<ul class="%2$s" >%3$s</ul>',
+      'menu_class'      => 'main-navigation-menu__list',
+      'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
       'fallback_cb'     => false
     )
   );
