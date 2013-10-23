@@ -40,15 +40,14 @@ if (function_exists('register_nav_menu'))
  * ========================================================================
  * lt3_page_header_menu()
  */
-function lt3_main_navigation_menu()
+function lt3_main_navigation_menu($menu_class = 'main-navigation-menu')
 {
   wp_nav_menu(
     array(
       'theme_location'  => 'main_navigation_menu',
-      'container'       => 'nav',
-      'container_class' => 'main-navigation-menu',
-      'menu_class'      => 'main-navigation-menu-list',
-      'items_wrap'      => '<ul class="%2$s" role="navigation">%3$s</ul>',
+      'container'       => '',
+      'menu_class'      => 'main-navigation-menu',
+      'items_wrap'      => '<ul class="%2$s" >%3$s</ul>',
       'fallback_cb'     => false
     )
   );

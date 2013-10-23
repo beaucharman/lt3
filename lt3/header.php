@@ -58,7 +58,9 @@
         <?php endif; ?>
 
         <?php /* Display the main navigation menu  */?>
-        <?php lt3_main_navigation_menu(); ?>
+        <nav class="main-navigation-menu__wrapper" role="navigation">
+          <?php lt3_main_navigation_menu('main-navigation-menu'); ?>
+        </nav>
 
       </header>
 
