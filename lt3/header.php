@@ -62,4 +62,4 @@
 
       </header>
 
-      <section class="page-content" role="main">
+      <main class="page-content" role="main">

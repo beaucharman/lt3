@@ -9,7 +9,7 @@
  */
 ?>
 
-<aside class="primary-sidebar">
+<aside class="primary-sidebar" role="complementary">
 <?php
   if (is_active_sidebar('primary-sidebar-widgets'))
   {

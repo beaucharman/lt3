@@ -8,9 +8,9 @@
  * @subpackage   lt3
  */
 ?>
-      </section> <!-- /.content -->
+      </main> <!-- /.page-content -->
 
-      <footer class="page-footer">
+      <footer class="page-footer" role="contentinfo">
 
         <?php /* Site information  */?>
         <div class="site-information">
