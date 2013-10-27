@@ -26,13 +26,6 @@
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
 
-function FontAwesome_icons() {
-    echo '<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"  rel="stylesheet">';
-}
-
-add_action('admin_head', 'FontAwesome_icons');
-add_action('wp_head', 'FontAwesome_icons');
-
 /* ========================================================================
    Custom Post Type class
    ======================================================================== */
@@ -40,7 +33,9 @@ class LT3_Custom_Post_Type
 {
   public $name;
   public $labels;
+  // public $supports;
   public $options;
+  public $icon;
   public $help;
 
   /**
@@ -53,14 +48,16 @@ class LT3_Custom_Post_Type
    * @param  {array}    $help
    * @return {instance} post type
    */
-  public function __construct($name, $labels = array(), $options = array(), $help = null)
+  public function __construct($name, $labels = array(), $options = array(), $icon = null, $help = null)
   {
     /**
      * Set class values
      */
     $this->name = $this->uglify_words($name);
     $this->labels = $labels;
+    // $this->supports = $supports;
     $this->options = $options;
+    $this->icon = $icon;
     $this->help = $help;
 
     /**
@@ -90,12 +87,16 @@ class LT3_Custom_Post_Type
     if (! post_type_exists($this->name))
     {
       add_action('init', array(&$this, 'register_custom_post_type'));
+
       if ($this->help)
       {
         add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
       }
 
-      add_action( 'admin_head', array(&$this, 'icons') );
+      if ($this->icon)
+      {
+        add_action('admin_head', array(&$this, 'icons'));
+      }
     }
   }
 
@@ -151,13 +152,13 @@ class LT3_Custom_Post_Type
    * ========================================================================
    * icons()
    * @param  null
-   * @return post_type
+   * @return icon styles
    */
   public function icons() { ?>
     <style type="text/css" media="screen">
       #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before,
       #icon-edit:before {
-        content: "\f14a";
+        content: "\<?php echo $this->icon; ?>";
         font-family: 'FontAwesome' !important;
         font-size: 15px !important;
         position: absolute;
@@ -206,6 +207,7 @@ class LT3_Custom_Post_Type
         $contextual_help = $help['message'];
       }
     }
+
     return $contextual_help;
   }
 
@@ -236,6 +238,7 @@ class LT3_Custom_Post_Type
       $items = get_posts($args);
       return $items[0];
     }
+
     return get_posts($args);
   }
 
@@ -314,10 +317,31 @@ class LT3_Custom_Post_Type
     {
       return substr_replace($words, 'ies', -1);
     }
+
     if (strToLower(substr($words, -1)) == 's')
     {
       return $words . 'es';
     }
+
     return $words . 's';
+  }
+
+  /**
+   * Get Font Awesome
+   * http://fortawesome.github.io/Font-Awesome/
+   * ========================================================================
+   * get_font_awesome()
+   * @param  null
+   * @return icon styles
+   */
+  static function get_font_awesome()
+  {
+    add_action('admin_head', 'FontAwesome_icons');
+    add_action('wp_head', 'FontAwesome_icons');
+
+    function FontAwesome_icons()
+    {
+        echo '<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">';
+    }
   }
 }
