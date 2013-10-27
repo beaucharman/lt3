@@ -26,6 +26,13 @@
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
 
+function FontAwesome_icons() {
+    echo '<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"  rel="stylesheet">';
+}
+
+add_action('admin_head', 'FontAwesome_icons');
+add_action('wp_head', 'FontAwesome_icons');
+
 /* ========================================================================
    Custom Post Type class
    ======================================================================== */
@@ -87,6 +94,8 @@ class LT3_Custom_Post_Type
       {
         add_action('contextual_help', array(&$this, 'add_custom_contextual_help'), 10, 3);
       }
+
+      add_action( 'admin_head', array(&$this, 'icons') );
     }
   }
 
@@ -135,6 +144,40 @@ class LT3_Custom_Post_Type
      */
     register_post_type($this->name, $options);
   }
+
+
+  /**
+   * Icons
+   * ========================================================================
+   * icons()
+   * @param  null
+   * @return post_type
+   */
+  public function icons() { ?>
+    <style type="text/css" media="screen">
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before,
+      #icon-edit:before {
+        content: "\f14a";
+        font-family: 'FontAwesome' !important;
+        font-size: 15px !important;
+        position: absolute;
+      }
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before {
+        left: 7px;
+        top: 5px;
+      }
+      #icon-edit:before {
+        font-size: 34px !important;
+        left: 5px;
+        top: 9px;
+      }
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image,
+      #icon-edit {
+        background: none;
+        position: relative;
+      }
+    </style>
+  <?php }
 
   /**
    * Add Custom Contextual Help
