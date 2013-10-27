@@ -382,7 +382,7 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   function lt3_template_debug()
   {
     $args = func_get_args();
-    if (! is_admin() and $args[0])
+    if (! is_admin() && isset($args[0]))
     {
       if ($args[0] == 'template_include')
       {
