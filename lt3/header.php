@@ -34,8 +34,8 @@
     <?php wp_head(); ?>
     
     <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <script src="<?php echo lt3_uri('/library/javascripts/vendor/respond.min.js'); ?>"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.js"></script>
     <![endif]-->
 
   </head>
