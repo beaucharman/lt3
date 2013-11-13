@@ -11,6 +11,7 @@
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
  */
 
+
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
 function lt3_initial_theme_setup()
 {
@@ -51,15 +52,18 @@ function lt3_initial_theme_setup()
       update_option($key, $value);
     }
 
+
     /**
      * Add RSS links to <head> section
      */
     add_theme_support('automatic-feed-links');
 
+
     /**
      * Add HTML5 markup support for various components
      */
     add_theme_support('html5', array('search-form', 'comment-form', 'comment-list'));
+
 
     /**
      * Delete the example post, page and comment
@@ -70,6 +74,7 @@ function lt3_initial_theme_setup()
     wp_delete_post(1, true);
     wp_delete_post(2, true);
     wp_delete_comment(1);
+
 
     /**
      * Goodbye Dolly
@@ -83,10 +88,12 @@ function lt3_initial_theme_setup()
       delete_plugins(array('hello.php'));
     }
 
+
     /**
      * Update the status so this dosn't run again
      */
     update_option('theme_setup_status', '1');
+
 
     /**
      * Lets the admin know whats going on with a status message

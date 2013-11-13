@@ -13,9 +13,11 @@
  * to can be found in the library/dashboard/ directory.
  */
 
+
 /* ========================================================================
    Dashboard and login functions
    ======================================================================== */
+
 
 /**
  * Replace Admin Footer
@@ -30,6 +32,7 @@ function lt3_replace_admin_footer()
     . '<a href="http://wordpress.org/" title="Visit WordPress.org" rel="external">WordPress</a>. '
     . 'Built with love.';
 }
+
 
 /**
  * Custom Dashboard Widgets
@@ -47,14 +50,17 @@ function lt3_custom_dashboard_widgets()
     'lt3_create_website_support_widget'
   );
 }
+
 function lt3_create_website_support_widget()
 {
   if (function_exists('lt3_get_data_with_curl'))
   {
     $admin_widget = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.widget.php');
   }
+
   echo $admin_widget;
 }
+
 
 /**
  * Create Tutorial Menu
@@ -78,6 +84,7 @@ if (LT3_ENABLE_TUTORIAL_SECTION)
   }
 }
 
+
 /**
  * Disable Global Comments
  * ========================================================================
@@ -97,11 +104,13 @@ if (! LT3_ENABLE_COMMENTS)
   function lt3_remove_comment_support()
   {
     $post_types = get_post_types('', 'names');
+
     foreach ($post_types as $post_type)
     {
       remove_post_type_support($post_type, 'comments');
     }
   }
+
 
   /* Remove comments notifications from the adminbar */
   add_action('wp_before_admin_bar_render', 'lt3_admin_bar_render');
@@ -118,6 +127,7 @@ if (! LT3_ENABLE_COMMENTS)
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
   }
 }
+
 
 /**
  * Remove Dashboard Widgets
@@ -142,6 +152,7 @@ function lt3_remove_dashboard_widgets()
    */
 }
 
+
 /**
  * Add Custom Post Types to 'Right Now'
  * ========================================================================
@@ -155,6 +166,7 @@ function lt3_add_custom_post_type_to_right_now()
   $output = 'object';
   $operator = 'and';
   $post_types = get_post_types($args, $output, $operator);
+
   foreach ($post_types as $post_type)
   {
     $num_posts = wp_count_posts($post_type->name);
@@ -170,10 +182,13 @@ function lt3_add_custom_post_type_to_right_now()
       $num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
       $text = "<a href='edit.php?post_type=$post_type->name'>$text</a>";
     }
+
     echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>'
       . '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
   }
+
   $taxonomies = get_taxonomies($args, $output, $operator);
+
   foreach ($taxonomies as $taxonomy)
   {
     $num_terms  = wp_count_terms($taxonomy->name);
@@ -183,19 +198,24 @@ function lt3_add_custom_post_type_to_right_now()
       $taxonomy->labels->name,
       intval($num_terms)
     );
+
     if (current_user_can('manage_categories'))
     {
       $num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
       $text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
     }
+
     echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>'
       . '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
   }
 }
 
+
+
 /* ========================================================================
    Content management and display
    ======================================================================== */
+
 
 /**
  * Create Taxonomy Dropdown Filters
@@ -210,9 +230,11 @@ function lt3_restrict_by_taxonomy()
   global $typenow;
   $args=array('public' => true, '_builtin' => false);
   $post_types = get_post_types($args);
+
   if (in_array($typenow, $post_types))
   {
     $filters = get_object_taxonomies($typenow);
+
     foreach ($filters as $tax_slug)
     {
       $tax_obj = get_taxonomy($tax_slug);
@@ -234,19 +256,24 @@ function lt3_restrict_by_taxonomy()
   }
 }
 
+
 add_filter('parse_query','lt3_restriction_taxonomy_dropdown');
 function lt3_restriction_taxonomy_dropdown($query)
 {
   global $pagenow,  $typenow;
+
   if ($pagenow=='edit.php')
   {
     $filters = get_object_taxonomies($typenow);
+
     foreach ($filters as $tax_slug)
     {
       $var = &$query->query_vars[$tax_slug];
+
       if (isset($var))
       {
         $term = get_term_by('id',$var,$tax_slug);
+
         if ($term)
         {
           $var = $term->slug;
@@ -256,9 +283,11 @@ function lt3_restriction_taxonomy_dropdown($query)
   }
 }
 
+
 /* ========================================================================
    User related functions
    ======================================================================== */
+
 
 /**
  * Custom Userfields
@@ -276,9 +305,11 @@ function lt3_custom_userfields($methods)
   return $methods;
 }
 
+
 /* ========================================================================
    Security measures
    ======================================================================== */
+
 
 /**
  * Add Admin Nofollow Meta
@@ -295,6 +326,7 @@ function lt3_add_admin_nofollow_meta()
   }
 }
 
+
 /**
  * Remove WP Version
  * ========================================================================
@@ -305,6 +337,7 @@ function lt3_remove_wp_generator()
 {
   remove_action('wp_head', 'wp_generator');
 }
+
 
 /**
  * Alternate Login Error Message

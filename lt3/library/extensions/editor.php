@@ -10,6 +10,7 @@
  * All extra functionality that effects the admin and post editor.
  */
 
+
 /**
  * Modify Post Mime Types
  * ========================================================================
@@ -27,6 +28,7 @@ function lt3_modify_post_mime_types($post_mime_types)
   return $post_mime_types;
 }
 
+
 /**
  * Enable Extra TinyMCE Buttons and Style Select
  * ========================================================================
@@ -42,27 +44,34 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
   function edit_buttons_for_tinymce_editor_1($mce_buttons)
   {
     $pos = array_search('wp_more',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
       $tmp_buttons[] = 'wp_page';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('justifyright',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
       $tmp_buttons[] = 'justifyfull';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('italic',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
       $tmp_buttons[] = 'underline';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('unlink',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
@@ -70,6 +79,7 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
       $tmp_buttons[] = 'hr';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     return $mce_buttons;
   }
 
@@ -79,20 +89,25 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
   function edit_buttons_for_tinymce_editor_2($mce_buttons)
   {
     $pos = array_search('forecolor',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
       $tmp_buttons[] = 'backcolor';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('formatselect',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
       $tmp_buttons[] = 'separator';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('charmap',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos + 1);
@@ -100,7 +115,9 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
       $tmp_buttons[] = 'sup';
       $mce_buttons = array_merge($tmp_buttons, array_slice($mce_buttons, $pos + 1));
     }
+
     $pos = array_search('pasteword',$mce_buttons,true);
+
     if ($pos !== false)
     {
       $tmp_buttons = array_slice($mce_buttons, 0, $pos-1);
@@ -121,6 +138,7 @@ if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
     return $buttons;
   }
 }
+
 
 /**
  * Allocate styles for the TinyMCE Editor style select

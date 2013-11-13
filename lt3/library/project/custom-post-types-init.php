@@ -16,7 +16,3 @@
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-post-types
  */
-
-LT3_Custom_Post_Type::get_font_awesome();
-
-$Movie = new LT3_Custom_Post_Type('movie', array(), array(), 'f143');

@@ -8,13 +8,15 @@
  * @subpackage   lt3
  */
 
+
 /* Add Theme Support
    ======================================================================== */
 add_theme_support('post-thumbnails');
 
+
 /**
  * Add custom image sizes
- *
+ * ========================================================================
  * Thumbnail, Medium and large sizes are set in the initial-theme-setup.php file.
  * If these are changed, resample images with wordpress.org/plugins/regenerate-thumbnails/
  */
@@ -25,7 +27,9 @@ add_action('init', 'lt3_add_image_sizes');
 function lt3_add_image_sizes()
 {
   /* Add custom sizes here */
+
   // add_image_size('handle', $width, $height, $crop);
+
 }
 
 /**

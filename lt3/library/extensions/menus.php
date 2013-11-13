@@ -18,6 +18,7 @@
  * For more info, and variations: http://codex.wordpress.org/Function_Reference/wp_nav_menu.
  */
 
+
 /* Register Menu Locations
    ======================================================================== */
 if (function_exists('register_nav_menu'))
@@ -32,13 +33,12 @@ if (function_exists('register_nav_menu'))
    */
 }
 
+
 /* Menu Declarations
    ======================================================================== */
 
 /**
  * Page Header Menu
- * ========================================================================
- * lt3_page_header_menu()
  */
 function lt3_main_navigation_menu()
 {

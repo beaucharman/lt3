@@ -12,6 +12,7 @@
  *   echo $lt3_site_settings['setting_id'];
  */
 
+
 /* ========================================================================
    Site Settings Page class
    ======================================================================== */
@@ -23,6 +24,7 @@ class LT3_Site_Settings_Page
   public $menu_name;
   public $title;
   public $site_settings;
+
 
   /**
    * Class Constructor
@@ -46,6 +48,7 @@ class LT3_Site_Settings_Page
     {
       $this->menu_name = $this->prettify_words($this->fields_name);
     }
+
     if (! $this->title)
     {
       $this->title = get_bloginfo('name') . ' ' . $this->prettify_words($this->fields_name);
@@ -58,6 +61,7 @@ class LT3_Site_Settings_Page
     add_action('admin_init', array(&$this, 'site_settings_init'));
     add_action('admin_menu', array(&$this, 'site_settings_add_page'));
   }
+
 
   /**
    * Site Settings Init
@@ -73,6 +77,7 @@ class LT3_Site_Settings_Page
       array(&$this, 'site_settings_validate')
    );
   }
+
 
   /**
    * Site Settings Add Page
@@ -90,6 +95,7 @@ class LT3_Site_Settings_Page
       array(&$this, 'site_settings_render_page')
    );
   }
+
 
   /**
    * Site Settings Render Page
@@ -316,6 +322,7 @@ class LT3_Site_Settings_Page
       . '</div>';
   }
 
+
   /**
    * Site Settings Validate
    * ========================================================================
@@ -340,6 +347,7 @@ class LT3_Site_Settings_Page
     return $input;
   }
 
+
   /**
    * Prettify words
    * ========================================================================
@@ -354,6 +362,7 @@ class LT3_Site_Settings_Page
   {
     return ucwords(str_replace('_', ' ', $words));
   }
+
 
   /**
    * Uglify words

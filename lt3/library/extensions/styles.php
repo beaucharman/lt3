@@ -15,6 +15,7 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
  */
 
+
 /* Register and enqeue styles
    ======================================================================== */
 add_action('init', 'lt3_load_styles');
@@ -24,15 +25,13 @@ function lt3_load_styles()
   /**
    * Register styles here
    */
-  wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH
-    . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
-  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH
-    . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
+  wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
+  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
   /**
    * Enqueue styles here
    */
-  if (!is_admin())
+  if (! is_admin())
   {
     /**
      * Front end stylesheets
@@ -60,6 +59,7 @@ function lt3_load_styles()
   }
 }
 
+
 /**
  * Custom Editor Styles
  * ========================================================================
@@ -70,6 +70,7 @@ if (LT3_USE_CUSTOM_EDITOR_STYLES)
 {
   add_editor_style(LT3_STYLES_PATH . '/admin/custom-editor-style.css');
 }
+
 
 /**
  * Custom Login Styles
@@ -82,7 +83,6 @@ if (LT3_USE_CUSTOM_LOGIN_STYLES)
   add_action('login_head', 'lt3_custom_login_styles');
   function lt3_custom_login_styles()
   {
-    echo '<link rel="stylesheet" type="text/css" href="'
-      . LT3_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
+    echo '<link rel="stylesheet" type="text/css" href="' . LT3_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
   }
 }

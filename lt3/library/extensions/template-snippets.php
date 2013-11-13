@@ -14,6 +14,7 @@
  *   (Include pagination for example)
  */
 
+
 /**
  * lt3 Title
  * ========================================================================
@@ -81,6 +82,7 @@ function lt3_title()
     bloginfo('description');
   }
 }
+
 
 /**
  * lt3 Meta Description
@@ -159,6 +161,7 @@ function lt3_meta_description()
   echo $content;
 }
 
+
 /**
  * lt3 Get Archive Title
  * ========================================================================
@@ -215,6 +218,7 @@ function lt3_get_archive_title()
   return $archive_title;
 }
 
+
 /**
  * lt3 Get Message
  * ========================================================================
@@ -229,6 +233,7 @@ function lt3_get_message($message_handle)
   get_template_part(LT3_TEMPLATE_PARTS_PATH . '/message', lt3_urify_words($message_handle));
 }
 
+
 /* Function to add more edit buttons to comments
    ======================================================================== */
 function lt3_delete_comment_link($id)
@@ -239,6 +244,7 @@ function lt3_delete_comment_link($id)
       . '<a href="' . admin_url("comment.php?action=cdc&dt=spam&c=$id") . '">Spam</a>';
   }
 }
+
 
 /**
  * Adds a back to parent category, page, etc link
@@ -276,6 +282,7 @@ function lt3_back_to_parent_link()
   }
 }
 
+
 /* Function to get categories and taxonomies for a post
    ======================================================================== */
 function lt3_get_taxonomies_terms_links()
@@ -300,6 +307,7 @@ function lt3_get_taxonomies_terms_links()
   return false;
 }
 
+
 /* Function to get Post Nav Links
    ======================================================================== */
 function lt3_get_single_nav_links()
@@ -312,12 +320,14 @@ function lt3_get_single_nav_links()
   echo '</div>';
 }
 
+
 /* Function to get Category Nav Links
    ======================================================================== */
 function lt3_get_archive_nav_links()
 {
   posts_nav_link(' &mdash; ', '&larr; Previous Page', 'Next Page &rarr;');
 }
+
 
 /* Functions to include site pagination
    A series of functions that checks for wp_pagenavi(), and conditionally
@@ -329,6 +339,7 @@ function lt3_include_single_navigation()
   lt3_get_single_nav_links();
   echo '</nav>';
 }
+
 
 /**
  * Include page pagination (using wp_pagenavi)
@@ -350,6 +361,7 @@ function lt3_include_page_pagination()
   }
 }
 
+
 /**
  * Include page navigation (previous and next style)
  */
@@ -367,6 +379,7 @@ function lt3_include_page_navigation()
   }
 }
 
+
 /**
  * Include archive pagination (using wp_pagenavi)
  */
@@ -383,6 +396,7 @@ function lt3_include_archive_pagination()
     lt3_include_archive_navigation();
   }
 }
+
 
 /**
  * Include archive navigation (previous and next style)
@@ -403,25 +417,30 @@ function lt3_include_post_meta()
     echo '<p class="postmetadata">'
       . '<span class="post-categories-time">'
       . _e('Posted ');
+
     if (lt3_get_taxonomies_terms_links())
     {
       echo _e(' in ');
       echo lt3_get_taxonomies_terms_links();
       echo ', ';
     }
+
     echo 'on the ';
     the_time('jS \o\f F, Y');
     echo '.';
+
     if (LT3_ENABLE_COMMENTS)
     {
       echo ' ';
       comments_popup_link('No Comments', '1 Comment &rarr;', '% Comments &rarr;', 'comments-link', '');
     }
+
     echo '</span><br>';
     the_tags('<span class="post-tags">Tags: ', ', ', '</span>');
     echo '</p>';
   }
 }
+
 
 /**
  * lt3 Read More Text
@@ -443,6 +462,7 @@ function lt3_read_more_text()
     echo 'Read More &rarr;';
   }
 }
+
 
 /* Function to create a custom comment list
    ======================================================================== */

@@ -33,13 +33,15 @@
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 
+
 /* Set all posts to be sorted alphabetically
    ======================================================================== */
 add_action('pre_get_posts', 'lt3_default_loop_outputs');
 function lt3_default_loop_outputs($query)
 {
   global $wp_the_query;
-  if (($wp_the_query === $query) && (!is_admin()))
+
+  if (($wp_the_query === $query) && (! is_admin()))
   {
 
     /**
@@ -51,5 +53,6 @@ function lt3_default_loop_outputs($query)
     // Place other loop alterations here
 
   }
+
   return $query;
 }

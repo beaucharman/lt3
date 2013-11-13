@@ -8,14 +8,15 @@
  * @subpackage   lt3
  */
 
+
 /* ========================================================================
    Logic and conditional functions
    ======================================================================== */
 
+
 /**
  * lt3 URI
  * ========================================================================
- * lt3_uri()
  * @param  {string} $path
  * @return {string}
  */
@@ -24,10 +25,10 @@ function lt3_uri($path = '')
   return get_stylesheet_directory_uri() . $path;
 }
 
+
 /**
  * Get Thumbnail
  * ========================================================================
- * lt3_get_thumbnail()
  * @param  {integer} $id
  * @param  {string}  $size
  * @param  {boolean} $attributes
@@ -36,6 +37,7 @@ function lt3_uri($path = '')
 function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
 {
   global $post;
+
   if ($id === null)
   {
     $id = $post->ID;
@@ -44,19 +46,22 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
   if (has_post_thumbnail($id))
   {
     $image_src = wp_get_attachment_image_src(get_post_thumbnail_id($id), $size);
+
     if (! $attributes)
     {
       return $image_src[0];
     }
+
     return $image_src;
   }
+
   return false;
 }
+
 
 /**
  * Get Attachment
  * ========================================================================
- * lt3_get_attachment()
  * @param {integer} $id
  * @param {string}  $size
  * @param {boolean} $attributes
@@ -65,6 +70,7 @@ function lt3_get_thumbnail($id = null, $size = 'thumbnail', $attributes = false)
 function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
 {
   $image_src = wp_get_attachment_image_src($id, $size);
+
   if ($image_src)
   {
     if (! $attributes)
@@ -73,13 +79,14 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
     }
     return $image_src;
   }
+
   return false;
 }
+
 
 /**
  * Get ID by Slug
  * ========================================================================
- * lt3_get_id_by_slug()
  * @param {string} $slug
  * @param {string} $post_type
  * @return {integer}
@@ -96,10 +103,10 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
   return get_the_ID();
 }
 
+
 /**
  * Is Child of Page
  * ========================================================================
- * lt3_is_child_of_page()
  * @param {integer || string} $page
  * @return {boolean}
  *
@@ -108,23 +115,27 @@ function lt3_get_id_by_slug($slug, $post_type = 'post')
 function lt3_is_child_of_page($page)
 {
   global $post;
+
   if (is_string($page))
   {
     $page = lt3_get_id_by_slug($page);
   }
+
   $parent = (isset($post->post_parent) && $post->post_parent == $page);
   $ancestors = (isset($post->ancestors) && in_array($page, $post->ancestors));
+
   if ($parent || $ancestors)
   {
     return true;
   }
+
   return false;
 }
+
 
 /**
  * Is Child of Category
  * ========================================================================
- * lt3_is_child_of_category()
  * @param {integer} $parent_category
  * @return {boolean}
  *
@@ -140,10 +151,10 @@ function lt3_is_child_of_category($parent_category)
   }
 }
 
+
 /**
  * Is Post Type
  * ========================================================================
- * lt3_is_post_type()
  * @param {string} $type
  * @return {boolean}
  *
@@ -152,6 +163,7 @@ function lt3_is_child_of_category($parent_category)
 function lt3_is_post_type($type = null)
 {
   global $post, $wp_query;
+
   if ($type)
   {
     if (isset($wp_query->post->ID) && $type == get_post_type($wp_query->post->ID))
@@ -166,13 +178,14 @@ function lt3_is_post_type($type = null)
       return true;
     }
   }
+
   return false;
 }
+
 
 /**
  * Has Page Pagination
  * ========================================================================
- * lt3_has_page_pagination()
  * @param null
  * @return {boolean}
  *
@@ -184,13 +197,14 @@ function lt3_has_page_pagination()
   {
     return true;
   }
+
   return false;
 }
+
 
 /**
  * Post is in Descendant Category
  * ========================================================================
- * lt3_post_is_in_descendant_category()
  * @param {array} $cat
  * @param $_post
  * @return {boolean}
@@ -208,13 +222,14 @@ function lt3_post_is_in_descendant_category($cats, $_post = null)
       return true;
     }
   }
+
   return false;
 }
+
 
 /**
  * Get Data with cURL
  * ========================================================================
- * lt3_get_data_with_curl()
  * @param {string} $url
  * @return {string}
  *
@@ -241,13 +256,14 @@ function lt3_get_data_with_curl($url = '')
       return file_get_contents($url);
     }
   }
+
   return file_get_contents($url);
 }
+
 
 /**
  * Excerpt
  * ========================================================================
- * lt3_excerpt()
  * @param {string} $raw_text
  * @param {integer} $word_limit
  * @param {boolean} $echo_result
@@ -258,12 +274,14 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
 {
   $text = explode(' ', strip_tags(strip_shortcodes($raw_text)));
   $ellipses = false;
+
   if (sizeof($text) > $word_limit)
   {
     for ($counter = sizeof($text); $counter > $word_limit; $counter--)
     {
       array_pop($text);
     }
+
     $output_text = implode(' ', $text);
     $ellipses = true;
   }
@@ -281,13 +299,14 @@ function lt3_excerpt($raw_text = '', $echo_result = true, $word_limit = LT3_EXCE
   {
     return $output_text;
   }
+
   echo $output_text;
 }
+
 
 /**
  * Get Time
  * ========================================================================
- * lt3_get_time()
  * @param $date [WordPress date object]
  * @return string
  *
@@ -299,10 +318,10 @@ function lt3_get_time($date, $format = 'Y-m-d')
   return date($format, strtotime($date));
 }
 
+
 /**
  * Prettify Words
  * ========================================================================
- * lt3_prettify_words()
  * @param {string} $words
  * @return {string}
  *
@@ -314,10 +333,10 @@ function lt3_prettify_words($words)
   return ucwords(str_replace('_', ' ', $words));
 }
 
+
 /**
  * Uglify Words
  * ========================================================================
- * lt3_uglify_words()
  * @param {string} $words
  * @return {string}
  *
@@ -328,10 +347,10 @@ function lt3_uglify_words($words)
   return strToLower(str_replace(' ', '_', $words));
 }
 
+
 /**
  * URIfy Words
  * ========================================================================
- * lt3_urify_words()
  * @param {string} $words
  * @return {string}
  *
@@ -342,10 +361,10 @@ function lt3_urify_words($words)
   return strToLower(str_replace(' ', '-', $words));
 }
 
+
 /**
  * Plurify Words
  * ========================================================================
- * lt3_plurify_words()
  * @param {string} $words
  * @return {string}
  *
@@ -359,17 +378,19 @@ function lt3_plurify_words($words)
   {
     return substr_replace($words, 'ies', -1);
   }
+
   if (strToLower(substr($words, -1)) == 's')
   {
     return $words . 'es';
   }
+
   return $words . 's';
 }
+
 
 /**
  * Template Debug
  * ========================================================================
- * lt3_template_debug()
  * @param null
  * @return {string}
  *
@@ -382,6 +403,7 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
   function lt3_template_debug()
   {
     $args = func_get_args();
+
     if (! is_admin() and $args[0])
     {
       if ($args[0] == 'template_include')
@@ -392,11 +414,13 @@ if (LT3_ENABLE_TEMPLATE_DEBUG && LT3_DEVELOPMENT_MODE)
       elseif (strpos($args[0], 'get_template_part_') === 0)
       {
         global $last_template_snoop;
+
         if ($last_template_snoop)
         {
           echo "\n\n<!-- debug: End Template Part: {$last_template_snoop} "
           . "[turn this debug mode off in library/project/config.php] -->";
         }
+
         $tpl = rtrim(join('-', array_slice($args, 1)), '-') . '.php';
         echo "\n<!-- debug: Template Part: {$tpl} [turn this debug mode off in "
           . "library/project/config.php] -->\n\n";

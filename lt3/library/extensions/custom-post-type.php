@@ -1,9 +1,9 @@
 <?php
 /**
- * Custom Post Type
+ * WordPress Custom Post Type
  * ========================================================================
- * custom-post-type.php
- * @version   2.0 | June 30th 2013
+ * wordpress-custom-post-type.php
+ * @version   3.0 | November 10th 2013
  * @author    Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link      https://github.com/beaucharman/wordpress-custom-post-types
  * @license   MIT license
@@ -14,7 +14,6 @@
  *
  * Methods
  *  $PostType->get()
- *  $PostType->archive_uri()
  *
  * To declare a custom post type, simply create a new instance of the
  * LT3_Custom_Post_Type class.
@@ -26,59 +25,80 @@
  * http://codex.wordpress.org/Function_Reference/register_post_type
  */
 
+
 /* ========================================================================
    Custom Post Type class
    ======================================================================== */
+
+
 class LT3_Custom_Post_Type
 {
+
   public $name;
   public $labels;
-  // public $supports;
   public $options;
   public $icon;
   public $help;
 
+
   /**
    * Class Constructor
    *  ========================================================================
-   * __construct()
-   * @param  {string}   $name
-   * @param  {array}    $labels
-   * @param  {array}    $options
-   * @param  {array}    $help
+   * @param  {array}   $args
    * @return {instance} post type
    */
-  public function __construct($name, $labels = array(), $options = array(), $icon = null, $help = null)
+  public function __construct($args)
   {
     /**
      * Set class values
      */
-    $this->name = $this->uglify_words($name);
-    $this->labels = $labels;
-    // $this->supports = $supports;
-    $this->options = $options;
-    $this->icon = $icon;
-    $this->help = $help;
+    if (! is_array($args))
+    {
+      $name = $args;
+      $args = array();
+    }
+    else
+    {
+      $name = $args['name'];
+    }
+
+    $args = array_merge(
+      array(
+        'name'    => $this->uglify_words($name),
+        'labels'  => array(),
+        'options' => array(),
+        'icon'    => null,
+        'help'    => null
+      ),
+      $args
+    );
+
+    $this->name = $args['name'];
+    $this->labels = $args['labels'];
+    $this->options = $args['options'];
+    $this->icon = $args['icon'];
+    $this->help = $args['help'];
 
     /**
      * Create the labels where needed
      */
+
     /* Post type singluar label */
-    if (! isset($this->labels['label_singular']))
+    if (! isset($this->labels['singular']))
     {
-      $this->labels['label_singular'] = $this->prettify_words($this->name);
+      $this->labels['singular'] = $this->prettify_words($this->name);
     }
 
     /* Post type plural label */
-    if (! isset($this->labels['label_plural']))
+    if (! isset($this->labels['plural']))
     {
-      $this->labels['label_plural'] = $this->plurify_words($this->labels['label_singular']);
+      $this->labels['plural'] = $this->plurify_words($this->labels['singular']);
     }
 
     /* Post type menu label */
-    if (! isset($this->labels['menu_label']))
+    if (! isset($this->labels['menu']))
     {
-      $this->labels['menu_label'] = $this->labels['label_plural'];
+      $this->labels['menu'] = $this->labels['plural'];
     }
 
     /**
@@ -95,17 +115,17 @@ class LT3_Custom_Post_Type
 
       if ($this->icon)
       {
-        add_action('admin_head', array(&$this, 'icons'));
+        add_action('admin_head', array(&$this, 'icon_style'));
       }
     }
   }
 
+
   /**
    * Register Custom Post Type
    * ========================================================================
-   * register_custom_post_type()
-   * @param  null
-   * @return post_type
+   * @param  {null}
+   * @return post type
    */
   public function register_custom_post_type()
   {
@@ -113,17 +133,17 @@ class LT3_Custom_Post_Type
      * Set up the post type labels
      */
     $labels = array(
-      'name'               => __($this->labels['label_plural']),
-      'singular_name'      => __($this->labels['label_singular']),
-      'menu_name'          => __($this->labels['menu_label']),
-      'add_new_item'       => __('Add New ' . $this->labels['label_singular']),
-      'edit_item'          => __('Edit ' . $this->labels['label_singular']),
-      'new_item'           => __('New ' . $this->labels['label_singular']),
-      'all_items'          => __('All ' . $this->labels['label_plural']),
-      'view_item'          => __('View ' . $this->labels['label_singular']),
-      'search_items'       => __('Search ' . $this->labels['label_plural']),
-      'not_found'          => __('No ' . $this->labels['label_plural'] . ' found'),
-      'not_found_in_trash' => __('No ' . $this->labels['label_plural'] . ' found in Trash')
+      'name'               => __($this->labels['plural']),
+      'singular_name'      => __($this->labels['singular']),
+      'menu_name'          => __($this->labels['menu']),
+      'add_new_item'       => __('Add New ' . $this->labels['singular']),
+      'edit_item'          => __('Edit ' . $this->labels['singular']),
+      'new_item'           => __('New ' . $this->labels['singular']),
+      'all_items'          => __('All ' . $this->labels['plural']),
+      'view_item'          => __('View ' . $this->labels['singular']),
+      'search_items'       => __('Search ' . $this->labels['plural']),
+      'not_found'          => __('No ' . $this->labels['plural'] . ' found'),
+      'not_found_in_trash' => __('No ' . $this->labels['plural'] . ' found in Trash')
     );
 
     /**
@@ -133,7 +153,7 @@ class LT3_Custom_Post_Type
       array(
         'has_archive'   => true,
         'labels'        => $labels,
-        'menu_position' => 20,
+        'menu_position' => 5,
         'public'        => true,
         'rewrite'       => array('slug' => $this->get_slug())
       ),
@@ -148,44 +168,10 @@ class LT3_Custom_Post_Type
 
 
   /**
-   * Icons
-   * ========================================================================
-   * icons()
-   * @param  null
-   * @return icon styles
-   */
-  public function icons() { ?>
-    <style type="text/css" media="screen">
-      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before,
-      #icon-edit:before {
-        content: "\<?php echo $this->icon; ?>";
-        font-family: 'FontAwesome' !important;
-        font-size: 15px !important;
-        position: absolute;
-      }
-      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before {
-        left: 7px;
-        top: 5px;
-      }
-      #icon-edit:before {
-        font-size: 34px !important;
-        left: 5px;
-        top: 9px;
-      }
-      #menu-posts-<?php echo $this->name; ?> .wp-menu-image,
-      #icon-edit {
-        background: none;
-        position: relative;
-      }
-    </style>
-  <?php }
-
-  /**
    * Add Custom Contextual Help
    * ========================================================================
-   * add_custom_contextual_help()
    * @param  $contextual_help
-   * @param  $screen_id | integer
+   * @param  $screen_id
    * @param  $screen
    * @return $contextual_help
    */
@@ -193,7 +179,7 @@ class LT3_Custom_Post_Type
   {
     foreach ($this->help as $help)
     {
-      if (!$help['context'])
+      if (! $help['context'])
       {
         $context = $this->name;
       }
@@ -211,12 +197,13 @@ class LT3_Custom_Post_Type
     return $contextual_help;
   }
 
+
   /**
    * Get
    * ========================================================================
-   * get()
-   * @param  $user_args | array
-   * @return post type data
+   * @param  {array}   $user_args
+   * @param  {boolean} $single
+   * @return {array}   post type data
    *
    * Get all entries assigned to this post type.
    */
@@ -233,33 +220,22 @@ class LT3_Custom_Post_Type
       $user_args
     );
 
+    $items = get_posts($args);
+
     if ($single)
     {
-      $items = get_posts($args);
       return $items[0];
     }
 
-    return get_posts($args);
+    return $items;
   }
 
-  /**
-   * Archive URI
-   * ========================================================================
-   * archive_uri()
-   * @param  none
-   * @return string
-   */
-  public function archive_uri($path = '')
-  {
-    return home_url('/' . $this->get_slug() . '/' . $path);
-  }
 
   /**
    * Get Slug
    * ========================================================================
-   * get_slug()
-   * @param  $name {string}
-   * @return string
+   * @param  {string} $name
+   * @return {string}
    */
   public function get_slug($name = null)
   {
@@ -268,17 +244,15 @@ class LT3_Custom_Post_Type
       $name = $this->name;
     }
 
-    return strtolower(
-      str_replace(' ', '-', str_replace('_', '-', $name))
-    );
+    return strtolower(str_replace(' ', '-', str_replace('_', '-', $name)));
   }
+
 
   /**
    * Prettify Words
    * ========================================================================
-   * prettify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $words
+   * @return {string}
    *
    * Creates a pretty version of a string, like a pug version of a dog.
    */
@@ -287,12 +261,12 @@ class LT3_Custom_Post_Type
     return ucwords(str_replace('_', ' ', $words));
   }
 
+
   /**
    * Uglify Words
    * ========================================================================
-   * uglify_words()
-   * @param  $words | string
-   * @return string
+   * @param  {string} $words
+   * @return {string}
    *
    * Creates a url firendly version of the given string.
    */
@@ -301,12 +275,12 @@ class LT3_Custom_Post_Type
     return strToLower(str_replace(' ', '_', $words));
   }
 
+
   /**
    * Plurify Words
    * ========================================================================
-   * plurify_words()
-   * @param  $words | string
-   * @return $words | string
+   * @param  {string} $words
+   * @return {string}
    *
    * Plurifies most common words. Not currently working proper nouns,
    * or more complex words, for example knife => knives, leaf => leaves.
@@ -326,22 +300,55 @@ class LT3_Custom_Post_Type
     return $words . 's';
   }
 
+
+  /**
+   * Icon Style
+   * ========================================================================
+   * @param  {null}
+   * @return {output} html
+   */
+  public function icon_style() { ?>
+    <style rel="stylesheet" media="screen">
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before,
+      #icon-edit[class*="posts-<?php echo $this->name; ?>"]:before {
+        content: "\<?php echo $this->icon; ?>";
+        font-family: 'FontAwesome' !important;
+        font-size: 15px !important;
+        position: absolute;
+      }
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image:before {
+        left: 7px;
+        top: 5px;
+      }
+      #icon-edit[class*="posts-<?php echo $this->name; ?>"]:before {
+        font-size: 34px !important;
+        left: 5px;
+        top: 9px;
+      }
+      #menu-posts-<?php echo $this->name; ?> .wp-menu-image,
+      #icon-edit[class*="posts-<?php echo $this->name; ?>"] {
+        background: none;
+        position: relative;
+      }
+    </style>
+  <?php }
+
+
   /**
    * Get Font Awesome
    * http://fortawesome.github.io/Font-Awesome/
    * ========================================================================
-   * get_font_awesome()
-   * @param  null
-   * @return icon styles
+   * @param  {null}
+   * @return {output} html
    */
   static function get_font_awesome()
   {
-    add_action('admin_head', 'FontAwesome_icons');
-    add_action('wp_head', 'FontAwesome_icons');
+    add_action('admin_head', 'font_awesome_icons');
+    add_action('wp_head', 'font_awesome_icons');
 
-    function FontAwesome_icons()
+    function font_awesome_icons()
     {
-        echo '<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">';
+      echo '<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">';
     }
   }
 }

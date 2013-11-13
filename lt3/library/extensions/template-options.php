@@ -8,10 +8,15 @@
  * @subpackage   lt3
  */
 
+
 /* Set the content width
    ======================================================================== */
 global $content_width;
-if (! isset($content_width)) $content_width = LT3_PAGE_CONTENT_WIDTH;
+if (! isset($content_width))
+{
+  $content_width = LT3_PAGE_CONTENT_WIDTH;
+}
+
 
 /* Add excerpt field to pages
    ======================================================================== */
@@ -20,6 +25,7 @@ function lt3_add_page_excerpts()
 {
   add_post_type_support('page', 'excerpt');
 }
+
 
 /* Clean up the <head>
    ======================================================================== */
@@ -36,9 +42,13 @@ function lt3_remove_head_links()
   remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 }
 
+
 /* Get the Comments Template
    ======================================================================== */
 function lt3_get_comments_template()
 {
-  if (LT3_ENABLE_COMMENTS) comments_template();
+  if (LT3_ENABLE_COMMENTS)
+  {
+    comments_template();
+  }
 }

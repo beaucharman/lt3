@@ -13,6 +13,7 @@
  * library/project and included from this functions.php file.
  */
 
+
 /* ========================================================================
    Required Constants
    ======================================================================== */
@@ -34,16 +35,19 @@ define('LT3_IMAGES_PATH', 'library/images');
 
 define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/' . LT3_IMAGES_PATH);
 
-define('LT3_TEMPLATE_PARTS_PATH', 'library/template_parts');
+define('LT3_TEMPLATE_PARTS_PATH', 'library/template-parts');
+
 
 /* ========================================================================
    Site Configuration
    ======================================================================== */
 require_once(LT3_FULL_PROJECT_PATH . '/config.php');
 
+
 /* ========================================================================
    Required Extention Files
    ======================================================================== */
+
 
 /* Initial Theme Setup
    ======================================================================== */
@@ -69,6 +73,10 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/media.php');
 
+/* Loop Functions
+   ======================================================================== */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
+
 /* Template Options
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/template-options.php');
@@ -83,23 +91,19 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
 
 /* Custom Post Types
    ======================================================================== */
- require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
+// require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
 
 /* Custom Taxonomies
    ======================================================================== */
 // require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 
-/* Loop Functions
+/* Theme Menus
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Theme Widgets
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
-
-/* Theme Menus
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Theme Scripts
    ======================================================================== */
@@ -109,13 +113,11 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
-/* Template Hooks
-   ======================================================================== */
-// require_once(LT3_FULL_EXTENSIONS_PATH . '/template-hooks.php');
 
 /* ========================================================================
    Project Extensions
    ======================================================================== */
+
 
 /* Site Settings Init
    ======================================================================== */
@@ -123,7 +125,7 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /* Custom Post Types Init
    ======================================================================== */
- require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
+// require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
 
 /* Custom Taxonomies Init
    ======================================================================== */

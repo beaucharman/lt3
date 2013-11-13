@@ -15,6 +15,7 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
  */
 
+
 /* Register and Enqeue local scripts
    ======================================================================== */
 add_action('wp_enqueue_scripts', 'lt3_load_scripts');
