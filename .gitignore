@@ -1,3 +1,12 @@
 .DS_Store
 readme.html
 license.txt
+
+wp-content/uploads
+
+# For use the W3 Total Cache
+wp-content/cache
+wp-content/advanced-cache.php
+wp-content/w3tc-config
+wp-content/db.php
+wp-content/object-cache.php
