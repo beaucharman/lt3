@@ -51,6 +51,11 @@ if (strpos($current_server_name, $production_server_name) !== false)
    */
   define('WP_DEBUG', false);
   define('SCRIPT_DEBUG', false);
+  
+  /**
+   * Set the environment
+   */
+  define('ENVIRONMENT_TYPE', 'production');
 
   /**
    * Set up paths
@@ -82,6 +87,11 @@ elseif (strpos($current_server_name, $staging_server_name) !== false)
    */
   define('WP_DEBUG', false);
   define('SCRIPT_DEBUG', false);
+  
+  /**
+   * Set the environment
+   */
+  define('ENVIRONMENT_TYPE', 'staging');
 
   /**
    * Set up paths
@@ -113,6 +123,11 @@ else
    */
   define('WP_DEBUG', false);
   define('SCRIPT_DEBUG', false);
+  
+  /**
+   * Set the environment
+   */
+  define('ENVIRONMENT_TYPE', 'development');
 
   /**
    * Set up paths
