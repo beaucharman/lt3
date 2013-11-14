@@ -13,6 +13,7 @@
  * lt3 project configuration
  */
 
+
 /* Development mode
    ======================================================================== */
 /**
@@ -21,6 +22,19 @@
  */
 define('LT3_DEVELOPMENT_MODE', true);
 
+/**
+ * Hide site from search engines unless it's in production
+ */
+if (ENVIRONMENT_TYPE == 'staging' || ENVIRONMENT_TYPE == 'development')
+{
+  update_option('blog_public', '1');
+}
+else
+{
+  update_option('blog_public', '0');
+}
+
+
 /* Front end layout and design options
    ======================================================================== */
 
@@ -28,6 +42,7 @@ define('LT3_DEVELOPMENT_MODE', true);
  * Set full page content width
  */
 define('LT3_PAGE_CONTENT_WIDTH', 960);
+
 
 /* Front end functionality and logic options
    ======================================================================== */
@@ -62,6 +77,7 @@ define('LT3_ENABLE_SITE_SEARCH', true);
  */
 define('LT3_ENABLE_META_DATA', false);
 
+
 /* Script, style and behaviour options
    ======================================================================== */
 
@@ -75,6 +91,7 @@ define('LT3_STYLES_CACHE_BREAK', '0.1');
  */
 define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
 
+
 /* Theme and editor options
    ======================================================================== */
 
@@ -87,6 +104,7 @@ define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', false);
  * Use the custom-editor-style.css file for the TinyMCE
  */
 define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
+
 
 /* Utility options
    ======================================================================== */
