@@ -1,8 +1,8 @@
 <?php
 /**
- * Menus
+ * Media
  * ========================================================================
- * menus.php
+ * media.php
  * @version      1.0 | July 20th 2013
  * @package      WordPress
  * @subpackage   lt3
