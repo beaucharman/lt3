@@ -28,6 +28,7 @@ if (LT3_ENABLE_WIDGETS)
    * lt3_register_primary_sidebar()
    */
   add_action('widgets_init', 'lt3_register_primary_sidebar');
+  
   function lt3_register_primary_sidebar()
   {
     register_sidebar(array(
@@ -42,7 +43,6 @@ if (LT3_ENABLE_WIDGETS)
   }
 
   // Register more sidebars here...
-
 }
 else
 {
@@ -50,6 +50,7 @@ else
    * Disable widgets
    */
   add_action('admin_init', 'lt3_remove_theme_submenus');
+  
   function lt3_remove_theme_submenus() {
     global $submenu;
     unset($submenu['themes.php'][7]);
