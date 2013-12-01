@@ -13,13 +13,16 @@
 
 
 add_action('after_setup_theme', 'lt3_initial_theme_setup');
+
 function lt3_initial_theme_setup()
 {
+  
   /**
    * Only need to run this once
    */
   if (get_option('theme_setup_status') !== '1')
   {
+    
     /**
      * Set the WordPress options the way you like
      *
@@ -90,7 +93,7 @@ function lt3_initial_theme_setup()
 
 
     /**
-     * Update the status so this dosn't run again
+     * Update the status so this doesn't run again
      */
     update_option('theme_setup_status', '1');
 
