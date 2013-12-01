@@ -19,6 +19,7 @@
 /* Register and enqeue styles
    ======================================================================== */
 add_action('init', 'lt3_load_styles');
+
 function lt3_load_styles()
 {
 
