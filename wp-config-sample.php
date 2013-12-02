@@ -55,7 +55,7 @@ if (strpos($current_server_name, $production_server_name) !== false)
   /**
    * Set the environment
    */
-  define('ENVIRONMENT_TYPE', 'production');
+  define('WP_ENV', 'production');
 
   /**
    * Set up paths
@@ -91,7 +91,7 @@ elseif (strpos($current_server_name, $staging_server_name) !== false)
   /**
    * Set the environment
    */
-  define('ENVIRONMENT_TYPE', 'staging');
+  define('WP_ENV', 'staging');
 
   /**
    * Set up paths
@@ -127,7 +127,7 @@ else
   /**
    * Set the environment
    */
-  define('ENVIRONMENT_TYPE', 'development');
+  define('WP_ENV', 'development');
 
   /**
    * Set up paths
