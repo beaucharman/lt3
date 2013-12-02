@@ -51,6 +51,8 @@ if (strpos($current_server_name, $production_server_name) !== false)
    */
   define('WP_DEBUG', false);
   define('SCRIPT_DEBUG', false);
+  define('WP_DEBUG_LOG', false);
+  define('WP_DEBUG_DISPLAY', false);
   
   /**
    * Set the environment
@@ -60,8 +62,8 @@ if (strpos($current_server_name, $production_server_name) !== false)
   /**
    * Set up paths
    */
-  define('WP_HOME','');
-  define('WP_SITEURL','');
+  define('WP_HOME','http://');
+  define('WP_SITEURL','http://');
 
 }
 elseif (strpos($current_server_name, $staging_server_name) !== false)
@@ -87,6 +89,8 @@ elseif (strpos($current_server_name, $staging_server_name) !== false)
    */
   define('WP_DEBUG', false);
   define('SCRIPT_DEBUG', false);
+  define('WP_DEBUG_LOG', false);
+  define('WP_DEBUG_DISPLAY', false);
   
   /**
    * Set the environment
@@ -121,8 +125,10 @@ else
   /**
    * Set WordPress debug mode, and script debug
    */
-  define('WP_DEBUG', false);
+  define('WP_DEBUG', true);
   define('SCRIPT_DEBUG', false);
+  define('WP_DEBUG_LOG', true);
+  define('WP_DEBUG_DISPLAY', false);
   
   /**
    * Set the environment
