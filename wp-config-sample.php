@@ -18,17 +18,23 @@
  * Set up server and deployment credentials
  */
 
-/* Get the current server name */
-$current_server_name = $_SERVER['SERVER_NAME'];
+/** 
+ * Get the current server 
+ * Change to 'SERVER_ADDR' if using IP addresses
+ */
+$current_server = $_SERVER['SERVER_NAME']; // 
 
-/* Set the production server Name */
-$production_server_name = '';
+/* Set the production server */
+$production_server = '';
 
-/* Set the staging server Name */
-$staging_server_name = '';
+/* Set the staging server */
+$staging_server = '';
+
+/* Set the development server */
+$development_server = '';
 
 /* MySQL settings - You can get this info from your web host */
-if (strpos($current_server_name, $production_server_name) !== false)
+if (strpos($current_server, $production_server) !== false)
 {
   /**
    * Production environment
@@ -66,7 +72,7 @@ if (strpos($current_server_name, $production_server_name) !== false)
   define('WP_SITEURL','http://');
 
 }
-elseif (strpos($current_server_name, $staging_server_name) !== false)
+elseif (strpos($current_server, $staging_server) !== false)
 {
   /**
    * Staging environment
@@ -103,7 +109,7 @@ elseif (strpos($current_server_name, $staging_server_name) !== false)
   define('WP_HOME','http://');
   define('WP_SITEURL','http://');
 }
-else
+elseif (strpos($current_server, $development_server) !== false)
 {
   /**
    * Local development environment
@@ -140,6 +146,10 @@ else
    */
   define('WP_HOME','http://');
   define('WP_SITEURL','http://');
+}
+else 
+{
+  wp_die('Sorry, no appropriate database credentials were found.');
 }
 
 /* End of server and deployment credentials */
