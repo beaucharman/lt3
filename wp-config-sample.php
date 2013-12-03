@@ -20,9 +20,9 @@
 
 /** 
  * Get the current server 
- * Change to 'SERVER_ADDR' if using IP addresses
+ * Change to 'SERVER_ADDR' if using IP addresses for reference
  */
-$current_server = $_SERVER['SERVER_NAME']; // 
+$current_server = $_SERVER['SERVER_NAME'];
 
 /* Set the production server */
 $production_server = '';
