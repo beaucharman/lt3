@@ -1,7 +1,7 @@
 <?php
 /**
  * Styles
- * ========================================================================
+ *
  * styles.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
@@ -15,75 +15,106 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
  */
 
+class lt3_Styles {
 
-/* Register and enqeue styles
-   ======================================================================== */
-add_action('init', 'lt3_load_styles');
 
-function lt3_load_styles()
-{
-
-  /**
-   * Register styles here
-   */
-  wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
-  wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
-
-  /**
-   * Enqueue styles here
-   */
-  if (! is_admin())
+  function __construct()
   {
     /**
-     * Front end stylesheets
+     * Register and enqeue styles action
      */
+    add_action('init', array(&$this, 'load_styles'));
 
-    /* Main stylesheet */
-    wp_enqueue_style('lt3_main_stylesheet');
 
     /**
-     * Enqueue theme styles here.
-     * Consider seperate files for development, then bundle into style.css
-     * for deployment. Conditional styles would be appropriate to be loaded here.
+     * Custom Editor Styles action
+     *
+     * Styles the visual editor with custom-editor-style.css
+     * to match the theme style.
      */
+    if (LT3_USE_CUSTOM_EDITOR_STYLES)
+    {
+      add_editor_style(LT3_STYLES_PATH . '/admin/custom-editor-style.css');
+    }
+
+
+    /**
+     * Custom Login Styles action
+     *
+     * This function styles the admin login screen with
+     * custom-login-style.css to match the theme style.
+     */
+    if (LT3_USE_CUSTOM_LOGIN_STYLES)
+    {
+      add_action('login_head', array(&$this, 'custom_login_styles'));
+    }
   }
-  elseif (is_admin())
+
+  /**
+   *
+   * Load Styles
+   *
+   */
+  function load_styles()
   {
     /**
-     * Admin stylesheets
+     * Register styles here
      */
+    wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
+    wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
 
-    /* Add consistency to site settings inputs */
-    wp_enqueue_style('lt3_custom_admin_styles');
 
-    // Enqueue admin styles here.
+    /**
+     * Enqueue styles here
+     */
+    if (! is_admin())
+    {
+      /**
+       *
+       * Front end stylesheets
+       *
+       */
+
+      /* Main stylesheet */
+      wp_enqueue_style('lt3_main_stylesheet');
+
+      /**
+       * Enqueue theme styles here.
+       * Consider seperate files for development, then bundle into style.css
+       * for deployment. Conditional styles would be appropriate to be loaded here.
+       */
+    }
+    elseif (is_admin())
+    {
+      /**
+       *
+       * Admin stylesheets
+       *
+       */
+
+      /* Add consistency to site settings inputs */
+      wp_enqueue_style('lt3_custom_admin_styles');
+
+      // Enqueue admin styles here.
+    }
   }
-}
 
 
-/**
- * Custom Editor Styles
- * ========================================================================
- * Styles the visual editor with custom-editor-style.css
- * to match the theme style.
- */
-if (LT3_USE_CUSTOM_EDITOR_STYLES)
-{
-  add_editor_style(LT3_STYLES_PATH . '/admin/custom-editor-style.css');
-}
-
-
-/**
- * Custom Login Styles
- * ========================================================================
- * This function styles the admin login screen with
- * custom-login-style.css to match the theme style.
- */
-if (LT3_USE_CUSTOM_LOGIN_STYLES)
-{
-  add_action('login_head', 'lt3_custom_login_styles');
-  function lt3_custom_login_styles()
+  /**
+   *
+   * Custom Login Styles
+   *
+   */
+  function custom_login_styles()
   {
     echo '<link rel="stylesheet" type="text/css" href="' . LT3_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
   }
 }
+
+
+/**
+ *
+ * Initiate lt3 Styles
+ *
+ */
+$lt3_styles_init = new lt3_Styles;

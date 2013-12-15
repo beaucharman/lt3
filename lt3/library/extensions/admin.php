@@ -155,58 +155,56 @@ function lt3_remove_dashboard_widgets()
 
 /**
  * Add Custom Post Types to 'Right Now'
- * ========================================================================
- * lt3_add_custom_post_type_to_right_now()
+ *
  * right_now_content_table_end action to add custom post types
- */
-add_action('right_now_content_table_end', 'lt3_add_custom_post_type_to_right_now');
-function lt3_add_custom_post_type_to_right_now()
+*/
+add_action('dashboard_glance_items', 'lt3_add_cpt_to_dashboard');
+function lt3_add_cpt_to_dashboard()
 {
-  $args = array('public' => true, '_builtin' => false);
-  $output = 'object';
-  $operator = 'and';
-  $post_types = get_post_types($args, $output, $operator);
+  $showTaxonomies = 1;
+
+  /* Custom taxonomies counts */
+  if ($showTaxonomies)
+  {
+    $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+
+    foreach ($taxonomies as $taxonomy)
+    {
+      $num_terms  = wp_count_terms($taxonomy->name);
+      $num = number_format_i18n($num_terms);
+      $text = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms);
+      $associated_post_type = $taxonomy->object_type;
+
+      if (current_user_can('manage_categories'))
+      {
+        $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
+      }
+
+      echo '<li class="taxonomy-count">' . $output . ' </li>';
+    }
+  }
+
+  /* Custom post types counts */
+  $post_types = get_post_types(array('_builtin' => false), 'objects');
 
   foreach ($post_types as $post_type)
   {
+
+    if ($post_type->show_in_menu == false)
+    {
+      continue;
+    }
+
     $num_posts = wp_count_posts($post_type->name);
     $num = number_format_i18n($num_posts->publish);
-    $text = _n(
-      $post_type->labels->singular_name,
-      $post_type->labels->name,
-      intval($num_posts->publish)
-    );
+    $text = _n($post_type->labels->singular_name, $post_type->labels->name, $num_posts->publish);
 
-    if (current_user_can('edit_posts'))
+    if (current_user_can( 'edit_posts' ))
     {
-      $num = "<a href='edit.php?post_type=$post_type->name'>$num</a>";
-      $text = "<a href='edit.php?post_type=$post_type->name'>$text</a>";
+      $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $num . ' ' . $text . '</a>';
     }
 
-    echo '<tr><td class="first b b-' . $post_type->name . '">' . $num . '</td>'
-      . '<td class="t ' . $post_type->name . '">' . $text . '</td></tr>';
-  }
-
-  $taxonomies = get_taxonomies($args, $output, $operator);
-
-  foreach ($taxonomies as $taxonomy)
-  {
-    $num_terms  = wp_count_terms($taxonomy->name);
-    $num = number_format_i18n($num_terms);
-    $text = _n(
-      $taxonomy->labels->singular_name,
-      $taxonomy->labels->name,
-      intval($num_terms)
-    );
-
-    if (current_user_can('manage_categories'))
-    {
-      $num = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$num</a>";
-      $text = "<a href='edit-tags.php?taxonomy=$taxonomy->name'>$text</a>";
-    }
-
-    echo '<tr><td class="first b b-' . $taxonomy->name . '">' . $num . '</td>'
-      . '<td class="t ' . $taxonomy->name . '">' . $text . '</td></tr>';
+    echo '<li class="page-count ' . $post_type->name . '-count">' . $output . '</td>';
   }
 }
 

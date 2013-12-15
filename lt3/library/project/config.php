@@ -14,9 +14,9 @@
  */
 
 
-/* Development mode
-   ======================================================================== */
 /**
+ * Development mode
+ *
  * Set the production environment for conditional statements.
  * true for development, false for deployment mode.
  */
@@ -25,7 +25,7 @@ define('LT3_DEVELOPMENT_MODE', true);
 /**
  * Hide site from search engines unless it's in production
  */
-if (ENVIRONMENT_TYPE == 'staging' || ENVIRONMENT_TYPE == 'development')
+if (WP_ENV == 'staging' || WP_ENV == 'development')
 {
   update_option('blog_public', '1');
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Scripts
- * ========================================================================
+ *
  * scripts.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
@@ -15,61 +15,85 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
  */
 
+class lt3_Scripts {
 
-/* Register and Enqeue local scripts
-   ======================================================================== */
-add_action('wp_enqueue_scripts', 'lt3_load_scripts');
-function lt3_load_scripts()
-{
 
-  /**
-   * Register scripts here
-   */
-  wp_register_script('lt3_modernizr', LT3_FULL_SCRIPTS_PATH . '/vendor/modernizr.min.js', array(), '0.1', false);
-  wp_register_script('lt3_jquery', LT3_FULL_SCRIPTS_PATH . '/vendor/jquery.min.js', array(), '0.1', true);
-  wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
-  wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
+  function __construct()
+  {
+    /**
+     * Register and Enqeue local scripts
+     */
+    add_action('wp_enqueue_scripts', array(&$this, 'load_scripts'));
+  }
 
-  /**
-   * Enqueue frontend scripts here
-   */
-  if (! is_admin())
+
+  function load_scripts()
   {
 
     /**
-     * Dequeue the currently registered version of jQuery
+     *
+     * Register scripts here
+     *
      */
-    wp_dequeue_script('jquery');
+    wp_register_script('lt3_modernizr', LT3_FULL_SCRIPTS_PATH . '/vendor/modernizr.min.js', array(), '0.1', false);
+    wp_register_script('lt3_jquery', LT3_FULL_SCRIPTS_PATH . '/vendor/jquery.min.js', array(), '0.1', true);
+    wp_register_script('lt3_plugins', LT3_FULL_SCRIPTS_PATH . '/plugins.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
+    wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
-    /* Comments */
-    if (is_singular() && get_option('thread_comments') && LT3_ENABLE_COMMENTS)
-    {
-      wp_enqueue_script('comment-reply');
-    }
-
-    /* Modernizr */
-    // wp_enqueue_script('lt3_modernizr');
 
     /**
-     * Load in separate scripts for development, change this to a concatenated
-     * file for deployment. See library/project/config.php
+     *
+     * Enqueue frontend scripts here
+     *
      */
-    if (LT3_DEVELOPMENT_MODE)
+    if (! is_admin())
     {
 
-      /* jQuery */
-      // wp_enqueue_script('lt3_jquery');
+      /**
+       * Dequeue the currently registered version of jQuery
+       */
+      wp_dequeue_script('jquery');
 
-      /* Plugins */
-      wp_enqueue_script('lt3_plugins');
+      /* Comments */
+      if (is_singular() && get_option('thread_comments') && LT3_ENABLE_COMMENTS)
+      {
+        wp_enqueue_script('comment-reply');
+      }
+
+      /* Modernizr */
+      // wp_enqueue_script('lt3_modernizr');
 
       /**
-       * Enqueue other theme template scripts for developement,
-       * or contitional production scripts here.
+       * Load in separate scripts for development, change this to a concatenated
+       * file for deployment. See library/project/config.php
        */
-    }
+      if (LT3_DEVELOPMENT_MODE)
+      {
 
-    /* Main project JavaScript */
-    wp_enqueue_script('lt3_main');
+        /* jQuery */
+        // wp_enqueue_script('lt3_jquery');
+
+        /* Plugins */
+        wp_enqueue_script('lt3_plugins');
+
+        /**
+         * Enqueue other theme template scripts for developement,
+         * or contitional production scripts here.
+         */
+      }
+
+      /**
+       * Main project JavaScript
+       */
+      wp_enqueue_script('lt3_main');
+    }
   }
 }
+
+
+/**
+ *
+ * Initiate lt3 Scripts
+ *
+ */
+$lt3_scripts_init = new lt3_Scripts;
