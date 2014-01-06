@@ -311,6 +311,7 @@ class LT3_Custom_Post_Type
   public function icon_style() { ?>
     <style rel="stylesheet" media="screen">
     #adminmenu .menu-icon-<?php echo $this->name; ?> div.wp-menu-image:before {
+      font-family: 'FontAwesome' !important;
       content: '\<?php echo $this->icon; ?>';
     }
     </style>
