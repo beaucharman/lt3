@@ -33,26 +33,39 @@
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 
+class lt3_Loop {
 
-/* Set all posts to be sorted alphabetically
-   ======================================================================== */
-add_action('pre_get_posts', 'lt3_default_loop_outputs');
-function lt3_default_loop_outputs($query)
-{
-  global $wp_the_query;
 
-  if (($wp_the_query === $query) && (! is_admin()))
+  function __construct()
   {
 
-    /**
-     * Order all posts all by title, ascending by default
-     */
-    $query->set('orderby', 'title');
-    $query->set('order', 'ASC');
-
-    // Place other loop alterations here
-
+    add_action('pre_get_posts', array(&$this, 'default_loop_output'));
   }
 
-  return $query;
+
+  /**
+   *
+   * Set all posts to be sorted alphabetically
+   *
+   */
+
+  function default_loop_output($query)
+  {
+    global $wp_the_query;
+
+    if (($wp_the_query === $query) && (! is_admin()))
+    {
+
+      /**
+       * Order all posts all by title, ascending by default
+       */
+      $query->set('orderby', 'title');
+      $query->set('order', 'ASC');
+
+      // Place other loop alterations here
+
+    }
+
+    return $query;
+  }
 }

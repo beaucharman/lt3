@@ -1,5 +1,6 @@
 <?php
 /**
+ *
  * Styles
  *
  * styles.php
@@ -13,9 +14,11 @@
  *
  * Use wp_deregister_style to unregister an unneeded or troublesome style.
  * http://codex.wordpress.org/Function_Reference/wp_deregister_style
+ *
  */
 
-class lt3_Styles {
+class LT3_Style {
+
 
 
   function __construct()
@@ -24,6 +27,7 @@ class lt3_Styles {
      * Register and enqeue styles action
      */
     add_action('init', array(&$this, 'load_styles'));
+
 
 
     /**
@@ -38,6 +42,7 @@ class lt3_Styles {
     }
 
 
+
     /**
      * Custom Login Styles action
      *
@@ -49,6 +54,8 @@ class lt3_Styles {
       add_action('login_head', array(&$this, 'custom_login_styles'));
     }
   }
+
+
 
   /**
    *
@@ -112,9 +119,8 @@ class lt3_Styles {
 }
 
 
+
 /**
- *
  * Initiate lt3 Styles
- *
  */
-$lt3_styles_init = new lt3_Styles;
+new LT3_Style;

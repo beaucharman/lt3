@@ -1,8 +1,7 @@
 <?php
 /**
  * Header
- * ========================================================================
- * header.php
+ *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
@@ -59,7 +58,10 @@
 
         <?php /* Display the main navigation menu */?>
         <nav class="main-navigation-menu__wrapper" role="navigation">
-          <?php lt3_main_navigation_menu('main-navigation-menu__list'); ?>
+          <?php
+            global $Main_Navigation_Menu;
+            $Main_Navigation_Menu->render();
+          ?>
         </nav>
 
       </header>

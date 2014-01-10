@@ -1,13 +1,13 @@
 <?php
 /**
  * Page
- * ========================================================================
- * page.php
+ *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  *
  * Page template.
+ *
  * For a different page template for a particular page,
  * save this template page as page-{{slug}}.php
  */

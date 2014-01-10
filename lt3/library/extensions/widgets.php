@@ -1,34 +1,33 @@
 <?php
 /**
+ *
  * Widgets
- * ========================================================================
+ *
  * widgets.php
  * @version      2.1 | 6th June 2013
  * @package      WordPress
  * @subpackage   lt3
  *
- * For more info, and variations:
- * http://codex.wordpress.org/Function_Reference/register_sidebar
- *
- * To use in a theme template:
- *   dynamic_sidebar('sidebar-id');
  */
 
 
-/* ========================================================================
-   Widget Areas
-   ======================================================================== */
-
+/**
+ *
+ * Widget Areas
+ *
+ */
 
 if (LT3_ENABLE_WIDGETS)
 {
   /**
+   *
    * Register Primary Sidebar
-   * ========================================================================
+   *
    * lt3_register_primary_sidebar()
+   *
    */
   add_action('widgets_init', 'lt3_register_primary_sidebar');
-  
+
   function lt3_register_primary_sidebar()
   {
     register_sidebar(array(
@@ -47,11 +46,14 @@ if (LT3_ENABLE_WIDGETS)
 else
 {
   /**
+   *
    * Disable widgets
+   *
    */
   add_action('admin_init', 'lt3_remove_theme_submenus');
-  
-  function lt3_remove_theme_submenus() {
+
+  function lt3_remove_theme_submenus()
+  {
     global $submenu;
     unset($submenu['themes.php'][7]);
   }

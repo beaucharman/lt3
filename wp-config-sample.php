@@ -18,8 +18,8 @@
  * Set up server and deployment credentials
  */
 
-/** 
- * Get the current server 
+/**
+ * Get the current server
  * Change to 'SERVER_ADDR' if using IP addresses for reference
  */
 $current_server = $_SERVER['SERVER_NAME'];
@@ -37,7 +37,9 @@ $development_server = '';
 if (strpos($current_server, $production_server) !== false)
 {
   /**
+   *
    * Production environment
+   *
    */
 
   /** The name of the database for WordPress */
@@ -59,7 +61,7 @@ if (strpos($current_server, $production_server) !== false)
   define('SCRIPT_DEBUG', false);
   define('WP_DEBUG_LOG', false);
   define('WP_DEBUG_DISPLAY', false);
-  
+
   /**
    * Set the environment
    */
@@ -68,14 +70,16 @@ if (strpos($current_server, $production_server) !== false)
   /**
    * Set up paths
    */
-  define('WP_HOME','http://');
-  define('WP_SITEURL','http://');
+  //define('WP_HOME','http://');
+  //define('WP_SITEURL','http://');
 
 }
 elseif (strpos($current_server, $staging_server) !== false)
 {
   /**
+   *
    * Staging environment
+   *
    */
 
   /** The name of the database for WordPress */
@@ -97,7 +101,7 @@ elseif (strpos($current_server, $staging_server) !== false)
   define('SCRIPT_DEBUG', false);
   define('WP_DEBUG_LOG', false);
   define('WP_DEBUG_DISPLAY', false);
-  
+
   /**
    * Set the environment
    */
@@ -106,13 +110,15 @@ elseif (strpos($current_server, $staging_server) !== false)
   /**
    * Set up paths
    */
-  define('WP_HOME','http://');
-  define('WP_SITEURL','http://');
+  //define('WP_HOME','http://');
+  //define('WP_SITEURL','http://');
 }
 elseif (strpos($current_server, $development_server) !== false)
 {
   /**
+   *
    * Local development environment
+   *
    */
 
   /** The name of the database for WordPress */
@@ -135,7 +141,7 @@ elseif (strpos($current_server, $development_server) !== false)
   define('SCRIPT_DEBUG', false);
   define('WP_DEBUG_LOG', true);
   define('WP_DEBUG_DISPLAY', false);
-  
+
   /**
    * Set the environment
    */
@@ -144,12 +150,12 @@ elseif (strpos($current_server, $development_server) !== false)
   /**
    * Set up paths
    */
-  define('WP_HOME','http://');
-  define('WP_SITEURL','http://');
+  //define('WP_HOME','http://');
+  //define('WP_SITEURL','http://');
 }
-else 
+else
 {
-  wp_die('Sorry, no appropriate database credentials were found.');
+  die('Sorry, no appropriate database credentials were found.');
 }
 
 /* End of server and deployment credentials */

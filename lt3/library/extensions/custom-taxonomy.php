@@ -66,7 +66,7 @@ class LT3_Custom_Taxonomy
     else
     {
       $name = $args['name'];
-      $post_type = $args['post_type'];
+      $post_type = (isset($args['post_type'])) ? $args['post_type'] : '';
     }
 
     $args = array_merge(

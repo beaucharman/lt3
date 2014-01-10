@@ -1,5 +1,6 @@
 <?php
 /**
+ *
  * Scripts
  *
  * scripts.php
@@ -13,9 +14,11 @@
  *
  * Use wp_deregister_script to unregister an unneeded or troublesome script:
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
+ *
  */
 
-class lt3_Scripts {
+class LT3_Script {
+
 
 
   function __construct()
@@ -27,9 +30,9 @@ class lt3_Scripts {
   }
 
 
+
   function load_scripts()
   {
-
     /**
      *
      * Register scripts here
@@ -41,6 +44,7 @@ class lt3_Scripts {
     wp_register_script('lt3_main', LT3_FULL_SCRIPTS_PATH . '/main.js', array(), LT3_SCRIPTS_CACHE_BREAK, true);
 
 
+
     /**
      *
      * Enqueue frontend scripts here
@@ -48,7 +52,6 @@ class lt3_Scripts {
      */
     if (! is_admin())
     {
-
       /**
        * Dequeue the currently registered version of jQuery
        */
@@ -69,7 +72,6 @@ class lt3_Scripts {
        */
       if (LT3_DEVELOPMENT_MODE)
       {
-
         /* jQuery */
         // wp_enqueue_script('lt3_jquery');
 
@@ -82,6 +84,8 @@ class lt3_Scripts {
          */
       }
 
+
+
       /**
        * Main project JavaScript
        */
@@ -91,9 +95,8 @@ class lt3_Scripts {
 }
 
 
+
 /**
- *
  * Initiate lt3 Scripts
- *
  */
-$lt3_scripts_init = new lt3_Scripts;
+new LT3_Script;

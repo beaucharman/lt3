@@ -1,13 +1,12 @@
 <?php if (!defined('ABSPATH')) exit;
 /**
  * Functions
- * ========================================================================
- * functions.php
+ *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
  *
- * lt3 Functions and Theme Setup
+ * lt3 Functions and Theme Setup.
  *
  * For each theme: custom code, snippets and functions should be placed in
  * library/project and included from this functions.php file.
@@ -123,13 +122,9 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
    ======================================================================== */
 // require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
 
-/* Custom Post Types Init
+/* Models
    ======================================================================== */
-// require_once(LT3_FULL_PROJECT_PATH . '/custom-post-types-init.php');
-
-/* Custom Taxonomies Init
-   ======================================================================== */
-// require_once(LT3_FULL_PROJECT_PATH . '/custom-taxonomies-init.php');
+require_once(LT3_FULL_PROJECT_PATH . '/models.php');
 
 /**
  * Include more files as needed.
