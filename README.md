@@ -70,13 +70,13 @@ Some nice deployment configurations, house cleaning and security stuff in there.
 Which should contain:
 
 ```
-# Prevent directory browsing=
+# Prevent directory browsing
 Options All -Indexes
 
 # Protect all sever side files
 Order deny,allow
 Deny from all
-<Files ~ ".(xml|css|jpe?g|png|gif|js)$">
+<Files ~ ".(xml|css|jpe?g|png|gif|js|svg|ttf|woff|pdf|eot)$">
 Allow from all
 </Files>
 ```
