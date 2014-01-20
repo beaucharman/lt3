@@ -17,7 +17,7 @@ get_header(); ?>
 
   <?php if (term_description()) : ?>
   <p class="category-description">
-    <?php echo term_description(); ?>
+    <?php remove_filter('term_description','wpautop'); echo term_description(); ?>
   </p>
   <?php endif; ?>
 
