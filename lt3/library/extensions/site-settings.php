@@ -1,5 +1,6 @@
 <?php
 /**
+ *
  * Site Settings
  * ========================================================================
  * site-settings.php
@@ -10,6 +11,7 @@
  * To use and view the option:
  *   global $lt3_site_settings;
  *   echo $lt3_site_settings['setting_id'];
+ *
  */
 
 
@@ -27,10 +29,12 @@ class LT3_Site_Settings_Page
 
 
   /**
+   *
    * Class Constructor
    * ========================================================================
    * __construct()
    * @param  {array} $_site_settings
+   *
    */
   public function __construct($group, $name, $fields = array(), $menu_name = '', $title = '')
   {
