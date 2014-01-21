@@ -11,7 +11,7 @@
 
 <?php while (have_posts()) : the_post(); global $post; ?>
 
-<article <?php post_class('attachment post-' . get_the_ID()); ?>>
+<article <?php post_class('article article__attachment attachment post-' . get_the_ID()); ?>>
 
   <h1 class="article-title"><?php the_title(); ?></h1>
 

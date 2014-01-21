@@ -377,4 +377,5 @@ class LT3_Site_Settings_Page
   {
     return strToLower(str_replace(' ', '_', $words));
   }
+
 }

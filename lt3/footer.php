@@ -12,7 +12,7 @@
       <footer class="page-footer" role="contentinfo">
 
         <?php /* Site information  */?>
-        <div class="site-information">
+        <div class="page-footer__information site-information">
           &copy;<?php echo date('Y'); ?>&nbsp;<?php echo bloginfo('name'); ?>
         </div>
 

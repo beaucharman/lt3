@@ -16,12 +16,16 @@
 
 <section class="message message--no-results">
 
-  <h3>Sorry! We couldn't find anything&hellip;</h3>
+  <h3 class="message__heading">Sorry! We couldn't find anything&hellip;</h3>
+
   <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
+
   <p>
     Maybe try searching with a different keyword?
   </p>
+
   <?php get_search_form(); ?>
+
   <?php endif; ?>
 
 </section>

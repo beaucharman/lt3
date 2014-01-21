@@ -16,7 +16,7 @@
  *  $PostType->get()
  *
  * To declare a custom post type, simply create a new instance of the
- * LT3_Custom_Post_Type class.
+ * Bamboo_Custom_Post_Type class.
  *
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-post-types
@@ -31,7 +31,7 @@
    ======================================================================== */
 
 
-class LT3_Custom_Post_Type
+class Bamboo_Custom_Post_Type
 {
 
   public $name;
@@ -311,6 +311,7 @@ class LT3_Custom_Post_Type
   public function icon_style() { ?>
     <style rel="stylesheet" media="screen">
     #adminmenu .menu-icon-<?php echo $this->name; ?> div.wp-menu-image:before {
+      font-family: 'FontAwesome' !important;
       content: '\<?php echo $this->icon; ?>';
     }
     </style>
@@ -327,7 +328,7 @@ class LT3_Custom_Post_Type
   static function get_font_awesome()
   {
     add_action('admin_head', 'font_awesome_icons');
-    
+
     function font_awesome_icons()
     {
       echo '<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">';

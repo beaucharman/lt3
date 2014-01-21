@@ -1,8 +1,8 @@
 <?php
 /**
- * Loop
+ * Loop Single
  * ========================================================================
- * loop.php
+ * loop-single.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
@@ -14,15 +14,9 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
-<?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
+<article <?php post_class('article article__single single entry content post-' . get_the_ID()); ?>>
 
-<article <?php post_class('post-' . get_the_ID() . ' entry ' . $output_type); ?>>
-
-  <h1 class="article-title">
-    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-      <?php the_title(); ?>
-    </a>
-  </h1>
+  <h1 class="article-title"><?php the_title(); ?></h1>
 
   <?php lt3_include_post_meta(); ?>
 
@@ -32,10 +26,17 @@
   </figure>
   <?php endif; ?>
 
-  <?php (is_single()) ? the_excerpt() : the_content(); ?>
+  <?php the_content(); ?>
+
+  <footer class="article-footer">
+    <?php lt3_include_page_pagination(); ?>
+    <?php lt3_back_to_parent_link(); ?>
+  </footer>
 
 </article>
 
+<?php lt3_include_archive_pagination(); ?>
+
 <?php lt3_get_comments_template(); ?>
 
-<?php endwhile; ?>
+<?php endwhile ; ?>

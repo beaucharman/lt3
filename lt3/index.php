@@ -12,7 +12,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop'); ?>
+    <?php get_template_part(LT3_VIEWS_PATH . '/loop'); ?>
 
     <?php lt3_include_single_navigation(); ?>
 

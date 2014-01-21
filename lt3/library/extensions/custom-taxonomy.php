@@ -16,7 +16,7 @@
  *  $Taxonomy->get()
  *
  * To declare a custom taxonomy, simply create a new instance of the
- * LT3_Custom_Taxonomy class.
+ * Bamboo_Custom_Taxonomy class.
  *
  * Configuration guide:
  * https://github.com/beaucharman/wordpress-custom-taxonomies
@@ -36,7 +36,7 @@
    ======================================================================== */
 
 
-class LT3_Custom_Taxonomy
+class Bamboo_Custom_Taxonomy
 {
 
   public $name;

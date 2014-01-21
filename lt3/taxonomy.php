@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Taxonomy Template
@@ -14,19 +13,19 @@
 get_header(); ?>
 
   <?php $taxonomy_term = $wp_query->get_queried_object(); ?>
-  <h1 class="content-title"><?php
+  <h1 class="taxonomy__heading content-title"><?php
     echo $taxonomy_term->name; echo _e(' Archive');
   ?></h1>
 
   <?php if (term_description()) : ?>
     <p class="taxonomy-description">
-      <?php echo term_description(); ?>
+      <?php remove_filter('term_description','wpautop'); echo term_description(); ?>
     </p>
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'taxonomy'); ?>
+    <?php get_template_part(LT3_VIEWS_PATH . '/loop', 'taxonomy'); ?>
 
     <?php lt3_include_archive_pagination(); ?>
 

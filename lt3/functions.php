@@ -34,7 +34,7 @@ define('LT3_IMAGES_PATH', 'library/images');
 
 define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/' . LT3_IMAGES_PATH);
 
-define('LT3_TEMPLATE_PARTS_PATH', 'library/template-parts');
+define('LT3_VIEWS_PATH', 'library/views');
 
 
 /* ========================================================================
@@ -90,11 +90,11 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
 
 /* Custom Post Types
    ======================================================================== */
-// require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
 
 /* Custom Taxonomies
    ======================================================================== */
-// require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 
 /* Theme Menus
    ======================================================================== */

@@ -230,7 +230,7 @@ function lt3_get_archive_title()
  */
 function lt3_get_message($message_handle)
 {
-  get_template_part(LT3_TEMPLATE_PARTS_PATH . '/message', lt3_urify_words($message_handle));
+  get_template_part(LT3_VIEWS_PATH . '/message', lt3_urify_words($message_handle));
 }
 
 

@@ -72,7 +72,6 @@ if (strpos($current_server, $production_server) !== false)
    */
   //define('WP_HOME','http://');
   //define('WP_SITEURL','http://');
-
 }
 elseif (strpos($current_server, $staging_server) !== false)
 {

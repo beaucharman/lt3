@@ -93,14 +93,14 @@ function lt3_get_attachment($id, $size = 'thumbnail', $attributes = false)
  */
 function lt3_get_id_by_slug($slug, $post_type = 'post')
 {
-  $query = new WP_Query(
+  $title_query = new WP_Query(
     array(
       'name' => $slug,
       'post_type' => $post_type
     )
   );
-  $query->the_post();
-  return get_the_ID();
+
+  return $title_query->post->ID;
 }
 
 

@@ -19,14 +19,15 @@
  */
 
 
-class LT3_Model {
+class Bamboo_Model {
+
 
   /**
-   * Taxonomy and Post Type vaiable declarations
+   * Global Variables
    */
-  // examples
-  // public static $Taxonomy;
-  // public static $Post_Type;
+  public static $Genre;
+  public static $Movie;
+
 
   function __construct()
   {
@@ -34,7 +35,7 @@ class LT3_Model {
     /**
      * Include Font Awesome
      */
-    // Bamboo_Custom_Post_Type::get_font_awesome();
+    Bamboo_Custom_Post_Type::get_font_awesome();
 
     /**
      * register taxonomies
@@ -49,7 +50,6 @@ class LT3_Model {
   }
 
 
-
   /**
    *
    * Taxonomies
@@ -58,11 +58,17 @@ class LT3_Model {
   function create_taxonomies()
   {
 
-    // example
-    // LT3_Model::$Taxonomy = new Bamboo_Custom_Taxonomy(array('name', 'post_type'));
+    //
+    // Example - Genre
+    //
+    // Bamboo_Model::$Genre = new Bamboo_Custom_Taxonomy(
+    //   array(
+    //     'name'   => 'genre',
+    //     'post_type' => 'movie'
+    //    )
+    // );
 
   }
-
 
 
   /**
@@ -73,10 +79,17 @@ class LT3_Model {
   function create_post_types()
   {
 
-    // example
-    // LT3_Model::$Post_Type = new Bamboo_Custom_Post_Type('name');
+    //
+    // Example - Movie
+    //
+    // Bamboo_Model::$Movie = new Bamboo_Custom_Post_Type(
+    //   array(
+    //     'name'   => 'movie'
+    //   )
+    // );
 
   }
+
 }
 
-new LT3_Model;
+new Bamboo_Model;

@@ -15,20 +15,20 @@ get_header(); ?>
 
   <?php global $wp_query; $total_results = $wp_query->found_posts; ?>
 
-  <h1 class="content-title">Search Results</h1>
+  <h1 class="search__heading content-title">Search Results</h1>
 
-  <p class="search-query">
+  <p class="search__query">
     <?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?>
     found for the search term: <span><?php echo esc_html($s, 1); ?></span>
   </p>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop', 'search'); ?>
+    <?php get_template_part(LT3_VIEWS_PATH . '/loop', 'search'); ?>
 
     <?php lt3_include_archive_pagination(); ?>
 
-    <p>
+    <p class="search__follow-up">
       <?php echo _e('Still not what you are looking for?'); ?>
     </p>
 

@@ -44,20 +44,20 @@
 
       <header class="page-header" role="banner">
 
-        <?php /* Site title */?>
+        <?php /* Site title */ ?>
         <?php if (is_home() || is_front_page()) : ?><h1 class="site-heading"><?php endif; ?>
-        <a href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link" class="site-title">
+        <a class="header__title site-title" href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link">
           <?php bloginfo('name'); ?>
         </a>
         <?php if (is_home() || is_front_page()) : ?></h1><?php endif; ?>
 
-        <?php /* Site description */?>
+        <?php /* Site description */ ?>
         <?php if (get_bloginfo('description')) : ?>
-        <div class="site-description"><?php bloginfo('description'); ?></div>
+        <div class="header__description site-description"><?php bloginfo('description'); ?></div>
         <?php endif; ?>
 
-        <?php /* Display the main navigation menu */?>
-        <nav class="main-navigation-menu__wrapper" role="navigation">
+        <?php /* Display the main navigation menu */ ?>
+        <nav class="header__menu main-navigation-menu main-navigation-menu__wrapper" role="navigation">
           <?php
             global $Main_Navigation_Menu;
             $Main_Navigation_Menu->render();

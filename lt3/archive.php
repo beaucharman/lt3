@@ -13,17 +13,19 @@ get_header(); ?>
 
   <?php global $post; global $wp_query; $post = $posts[0]; ?>
 
-  <h1 class="content-title"><?php lt3_get_archive_title(); ?></h1>
+  <h1 class="archive__heading content-heading"><?php lt3_get_archive_title(); ?></h1>
 
   <?php if (term_description()) : ?>
-  <p class="term-description">
+
+  <p class="archive__description term-description">
     <?php echo term_description(); ?>
   </p >
+
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_TEMPLATE_PARTS_PATH . '/loop-archive', get_post_type($post->ID)); ?>
+    <?php get_template_part(LT3_VIEWS_PATH . '/loop-archive', get_post_type($post->ID)); ?>
 
     <?php lt3_include_archive_pagination(); ?>
 

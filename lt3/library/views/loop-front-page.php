@@ -14,7 +14,7 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
-<article <?php post_class('front-page entry content post-' . get_the_ID()); ?>>
+<article <?php post_class('article article__front-page front-page entry content post-' . get_the_ID()); ?>>
 
   <?php $article_title = strtoupper(get_the_title());
     if (($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
