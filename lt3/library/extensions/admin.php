@@ -28,11 +28,6 @@ class LT3_Admin {
 
     add_action('wp_dashboard_setup', array(&$this, 'custom_dashboard_widgets'));
 
-    if (LT3_ENABLE_TUTORIAL_SECTION)
-    {
-      add_action('admin_menu', array(&$this, 'create_tutorial_menu'));
-    }
-
     if (! LT3_ENABLE_COMMENTS)
     {
       /* Remove the comments admin menu item */
@@ -52,25 +47,23 @@ class LT3_Admin {
     /**
      * Content management and display
      */
+    add_action('restrict_manage_posts', array(&$this, 'restrict_by_taxonomy'));
 
-    // add_action('restrict_manage_posts', array(&$this, 'restrict_by_taxonomy'));
+    add_filter('parse_query', array(&$this, 'restriction_taxonomy_dropdown'));
 
-    // add_filter('parse_query', array(&$this, 'restriction_taxonomy_dropdown'));
+    /**
+     * User related functions
+     */
+    add_filter('user_contactmethods', array(&$this, 'custom_userfields', 10, 1));
 
-    // /**
-    //  * User related functions
-    //  */
+    /**
+     * Security measures
+     */
+    add_action('admin_head', array(&$this, 'add_admin_nofollow_meta'));
 
-    // add_filter('user_contactmethods', array(&$this, 'custom_userfields', 10, 1));
+    add_action('init', array(&$this, 'remove_wp_generator'));
 
-    // /**
-    //  * Security measures
-    //  */
-    // add_action('admin_head', array(&$this, 'add_admin_nofollow_meta'));
-
-    // add_action('init', array(&$this, 'remove_wp_generator'));
-
-    // add_filter('login_errors', array(&$this, 'alternate_login_error_message'));
+    add_filter('login_errors', array(&$this, 'alternate_login_error_message'));
 
   }
 
@@ -124,27 +117,6 @@ class LT3_Admin {
 
     echo $admin_widget;
   }
-
-
-
-  /**
-   * Create Tutorial Menu
-   *
-   * create_tutorial_menu()
-   * admin_menu action to create tutorial pages
-   */
-  function create_tutorial_menu()
-  {
-    add_menu_page('User Guide', 'User Guide', 'manage_options', 'user-guide', 'user_guide');
-    function user_guide()
-    {
-      $admin_file = (function_exists('lt3_get_data_with_curl'))
-        ? lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.user-guide.php')
-        : 'Sorry, could not find the file.';
-      echo $admin_file;
-    }
-  }
-
 
 
   /**

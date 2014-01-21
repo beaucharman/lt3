@@ -147,11 +147,6 @@ class LT3_Config {
      */
     define('LT3_USE_CUSTOM_LOGIN_STYLES', false);
 
-    /**
-     * Enable admin tutorial section. true/ false
-     */
-    define('LT3_ENABLE_TUTORIAL_SECTION', false);
-
     // End project configuration
 
   }
