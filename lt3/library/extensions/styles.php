@@ -1,25 +1,15 @@
 <?php
 /**
- *
  * Styles
- *
+ * ========================================================================
  * styles.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
- *
- * To include styles correctly, use the wp_register_style, and wp_enqueue_style functions:
- * http://codex.wordpress.org/Function_Reference/wp_register_style
- * http://codex.wordpress.org/Function_Reference/wp_enqueue_style
- *
- * Use wp_deregister_style to unregister an unneeded or troublesome style.
- * http://codex.wordpress.org/Function_Reference/wp_deregister_style
- *
  */
 
-class LT3_Style {
-
-
+class LT3_Style
+{
 
   function __construct()
   {

@@ -33,12 +33,11 @@
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 
-class lt3_Loop {
-
+class lt3_Loop
+{
 
   function __construct()
   {
-
     add_action('pre_get_posts', array(&$this, 'default_loop_output'));
   }
 

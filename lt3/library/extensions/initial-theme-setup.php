@@ -11,7 +11,8 @@
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
  */
 
-class LT3_Setup {
+class LT3_Setup
+{
 
   function __construct()
   {

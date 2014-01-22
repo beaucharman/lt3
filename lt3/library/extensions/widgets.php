@@ -1,15 +1,12 @@
 <?php
 /**
- *
  * Widgets
- *
+ * ========================================================================
  * widgets.php
  * @version      2.1 | 6th June 2013
  * @package      WordPress
  * @subpackage   lt3
- *
  */
-
 
 /**
  *

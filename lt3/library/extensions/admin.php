@@ -13,9 +13,8 @@
  * to can be found in the library/dashboard/ directory.
  */
 
-class LT3_Admin {
-
-
+class LT3_Admin
+{
 
   function __construct()
   {

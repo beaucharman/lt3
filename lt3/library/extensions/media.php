@@ -1,17 +1,15 @@
 <?php
 /**
- *
  * Media
- *
+ * ========================================================================
  * media.php
  * @version      1.0 | July 20th 2013
  * @package      WordPress
  * @subpackage   lt3
- *
  */
 
-class lt3_Media {
-
+class lt3_Media
+{
 
   function __construct()
   {

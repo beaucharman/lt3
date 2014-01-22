@@ -1,16 +1,15 @@
 <?php
 /**
- *
  * Menus Class
- *
+ * ========================================================================
  * menus.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
  * @subpackage   lt3
- *
  */
 
-class LT3_Menu {
+class LT3_Menu
+{
 
   public $name;
   public $theme_location;

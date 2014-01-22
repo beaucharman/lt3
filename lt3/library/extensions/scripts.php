@@ -1,8 +1,7 @@
 <?php
 /**
- *
  * Scripts
- *
+ * ========================================================================
  * scripts.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
@@ -14,12 +13,10 @@
  *
  * Use wp_deregister_script to unregister an unneeded or troublesome script:
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
- *
  */
 
-class LT3_Script {
-
-
+class LT3_Script
+{
 
   function __construct()
   {
