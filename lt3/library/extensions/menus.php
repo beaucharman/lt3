@@ -48,11 +48,11 @@ class LT3_Menu
     );
 
     $this->name = $args['name'];
-    $this->theme_location = $args['theme_location'];
-    $this->container = $args['container'];
-    $this->menu_class = $args['menu_class'];
-    $this->items_wrap = $args['items_wrap'];
-    $this->fallback_cb = $args['fallback_cb'];
+    $this->theme_location = $args['theme_location']; // ''
+    $this->container = $args['container']; // 'div'
+    $this->menu_class = $args['menu_class']; // menu
+    $this->items_wrap = $args['items_wrap']; // '<ul id="%1$s" class="%2$s">%3$s</ul>',
+    $this->fallback_cb = $args['fallback_cb']; // 'wp_page_menu'
 
     /**
      * Register and Enqeue local scripts
@@ -88,7 +88,19 @@ class LT3_Menu
         'container'      => $this->container,
         'menu_class'     => $this->menu_class,
         'items_wrap'     => $this->items_wrap,
-        'fallback_cb'    => $this->fallback_cb
+        'fallback_cb'    => $this->fallback_cb,
+        'menu'            => '',
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'depth'           => 0,
+        'walker'          => ''
       )
     );
   }

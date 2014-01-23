@@ -22,6 +22,10 @@ class LT3_Config {
   function __construct()
   {
 
+    global $content_width;
+
+
+
     /**
      * Development mode
      *
@@ -55,6 +59,14 @@ class LT3_Config {
      */
     define('LT3_PAGE_CONTENT_WIDTH', 960);
 
+    /**
+     * Set the content width
+     */
+    if (! isset($content_width))
+    {
+      $content_width = LT3_PAGE_CONTENT_WIDTH;
+    }
+
 
 
     /**
@@ -77,11 +89,6 @@ class LT3_Config {
      * Enable comments
      */
     define('LT3_ENABLE_COMMENTS', false);
-
-    /**
-     * Enable widgets
-     */
-    define('LT3_ENABLE_WIDGETS', false);
 
     /**
      * Enable site search
@@ -122,7 +129,7 @@ class LT3_Config {
     /**
      * Enable extra TinyMCE buttons
      */
-    define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', false);
+    define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
 
     /**
      * Use the custom-editor-style.css file for the TinyMCE

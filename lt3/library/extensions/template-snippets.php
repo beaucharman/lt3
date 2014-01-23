@@ -14,6 +14,16 @@
  *   (Include pagination for example)
  */
 
+/* Get the Comments Template
+   ======================================================================== */
+function lt3_get_comments_template()
+{
+  if (LT3_ENABLE_COMMENTS)
+  {
+    comments_template();
+  }
+}
+
 
 /**
  * lt3 Title

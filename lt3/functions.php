@@ -76,13 +76,9 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/media.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
 
-/* Template Options
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template-options.php');
-
 /* Template Filters
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template-filters.php');
+require_once(LT3_FULL_EXTENSIONS_PATH . '/filters.php');
 
 /* Template Snippets
    ======================================================================== */
@@ -99,10 +95,6 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 /* Theme Menus
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
-
-/* Theme Widgets
-   ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/widgets.php');
 
 /* Theme Scripts
    ======================================================================== */
