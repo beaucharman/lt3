@@ -30,7 +30,11 @@
     <?php endif; ?>
   </figure>
 
-  <footer class="article__footer"><?php lt3_back_to_parent_link(); ?></footer>
+  <footer class="article__footer">
+
+    <?php lt3_back_to_parent_link(); ?>
+
+  </footer>
 
 </article>
 

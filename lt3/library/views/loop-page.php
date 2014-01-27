@@ -28,7 +28,7 @@
 
 </article>
 
-<?php lt3_include_page_pagination(); ?>
+<?php lt3_Pagination::include_page_pagination(); ?>
 
 <?php lt3_get_comments_template(); ?>
 

@@ -184,25 +184,6 @@ function lt3_is_post_type($type = null)
 
 
 /**
- * Has Page Pagination
- * ========================================================================
- * @param null
- * @return {boolean}
- *
- * Return true if has pagination.
- */
-function lt3_has_page_pagination()
-{
-  if (wp_link_pages('echo=0'))
-  {
-    return true;
-  }
-
-  return false;
-}
-
-
-/**
  * Post is in Descendant Category
  * ========================================================================
  * @param {array} $cat

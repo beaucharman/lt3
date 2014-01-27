@@ -84,6 +84,10 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/filters.php');
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
 
+/* Pagination
+   ======================================================================== */
+require_once(LT3_FULL_EXTENSIONS_PATH . '/pagination.php');
+
 /* Custom Post Types
    ======================================================================== */
 require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');

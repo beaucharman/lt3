@@ -26,7 +26,7 @@ get_header(); ?>
 
     <?php get_template_part(LT3_VIEWS_PATH . '/loop', 'search'); ?>
 
-    <?php lt3_include_archive_pagination(); ?>
+    <?php lt3_Pagination::include_archive_pagination(); ?>
 
     <p class="search__follow-up">
       <?php echo _e('Still not what you are looking for?'); ?>

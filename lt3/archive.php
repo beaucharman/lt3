@@ -27,7 +27,7 @@ get_header(); ?>
 
     <?php get_template_part(LT3_VIEWS_PATH . '/loop-archive', get_post_type($post->ID)); ?>
 
-    <?php lt3_include_archive_pagination(); ?>
+    <?php lt3_Pagination::include_archive_pagination(); ?>
 
   <?php else : ?>
 

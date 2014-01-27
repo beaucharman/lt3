@@ -29,13 +29,16 @@
   <?php the_content(); ?>
 
   <footer class="article-footer">
-    <?php lt3_include_page_pagination(); ?>
+
+    <?php lt3_Pagination::include_page_pagination(); ?>
+
     <?php lt3_back_to_parent_link(); ?>
+
   </footer>
 
 </article>
 
-<?php lt3_include_archive_pagination(); ?>
+<?php lt3_Pagination::include_archive_pagination(); ?>
 
 <?php lt3_get_comments_template(); ?>
 
