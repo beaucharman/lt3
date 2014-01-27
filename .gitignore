@@ -1,11 +1,15 @@
+# Files
+.sass-cach
 .DS_Store
-readme.html
 license.txt
+node_modules
+readme.html
 
+# Directories
 wp-content/uploads
 wp-content/debug.log
 
-# For use the W3 Total Cache
+# W3 Total Cache
 wp-content/cache
 wp-content/advanced-cache.php
 wp-content/w3tc-config
