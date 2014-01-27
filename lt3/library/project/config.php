@@ -147,7 +147,7 @@ class LT3_Config {
     /**
      * Enable template files debug mode
      */
-    define('LT3_ENABLE_TEMPLATE_DEBUG', true);
+    define('LT3_ENABLE_TEMPLATE_DEBUG', false);
 
     /**
      * Use the custom-login-style.css file for the Login screen
