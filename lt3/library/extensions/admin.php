@@ -25,8 +25,6 @@ class LT3_Admin
 
     add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
-    add_action('wp_dashboard_setup', array(&$this, 'custom_dashboard_widgets'));
-
     if (! LT3_ENABLE_COMMENTS)
     {
       /* Remove the comments admin menu item */
@@ -92,33 +90,6 @@ class LT3_Admin
 
 
   /**
-   * Custom Dashboard Widgets
-   *
-   * custom_dashboard_widgets()
-   * wp_dashboard_setup action to add custom widgets to admin dashboard
-   */
-  function custom_dashboard_widgets()
-  {
-    global $wp_meta_boxes;
-    wp_add_dashboard_widget(
-      'custom_admin_widget',
-      'Website Information',
-      array(&$this, 'create_website_support_widget')
-    );
-  }
-
-  function create_website_support_widget()
-  {
-    if (function_exists('lt3_get_data_with_curl'))
-    {
-      $admin_widget = lt3_get_data_with_curl(LT3_FULL_DASHBOARD_PATH . '/dashboard.widget.php');
-    }
-
-    echo $admin_widget;
-  }
-
-
-  /**
    * Disable Global Comments
    *
    * Various methods to remove comment functionality globally
@@ -138,6 +109,7 @@ class LT3_Admin
       remove_post_type_support($post_type, 'comments');
     }
   }
+
 
 
   /* Remove comments notifications from the adminbar */
