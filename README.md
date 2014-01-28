@@ -76,7 +76,7 @@ Options All -Indexes
 # Protect all sever side files
 Order deny,allow
 Deny from all
-<Files ~ ".(xml|css|jpe?g|png|gif|js|svg|ttf|woff|pdf|eot)$">
+<Files ~ “.(css|js|pdf|doc|xml|jpe?g|png|gif|svg|ttf|woff|eot)$”>
 Allow from all
 </Files>
 ```
