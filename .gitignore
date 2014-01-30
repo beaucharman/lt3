@@ -1,10 +1,10 @@
 # Files
 .sass-cache
 .DS_Store
+debug.log
 license.txt
 node_modules
 readme.html
-debug.log
 
 # Directories
 wp-content/uploads
