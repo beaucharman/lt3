@@ -1,13 +1,13 @@
 # Files
-.sass-cach
+.sass-cache
 .DS_Store
 license.txt
 node_modules
 readme.html
+debug.log
 
 # Directories
 wp-content/uploads
-wp-content/debug.log
 
 # W3 Total Cache
 wp-content/cache
