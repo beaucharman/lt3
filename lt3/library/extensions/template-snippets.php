@@ -214,7 +214,7 @@ function lt3_get_archive_title($echo = true)
   elseif (lt3_is_post_type()) /* Post Type Archive */
   {
     $post_type_obj = get_post_type_object(get_post_type($wp_query->post->ID));
-    $archive_title = $post_type_obj->labels->name . _e(' Archive');
+    $archive_title = $post_type_obj->labels->name;
   }
   elseif (isset($_GET['paged']) && ! empty($_GET['paged'])) /* Paged Archive */
   {
