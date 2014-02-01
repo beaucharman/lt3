@@ -19,7 +19,7 @@ get_header(); ?>
 
   <p class="archive__description term-description">
     <?php echo term_description(); ?>
-  </p >
+  </p>
 
   <?php endif; ?>
 
