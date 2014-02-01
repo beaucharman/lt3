@@ -179,7 +179,7 @@ function lt3_meta_description()
  * @param  null
  * @return string
  */
-function lt3_get_archive_title()
+function lt3_get_archive_title($echo = true)
 {
 
   if (is_category()) /* Category Archive */
@@ -223,6 +223,11 @@ function lt3_get_archive_title()
   else /* Archive */
   {
     $archive_title = _e('Article Archive');
+  }
+  
+  if ($echo == true)
+  {
+    echo $archive_title;
   }
 
   return $archive_title;
