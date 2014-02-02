@@ -5,10 +5,10 @@
  * styles.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 
-class LT3_Style
+class Samurai_Style
 {
 
   function __construct()
@@ -26,9 +26,9 @@ class LT3_Style
      * Styles the visual editor with custom-editor-style.css
      * to match the theme style.
      */
-    if (LT3_USE_CUSTOM_EDITOR_STYLES)
+    if (SAMURAI_USE_CUSTOM_EDITOR_STYLES)
     {
-      add_editor_style(LT3_STYLES_PATH . '/admin/custom-editor-style.css');
+      add_editor_style(SAMURAI_STYLES_PATH . '/admin/custom-editor-style.css');
     }
 
 
@@ -39,7 +39,7 @@ class LT3_Style
      * This function styles the admin login screen with
      * custom-login-style.css to match the theme style.
      */
-    if (LT3_USE_CUSTOM_LOGIN_STYLES)
+    if (SAMURAI_USE_CUSTOM_LOGIN_STYLES)
     {
       add_action('login_head', array(&$this, 'custom_login_styles'));
     }
@@ -57,8 +57,8 @@ class LT3_Style
     /**
      * Register styles here
      */
-    wp_register_style('lt3_custom_admin_styles', LT3_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), LT3_SCRIPTS_CACHE_BREAK);
-    wp_register_style('lt3_main_stylesheet', LT3_FULL_STYLES_PATH . '/main.css', array(), LT3_STYLES_CACHE_BREAK);
+    wp_register_style('samurai_custom_admin_styles', SAMURAI_FULL_STYLES_PATH . '/admin/custom-admin-styles.css', array(), SAMURAI_SCRIPTS_CACHE_BREAK);
+    wp_register_style('samurai_main_stylesheet', SAMURAI_FULL_STYLES_PATH . '/main.css', array(), SAMURAI_STYLES_CACHE_BREAK);
 
 
     /**
@@ -73,7 +73,7 @@ class LT3_Style
        */
 
       /* Main stylesheet */
-      wp_enqueue_style('lt3_main_stylesheet');
+      wp_enqueue_style('samurai_main_stylesheet');
 
       /**
        * Enqueue theme styles here.
@@ -90,7 +90,7 @@ class LT3_Style
        */
 
       /* Add consistency to site settings inputs */
-      wp_enqueue_style('lt3_custom_admin_styles');
+      wp_enqueue_style('samurai_custom_admin_styles');
 
       // Enqueue admin styles here.
     }
@@ -104,13 +104,8 @@ class LT3_Style
    */
   function custom_login_styles()
   {
-    echo '<link rel="stylesheet" type="text/css" href="' . LT3_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
+    echo '<link rel="stylesheet" type="text/css" href="' . SAMURAI_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
   }
 }
 
-
-
-/**
- * Initiate lt3 Styles
- */
-new LT3_Style;
+new Samurai_Style;

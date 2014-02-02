@@ -5,9 +5,9 @@
  * loop-front-page.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  */
 ?>
@@ -21,7 +21,7 @@
     <h2 class="article-title"><?php the_title(); ?></h2>
   <?php endif; ?>
 
-  <?php lt3_include_post_meta(); ?>
+  <?php Samurai_Snippet::include_post_meta(); ?>
 
   <?php if (has_post_thumbnail()) : ?>
   <figure class="featured-image">
@@ -33,8 +33,8 @@
 
 </article>
 
-<?php lt3_Pagination::include_page_pagination(); ?>
+<?php Samuai_Pagination::include_page_pagination(); ?>
 
-<?php lt3_get_comments_template(); ?>
+<?php Samurai_Snippet::get_comments_template(); ?>
 
 <?php endwhile; ?>

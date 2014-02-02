@@ -1,8 +1,8 @@
 <?php
 /**
- * WordPress Custom Post Type
+ * Katana: WordPress Custom Post Type
  * ========================================================================
- * wordpress-custom-post-type.php
+ * custom-post-type.php
  * @version   3.0 | November 10th 2013
  * @author    Beau Charman | @beaucharman | http://www.beaucharman.me
  * @link      https://github.com/beaucharman/wordpress-custom-post-types
@@ -31,7 +31,7 @@
    ======================================================================== */
 
 
-class Bamboo_Custom_Post_Type
+class Katana_Custom_Post_Type
 {
 
   public $name;

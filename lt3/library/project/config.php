@@ -5,17 +5,17 @@
  * config.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  *
- * lt3 project configuration
+ * samurai project configuration
  */
 
 
 
-class LT3_Config {
+class Samurai_Config {
 
 
 
@@ -32,19 +32,7 @@ class LT3_Config {
      * Set the production environment for conditional statements.
      * true for development, false for deployment mode.
      */
-    define('LT3_DEVELOPMENT_MODE', true);
-
-    /**
-     * Hide site from search engines unless it's in production
-     */
-    if (WP_ENV == 'staging' || WP_ENV == 'development')
-    {
-      update_option('blog_public', '1');
-    }
-    else
-    {
-      update_option('blog_public', '0');
-    }
+    define('SAMURAI_DEVELOPMENT_MODE', true);
 
 
 
@@ -57,14 +45,14 @@ class LT3_Config {
     /**
      * Set full page content width
      */
-    define('LT3_PAGE_CONTENT_WIDTH', 960);
+    define('SAMURAI_PAGE_CONTENT_WIDTH', 960);
 
     /**
      * Set the content width
      */
     if (! isset($content_width))
     {
-      $content_width = LT3_PAGE_CONTENT_WIDTH;
+      $content_width = SAMURAI_PAGE_CONTENT_WIDTH;
     }
 
 
@@ -78,27 +66,27 @@ class LT3_Config {
     /**
      *  Set the global Excerpt length
      */
-    define('LT3_EXCERPT_LENGTH', 40);
+    define('SAMURAI_EXCERPT_LENGTH', 40);
 
     /**
      * Set the global Excerpt More info
      */
-    define('LT3_EXCERPT_MORE', 'more &rarr;');
+    define('SAMURAI_EXCERPT_MORE', 'more &rarr;');
 
     /**
      * Enable comments
      */
-    define('LT3_ENABLE_COMMENTS', false);
+    define('SAMURAI_ENABLE_COMMENTS', false);
 
     /**
      * Enable site search
      */
-    define('LT3_ENABLE_SITE_SEARCH', true);
+    define('SAMURAI_ENABLE_SITE_SEARCH', true);
 
     /**
      * Show post meta data on pages
      */
-    define('LT3_ENABLE_META_DATA', false);
+    define('SAMURAI_ENABLE_META_DATA', false);
 
 
 
@@ -111,12 +99,12 @@ class LT3_Config {
     /**
      * stylesheet cache break
      */
-    define('LT3_STYLES_CACHE_BREAK', '0.1');
+    define('SAMURAI_STYLES_CACHE_BREAK', '0.1');
 
     /**
      * javascript cache break
      */
-    define('LT3_SCRIPTS_CACHE_BREAK', '0.1');
+    define('SAMURAI_SCRIPTS_CACHE_BREAK', '0.1');
 
 
 
@@ -129,12 +117,12 @@ class LT3_Config {
     /**
      * Enable extra TinyMCE buttons
      */
-    define('LT3_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
+    define('SAMURAI_ENABLE_EXTRA_TINYMCE_BUTTONS', true);
 
     /**
      * Use the custom-editor-style.css file for the TinyMCE
      */
-    define('LT3_USE_CUSTOM_EDITOR_STYLES', false);
+    define('SAMURAI_USE_CUSTOM_EDITOR_STYLES', false);
 
 
 
@@ -147,12 +135,12 @@ class LT3_Config {
     /**
      * Enable template files debug mode
      */
-    define('LT3_ENABLE_TEMPLATE_DEBUG', false);
+    define('SAMURAI_ENABLE_TEMPLATE_DEBUG', false);
 
     /**
      * Use the custom-login-style.css file for the Login screen
      */
-    define('LT3_USE_CUSTOM_LOGIN_STYLES', false);
+    define('SAMURAI_USE_CUSTOM_LOGIN_STYLES', false);
 
     // End project configuration
 
@@ -160,4 +148,4 @@ class LT3_Config {
 
 }
 
-new LT3_Config;
+new Samurai_Config;

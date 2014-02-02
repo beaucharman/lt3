@@ -5,13 +5,13 @@
  * initial-theme-setup.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * For more information:
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
  */
 
-class LT3_Setup
+class Samurai_Setup
 {
 
   function __construct()
@@ -51,14 +51,14 @@ class LT3_Setup
         'comments_per_page' => '20',
         'date_format'       => 'd/m/Y',
         'default_role'      => 'author',
-        'large_size_h'      => (LT3_PAGE_CONTENT_WIDTH / 2) * 1.25,
-        'large_size_w'      => LT3_PAGE_CONTENT_WIDTH * 1.25,
-        'medium_size_h'     => (LT3_PAGE_CONTENT_WIDTH / 3) * 1.25,
-        'medium_size_w'     => (LT3_PAGE_CONTENT_WIDTH / 2) * 1.25,
+        'large_size_h'      => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
+        'large_size_w'      => SAMURAI_PAGE_CONTENT_WIDTH * 1.25,
+        'medium_size_h'     => (SAMURAI_PAGE_CONTENT_WIDTH / 3) * 1.25,
+        'medium_size_w'     => (SAMURAI_PAGE_CONTENT_WIDTH / 2) * 1.25,
         'posts_per_page'    => '20',
         'thumbnail_crop'    => '1',
-        'thumbnail_size_h'  => (LT3_PAGE_CONTENT_WIDTH / 4) * 1.25,
-        'thumbnail_size_w'  => (LT3_PAGE_CONTENT_WIDTH / 4) * 1.25,
+        'thumbnail_size_h'  => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
+        'thumbnail_size_w'  => (SAMURAI_PAGE_CONTENT_WIDTH / 4) * 1.25,
         'time_format'       => 'g:i a',
         'timezone_string'   => 'Australia/Sydney',
         'use_smilies'       => '0'
@@ -125,4 +125,4 @@ class LT3_Setup
 
 }
 
-new LT3_Setup;
+new Samurai_Setup;

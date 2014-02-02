@@ -5,7 +5,7 @@
  * loop.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * Control specific loop outputs.
  * Loops altered from these functions are executed when the requested is made,
@@ -33,7 +33,7 @@
  *   http://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
 
-class lt3_Loop
+class Samurai_Loop
 {
 
   function __construct()
@@ -68,3 +68,5 @@ class lt3_Loop
     return $query;
   }
 }
+
+new Samurai_Loop;

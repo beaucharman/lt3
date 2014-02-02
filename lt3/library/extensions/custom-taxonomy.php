@@ -1,6 +1,6 @@
 <?php
 /**
- * WordPress Custom Taxonomy
+ * Katana: WordPress Custom Taxonomy
  * ========================================================================
  * custom-taxonomy.php
  * @version   2.0 | June 30th 2013
@@ -36,7 +36,7 @@
    ======================================================================== */
 
 
-class Bamboo_Custom_Taxonomy
+class Katana_Custom_Taxonomy
 {
 
   public $name;

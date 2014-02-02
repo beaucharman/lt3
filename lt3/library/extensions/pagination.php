@@ -5,10 +5,10 @@
  * pagination.php
  * @version      1.0 | January 2014
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 
-class lt3_Pagination
+class Samuai_Pagination
 {
 
 

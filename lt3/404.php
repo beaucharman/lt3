@@ -4,13 +4,13 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * 404 error template page.
  */
 
 get_header(); ?>
 
-  <?php lt3_get_message('not-found'); ?>
+  <?php samurai_get_message('not-found'); ?>
 
 <?php get_footer(); ?>

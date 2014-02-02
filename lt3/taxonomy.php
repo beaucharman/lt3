@@ -4,7 +4,7 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * Taxonomy template page.
  * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
@@ -25,13 +25,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_VIEWS_PATH . '/loop', 'taxonomy'); ?>
+    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'taxonomy'); ?>
 
-    <?php lt3_Pagination::include_archive_pagination(); ?>
+    <?php Samurai_Pagination::include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('not-found'); ?>
+    <?php Samurai_Snippet::get_message('not-found'); ?>
 
   <?php endif; ?>
 

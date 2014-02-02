@@ -5,7 +5,7 @@
  * admin.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * This files contains the functions and file references
  * that are used to alter and enhance the general administration area.
@@ -13,7 +13,7 @@
  * to can be found in the library/dashboard/ directory.
  */
 
-class LT3_Admin
+class Samurai_Admin
 {
 
   function __construct()
@@ -25,7 +25,7 @@ class LT3_Admin
 
     add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
-    if (! LT3_ENABLE_COMMENTS)
+    if (! SAMURAI_ENABLE_COMMENTS)
     {
       /* Remove the comments admin menu item */
       add_action('admin_menu', array(&$this, 'remove_admin_menus'));
@@ -364,4 +364,4 @@ class LT3_Admin
 /**
  * Run it
  */
-new LT3_Admin;
+new Samurai_Admin;

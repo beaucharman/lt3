@@ -4,9 +4,9 @@
  * custom-admin-style.css
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  */
 
@@ -17,25 +17,25 @@
  * for site-settings and custom-meta-fields
  */
 
-.lt3-form-container th,
-.lt3-form-container td {
+.samurai-form-container th,
+.samurai-form-container td {
   vertical-align: top;
 }
 
-.lt3-form-container th {
+.samurai-form-container th {
   width: 160px;
 }
 
-.lt3-form-container td {
+.samurai-form-container td {
   padding: 10px 0;
 }
 
-.lt3-form-container label {
+.samurai-form-container label {
   color: #222;
   font-weight: 500;
 }
 
-.lt3-form-container ul {
+.samurai-form-container ul {
   margin: 0;
 }
 
@@ -47,27 +47,27 @@
   margin: 1em 0;
 }
 
-.lt3-form-container .description, .lt3-form-container small {
+.samurai-form-container .description, .samurai-form-container small {
   color: #b0b0b0;
   font-weight: 200;
 }
 
-.lt3-form-container small {
+.samurai-form-container small {
   font-size: 0.9em;
 }
 
-.lt3-form-container input[type="text"] {
+.samurai-form-container input[type="text"] {
   width: 100%;
   max-width: 300px;
   padding: 4px 0 3px 4px;
 }
 
-.lt3-form-container select {
+.samurai-form-container select {
   width: 100%;
   max-width: 300px;
 }
 
-.lt3-form-container textarea {
+.samurai-form-container textarea {
   resize: vertical;
   width: 100%;
   min-height: 150px;
@@ -75,15 +75,15 @@
   padding: 4px;
 }
 
-.lt3-form-container input[type="text"],
-.lt3-form-container textarea {
+.samurai-form-container input[type="text"],
+.samurai-form-container textarea {
   border-radius: 4px;
   border: 1px solid #bbb;
   font-size: 1em;
 }
 
-.lt3-form-container input:focus,
-.lt3-form-container textarea:focus {
+.samurai-form-container input:focus,
+.samurai-form-container textarea:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 }

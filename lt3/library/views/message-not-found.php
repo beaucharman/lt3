@@ -5,7 +5,7 @@
  * message-no-posts.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * Page not found message, suitable for a 404 message.
  */
@@ -19,7 +19,7 @@
     The page you are looking for does not exist. (404)
   </p>
 
-  <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
+  <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
   <p>
     Try searching our site for what you are after.

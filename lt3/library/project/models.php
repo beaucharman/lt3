@@ -3,9 +3,9 @@
  * Models
  *
  * @package      WordPress
- * @subpackage   lt3/library/extensions/custom-post-type.php
+ * @subpackage   samurai/library/extensions/custom-post-type.php
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  *
  * Data structures, taxonomies and custom post types
@@ -19,7 +19,8 @@
  */
 
 
-class Bamboo_Model {
+class Model
+{
 
 
   /**
@@ -35,7 +36,7 @@ class Bamboo_Model {
     /**
      * Include Font Awesome
      */
-    Bamboo_Custom_Post_Type::get_font_awesome();
+    Katana_Custom_Post_Type::get_font_awesome();
 
     /**
      * register taxonomies
@@ -92,4 +93,4 @@ class Bamboo_Model {
 
 }
 
-new Bamboo_Model;
+new Model;

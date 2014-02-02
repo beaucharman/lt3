@@ -4,7 +4,7 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 ?><!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 oldie"> <![endif]-->
@@ -18,15 +18,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <title>
-      <?php lt3_title(); ?>
+      <?php Samurai_Snippet::title(); ?>
     </title>
 
-    <meta name="description" content="<?php lt3_meta_description(); ?>">
+    <meta name="description" content="<?php Samurai_Snippet::meta_description(); ?>">
     <meta name="viewport" content="width=device-width">
 
     <link rel="pingback" href="<?php bloginfo("pingback_url"); ?>">
 
-    <?php if (! LT3_DEVELOPMENT_MODE) : ?>
+    <?php if (! SAMURAI_DEVELOPMENT_MODE) : ?>
     <!-- Google Analytics Code -->
     <?php endif; ?>
 
@@ -46,7 +46,7 @@
 
         <?php /* Site title */ ?>
         <?php if (is_home() || is_front_page()) : ?><h1 class="site-heading"><?php endif; ?>
-        <a class="header__title site-title" href="<?php echo home_url('/'); ?>" title="<?php bloginfo('name'); ?> home page link">
+        <a class="header__title site-title" href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> home page link">
           <?php bloginfo('name'); ?>
         </a>
         <?php if (is_home() || is_front_page()) : ?></h1><?php endif; ?>

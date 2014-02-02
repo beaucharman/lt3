@@ -5,13 +5,13 @@
  * editor.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * All extra functionality that effects the admin and post editor.
  */
 
 
-class lt3_Editor
+class samurai_Editor
 {
 
   function __construct()
@@ -25,7 +25,7 @@ class lt3_Editor
     /**
      * Extra TinyMCE Buttons
      */
-    if (LT3_ENABLE_EXTRA_TINYMCE_BUTTONS)
+    if (SAMURAI_ENABLE_EXTRA_TINYMCE_BUTTONS)
     {
       add_filter('mce_buttons', array(&$this, 'edit_buttons_for_tinymce_editor_1'));
 
@@ -43,7 +43,7 @@ class lt3_Editor
   /**
    * Modify Post Mime Types
    *
-   * lt3_modify_post_mime_types()
+   * samurai_modify_post_mime_types()
    * post_mime_types filter to add PDFs to the media type filter for posts
    */
 
@@ -203,5 +203,5 @@ class lt3_Editor
 
 }
 
-new lt3_Editor;
+new samurai_Editor;
 

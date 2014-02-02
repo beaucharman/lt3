@@ -5,10 +5,10 @@
  * menus.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 
-class LT3_Menu
+class Samurai_Menu
 {
 
   public $name;
@@ -130,7 +130,7 @@ class LT3_Menu
  * Main Navigation Menu
  *
  */
-$Main_Navigation_Menu = new lt3_Menu(
+$Main_Navigation_Menu = new Samurai_Menu(
   array(
    'name' => 'Main Navigation Menu'
   )

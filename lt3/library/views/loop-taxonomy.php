@@ -5,9 +5,9 @@
  * loop-taxonomy.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  */
 ?>
@@ -22,7 +22,7 @@
     </a>
   </h2>
 
-  <?php lt3_include_post_meta(); ?>
+  <?php Samurai_Snippet::include_post_meta(); ?>
 
   <?php if (has_post_thumbnail()) : ?>
   <figure class="featured-image">
@@ -34,7 +34,7 @@
 
   <footer class="article-footer">
 
-    <a class="read-more" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php lt3_read_more_text(); ?></a>
+    <a class="read-more" href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php Samurai_Snippet::read_more_text(); ?></a>
 
   </footer>
 

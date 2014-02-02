@@ -4,9 +4,9 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
- * lt3 Functions and Theme Setup.
+ * samurai Functions and Theme Setup.
  *
  * For each theme: custom code, snippets and functions should be placed in
  * library/project and included from this functions.php file.
@@ -16,31 +16,33 @@
 /* ========================================================================
    Required Constants
    ======================================================================== */
-define('LT3_FULL_PROJECT_PATH', get_template_directory() . '/library/project');
+define('SAMURAI_PATH', get_template_directory());
 
-define('LT3_FULL_EXTENSIONS_PATH', get_template_directory() . '/library/extensions');
+define('SAMURAI_URI', get_template_directory_uri());
 
-define('LT3_FULL_DASHBOARD_PATH', get_template_directory() . '/library/dashboard');
+define('SAMURAI_FULL_PROJECT_PATH', SAMURAI_PATH . '/library/project');
 
-define('LT3_SCRIPTS_PATH', 'library/javascripts');
+define('SAMURAI_FULL_EXTENSIONS_PATH', SAMURAI_PATH . '/library/extensions');
 
-define('LT3_FULL_SCRIPTS_PATH', get_template_directory_uri() . '/' . LT3_SCRIPTS_PATH);
+define('SAMURAI_SCRIPTS_PATH', 'library/javascripts');
 
-define('LT3_STYLES_PATH', 'library/stylesheets');
+define('SAMURAI_FULL_SCRIPTS_PATH', SAMURAI_URI . '/' . SAMURAI_SCRIPTS_PATH);
 
-define('LT3_FULL_STYLES_PATH', get_template_directory_uri() . '/' . LT3_STYLES_PATH);
+define('SAMURAI_STYLES_PATH', 'library/stylesheets');
 
-define('LT3_IMAGES_PATH', 'library/images');
+define('SAMURAI_FULL_STYLES_PATH', SAMURAI_URI . '/' . SAMURAI_STYLES_PATH);
 
-define('LT3_FULL_IMAGES_PATH', get_template_directory_uri() . '/' . LT3_IMAGES_PATH);
+define('SAMURAI_IMAGES_PATH', 'library/images');
 
-define('LT3_VIEWS_PATH', 'library/views');
+define('SAMURAI_FULL_IMAGES_PATH', SAMURAI_URI . '/' . SAMURAI_IMAGES_PATH);
+
+define('SAMURAI_VIEWS_PATH', 'library/views');
 
 
 /* ========================================================================
    Site Configuration
    ======================================================================== */
-require_once(LT3_FULL_PROJECT_PATH . '/config.php');
+require_once(SAMURAI_FULL_PROJECT_PATH . '/config.php');
 
 
 /* ========================================================================
@@ -50,63 +52,63 @@ require_once(LT3_FULL_PROJECT_PATH . '/config.php');
 
 /* Initial Theme Setup
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
 
 /* Helper Functions
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/helpers.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/helpers.php');
 
 /* Site Settings
    ======================================================================== */
-// require_once(LT3_FULL_EXTENSIONS_PATH . '/site-settings.php');
+// require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/site-settings.php');
 
 /* Admin Functions
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/admin.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/admin.php');
 
 /* Editor Functions
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/editor.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/editor.php');
 
 /* Media
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/media.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/media.php');
 
 /* Loop Functions
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/loop.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/loop.php');
 
 /* Template Filters
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/filters.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/filters.php');
 
 /* Template Snippets
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/template-snippets.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/snippets.php');
 
 /* Pagination
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/pagination.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/pagination.php');
 
 /* Custom Post Types
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/custom-post-type.php');
 
 /* Custom Taxonomies
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/custom-taxonomy.php');
 
 /* Theme Menus
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/menus.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/menus.php');
 
 /* Theme Scripts
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/scripts.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/scripts.php');
 
 /* Theme Styles
    ======================================================================== */
-require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/styles.php');
 
 
 /* ========================================================================
@@ -116,11 +118,11 @@ require_once(LT3_FULL_EXTENSIONS_PATH . '/styles.php');
 
 /* Site Settings Init
    ======================================================================== */
-// require_once(LT3_FULL_PROJECT_PATH . '/site-settings-init.php');
+// require_once(SAMURAI_FULL_PROJECT_PATH . '/site-settings-init.php');
 
 /* Models
    ======================================================================== */
-require_once(LT3_FULL_PROJECT_PATH . '/models.php');
+require_once(SAMURAI_FULL_PROJECT_PATH . '/models.php');
 
 /**
  * Include more files as needed.

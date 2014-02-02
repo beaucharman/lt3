@@ -4,7 +4,7 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 ?>
 
@@ -24,7 +24,7 @@ if (have_comments()) : ?>
 <h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
 
 <ol class="commentlist">
-  <?php wp_list_comments('type=comment&callback=lt3_advanced_comment'); ?>
+  <?php wp_list_comments('type=comment&callback=samurai_advanced_comment'); ?>
 </ol>
 
 <div class="comments-navigation">

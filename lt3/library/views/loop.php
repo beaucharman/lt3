@@ -5,9 +5,9 @@
  * loop.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  */
 ?>
@@ -19,12 +19,10 @@
 <article <?php post_class('article article__loop post-' . get_the_ID() . ' entry ' . $output_type); ?>>
 
   <h1 class="article-title">
-    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-      <?php the_title(); ?>
-    </a>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
   </h1>
 
-  <?php lt3_include_post_meta(); ?>
+  <?php Samurai_Snippet::include_post_meta(); ?>
 
   <?php if (has_post_thumbnail()) : ?>
   <figure class="featured-image">
@@ -36,6 +34,6 @@
 
 </article>
 
-<?php lt3_get_comments_template(); ?>
+<?php Samurai_Snippet::get_comments_template(); ?>
 
 <?php endwhile; ?>

@@ -5,9 +5,9 @@
  * message-no-posts.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  * @author       Beau Charman | @beaucharman | http://www.beaucharman.me
- * @link         https://github.com/beaucharman/lt3
+ * @link         https://github.com/beaucharman/samurai
  * @license      MIT license
  *
  * No articles from custom post types.
@@ -22,7 +22,7 @@
     There are currently no articles here.
   </p>
 
-  <?php if (LT3_ENABLE_SITE_SEARCH) : ?>
+  <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
   <p>
     Try searching our site for what you are after.

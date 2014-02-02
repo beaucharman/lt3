@@ -4,14 +4,14 @@
  *
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * Search results template.
  */
 
 get_header(); ?>
 
-<?php if (LT3_ENABLE_SITE_SEARCH) : ?>
+<?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
   <?php global $wp_query; $total_results = $wp_query->found_posts; ?>
 
@@ -24,9 +24,9 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(LT3_VIEWS_PATH . '/loop', 'search'); ?>
+    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'search'); ?>
 
-    <?php lt3_Pagination::include_archive_pagination(); ?>
+    <?php Samuai_Pagination::include_archive_pagination(); ?>
 
     <p class="search__follow-up">
       <?php echo _e('Still not what you are looking for?'); ?>
@@ -36,13 +36,13 @@ get_header(); ?>
 
   <?php else : ?>
 
-    <?php lt3_get_message('no-results'); ?>
+    <?php Samurai_Snippet::get_message('no-results'); ?>
 
   <?php endif; ?>
 
 <?php else : ?>
 
-  <?php lt3_get_message('not-found'); ?>
+  <?php Samurai_Snippet::get_message('not-found'); ?>
 
 <?php endif; ?>
 

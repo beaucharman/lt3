@@ -5,7 +5,7 @@
  * loop-attachment.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  */
 ?>
 
@@ -15,7 +15,7 @@
 
   <h1 class="article__title article__attachment--title"><?php the_title(); ?></h1>
 
-  <?php lt3_include_post_meta(); ?>
+  <?php Samurai_Snippet::include_post_meta(); ?>
 
   <?php if ($post->post_content) : ?>
   <p class="attachment-description">
@@ -32,7 +32,7 @@
 
   <footer class="article__footer">
 
-    <?php lt3_back_to_parent_link(); ?>
+    <?php samurai_back_to_parent_link(); ?>
 
   </footer>
 

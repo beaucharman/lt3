@@ -6,11 +6,11 @@
  * site-settings.php
  * @version      2.1 | June 6th 2013
  * @package      WordPress
- * @subpackage   lt3
+ * @subpackage   samurai
  *
  * To use and view the option:
- *   global $lt3_site_settings;
- *   echo $lt3_site_settings['setting_id'];
+ *   global $samurai_site_settings;
+ *   echo $samurai_site_settings['setting_id'];
  *
  */
 
@@ -18,7 +18,7 @@
 /* ========================================================================
    Site Settings Page class
    ======================================================================== */
-class LT3_Site_Settings_Page
+class Samurai_Site_Settings_Page
 {
   public $group;
   public $name;
@@ -60,7 +60,7 @@ class LT3_Site_Settings_Page
 
     /**
      * Initialise the settings page and
-     * set the $lt3_site_settings global variable.
+     * set the $samurai_site_settings global variable.
      */
     add_action('admin_init', array(&$this, 'site_settings_init'));
     add_action('admin_menu', array(&$this, 'site_settings_add_page'));
@@ -71,7 +71,7 @@ class LT3_Site_Settings_Page
    * Site Settings Init
    * ========================================================================
    * site_settings_init()
-   * Register the LT3 site settings
+   * Register the Samurai site settings
    */
   public function site_settings_init()
   {
@@ -130,7 +130,7 @@ class LT3_Site_Settings_Page
     screen_icon('themes'); echo '<h2>' . $this->title  . '</h2>';
 
     echo '<form method="post" action="options.php">'
-      . '<table class="form-table lt3-form-container">';
+      . '<table class="form-table samurai-form-container">';
 
     /**
      * Declare the settings field
@@ -287,7 +287,7 @@ class LT3_Site_Settings_Page
             wp_enqueue_style('thickbox');
             wp_enqueue_script('thickbox');
             wp_enqueue_script('media-upload');
-            wp_enqueue_script('cmfb-file-upload', LT3_FULL_SCRIPTS_PATH . '/admin/lt3-file-upload.js'
+            wp_enqueue_script('cmfb-file-upload', SAMURAI_FULL_SCRIPTS_PATH . '/admin/samurai-file-upload.js'
               , array('thickbox', 'media-upload'));
             $field_placeholder = (isset($field['placeholder'])) ? $field['placeholder'] : '';
             echo '<input name="' . $fields_name . '[' . $id . ']" type="text" placeholder="'
