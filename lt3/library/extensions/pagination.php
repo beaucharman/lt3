@@ -72,7 +72,7 @@ class Samuai_Pagination
   {
     if (self::has_page_pagination())
     {
-      if (function_exists('wp_pagenavi'))
+      if (function_exists('wp_pagenavi') && self::has_page_pagination())
       {
         echo '<nav class="page-pagination">';
         wp_pagenavi(array('type' => 'multipart'));
@@ -109,7 +109,7 @@ class Samuai_Pagination
    */
   static function include_archive_pagination()
   {
-    if (function_exists('wp_pagenavi'))
+    if (function_exists('wp_pagenavi') && self::has_page_pagination())
     {
       echo '<nav class="archive-pagination">';
         wp_pagenavi();
