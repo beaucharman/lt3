@@ -23,12 +23,6 @@ class Model
 {
 
 
-  /**
-   * Global Variables
-   */
-  public static $Genre;
-  public static $Movie;
-
 
   function __construct()
   {
@@ -53,7 +47,7 @@ class Model
 
   /**
    *
-   * Taxonomies
+   * Create Taxonomies
    *
    */
   function create_taxonomies()
@@ -62,19 +56,19 @@ class Model
     //
     // Example - Genre
     //
-    // Bamboo_Model::$Genre = new Bamboo_Custom_Taxonomy(
-    //   array(
-    //     'name'   => 'genre',
-    //     'post_type' => 'movie'
-    //    )
-    // );
+    $Genre = new Katana_Custom_Taxonomy(
+      array(
+        'name'      => 'genre',
+        'post_type' => 'movie'
+       )
+    );
 
   }
 
 
   /**
    *
-   * Post Types
+   * Create Post Types
    *
    */
   function create_post_types()
@@ -83,11 +77,11 @@ class Model
     //
     // Example - Movie
     //
-    // Bamboo_Model::$Movie = new Bamboo_Custom_Post_Type(
-    //   array(
-    //     'name'   => 'movie'
-    //   )
-    // );
+    $Movie = new Katana_Custom_Post_Type(
+      array(
+        'name' => 'movie'
+      )
+    );
 
   }
 

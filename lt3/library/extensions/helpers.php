@@ -127,6 +127,29 @@ class Samurai_Helper
 
 
   /**
+   * Page Has Children
+   *
+   * @param {integer || string} $page_id
+   * @return {boolean}
+   *
+   * Function to check if page is child of $page.
+   */
+  public static function page_has_children($page_id = null)
+  {
+    global $post;
+
+    if (! $page_id) $page_id = $post->ID;
+
+    $child_pages = get_pages(array('child_of' => $page_id));
+
+    if ($child_pages) return true;
+
+    return false;
+  }
+
+
+
+  /**
    * Is Child of Category
    *
    * @param {integer} $parent_category
