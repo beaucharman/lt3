@@ -22,7 +22,8 @@ class Samuai_Pagination
    */
   static function has_page_pagination()
   {
-    if (wp_link_pages('echo=0'))
+    global $wp_query;
+    if ($wp_query->max_num_pages > 1)
     {
       return true;
     }
