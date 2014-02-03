@@ -13,7 +13,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'attachment'); ?>
+    <?php Samurai_Snippet::get_loop('attachment'); ?>
 
   <?php else : ?>
 

@@ -25,15 +25,14 @@
 
   <figure class="attachment-figure">
     <?php echo wp_get_attachment_image($post->ID, 'full'); ?>
+
     <?php if ($post->post_excerpt) : ?>
     <figcaption class="attachment__figcaption"><?php echo $post->post_excerpt; ?></figcaption>
     <?php endif; ?>
   </figure>
 
   <footer class="article__footer">
-
-    <?php samurai_back_to_parent_link(); ?>
-
+    <?php Samurai_Snippet::back_to_parent_link(); ?>
   </footer>
 
 </article>

@@ -91,9 +91,4 @@ class Samurai_Script
   }
 }
 
-
-
-/**
- * Initiate samurai Scripts
- */
 new Samurai_Script;

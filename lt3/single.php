@@ -14,7 +14,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop-single', get_post_type($post->ID)); ?>
+    <?php Samurai_Snippet::get_loop(get_post_type($post->ID), 'single'); ?>
 
   <?php else : ?>
 

@@ -16,8 +16,7 @@
 
 <article <?php post_class('article article__front-page front-page entry content post-' . get_the_ID()); ?>>
 
-  <?php $article_title = strtoupper(get_the_title());
-    if (($article_title != 'HOME') && ($article_title != 'HOME PAGE')) : ?>
+  <?php if ((strtoupper(get_the_title()) != 'HOME') && (strtoupper(get_the_title()) != 'HOME PAGE')) : ?>
     <h2 class="article-title"><?php the_title(); ?></h2>
   <?php endif; ?>
 
@@ -33,7 +32,7 @@
 
 </article>
 
-<?php Samuai_Pagination::include_page_pagination(); ?>
+<?php Samurai_Pagination::include_page_pagination(); ?>
 
 <?php Samurai_Snippet::get_comments_template(); ?>
 

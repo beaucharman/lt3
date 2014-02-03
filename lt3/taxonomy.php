@@ -10,22 +10,24 @@
  * Custom taxonomy? Save this template page as taxonomy-{{slug}}.php
  */
 
+global $wp_query;
+$taxonomy_term = $wp_query->get_queried_object();
+
 get_header(); ?>
 
-  <?php $taxonomy_term = $wp_query->get_queried_object(); ?>
-  <h1 class="taxonomy__heading content-title"><?php
-    echo $taxonomy_term->name; echo _e(' Archive');
-  ?></h1>
+  <h1 class="term__heading content-title">
+    <?php echo $taxonomy_term->name; echo _e(' Archive'); ?>
+  </h1>
 
   <?php if (term_description()) : ?>
-    <p class="taxonomy-description">
+    <p class="term-description">
       <?php remove_filter('term_description','wpautop'); echo term_description(); ?>
     </p>
   <?php endif; ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'taxonomy'); ?>
+    <?php Samurai_Snippet::get_loop($taxonomy_term->slug, 'taxonomy'); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 

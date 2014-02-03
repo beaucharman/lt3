@@ -28,7 +28,7 @@
 
 </article>
 
-<?php Samuai_Pagination::include_page_pagination(); ?>
+<?php Samurai_Pagination::include_page_pagination(); ?>
 
 <?php Samurai_Snippet::get_comments_template(); ?>
 

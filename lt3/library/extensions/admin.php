@@ -22,7 +22,6 @@ class Samurai_Admin
     /**
      * Dashboard and login functions
      */
-
     add_filter('admin_footer_text', array(&$this, 'replace_admin_footer'));
 
     if (! SAMURAI_ENABLE_COMMENTS)
@@ -225,6 +224,7 @@ class Samurai_Admin
   function restrict_by_taxonomy()
   {
     global $typenow;
+
     $args=array('public' => true, '_builtin' => false);
     $post_types = get_post_types($args);
 
@@ -236,6 +236,7 @@ class Samurai_Admin
       {
         $tax_obj = get_taxonomy($tax_slug);
         $selected = (isset($_GET[$tax_obj->query_var])) ? $_GET[$tax_obj->query_var] : '';
+
         wp_dropdown_categories(
           array(
             'show_option_all' => __('Show All ' . $tax_obj->label),
@@ -267,7 +268,7 @@ class Samurai_Admin
 
         if (isset($var))
         {
-          $term = get_term_by('id',$var,$tax_slug);
+          $term = get_term_by('id', $var,$tax_slug);
 
           if ($term)
           {
@@ -359,9 +360,4 @@ class Samurai_Admin
 
 }
 
-
-
-/**
- * Run it
- */
 new Samurai_Admin;

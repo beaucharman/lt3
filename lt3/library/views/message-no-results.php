@@ -20,7 +20,7 @@
 
   <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
-  <p>
+  <p class="message__content--search-suggestion">
     Maybe try searching with a different keyword?
   </p>
 

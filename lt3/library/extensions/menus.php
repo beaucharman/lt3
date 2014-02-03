@@ -69,7 +69,6 @@ class Samurai_Menu
    */
   public function register_nav_menus()
   {
-
     register_nav_menu($this->theme_location, $this->name);
   }
 

@@ -14,15 +14,12 @@
  *   (Include pagination for example)
  */
 
-
-
 class Samurai_Snippet
 {
 
-
-
-  /* Get the Comments Template
-     ======================================================================== */
+  /**
+   *  Get the Comments Template
+   */
   public static function get_comments_template()
   {
     if (SAMURAI_ENABLE_COMMENTS)
@@ -34,7 +31,7 @@ class Samurai_Snippet
 
   /**
    * samurai Title
-   * ========================================================================
+   *
    * Samurai_Snippet::title()
    * @param  null
    * @return string
@@ -103,7 +100,7 @@ class Samurai_Snippet
 
   /**
    * Meta Description
-   * ========================================================================
+   *
    * Samurai_Snippet::meta_description()
    * @param  null
    * @return string
@@ -181,13 +178,15 @@ class Samurai_Snippet
 
   /**
    * Get Archive Title
-   * ========================================================================
+   *
    * Samurai_Snippet::get_archive_title()
    * @param  null
    * @return string
    */
   public static function get_archive_title($echo = true)
   {
+
+    global $wp_query;
 
     if (is_category()) /* Category Archive */
     {
@@ -243,21 +242,37 @@ class Samurai_Snippet
 
   /**
    * Get Message
-   * ========================================================================
+   *
    * Samurai_Snippet::get_message()
    * @param  null
    * @return string
    *
    * Function to get defined feedback and notification messages.
    */
-  public static function get_message($message_handle)
+  public static function get_message($handle = '')
   {
-    get_template_part(SAMURAI_VIEWS_PATH . '/message', samurai_urify_words($message_handle));
+    get_template_part(SAMURAI_VIEWS_PATH . '/message', Samurai_Helper::urify_words($handle));
   }
 
 
+
+  /**
+   * Get Loop
+   *
+   * Samurai_Snippet::get_loop()
+   * @param  null
+   * @return string
+   */
+  public static function get_loop($handle = '', $suffix = '')
+  {
+    $suffix = ($suffix) ? '-' . $suffix: '';
+    get_template_part(SAMURAI_VIEWS_PATH . '/loop' . $suffix, Samurai_Helper::urify_words($handle));
+  }
+
+
+
   /* Function to add more edit buttons to comments
-     ======================================================================== */
+      */
   public static function delete_comment_link($id)
   {
     if (current_user_can('edit_post'))
@@ -270,7 +285,7 @@ class Samurai_Snippet
 
   /**
    * Adds a back to parent category, page, etc link
-   * ========================================================================
+   *
    * Need to add functionality for post type, taxonomy,
    */
   public static function back_to_parent_link()
@@ -286,10 +301,10 @@ class Samurai_Snippet
       $url = get_permalink($post_parent->ID);
       $name = get_the_title($post_parent->ID);
     }
-    elseif (samurai_is_post_type())
+    elseif (Samurai_Helper::is_post_type())
     {
       $url = get_post_type_archive_link(get_post_type($post->ID));
-      $name = samurai_prettify_words(samurai_plurify_words(get_post_type(get_the_ID())));
+      $name = Samurai_Helper::prettify_words(Samurai_Helper::plurify_words(get_post_type(get_the_ID())));
     }
     else
     {
@@ -305,8 +320,9 @@ class Samurai_Snippet
   }
 
 
-  /* Function to get categories and taxonomies for a post
-     ======================================================================== */
+  /**
+   *  Function to get categories and taxonomies for a post
+   */
   public static function get_taxonomies_terms_links()
   {
     global $post, $post_id;
@@ -330,8 +346,9 @@ class Samurai_Snippet
   }
 
 
-  /* Default post meta information
-     ======================================================================== */
+  /**
+   *  Default post meta information
+   */
   public static function include_post_meta()
   {
     if (SAMURAI_ENABLE_META_DATA)
@@ -340,10 +357,10 @@ class Samurai_Snippet
         . '<span class="post-categories-time">'
         . _e('Posted ');
 
-      if (samurai_get_taxonomies_terms_links())
+      if (self::get_taxonomies_terms_links())
       {
         echo _e(' in ');
-        echo samurai_get_taxonomies_terms_links();
+        echo self::get_taxonomies_terms_links();
         echo ', ';
       }
 
@@ -366,7 +383,7 @@ class Samurai_Snippet
 
   /**
    * Read More Text
-   * ========================================================================
+   *
    * Samurai_Snippet::read_more_text()
    * @param  null
    * @return string
@@ -377,17 +394,18 @@ class Samurai_Snippet
   {
     if (is_attachment())
     {
-      echo 'View Full Size Image &rarr;';
+      echo 'View full size image &rarr;';
     }
     else
     {
-      echo 'Read More &rarr;';
+      echo 'Read more &rarr;';
     }
   }
 
 
-  /* Function to create a custom comment list
-     ======================================================================== */
+  /**
+   *  Function to create a custom comment list
+   */
   public static function advanced_comment($comment, $args, $depth)
   {
     $GLOBALS['comment'] = $comment; ?>
@@ -411,7 +429,7 @@ class Samurai_Snippet
         <div class="comment-meta">
           <small>on the <?php printf(__('%1$s'), get_comment_date('l, F j, Y')); ?>
             <?php if (current_user_can('edit_post')) : ?>
-            (<?php edit_comment_link(__('Edit'), '', '') ?><?php samurai_delete_comment_link(get_comment_ID()); ?>)
+            (<?php edit_comment_link(__('Edit'), '', '') ?><?php self::delete_comment_link(get_comment_ID()); ?>)
             <?php endif; ?>
           </small>
         </div>

@@ -30,15 +30,15 @@
 
   <footer class="article-footer">
 
-    <?php Samuai_Pagination::include_page_pagination(); ?>
+    <?php Samurai_Pagination::include_page_pagination(); ?>
 
-    <?php samurai_back_to_parent_link(); ?>
+    <?php Samurai_Snippet::back_to_parent_link(); ?>
 
   </footer>
 
 </article>
 
-<?php Samuai_Pagination::include_archive_pagination(); ?>
+<?php Samurai_Pagination::include_archive_pagination(); ?>
 
 <?php Samurai_Snippet::get_comments_template(); ?>
 

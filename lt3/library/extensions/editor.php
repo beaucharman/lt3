@@ -11,7 +11,7 @@
  */
 
 
-class samurai_Editor
+class Samurai_Editor
 {
 
   function __construct()
@@ -203,5 +203,5 @@ class samurai_Editor
 
 }
 
-new samurai_Editor;
+new Samurai_Editor;
 

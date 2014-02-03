@@ -15,13 +15,13 @@
 
   <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
 
-  <p>
+  <p class="message__content">
     The page you are looking for does not exist. (404)
   </p>
 
   <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
-  <p>
+  <p class="message__content--search-suggestion">
     Try searching our site for what you are after.
   </p>
 

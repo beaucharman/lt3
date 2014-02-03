@@ -16,7 +16,7 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'page'); ?>
+    <?php Samurai_Snippet::get_loop('page'); ?>
 
   <?php else : ?>
 

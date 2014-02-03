@@ -24,9 +24,9 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php get_template_part(SAMURAI_VIEWS_PATH . '/loop', 'search'); ?>
+    <?php Samurai_Snippet::get_loop('search'); ?>
 
-    <?php Samuai_Pagination::include_archive_pagination(); ?>
+    <?php Samurai_Pagination::include_archive_pagination(); ?>
 
     <p class="search__follow-up">
       <?php echo _e('Still not what you are looking for?'); ?>

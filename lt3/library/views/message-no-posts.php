@@ -18,13 +18,13 @@
 
   <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
 
-  <p>
+  <p class="message__content">
     There are currently no posts associated with the <strong><?php single_cat_title(); ?></strong> category.
   </p>
 
   <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 
-  <p>
+  <p class="message__content--search-suggestion">
     Try searching our site for what you are after.
   </p>
 

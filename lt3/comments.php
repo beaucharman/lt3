@@ -24,7 +24,7 @@ if (have_comments()) : ?>
 <h3 class="comments-title"><?php comments_number('No Responses', 'One Response', '% Responses');?></h3>
 
 <ol class="commentlist">
-  <?php wp_list_comments('type=comment&callback=samurai_advanced_comment'); ?>
+  <?php wp_list_comments('type=comment&callback=Samurai_Snippet::advanced_comment'); ?>
 </ol>
 
 <div class="comments-navigation">

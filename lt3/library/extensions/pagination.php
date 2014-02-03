@@ -8,7 +8,7 @@
  * @subpackage   samurai
  */
 
-class Samuai_Pagination
+class Samurai_Pagination
 {
 
 
@@ -23,10 +23,8 @@ class Samuai_Pagination
   static function has_page_pagination()
   {
     global $wp_query;
-    if ($wp_query->max_num_pages > 1)
-    {
-      return true;
-    }
+
+    if ($wp_query->max_num_pages > 1) return true;
 
     return false;
   }
@@ -36,11 +34,11 @@ class Samuai_Pagination
   static function get_single_nav_links()
   {
     echo '<div class="next-single">';
-      next_post_link('%link', 'Next Article &rarr;', TRUE);
+    next_post_link('%link', 'Next Article &rarr;', true);
     echo '</div>';
 
     echo '<div class="previous-single">';
-      previous_post_link('%link', '&larr; Previous Article', TRUE);
+    previous_post_link('%link', '&larr; Previous Article', true);
     echo '</div>';
   }
 
@@ -60,7 +58,7 @@ class Samuai_Pagination
   static function include_single_navigation()
   {
     echo '<nav class="single-navigation clear-fix">';
-      self::get_single_nav_links();
+    self::get_single_nav_links();
     echo '</nav>';
   }
 
@@ -112,7 +110,7 @@ class Samuai_Pagination
     if (function_exists('wp_pagenavi') && self::has_page_pagination())
     {
       echo '<nav class="archive-pagination">';
-        wp_pagenavi();
+      wp_pagenavi();
       echo '</nav>';
     }
     else
