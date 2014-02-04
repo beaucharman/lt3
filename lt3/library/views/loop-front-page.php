@@ -17,7 +17,9 @@
 <article <?php post_class('article article__front-page front-page entry content post-' . get_the_ID()); ?>>
 
   <?php if ((strtoupper(get_the_title()) != 'HOME') && (strtoupper(get_the_title()) != 'HOME PAGE')) : ?>
-    <h2 class="article-title"><?php the_title(); ?></h2>
+    <h2 class="article-title">
+      <?php the_title(); ?>
+    </h2>
   <?php endif; ?>
 
   <?php Samurai_Snippet::include_post_meta(); ?>

@@ -13,7 +13,9 @@
 
 <article <?php post_class('article article__attachment attachment post-' . get_the_ID()); ?>>
 
-  <h1 class="article__title article__attachment--title"><?php the_title(); ?></h1>
+  <h1 class="article__title article__attachment--title">
+    <?php the_title(); ?>
+  </h1>
 
   <?php Samurai_Snippet::include_post_meta(); ?>
 

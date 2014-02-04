@@ -16,7 +16,9 @@
 
 <section class="message message--no-results">
 
-  <h3 class="message__heading">Sorry! We couldn't find anything&hellip;</h3>
+  <h3 class="message__heading">
+    Sorry! We couldn't find anything&hellip;
+  </h3>
 
   <?php if (SAMURAI_ENABLE_SITE_SEARCH) : ?>
 

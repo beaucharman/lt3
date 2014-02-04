@@ -15,7 +15,9 @@ get_header(); ?>
 
   <?php global $wp_query; $total_results = $wp_query->found_posts; ?>
 
-  <h1 class="search__heading content-title">Search Results</h1>
+  <h1 class="search__heading content-title">
+    Search Results
+  </h1>
 
   <p class="search__query">
     <?php echo $total_results ?> result<?php if ($total_results != 1) echo 's'; ?>

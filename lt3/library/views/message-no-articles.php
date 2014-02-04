@@ -16,7 +16,9 @@
 
 <section class="message message--no-articles">
 
-  <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
+  <h3 class="message__heading">
+    Oops! Nothing Found Here :(
+  </h3>
 
   <p class="message__content">
     There are currently no articles here.

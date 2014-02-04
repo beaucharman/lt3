@@ -46,9 +46,7 @@
 
         <?php /* Site title */ ?>
         <?php if (is_home() || is_front_page()) : ?><h1 class="site-heading"><?php endif; ?>
-        <a class="header__title site-title" href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> home page link">
-          <?php bloginfo('name'); ?>
-        </a>
+        <a class="header__title site-title" href="<?php echo home_url(); ?>" title="<?php bloginfo('name'); ?> home page link"><?php bloginfo('name'); ?></a>
         <?php if (is_home() || is_front_page()) : ?></h1><?php endif; ?>
 
         <?php /* Site description */ ?>

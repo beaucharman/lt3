@@ -13,7 +13,9 @@
 
 <section class="message message--not-found">
 
-  <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
+  <h3 class="message__heading">
+    Oops! Nothing Found Here :(
+  </h3>
 
   <p class="message__content">
     The page you are looking for does not exist. (404)

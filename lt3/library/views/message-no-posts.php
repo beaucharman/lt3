@@ -16,7 +16,9 @@
 
 <section class="message message--no-posts">
 
-  <h3 class="message__heading">Oops! Nothing Found Here :(</h3>
+  <h3 class="message__heading">
+    Oops! Nothing Found Here :(
+  </h3>
 
   <p class="message__content">
     There are currently no posts associated with the <strong><?php single_cat_title(); ?></strong> category.
