@@ -135,7 +135,7 @@ class Samurai_Config {
     /**
      * Enable template files debug mode
      */
-    define('SAMURAI_ENABLE_TEMPLATE_DEBUG', true);
+    define('SAMURAI_ENABLE_TEMPLATE_DEBUG', false);
 
     /**
      * Use the custom-login-style.css file for the Login screen
@@ -144,7 +144,7 @@ class Samurai_Config {
 
     // End project configuration
 
-  }
+	}
 
 }
 
