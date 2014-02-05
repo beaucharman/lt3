@@ -15,11 +15,11 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Snippet::get_loop('front-page'); ?>
+    <?php Samurai_Route::get_view('loop', 'front-page'); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_message('not-found'); ?>
+    <?php Samurai_Route::get_view('message', 'not-found'); ?>
 
   <?php endif; ?>
 

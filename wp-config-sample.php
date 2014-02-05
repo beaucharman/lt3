@@ -19,142 +19,109 @@
  */
 
 /**
- * Get the current server
+ * Get the current server, server name without the protocol
  * Change to 'SERVER_ADDR' if using IP addresses for reference
  */
-$current_server = $_SERVER['SERVER_NAME'];
+$current_server_name = $_SERVER['SERVER_NAME'];
 
-/* Set the production server */
-$production_server = '';
+/**
+ *
+ * Production environment
+ *
+ */
+ $server_credentials['production'] = array(
+  'server_name' => '',
+  'options' => array(
+    'db_name'           => '',
+    'db_user'           => '',
+    'db_password'       => '',
+    'db_host'           => '',
+    'wp_debug'          => false,
+    'wp_debug_log'      => false,
+    'wp_debug_display'  => false,
+    'wp_env'            => 'production',
+    'wp_home'           => null,
+    'wp_siteurl'        => null
+  )
+);
 
-/* Set the staging server */
-$staging_server = '';
+/**
+ *
+ * Staging environment
+ *
+ */
+ $server_credentials['staging'] = array(
+  'server_name' => '',
+  'options' => array(
+    'db_name'           => '',
+    'db_user'           => '',
+    'db_password'       => '',
+    'db_host'           => '',
+    'wp_debug'          => false,
+    'wp_debug_log'      => false,
+    'wp_debug_display'  => false,
+    'wp_env'            => 'staging',
+    'wp_home'           => null,
+    'wp_siteurl'        => null
+  )
+);
 
-/* Set the development server */
-$development_server = '';
+/**
+ *
+ * Development environment
+ *
+ */
+$server_credentials['development'] = array(
+  'server_name' => '',
+  'options' => array(
+    'db_name'           => '',
+    'db_user'           => '',
+    'db_password'       => '',
+    'db_host'           => '',
+    'wp_debug'          => true,
+    'wp_debug_log'      => true,
+    'wp_debug_display'  => false,
+    'wp_env'            => 'development',
+    'wp_home'           => null,
+    'wp_siteurl'        => null
+  )
+);
 
-/* MySQL settings - You can get this info from your web host */
-if (strpos($current_server, $production_server) !== false)
+/**
+ * Get the appropriate credentials
+ */
+foreach ($server_credentials as $server)
 {
-  /**
-   *
-   * Production environment
-   *
-   */
-
-  /** The name of the database for WordPress */
-  define('DB_NAME', '');
-
-  /** MySQL database username */
-  define('DB_USER', '');
-
-  /** MySQL database password */
-  define('DB_PASSWORD', '');
-
-  /** MySQL hostname */
-  define('DB_HOST', 'localhost');
-
-  /**
-   * Set WordPress debug mode, and script debug
-   */
-  define('WP_DEBUG', false);
-  define('SCRIPT_DEBUG', false);
-  define('WP_DEBUG_LOG', false);
-  define('WP_DEBUG_DISPLAY', false);
-
-  /**
-   * Set the environment
-   */
-  define('WP_ENV', 'production');
-
-  /**
-   * Set up paths
-   */
-  //define('WP_HOME','http://');
-  //define('WP_SITEURL','http://');
+  if (strpos($current_server_name, $server['server_name']) !== false)
+  {
+    $options = $server['options']; break;
+  }
 }
-elseif (strpos($current_server, $staging_server) !== false)
+
+/**
+ * Set up the WordPress database, debug options and environment.
+ */
+if ($options)
 {
-  /**
-   *
-   * Staging environment
-   *
-   */
+  /* Database credentials */
+  define('DB_NAME', $options['db_name']);
+  define('DB_USER', $options['db_user']);
+  define('DB_PASSWORD', $options['db_password']);
+  define('DB_HOST', $options['db_host']);
 
-  /** The name of the database for WordPress */
-  define('DB_NAME', '');
+  /* Debug settings */
+  define('WP_DEBUG', $options['wp_debug']);
+  define('WP_DEBUG_LOG', $options['wp_debug_log']);
+  define('WP_DEBUG_DISPLAY', $options['wp_debug_display']);
 
-  /** MySQL database username */
-  define('DB_USER', '');
-
-  /** MySQL database password */
-  define('DB_PASSWORD', '');
-
-  /** MySQL hostname */
-  define('DB_HOST', 'localhost');
-
-  /**
-   * Set WordPress debug mode, and script debug
-   */
-  define('WP_DEBUG', false);
-  define('SCRIPT_DEBUG', false);
-  define('WP_DEBUG_LOG', false);
-  define('WP_DEBUG_DISPLAY', false);
-
-  /**
-   * Set the environment
-   */
-  define('WP_ENV', 'staging');
-
-  /**
-   * Set up paths
-   */
-  //define('WP_HOME','http://');
-  //define('WP_SITEURL','http://');
-}
-elseif (strpos($current_server, $development_server) !== false)
-{
-  /**
-   *
-   * Local development environment
-   *
-   */
-
-  /** The name of the database for WordPress */
-  define('DB_NAME', '');
-
-  /** MySQL database username */
-  define('DB_USER', '');
-
-  /** MySQL database password */
-  define('DB_PASSWORD', '');
-
-  /** MySQL hostname */
-  define('DB_HOST', 'localhost');
-
-
-  /**
-   * Set WordPress debug mode, and script debug
-   */
-  define('WP_DEBUG', true);
-  define('SCRIPT_DEBUG', false);
-  define('WP_DEBUG_LOG', true);
-  define('WP_DEBUG_DISPLAY', false);
-
-  /**
-   * Set the environment
-   */
-  define('WP_ENV', 'development');
-
-  /**
-   * Set up paths
-   */
-  //define('WP_HOME','http://');
-  //define('WP_SITEURL','http://');
+  /* Environment options*/
+  define('WP_ENV', $options['wp_env']);
+  if ($options['wp_siteurl']) define('WP_SITEURL', $options['wp_siteurl']);
+  if ($options['wp_home']) define('WP_HOME', $options['wp_home']);
 }
 else
 {
-  die('Sorry, no appropriate database credentials were found.');
+  die('Sorry, no appropriate database credentials were found. Make sure your `$server_credentials` are set correctly.');
 }
 
 /* End of server and deployment credentials */

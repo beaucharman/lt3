@@ -23,13 +23,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Snippet::get_loop(get_post_type($post->ID), 'archive'); ?>
+    <?php Samurai_Route::get_view('loop-archive', get_post_type($post->ID)); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_message('no-posts'); ?>
+    <?php Samurai_Snippet::get_view('message', 'no-posts'); ?>
 
   <?php endif; ?>
 

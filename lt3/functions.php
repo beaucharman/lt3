@@ -58,6 +58,10 @@ require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/initial-theme-setup.php');
    ======================================================================== */
 require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/helpers.php');
 
+/* Routes
+   ======================================================================== */
+require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/routes.php');
+
 /* Site Settings
    ======================================================================== */
 // require_once(SAMURAI_FULL_EXTENSIONS_PATH . '/site-settings.php');

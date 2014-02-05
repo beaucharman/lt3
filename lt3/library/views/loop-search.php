@@ -17,7 +17,7 @@
 <article <?php post_class('article article__search-result search-result entry excerpt post-' . get_the_ID()); ?>>
 
   <h2 class="article-title">
-    <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?> <small>[<?php echo samurai_prettify_words(get_post_type()); ?>]</small></a>
+    <a href="<?php the_permalink() ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?> <small>[<?php echo Samurai_Helper::prettify_words(get_post_type()); ?>]</small></a>
   </h2>
 
   <?php Samurai_Snippet::include_post_meta(); ?>

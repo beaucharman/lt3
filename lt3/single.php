@@ -14,11 +14,11 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Snippet::get_loop(get_post_type($post->ID), 'single'); ?>
+    <?php Samurai_Route::get_view('loop-single', get_post_type($post->ID)); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_message('not-found'); ?>
+    <?php Samurai_Route::get_view('message', 'not-found'); ?>
 
   <?php endif; ?>
 

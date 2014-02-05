@@ -16,7 +16,7 @@ $taxonomy_term = $wp_query->get_queried_object();
 get_header(); ?>
 
   <h1 class="term__heading content-title">
-    <?php echo $taxonomy_term->name; echo _e(' Archive'); ?>
+    <?php echo $taxonomy_term->name; ?>
   </h1>
 
   <?php if (term_description()) : ?>
@@ -27,13 +27,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Snippet::get_loop($taxonomy_term->slug, 'taxonomy'); ?>
+    <?php Samurai_Route::get_view('loop-taxonomy', $taxonomy_term->slug); ?>
 
     <?php Samurai_Pagination::include_archive_pagination(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_message('not-found'); ?>
+    <?php Samurai_Route::get_view('message', 'not-found'); ?>
 
   <?php endif; ?>
 

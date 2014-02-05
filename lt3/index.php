@@ -12,13 +12,13 @@ get_header(); ?>
 
   <?php if (have_posts()) : ?>
 
-    <?php Samurai_Snippet::get_loop(); ?>
+    <?php Samurai_Route::get_view('loop') ?>
 
-    <?php samurai_include_single_navigation(); ?>
+    <?php Samurai_Pagination::include_single_navigation(); ?>
 
   <?php else : ?>
 
-    <?php Samurai_Snippet::get_message('not-found'); ?>
+    <?php Samurai_Route::get_view('message', 'not-found'); ?>
 
   <?php endif; ?>
 

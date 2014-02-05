@@ -14,9 +14,7 @@
 
 <?php while (have_posts()) : the_post(); ?>
 
-<?php $output_type = (is_single()) ? 'excerpt' : 'content'; ?>
-
-<article <?php post_class('article article__loop post-' . get_the_ID() . ' entry ' . $output_type); ?>>
+<article <?php post_class('article article__loop post-' . get_the_ID() . ' entry ',  (is_single()) ? 'excerpt' : 'content'); ?>>
 
   <h1 class="article-title">
     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a>
