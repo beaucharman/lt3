@@ -8,8 +8,12 @@
  * @subpackage   samurai
  */
 
+
+
 class Samurai_Menu
 {
+
+
 
   public $name;
   public $theme_location;
@@ -120,17 +124,5 @@ class Samurai_Menu
   {
     return strToLower(str_replace(' ', '-', $words));
   }
+
 }
-
-
-
-/**
- *
- * Main Navigation Menu
- *
- */
-$Main_Navigation_Menu = new Samurai_Menu(
-  array(
-   'name' => 'Main Navigation Menu'
-  )
-);

@@ -42,12 +42,12 @@ class Samurai_Loop
   }
 
 
+
   /**
    *
    * Set all posts to be sorted alphabetically
    *
    */
-
   function default_loop_output($query)
   {
     global $wp_the_query;
@@ -67,6 +67,7 @@ class Samurai_Loop
 
     return $query;
   }
+
 }
 
 new Samurai_Loop;

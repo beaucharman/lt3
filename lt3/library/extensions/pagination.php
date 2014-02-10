@@ -8,13 +8,15 @@
  * @subpackage   samurai
  */
 
+
+
 class Samurai_Pagination
 {
 
 
   /**
    * Has Page Pagination
-   * ========================================================================
+   *
    * @param null
    * @return {boolean}
    *
@@ -29,8 +31,11 @@ class Samurai_Pagination
     return false;
   }
 
-  /* Function to get Post Nav Links
-     ======================================================================== */
+
+
+  /**
+   *  Function to get Post Nav Links
+   */
   static function get_single_nav_links()
   {
     echo '<div class="next-single">';
@@ -43,24 +48,30 @@ class Samurai_Pagination
   }
 
 
-  /* Function to get Category Nav Links
-     ======================================================================== */
+
+  /**
+   * Function to get Category Nav Links
+   */
   static function get_archive_nav_links()
   {
     posts_nav_link(' &mdash; ', '&larr; Previous Page', 'Next Page &rarr;');
   }
 
 
-  /* Functions to include site pagination
-     A series of functions that checks for wp_pagenavi(), and conditionally
-     displays the appropriate pagination method.
-     ======================================================================== */
+
+  /**
+   * Functions to include site pagination
+   *
+   * A series of functions that checks for wp_pagenavi(), and conditionally
+   * displays the appropriate pagination method.
+   */
   static function include_single_navigation()
   {
     echo '<nav class="single-navigation clear-fix">';
     self::get_single_nav_links();
     echo '</nav>';
   }
+
 
 
   /**
@@ -84,6 +95,7 @@ class Samurai_Pagination
   }
 
 
+
   /**
    * Include page navigation (previous and next style)
    */
@@ -102,6 +114,7 @@ class Samurai_Pagination
   }
 
 
+
   /**
    * Include archive pagination (using wp_pagenavi)
    */
@@ -118,6 +131,7 @@ class Samurai_Pagination
       self::include_archive_navigation();
     }
   }
+
 
 
   /**

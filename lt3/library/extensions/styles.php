@@ -8,8 +8,12 @@
  * @subpackage   samurai
  */
 
+
+
 class Samurai_Style
 {
+
+
 
   function __construct()
   {
@@ -61,6 +65,7 @@ class Samurai_Style
     wp_register_style('samurai_main_stylesheet', SAMURAI_FULL_STYLES_PATH . '/main.css', array(), SAMURAI_STYLES_CACHE_BREAK);
 
 
+
     /**
      * Enqueue styles here
      */
@@ -97,6 +102,7 @@ class Samurai_Style
   }
 
 
+
   /**
    *
    * Custom Login Styles
@@ -106,6 +112,7 @@ class Samurai_Style
   {
     echo '<link rel="stylesheet" type="text/css" href="' . SAMURAI_FULL_STYLES_PATH . '/admin/custom-login-style.css">';
   }
+
 }
 
 new Samurai_Style;

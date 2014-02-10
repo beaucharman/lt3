@@ -8,8 +8,12 @@
  * @subpackage   samurai
  */
 
+
+
 class Samurai_Media
 {
+
+
 
   function __construct()
   {
@@ -41,6 +45,7 @@ class Samurai_Media
   }
 
 
+
   /**
    *
    * Declare various image sizes for WordPress image size sampling
@@ -55,6 +60,7 @@ class Samurai_Media
   }
 
 
+
   function show_image_sizes($sizes)
   {
     /* Add image size handles and desired labels here */
@@ -62,4 +68,7 @@ class Samurai_Media
 
     return $sizes;
   }
+
 }
+
+new Samurai_Media;

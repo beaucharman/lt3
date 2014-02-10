@@ -31,13 +31,17 @@
  */
 
 
+
 /* ========================================================================
    Custom Taxonomy class
    ======================================================================== */
 
 
+
 class Katana_Custom_Taxonomy
 {
+
+
 
   public $name;
   public $post_type;
@@ -46,9 +50,10 @@ class Katana_Custom_Taxonomy
   public $help;
 
 
+
   /**
    * Constructor
-   * ========================================================================
+   *
    * @param  {array}    $args
    * @param  {string}   $post_type
    * @return {instance} taxonomy
@@ -123,9 +128,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Register Custom Taxonomy
-   * ========================================================================
+   *
    * @param  {null}
    * @return {object} taxonomy
    */
@@ -168,9 +174,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Add Custom Contextual Help
-   * ========================================================================
+   *
    * @param $contextual_help
    * @param $screen_id
    * @param $screen
@@ -188,9 +195,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Get
-   * ========================================================================
+   *
    * @param  {array}   $user_args
    * @param  {boolean} $single
    * @return {object}  term data
@@ -216,9 +224,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Get Slug
-   * ========================================================================
+   *
    * @param  {string} $name
    * @return {string}
    */
@@ -233,9 +242,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Prettify Words
-   * ========================================================================
+   *
    * @param  {string} $words
    * @return {string}
    *
@@ -248,9 +258,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Uglify Words
-   * ========================================================================
+   *
    * @param  {string} $word
    * @return {string}
    *
@@ -262,9 +273,10 @@ class Katana_Custom_Taxonomy
   }
 
 
+
   /**
    * Plurify Words
-   * ========================================================================
+   *
    * @param  {string} $words
    * @return {string}
    *
@@ -284,4 +296,5 @@ class Katana_Custom_Taxonomy
     }
     return $words . 's';
   }
+
 }

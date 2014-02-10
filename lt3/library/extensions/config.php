@@ -32,8 +32,10 @@ class Samurai_Config {
      * Set the production environment for conditional statements.
      * true for development, false for deployment mode.
      */
-    define('SAMURAI_DEVELOPMENT_MODE', true);
-
+    if (WP_ENV != 'production')
+    {
+      define('SAMURAI_DEVELOPMENT_MODE', true);
+    }
 
 
     /**

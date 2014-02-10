@@ -30,10 +30,10 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  *
  */
  $server_credentials['production'] = array(
-  
+
   /* Production server name */
   'server_name' => '',
-  
+
   /* Production options */
   'options' => array(
     'db_name'           => '',
@@ -55,10 +55,10 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  *
  */
  $server_credentials['staging'] = array(
-  
+
   /* Staging server name */
   'server_name' => '',
-  
+
   /* Staging options */
   'options' => array(
     'db_name'           => '',
@@ -80,10 +80,10 @@ $current_server_name = $_SERVER['SERVER_NAME'];
  *
  */
 $server_credentials['development'] = array(
- 
+
   /* StagDevelopmenting server name */
   'server_name' => '',
-  
+
   /* Development options */
   'options' => array(
     'db_name'           => '',

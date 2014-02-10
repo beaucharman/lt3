@@ -8,8 +8,12 @@
  * @subpackage   samurai
  */
 
+
+
 class Samurai_Helper
 {
+
+
 
   /**
    * Get Thumbnail

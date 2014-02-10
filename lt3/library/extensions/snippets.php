@@ -14,8 +14,12 @@
  *   (Include pagination for example)
  */
 
+
+
 class Samurai_Snippet
 {
+
+
 
   /**
    *  Get the Comments Template
@@ -27,6 +31,7 @@ class Samurai_Snippet
       comments_template();
     }
   }
+
 
 
   /**
@@ -96,6 +101,7 @@ class Samurai_Snippet
       bloginfo('description');
     }
   }
+
 
 
   /**
@@ -176,6 +182,7 @@ class Samurai_Snippet
   }
 
 
+
   /**
    * Get Archive Title
    *
@@ -240,6 +247,7 @@ class Samurai_Snippet
   }
 
 
+
   /**
    * Get Message
    *
@@ -271,8 +279,9 @@ class Samurai_Snippet
 
 
 
-  /* Function to add more edit buttons to comments
-      */
+  /**
+   *  Function to add more edit buttons to comments
+   */
   public static function delete_comment_link($id)
   {
     if (current_user_can('edit_post'))
@@ -281,6 +290,7 @@ class Samurai_Snippet
         . '<a href="' . admin_url("comment.php?action=cdc&dt=spam&c=$id") . '">Spam</a>';
     }
   }
+
 
 
   /**
@@ -320,6 +330,7 @@ class Samurai_Snippet
   }
 
 
+
   /**
    *  Function to get categories and taxonomies for a post
    */
@@ -344,6 +355,7 @@ class Samurai_Snippet
     }
     return false;
   }
+
 
 
   /**
@@ -381,6 +393,7 @@ class Samurai_Snippet
   }
 
 
+
   /**
    * Read More Text
    *
@@ -401,6 +414,7 @@ class Samurai_Snippet
       echo 'Read more &rarr;';
     }
   }
+
 
 
   /**

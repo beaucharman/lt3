@@ -11,8 +11,11 @@
  */
 
 
+
 class Samurai_Editor
 {
+
+
 
   function __construct()
   {
@@ -157,6 +160,8 @@ class Samurai_Editor
     return $mce_buttons;
   }
 
+
+
   /**
    *  Adds style select to the TinyMCE Editor
    */
@@ -165,6 +170,7 @@ class Samurai_Editor
     array_unshift($buttons, 'styleselect');
     return $buttons;
   }
+
 
 
   /**
@@ -204,4 +210,3 @@ class Samurai_Editor
 }
 
 new Samurai_Editor;
-

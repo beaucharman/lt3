@@ -15,8 +15,12 @@
  * http://codex.wordpress.org/Function_Reference/wp_deregister_script
  */
 
+
+
 class Samurai_Script
 {
+
+
 
   function __construct()
   {
@@ -89,6 +93,7 @@ class Samurai_Script
       wp_enqueue_script('samurai_main');
     }
   }
+
 }
 
 new Samurai_Script;

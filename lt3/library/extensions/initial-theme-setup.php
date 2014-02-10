@@ -11,8 +11,12 @@
  * http://codex.wordpress.org/Plugin_API/Action_Reference/after_setup_theme
  */
 
+
+
 class Samurai_Setup
 {
+
+
 
   function __construct()
   {
@@ -23,6 +27,8 @@ class Samurai_Setup
     add_action('after_setup_theme', array(&$this, 'initial_theme_setup'));
   }
 
+
+
   /**
    * Initial Theme Setup
    *
@@ -30,6 +36,8 @@ class Samurai_Setup
    */
   function initial_theme_setup()
   {
+
+
 
     /**
      * Only need to run this once
@@ -70,10 +78,12 @@ class Samurai_Setup
       }
 
 
+
       /**
        * Add RSS links to <head> section
        */
       add_theme_support('automatic-feed-links');
+
 
 
       /**
@@ -82,9 +92,10 @@ class Samurai_Setup
       add_theme_support('html5', array('search-form', 'comment-form', 'comment-list'));
 
 
+
       /**
        * Delete the example post, page and comment
-       * ========================================================================
+       *
        * Set the booleans to false if this is not a fresh
        * install, true will delete the post and pages for real realz
        */
@@ -93,9 +104,10 @@ class Samurai_Setup
       wp_delete_comment(1);
 
 
+
       /**
        * Goodbye Dolly
-       * ========================================================================
+       *
        * feel free to add Akismet to this block of code
        */
       if (file_exists(WP_PLUGIN_DIR.'/hello.php'))
@@ -106,10 +118,12 @@ class Samurai_Setup
       }
 
 
+
       /**
        * Update the status so this doesn't run again
        */
       update_option('theme_setup_status', '1');
+
 
 
       /**

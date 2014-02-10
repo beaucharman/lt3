@@ -26,13 +26,17 @@
  */
 
 
+
 /* ========================================================================
    Custom Post Type class
    ======================================================================== */
 
 
+
 class Katana_Custom_Post_Type
 {
+
+
 
   public $name;
   public $labels;
@@ -41,9 +45,10 @@ class Katana_Custom_Post_Type
   public $help;
 
 
+
   /**
    * Class Constructor
-   *  ========================================================================
+   *
    * @param  {array}   $args
    * @return {instance} post type
    */
@@ -123,7 +128,7 @@ class Katana_Custom_Post_Type
 
   /**
    * Register Custom Post Type
-   * ========================================================================
+   *
    * @param  {null}
    * @return post type
    */
@@ -153,10 +158,11 @@ class Katana_Custom_Post_Type
       array(
         'has_archive'   => true,
         'labels'        => $labels,
-        'menu_icon'     => '',
+        'menu_icon'     => null,
         'menu_position' => 4,
         'public'        => true,
-        'rewrite'       => array('slug' => $this->get_slug())
+        'rewrite'       => array('slug' => $this->get_slug()),
+        'supports'      => array('title', 'editor', 'thumbnail', 'revisions')
       ),
       $this->options
     );
@@ -168,9 +174,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Add Custom Contextual Help
-   * ========================================================================
+   *
    * @param  $contextual_help
    * @param  $screen_id
    * @param  $screen
@@ -199,9 +206,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Get
-   * ========================================================================
+   *
    * @param  {array}   $user_args
    * @param  {boolean} $single
    * @return {array}   post type data
@@ -232,9 +240,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Get Slug
-   * ========================================================================
+   *
    * @param  {string} $name
    * @return {string}
    */
@@ -249,9 +258,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Prettify Words
-   * ========================================================================
+   *
    * @param  {string} $words
    * @return {string}
    *
@@ -263,9 +273,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Uglify Words
-   * ========================================================================
+   *
    * @param  {string} $words
    * @return {string}
    *
@@ -277,9 +288,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Plurify Words
-   * ========================================================================
+   *
    * @param  {string} $words
    * @return {string}
    *
@@ -302,9 +314,10 @@ class Katana_Custom_Post_Type
   }
 
 
+
   /**
    * Icon Style
-   * ========================================================================
+   *
    * @param  {null}
    * @return {output} html
    */
@@ -318,10 +331,11 @@ class Katana_Custom_Post_Type
   <?php }
 
 
+
   /**
    * Get Font Awesome
    * http://fortawesome.github.io/Font-Awesome/
-   * ========================================================================
+   *
    * @param  {null}
    * @return {output} html
    */
@@ -334,4 +348,5 @@ class Katana_Custom_Post_Type
       echo '<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">';
     }
   }
+
 }
