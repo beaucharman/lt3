@@ -1,3 +1,11 @@
+Hi. Thank you for staring/forking/checking out this repo. I will no longer be working on it, however, I will be spending my time on a successor: https://github.com/beaucharman/samurai.
+
+Feel free to fork/contribute/help out if you'd like.
+
+Beau
+
+<3
+
 ![LT3 theme screenshot](https://raw.github.com/beaucharman/lt3/master/lt3/screenshot.png "A slightly powerful, intelligent and simple WordPress theme.")
 
 > A slightly powerful, intelligent and simple WordPress theme.
