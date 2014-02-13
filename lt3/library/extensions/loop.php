@@ -68,3 +68,5 @@ class lt3_Loop
     return $query;
   }
 }
+
+new lt3_Loop;

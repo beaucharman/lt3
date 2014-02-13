@@ -25,8 +25,8 @@ class Bamboo_Model {
   /**
    * Global Variables
    */
-  public static $Genre;
-  public static $Movie;
+  // public static $Genre;
+  // public static $Movie;
 
 
   function __construct()
@@ -35,7 +35,7 @@ class Bamboo_Model {
     /**
      * Include Font Awesome
      */
-    Bamboo_Custom_Post_Type::get_font_awesome();
+    // Bamboo_Custom_Post_Type::get_font_awesome();
 
     /**
      * register taxonomies

@@ -63,3 +63,5 @@ class lt3_Media
     return $sizes;
   }
 }
+
+new lt3_Media;
